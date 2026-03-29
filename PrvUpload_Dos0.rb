@@ -6,7 +6,7 @@
 #               P4 => file from finder or F to select
 #
 #   Function:   upload 1 file to Notion.DB & attach to 'Dossier'
-#   Build:      0.0.1   <251026-0907>
+#   Build:      0.0.2   <251026-0907>
 #
 #
 =end
