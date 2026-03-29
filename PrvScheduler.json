@@ -1,0 +1,14 @@
+{
+    "main_menu" : {
+        "name" :        "PrvMenuGlobal",
+        "path" :        "/users/Gilbert/Public/Progs/Inuse/ProgsInUse/PrvMenuGlobal.rb",
+        "args" :        ["loop", "sleep", "fct"],
+        "type" :        "manual",
+        "pid" :         null,
+        "status" :      "stopped",
+        "time_start" :  "06:00:00",
+        "time_end" :    "20:00:00",
+        "days" :        ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "interval" :    null
+    }
+}
