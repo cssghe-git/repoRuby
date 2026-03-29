@@ -21,6 +21,7 @@ DOC:        apply:      from ENV or (as last flag) => Simulate all actions if pr
 DOC     *
         Bugs:   <001>   <yymmdd>    <text>
                 <002>   <260327>    <New prog>
+                <5.3.1>  <260329>   <New directory>
 =end
 #
 #Require
@@ -106,12 +107,7 @@ require 'logger'
         prv_progs:  ENV.fetch("PRG_INUSE_DIR", nil),
         mbr_progs:  ENV.fetch("PRG_INUSE_DIR", nil),
     }
-    prv_progs_dir   = arrdirs[:prv_progs]
-    mbr_progs_dir   = arrdirs[:mbr_progs]
-    log.info("DBG>>>Directories: ☛")
-    arrdirs.each_pair do |key, value|
-        log.info("KEYS:#{key} => #{value}")
-    end
+
 
 # End of block
 #***** Exec environment *****
@@ -119,7 +115,7 @@ require 'logger'
 #
 #Variables
 #*********
-    vrp         = "5.2.1"
+    vrp         = "5.3.1"
     repfct      = options[:fct]
     timeout     = options[:sleep]
     timemin     = timeout/60
@@ -132,48 +128,50 @@ require 'logger'
     bold = "\e[1m"
     reset = "\e[0m"
 
+    RUBY_PROGS_DIR   = "/users/Gilbert/Public/Progs/InUse/repoRuby"
+
     arrfunctions    = {                                 #all programs to run
         #key=>[Display, Directory, Name, Prms, Temp]
     #    '010' => ["*","**","***","****","*****"],
         '01'  => ["#---------#{bold}=>Private<= ▼#{reset}---------#","*","*","*","*"],
-        '10'  => ["#{bold}PRV=>#{reset}PrvCvrtCsvFile_Iso-Utf8",    "#{prv_progs_dir}", "PrvCvrtCsvFile_Iso-Utf8","N"],
-        '11'  => ["#{bold}PRV=>#{reset}PrvCvrtCsvFileComma",        "#{prv_progs_dir}", "/PrvCvrtCsvFileComma","N"],
+        '10'  => ["#{bold}PRV=>#{reset}PrvCvrtCsvFile_Iso-Utf8",    "#{RUBY_PROGS_DIR}", "PrvCvrtCsvFile_Iso-Utf8","N"],
+        '11'  => ["#{bold}PRV=>#{reset}PrvCvrtCsvFileComma",        "#{RUBY_PROGS_DIR}", "/PrvCvrtCsvFileComma","N"],
     #    '020' => ["*","**","***","****","*****"],
         '02'  => ["#---------#{bold}=>Private files<= ▼#{reset}---------#","**","***","****","*****"],
-        '20'  => ["#{bold}FIL=>#{reset}New PrvUpload-File into Notion-Dossiers",    "#{prv_progs_dir}", "PrvUpload_Dossiers2","N L N F"],
+        '20'  => ["#{bold}FIL=>#{reset}New PrvUpload-File into Notion-Dossiers",    "#{RUBY_PROGS_DIR}", "PrvUpload_Dossiers2","N L N F"],
     #    '030'  => ["*","**","***","****","*****"],
         '03'  => ["#---------#{bold}==>Budget<== 🔻#{reset}---------#","**","***","****","*****"],
-        '30'  => ["#{bold}ACC=>#{reset}Budget hebdo",   "#{prv_progs_dir}", "PrvBudget_Calculs","--", %w[debug simul],],
+        '30'  => ["#{bold}ACC=>#{reset}Budget hebdo",   "#{RUBY_PROGS_DIR}", "PrvBudget_Calculs","--", %w[debug simul],],
     #    '040'  => ["*","**","***","****","*****"],
     #    '050' => ["*","**","***","****","*****"],
         '05'  => ["#---------#{bold}=>Members<= ▼#{reset}---------#","**","***","****","*****"],
-        '50'  => ["#{bold}UPD=>#{reset}Check records (.xlsx) before Merge to UPD",  "#{mbr_progs_dir}", "/EneoBwCom_ChkXlsToUpd25", "",],
-        '51'  => ["#{bold}UPD=>#{reset}Check records (.csv) before Merge to UPD",   "#{mbr_progs_dir}", "/EneoBwCom_ChkCsvToUpd25", "",],
-        '52'  => ["#{bold}UPD=>#{reset}Process records from UPD to MBR with IA",    "#{mbr_progs_dir}", "/EneoBwCom_UpdMbrIA", "--", %w[act_mode cdc act only limit since],],
-        '53'  => ["#{bold}UPD=>#{reset}Load to UPD from XL file",                   "#{mbr_progs_dir}", "/EneoBwCom_AddXlsToUpd05", "",],
-        '54'  => ["#{bold}COT=>#{reset}Checks records COT",                         "#{mbr_progs_dir}", "/EneoBwSpc_ChkCot", "",],
-        '55'  => ["#{bold}COT=>#{reset}Process records COT",                        "#{mbr_progs_dir}", "/EneoBwSpc_MgtCot", "",],
-        '56'  => ["#{bold}COT=>#{reset}Checks records COT details",                 "#{mbr_progs_dir}", "/EneoBwSpc_ChkCotFull", "",],
+        '50'  => ["#{bold}UPD=>#{reset}Check records (.xlsx) before Merge to UPD",  "#{RUBY_PROGS_DIR}", "/EneoBwCom_ChkXlsToUpd25", "",],
+        '51'  => ["#{bold}UPD=>#{reset}Check records (.csv) before Merge to UPD",   "#{RUBY_PROGS_DIR}", "/EneoBwCom_ChkCsvToUpd25", "",],
+        '52'  => ["#{bold}UPD=>#{reset}Process records from UPD to MBR with IA",    "#{RUBY_PROGS_DIR}", "/EneoBwCom_UpdMbrIA", "--", %w[act_mode cdc act only limit since],],
+        '53'  => ["#{bold}UPD=>#{reset}Load to UPD from XL file",                   "#{RUBY_PROGS_DIR}", "/EneoBwCom_AddXlsToUpd05", "",],
+        '54'  => ["#{bold}COT=>#{reset}Checks records COT",                         "#{RUBY_PROGS_DIR}", "/EneoBwSpc_ChkCot", "",],
+        '55'  => ["#{bold}COT=>#{reset}Process records COT",                        "#{RUBY_PROGS_DIR}", "/EneoBwSpc_MgtCot", "",],
+        '56'  => ["#{bold}COT=>#{reset}Checks records COT details",                 "#mRUBY_PROGS_DIR}", "/EneoBwSpc_ChkCotFull", "",],
     #    '060' => ["*","**","***","****","*****"],
         '06'  => ["#---------#{bold}=>Checks<= ▼#{reset}---------#","**","***","****","*****"],
-        '60'  => ["#{bold}CHK=>#{reset}Check specific fields on all tables",        "#{mbr_progs_dir}", "/EneoBwSpc_ChkFields", "--", %w[json examples missing],],
-        '61'  => ["#{bold}CHK=>#{reset}Check duplicates members",                   "#{mbr_progs_dir}", "/EneoBwSpc_ChkDupl_2", "N",],
-        '62'  => ["#{bold}CHK=>#{reset}Log all updates on MBR UPD MAJ COT PRJ",     "#{mbr_progs_dir}", "/EneoBwSpc_LogModifs", "--", %w[since state buffer dry_run],"Help: Since:ISO8601 date->YYYY-MM-DDT00:00:00+01:00 or nul | Dry:Simulation"],
+        '60'  => ["#{bold}CHK=>#{reset}Check specific fields on all tables",        "#{RUBY_PROGS_DIR}", "/EneoBwSpc_ChkFields", "--", %w[json examples missing],],
+        '61'  => ["#{bold}CHK=>#{reset}Check duplicates members",                   "#{RUBY_PROGS_DIR}", "/EneoBwSpc_ChkDupl_2", "N",],
+        '62'  => ["#{bold}CHK=>#{reset}Log all updates on MBR UPD MAJ COT PRJ",     "#{RUBY_PROGS_DIR}", "/EneoBwSpc_LogModifs", "--", %w[since state buffer dry_run],"Help: Since:ISO8601 date->YYYY-MM-DDT00:00:00+01:00 or nul | Dry:Simulation"],
     #    '070' => ["*","**","***","****","*****"],
         '07'  => ["#---------#{bold}=>Mgt Activities<= ▼#{reset}---------#","**","***","****","*****"],
-        '70'  => ["#{bold}MBR=>#{reset}Extract members for Activity",               "#{mbr_progs_dir}", "/EneoBwCom_ExtrMbr05", "N",],
-        '71'  => ["#{bold}MBR=>#{reset}Extract members for Activity with Error",    "#{mbr_progs_dir}", "/EneoBwCom_ChkMbr05", "N",],
-        '72'  => ["#{bold}MBR=>#{reset}Extract Member Hist",                        "#{mbr_progs_dir}", "/EneoBwSpc_DisplMember", "- -",],
-        '73'  => ["#{bold}MAIL=>#{reset}Send mails with members file.xlsx",          "#{mbr_progs_dir}", "/EneoBwSpc_SndMailAllActs", "--", %w[exec debug],],
-        '74'  => ["#{bold}MAIL=>#{reset}Send mails with attachment",                 "#{mbr_progs_dir}", "/EneoBwSpc_SndMail2_AllActs", "--", %w[exec debug],],
+        '70'  => ["#{bold}MBR=>#{reset}Extract members for Activity",               "#{RUBY_PROGS_DIR}", "/EneoBwCom_ExtrMbr05", "N",],
+        '71'  => ["#{bold}MBR=>#{reset}Extract members for Activity with Error",    "#{RUBY_PROGS_DIR}", "/EneoBwCom_ChkMbr05", "N",],
+        '72'  => ["#{bold}MBR=>#{reset}Extract Member Hist",                        "#{RUBY_PROGS_DIR}", "/EneoBwSpc_DisplMember", "- -",],
+        '73'  => ["#{bold}MAIL=>#{reset}Send mails with members file.xlsx",          "#{RUBY_PROGS_DIR}", "/EneoBwSpc_SndMailAllActs", "--", %w[exec debug],],
+        '74'  => ["#{bold}MAIL=>#{reset}Send mails with attachment",                 "#{RUBY_PROGS_DIR}", "/EneoBwSpc_SndMail2_AllActs", "--", %w[exec debug],],
     #    '080' => ["*","**","***","****","*****"],
         '08'  => ["#---------#{bold}=>Mgt M25 for Office<= ▼#{reset}---------#","**","***","****","*****"],
-        '80'  => ["#{bold}MBR=>#{reset}Extract records for Office",                 "#{mbr_progs_dir}", "/EneoBwCom_ExtrOffice05", "--", %w[debug list lstdate],],
-        '81'  => ["#{bold}MBR=>#{reset}Extract records for Office - EXT",           "#{mbr_progs_dir}", "/EneoBwCom_ExtrOfficeExt", "--", %w[debug list lstdate],],
+        '80'  => ["#{bold}MBR=>#{reset}Extract records for Office",                 "#{RUBY_PROGS_DIR}", "/EneoBwCom_ExtrOffice05", "--", %w[debug list lstdate],],
+        '81'  => ["#{bold}MBR=>#{reset}Extract records for Office - EXT",           "#{RUBY_PROGS_DIR}", "/EneoBwCom_ExtrOfficeExt", "--", %w[debug list lstdate],],
     #    '090' => ["*","**","***","****","*****"],
         '09'  => ["#---------#{bold}=>System<= ▼#{reset}---------#","**","***","****","*****"],
-        '90'  => ["#{bold}SYS=>#{reset}Encode / Decode",                            "#{prv_progs_dir}", "/PrvEncodeDecode","N",],
-        '91'  => ["#{bold}SYS=>#{reset}Search Data-Sources IDs ",                   "#{mbr_progs_dir}", "/Search_DBs_ID", "N",]
+        '90'  => ["#{bold}SYS=>#{reset}Encode / Decode",                            "#{RUBY_PROGS_DIR}", "/PrvEncodeDecode","N",],
+        '91'  => ["#{bold}SYS=>#{reset}Search Data-Sources IDs ",                   "#{RUBY_PROGS_DIR}", "/Search_DBs_ID", "N",]
     }
 
 #
@@ -244,6 +242,8 @@ require 'logger'
     puts    "\033]0;***Menu Global***\007"
     current_mode    = options[:exec]
     log.info("#{$0} => With parameters: EXEC:#{current_mode} | TMO:#{timeout} | FCT:#{repfct}}")
+    log.info("DBG>>>Directories: ☛")
+    log.info("#{RUBY_PROGS_DIR}")
     log.info("#{$0} => List of programs to execute")
 
     # Loop
@@ -269,7 +269,7 @@ require 'logger'
             puts    "Programs :"
             puts    "*"
 
-            arrfunctions    = HelpApplic.displayApplic(prv_dir: prv_progs_dir, mbr_dir: mbr_progs_dir)
+            arrfunctions    = HelpApplic.displayApplic(prv_dir: RUBY_PROGS_DIR, mbr_dir: RUBY_PROGS_DIR)
 
             #get choice
             repfct  = getChoice(log)
