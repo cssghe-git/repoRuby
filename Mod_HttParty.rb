@@ -5,7 +5,7 @@ DOC     Methods:    get_dbid(), db_query(), db_fetch(),
 DOC                 page_create(), page_update(), page_get(),
 DOC                 get_properties(), form_properties()
 DOC     Build:      260111-2045
-DOC     Version:    1.1.2
+DOC     Version:    1.1.3
     Bugs:       ?
 =end
 
