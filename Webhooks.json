@@ -2,6 +2,7 @@
     'secrets' => {
         'Notion' => 'CssGhe#Sign',
         'Status' => '4mEtX3xkeDNBbXrg3MeOqp6s9CylMf'
+        'GitHub' => 'GitHub#Sign'
     },
     'applic' => {
         ''

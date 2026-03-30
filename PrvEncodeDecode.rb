@@ -119,7 +119,7 @@ ID_FILE_DB              = '2c172117-082a-807a-a442-000be661990c'
         cipher.iv = iv
         encrypted = cipher.update(plaintext) + cipher.final
 o
-        # Transfrm into Base64
+        # Transform into Base64
         encrypted_base64 = Base64.encode64(encrypted)
 
         # Save on clipboard
