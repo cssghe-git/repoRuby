@@ -292,10 +292,21 @@ use Rack::JSONBodyParser
         ###puts    "ENV:: #{JSON.pretty_generate(headers_hash)}"
         pp params
 
+        # Repositiry
+        repository  = params['repository']
+        full_name   = params['full_name']
+        updated_at  = params['updated_at']
+        commits     = params['commits']
+
         # Print fields
         puts    "#{@prefix}>>---- Webhook fields ----"
         puts    "#{@prefix}>>>>>> Headers :"
         puts    "#{@prefix}>>Request by :   #{headers_hash['HTTP_USER_AGENT']}"
+        puts    "#{@prefix}>>Commits :"
+        commits.each_with_index do |commit, index|
+            puts    "#{@prefix}>>  #{index + 1}. #{commit['message']}"
+        end
+
     end
 
 #
