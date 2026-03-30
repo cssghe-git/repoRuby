@@ -286,9 +286,16 @@ use Rack::JSONBodyParser
         logger.info "#{@prefix}>>===== loading data for <email_webhook> ====="
         logger.info "#{@prefix}>>>>>"
         content_type :json
+
         # Headers-Env
         headers_hash    = request.env.select { |k, _| k}#headers
-        puts    "ENV:: #{JSON.pretty_generate(headers_hash)}"
+        ###puts    "ENV:: #{JSON.pretty_generate(headers_hash)}"
+        pp params
+
+        # Print fields
+        puts    "#{@prefix}>>---- Webhook fields ----"
+        puts    "#{@prefix}>>>>>> Headers :"
+        puts    "#{@prefix}>>Request by :   #{headers_hash['HTTP_USER_AGENT']}"
     end
 
 #
