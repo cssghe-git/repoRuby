@@ -234,10 +234,12 @@ class   UploadFileToNotion
     #
         # all choices
         # Display Tags
+        b   = "\e[1m"
+        r   = "\e[0m"
 
         # Get Level1/DB
         while   true
-            puts    "\nTAGS 1:: #{@tagl1}"
+            puts    "\n#{b}TAGS 1::#{r} #{@tagl1}"
             print   "For the DB.Doc [#{@old_level1}] => "
             level1  = ask(default: "#{@old_level1}")
             return  false   unless level1 != 'Q'
@@ -248,7 +250,7 @@ class   UploadFileToNotion
 
         # Get Level2/Object
         while   true
-            puts    "\nTAGS 2:: #{@tagl2}"
+            puts    "\n#{b}TAGS 2::#{r} #{@tagl2}"
             print   "Enter the Object [#{@old_level2}] => "
             level2  = ask(default: "#{@old_level2}")
             return  false   unless level2 != 'Q'
@@ -258,7 +260,7 @@ class   UploadFileToNotion
 
         # Get Level3/Tags
         while   true
-            puts    "\nTAGS 3:: #{@tagl3}"
+            puts    "\n#{b}TAGS 3::#{r} #{@tagl3}"
             print   "Enter the Tags [#{@old_level3}] => "
             level3  = ask(default: "#{@old_level3}")
             return  false   unless level3 != 'Q'
@@ -268,7 +270,7 @@ class   UploadFileToNotion
 
         # Get Level4/Type
         while   true
-            puts    "\nTAGS 4:: #{@tagl4}"
+            puts    "\n#{b}TAGS 4::#{r} #{@tagl4}"
             print   "Enter the Type [#{@old_level4}] => "
             level4  = ask(default: "#{@old_level4}")
             return  false   unless level4 != 'Q'
@@ -278,7 +280,7 @@ class   UploadFileToNotion
 
         # Get Emetteur
         while   true
-            print   "Enter the Sender [#{@old_sender}] => "
+            print   "Enter the #{b}Sender#{r} [#{@old_sender}] => "
             sender  = ask(default: "#{@old_sender}")
             return  false   unless sender != 'Q'
             @old_sender = sender

@@ -34,7 +34,6 @@ use Rack::JSONBodyParser
     end
 
     # My configuration
-    @whcount    = 0
     @prefix     = ''
 #
 # Helpers
@@ -50,10 +49,9 @@ use Rack::JSONBodyParser
         def pref(pref: "WHx")
         #+++++++
         #   pref:   prefixe
-            @whcount    += 1
             time = Time.now.utc.strftime("%j%H%M%S")
             rand_part = SecureRandom.alphanumeric(4).upcase  # ex: "A9F3"
-            return  "#{pref}-#{time}-#{rand_part}-#{@whcount}"
+            return  "#{pref}-#{time}-#{rand_part}"
         end
 
         # Vérif simplifiée de la signature, à adapter à la vraie spec Notion
