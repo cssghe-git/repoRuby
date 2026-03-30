@@ -3,7 +3,7 @@
     Webhook processing on "Post" request
     ************************************
     call by : ngrok on port 4567
-    url : ngrok/notion_webhook
+    url : https://progenitorial-fredda-headlong.ngrok-free.dev/notion_webhook
     private headers : X_?
         X_FROM => sender of webhook
         X_?
@@ -60,7 +60,8 @@ use Rack::JSONBodyParser
             return false if sign.nil?
 
             my_sign = "CssGhe#Sign"                     if from == 'Notion'
-            my_sugn = '5QVQaAXQEImm8Sc2ATOow4Cww3tkun'  if from == 'Fastmail'
+            my_sign = '5QVQaAXQEImm8Sc2ATOow4Cww3tkun'  if from == 'Fastmail'
+            my_sign ||= "GitHub#Sign"
             my_sign == sign
         end #<def>
 
@@ -188,7 +189,6 @@ use Rack::JSONBodyParser
     # Process <Post> request for <email_webhook>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
-
     post "/email_webhook" do
         @prefix = ">"+pref(pref: 'EW')+">"
         logger.info "#{@prefix}>>>>>"
@@ -275,6 +275,22 @@ use Rack::JSONBodyParser
             end
         end
     end
+    #
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    # Process <Post> request for <github_webhook>
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    #
+    post "/github_webhook" do
+        @prefix = ">"+pref(pref: 'EW')+">"
+        logger.info "#{@prefix}>>>>>"
+        logger.info "#{@prefix}>>===== loading data for <email_webhook> ====="
+        logger.info "#{@prefix}>>>>>"
+        content_type :json
+        # Headers-Env
+        headers_hash    = request.env.select { |k, _| k}#headers
+        puts    "ENV:: #{JSON.pretty_generate(headers_hash)}"
+    end
+
 #
 =begin
     my URL: https://progenitorial-fredda-headlong.ngrok-free.dev/notion_webhook
