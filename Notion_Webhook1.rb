@@ -17,6 +17,8 @@ require "thin"
 require "rack/contrib"
 require "cgi"
 require "securerandom"
+require "sidekiq"
+
 begin
   require "dotenv"; Dotenv.load
 rescue LoadError
@@ -34,7 +36,6 @@ use Rack::JSONBodyParser
     end
 
     # My configuration
-    @prefix     = ''
 #
 # Helpers
 #********
@@ -61,7 +62,7 @@ use Rack::JSONBodyParser
 
             my_sign = "CssGhe#Sign"                     if from == 'Notion'
             my_sign = '5QVQaAXQEImm8Sc2ATOow4Cww3tkun'  if from == 'Fastmail'
-            my_sign ||= "GitHub#Sign"
+            my_sign = "GitHub#Sign"                     if from == 'GitHub' 
             my_sign == sign
         end #<def>
 
@@ -87,10 +88,9 @@ use Rack::JSONBodyParser
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
     post "/notion_webhook" do
-        @prefix = ">"+pref(pref: 'NW')+">"
-        puts    "\n#{@prefix}>>"
-        puts    "#{@prefix}>>===== Webhook for </notion_webhook> ====="
-        puts    "#{@prefix}>>"
+        puts    "\n>>>"
+        puts    ">>>===== Webhook for </notion_webhook> ====="
+        puts    ">>>"
         content_type :json
 
         # Request
@@ -105,10 +105,10 @@ use Rack::JSONBodyParser
         properties      = data['properties']
 
         # Trace
-        ### puts    "#{@prefix}>>==== Notion webhook ===="
+        ### puts    ">>>==== Notion webhook ===="
         ### puts    "ENV:: #{JSON.pretty_generate(headers_hash)}"
-        ### puts    "#{@prefix}>>---- Checks ----"
-        ### puts    "#{@prefix}>>SIGN: #{valid_signature(sign: headers_hash['HTTP_X_SIGN'])}"
+        ### puts    ">>>---- Checks ----"
+        ### puts    ">>>SIGN: #{valid_signature(sign: headers_hash['HTTP_X_SIGN'])}"
 
         # Properties
         ### puts    JSON.pretty_generate(properties)
@@ -154,28 +154,28 @@ use Rack::JSONBodyParser
         ### puts    "PROP:: #{fields_array} -> #{fields_hash}"
 
         # Print fields
-        ### puts    "#{@prefix}>>---- Webhook fields ----"
-        ### puts    "#{@prefix}>>>>>> Headers :"
-        ### puts    "#{@prefix}>>by Host:         #{headers_hash['HTTP_HOST']}"
-        puts    "#{@prefix}>>From:            #{headers_hash['HTTP_USER_AGENT']}"
-        puts    "#{@prefix}>>Application:     #{headers_hash['HTTP_X_FROM_PAGE']}"
-        puts    "#{@prefix}>>Object:          #{headers_hash['HTTP_X_FROM_OBJECT']}"
-        puts    "#{@prefix}>>Sign:            #{valid_signature(from: 'Notion', sign: headers_hash['HTTP_X_SIGN'])}"
-        ### puts    "#{@prefix}>>>>>> Source :"
-        puts    "#{@prefix}>>Type of webhook: #{params['source']['type']}"
-        ### puts    "#{@prefix}>>>>>> Data :"
-        puts    "#{@prefix}>>Type of object:  #{params['data']['object']}"
-        puts    "#{@prefix}>>ID of object:    #{params['data']['id']}"
-        ### puts    "#{@prefix}>>>>>> Properties :"
+        ### puts    ">>>---- Webhook fields ----"
+        ### puts    ">>>>>>> Headers :"
+        ### puts    ">>>by Host:         #{headers_hash['HTTP_HOST']}"
+        puts    ">>>From:            #{headers_hash['HTTP_USER_AGENT']}"
+        puts    ">>>Application:     #{headers_hash['HTTP_X_FROM_PAGE']}"
+        puts    ">>>Object:          #{headers_hash['HTTP_X_FROM_OBJECT']}"
+        puts    ">>>Sign:            #{valid_signature(from: 'Notion', sign: headers_hash['HTTP_X_SIGN'])}"
+        ### puts    ">>>>>>> Source :"
+        puts    ">>>Type of webhook: #{params['source']['type']}"
+        ### puts    ">>>>>>> Data :"
+        puts    ">>>Type of object:  #{params['data']['object']}"
+        puts    ">>>ID of object:    #{params['data']['id']}"
+        ### puts    ">>>>>>> Properties :"
         if fields_hash.size > 0
             fields_hash.each    do |key, value|
                 len = 40 - key.size
-                puts    "#{@prefix}>>#{key}:" + " "*len + "#{value}"
+                puts    ">>>#{key}:" + " "*len + "#{value}"
             end
         end
 
         #
-        puts    "\n#{@prefix}>>Response"
+        puts    "\n>>>Response"
         status 200
         content_type :json
         { ok: true }.to_json
@@ -190,10 +190,9 @@ use Rack::JSONBodyParser
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
     post "/email_webhook" do
-        @prefix = ">"+pref(pref: 'EW')+">"
-        puts    "\n#{@prefix}>>>>>"
-        puts    "#{@prefix}>>===== Webhook for </email_webhook> ====="
-        puts    "#{@prefix}>>>>>"
+        puts    "\n>>>>>>"
+        puts    ">>>===== Webhook for </email_webhook> ====="
+        puts    ">>>>>>"
         content_type :json
 
         # Request
@@ -250,27 +249,27 @@ use Rack::JSONBodyParser
         end
 
         # Print fields
-        ### puts    "#{@prefix}>>---- Webhook fields ----"
-        ### puts    "#{@prefix}>>>>>> Headers :"
-        puts    "#{@prefix}>>by Host:         #{headers_hash['HTTP_HOST']}"
-        puts    "#{@prefix}>>Agent:           #{headers_hash['HTTP_USER_AGENT']}"
-        puts    "#{@prefix}>>From:            #{headers_hash['HTTP_X_FROM']}"
-        puts    "#{@prefix}>>Applic:          #{headers_hash['HTTP_X_FROM_PAGE']}"
-        puts    "#{@prefix}>>Object:          #{headers_hash['HTTP_X_FROM_OBJECT']}"
-        puts    "#{@prefix}>>Sign:            #{valid_signature(from: 'Fastmail', sign: headers_hash['HTTP_X_SIGN'])}"
+        ### puts    ">>>---- Webhook fields ----"
+        ### puts    ">>>>>>> Headers :"
+        puts    ">>>by Host:         #{headers_hash['HTTP_HOST']}"
+        puts    ">>>Agent:           #{headers_hash['HTTP_USER_AGENT']}"
+        puts    ">>>From:            #{headers_hash['HTTP_X_FROM']}"
+        puts    ">>>Applic:          #{headers_hash['HTTP_X_FROM_PAGE']}"
+        puts    ">>>Object:          #{headers_hash['HTTP_X_FROM_OBJECT']}"
+        puts    ">>>Sign:            #{valid_signature(from: 'Fastmail', sign: headers_hash['HTTP_X_SIGN'])}"
 
-        ### puts    "#{@prefix}>>>>>> Properties :"
+        ### puts    ">>>>>>> Properties :"
         if params.key?('message')
-            ### puts    "#{@prefix}>>Message:"
+            ### puts    ">>>Message:"
             message_hash.each   do |key, value|
                 len = 40 - key.size
-                puts    "#{@prefix}>>#{key}:" + " "*len + "#{value[0,100]}"
+                puts    ">>>#{key}:" + " "*len + "#{value[0,100]}"
             end
         else
             if fields_hash.size > 0
                 fields_hash.each    do |key, value|
                     len = 40 - key.size
-                    puts    "#{@prefix}>>#{key}:" + " "*len + "#{value[0,100]}"
+                    puts    ">>>#{key}:" + " "*len + "#{value[0,100]}"
                 end
             end
         end
@@ -281,10 +280,9 @@ use Rack::JSONBodyParser
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
     post "/github_webhook" do
-        @prefix = ">"+pref(pref: 'EW')+">"
-        puts    "\n#{@prefix}>>>>>"
-        puts    "#{@prefix}>>===== loading data for <github_webhook> ====="
-        puts    "#{@prefix}>>>>>"
+        puts    "\n>>>>>>"
+        puts    ">>>===== Webhook for </github_webhook> ====="
+        puts    ">>>>>>"
         content_type :json
 
         # Headers-Env
@@ -299,13 +297,13 @@ use Rack::JSONBodyParser
         commits     = params['commits']
 
         # Print fields
-        ### puts    "#{@prefix}>>---- Webhook fields ----"
-        ### puts    "#{@prefix}>>>>>> Headers :"
-        puts    "#{@prefix}>>Request by :   #{headers_hash['HTTP_USER_AGENT']}"
-        ### puts    "#{@prefix}>>>>>> Properties :"
-        ### puts    "#{@prefix}>>Commits :"
+        ### puts    ">>>---- Webhook fields ----"
+        ### puts    ">>>>>>> Headers :"
+        puts    ">>>Request by :   #{headers_hash['HTTP_USER_AGENT']}"
+        ### puts    ">>>>>>> Properties :"
+        ### puts    ">>>Commits :"
         commits.each_with_index do |commit, index|
-            puts    "#{@prefix}>>  #{index + 1}. #{commit['message']}"
+            puts    ">>>  #{index + 1}. #{commit['message']}"
         end
 
     end

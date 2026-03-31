@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     base64 (0.3.0)
+    connection_pool (3.0.2)
     daemons (1.4.1)
     dotenv (3.2.0)
     eventmachine (1.2.7)
@@ -43,7 +44,17 @@ GEM
       rack (>= 3.0.0)
     rackup (2.3.1)
       rack (>= 3)
+    redis (5.4.1)
+      redis-client (>= 0.22.0)
+    redis-client (0.28.0)
+      connection_pool
     ruby2_keywords (0.0.5)
+    sidekiq (8.1.2)
+      connection_pool (>= 3.0.0)
+      json (>= 2.16.0)
+      logger (>= 1.7.0)
+      rack (>= 3.2.0)
+      redis-client (>= 0.26.0)
     sinatra (4.2.1)
       logger (>= 1.6.0)
       mustermann (~> 3.0)
@@ -51,6 +62,7 @@ GEM
       rack-protection (= 4.2.1)
       rack-session (>= 2.0.0, < 3)
       tilt (~> 2.0)
+    sqlite3 (2.9.2-arm64-darwin)
     thin (2.0.1)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -61,7 +73,6 @@ GEM
 
 PLATFORMS
   arm64-darwin-24
-  ruby
 
 DEPENDENCIES
   dotenv
@@ -69,11 +80,15 @@ DEPENDENCIES
   notion-ruby-client
   puma
   rackup
+  redis
+  sidekiq
   sinatra
+  sqlite3
   thin
 
 CHECKSUMS
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
+  connection_pool (3.0.2) sha256=33fff5ba71a12d2aa26cb72b1db8bba2a1a01823559fb01d29eb74c286e62e0a
   daemons (1.4.1) sha256=8fc76d76faec669feb5e455d72f35bd4c46dc6735e28c420afb822fac1fa9a1d
   dotenv (3.2.0) sha256=e375b83121ea7ca4ce20f214740076129ab8514cd81378161f11c03853fe619d
   eventmachine (1.2.7) sha256=994016e42aa041477ba9cff45cbe50de2047f25dd418eba003e84f0d16560972
@@ -94,8 +109,12 @@ CHECKSUMS
   rack-protection (4.2.1) sha256=cf6e2842df8c55f5e4d1a4be015e603e19e9bc3a7178bae58949ccbb58558bac
   rack-session (2.1.1) sha256=0b6dc07dea7e4b583f58a48e8b806d4c9f1c6c9214ebc202ec94562cbea2e4e9
   rackup (2.3.1) sha256=6c79c26753778e90983761d677a48937ee3192b3ffef6bc963c0950f94688868
+  redis (5.4.1) sha256=b5e675b57ad22b15c9bcc765d5ac26f60b675408af916d31527af9bd5a81faae
+  redis-client (0.28.0) sha256=888892f9cd8787a41c0ece00bdf5f556dfff7770326ce40bb2bc11f1bfec824b
   ruby2_keywords (0.0.5) sha256=ffd13740c573b7301cf7a2e61fc857b2a8e3d3aff32545d6f8300d8bae10e3ef
+  sidekiq (8.1.2) sha256=4a1266f22bb1dad675d77bf32e8d4c04e990640e3b271650f47ea7299c38fceb
   sinatra (4.2.1) sha256=b7aeb9b11d046b552972ade834f1f9be98b185fa8444480688e3627625377080
+  sqlite3 (2.9.2-arm64-darwin) sha256=d15bd9609a05f9d54930babe039585efc8cadd57517c15b64ec7dfa75158a5e9
   thin (2.0.1) sha256=5bbde5648377f5c3864b5da7cd89a23b5c2d8d8bb9435719f6db49644bcdade9
   tilt (2.7.0) sha256=0d5b9ba69f6a36490c64b0eee9f6e9aad517e20dcc848800a06eb116f08c6ab3
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
