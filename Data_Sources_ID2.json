@@ -1,0 +1,18 @@
+[
+    { "m25t.Membres": "26872117-082a-8066-99bd-000beaa5de5e", "name": "Membres" },
+    { "m25t.MisesAJour": "26872117-082a-808c-a7c4-000b69a3bf7e", "name": "MisesAJour" },
+    { "m25t.Cotisations": "26872117-082a-8009-b57e-000b5a14d79e", "name": "Cotisations" },
+    { "m25t.Historiques": "26872117-082a-8071-be36-000b7d30fde8", "name": "Historiques" },
+    { "m25t.CDC": "26972117-082a-80d4-a562-000b91b21869", "name": "CDC" },
+    { "m25t.Activités": "26972117-082a-8069-b6b3-000b1e2bb287", "name": "Activités" },
+    { "m25t.Updates": "27072117-082a-80ca-a7b5-000b8e391b8c", "name": "Updates" },
+    { "m25t.Projets": "28a72117-082a-80d4-9f55-000b2a23a6ab", "name": "Projets" },
+    { "m25t.Actions": "2af72117-082a-8052-9435-000bed9e4127", "name": "Actions" },
+    { "m25t.Documents": "2b972117-082a-8066-99a9-000b2a90c1ab", "name": "Documents" },
+    { "m25t.Taches": "2bf72117-082a-801f-924b-000b66ec0055", "name": "Taches" },
+
+    { "aidf.Mouvements planifiés": "a4c8f343dc8b4aaebae00a95125b8ce2", "name": "Mouvements planifiés"},
+    { "aidf.Mouvements réalisés": "026eac7b498141aa940513f487ed75fa", "name": "Mouvements réalisés"},
+    { "aidf.Comptes": "ec0b926dde0a430f9c66113b9ccf81b8", "name": "Comptes"},
+    { "aidf.Tiers": "6371e3709c3246f8abb24c87b2a37c1a", "name": "Tiers"}
+]

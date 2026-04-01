@@ -169,7 +169,7 @@ use Rack::JSONBodyParser
         ### puts    ">>>>>>> Properties :"
         if fields_hash.size > 0
             fields_hash.each    do |key, value|
-                len = 40 - key.size
+                len = 20 - key.size
                 puts    ">>>#{key}:" + " "*len + "#{value}"
             end
         end
@@ -262,7 +262,7 @@ use Rack::JSONBodyParser
         if params.key?('message')
             ### puts    ">>>Message:"
             message_hash.each   do |key, value|
-                len = 40 - key.size
+                len = 20 - key.size
                 puts    ">>>#{key}:" + " "*len + "#{value[0,100]}"
             end
         else
@@ -273,6 +273,10 @@ use Rack::JSONBodyParser
                 end
             end
         end
+
+        status 200
+        content_type :json
+        { ok: true }.to_json
     end
     #
     # ++++++++++++++++++++++++++++++++++++++++++++++++
@@ -301,10 +305,14 @@ use Rack::JSONBodyParser
         ### puts    ">>>>>>> Headers :"
         puts    ">>>Request by :   #{headers_hash['HTTP_USER_AGENT']}"
         ### puts    ">>>>>>> Properties :"
-        ### puts    ">>>Commits :"
+        puts    ">>>Commits :"
         commits.each_with_index do |commit, index|
             puts    ">>>  #{index + 1}. #{commit['message']}"
         end
+        
+        status 200
+        content_type :json
+        { ok: true }.to_json
 
     end
 

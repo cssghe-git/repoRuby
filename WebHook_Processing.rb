@@ -1,87 +1,58 @@
-# app.rb
-=begin
-    Webhook processing on "Post" request
-    ************************************
-    call by : ngrok on port 4567
-    url : https://progenitorial-fredda-headlong.ngrok-free.dev/notion_webhook
-    private headers : X_?
-        X_FROM => sender of webhook
-        X_?
-=end
+require 'sinatra/base'
+require 'json'
+require 'logger'
 
-require "sinatra"
-require "json"
-require "time"
-require "notion-ruby-client"
-require "thin"
-### require "rack/contrib"
-require "cgi"
-require "securerandom"
-require "redis"
-require 'sidekiq'
-require_relative "./Webhook_Async.rb"
-begin
-  require "dotenv"; Dotenv.load
-rescue LoadError
-end
-
-### use Rack::JSONBodyParser
-#
-# Set default values
-#*******************
-    # Sinatra configuration
+class WebhookProcessing < Sinatra::Base
     configure :production, :development do
         set :host_authorization, { permitted_hosts: [] }
+        set :logger, Logger.new(STDOUT)
         enable :logging
     end
 
-    # My configuration
-    @prefix     = ''
-#
-# Helpers
-#********
-    helpers do
-        # Make new ident
-        def pref(pref: "WHx")
-        #+++++++
-        #   pref:   prefixe
-            time = Time.now.utc.strftime("%j%H%M%S")
-            rand_part = SecureRandom.alphanumeric(4).upcase  # ex: "A9F3"
-            return  "#{pref}-#{time}-#{rand_part}"
-        end
 
-    end #<helpers>
+    Sidekiq.strict_args!(false)
 
-#
-# Main code
-#**********
-    #
+    # Test endpoint
+    get '/' do
+        '✅ Webhook receiver OK - POST /webhook pour tester'
+    end
+
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     # Process <Post> request for <notion_webhook>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
-    post "/notion_webhook" do
-        puts    "\n>>>"
-        puts    ">>>===== Webhook for </notion_webhook> ====="
-        puts    ">>>"
-        content_type :json
+    # Webhook principal (Notion)
+    post '/notion_webhook' do
+        payload = request.body && JSON.parse(request.body.read || '{}')
+        source  = payload['source']
 
-        payload         = request.body.read
-        headers_hash    = request.env.select { |k, _| k}#all fields
-        ### pp headers_hash
+        # Log + sécurité basique
+        ### pp payload  #to search fields
+        logger.info "Webhook reçu: #{source['type'] || 'unknown'} from #{request.ip}"
 
-        require 'sidekiq/api'
-        begin
-            info = Sidekiq.redis { |conn| conn.info }
-            puts "Sidekiq Redis connection info: "
-        rescue => e
-            "Erreur Redis: #{e.message}"
-        end
-        TestJob.perform_async("test webhook")
+        # Enqueue async IMMÉDIATEMENT
+        WebhookAsync.perform_async('Notion-automation', payload)
 
-        WebhookWorker.perform_async("Notion", headers_hash.to_json)
+        # Réponse 200 rapide (fire & forget)
+        [200, { 'Content-Type' => 'application/json' }, 
+            [{ status: 'received', queued: true }.to_json]]
+        
 
-        status 200
-        content_type :json
-        { ok: true }.to_json
-    end
+    end #<post>
+
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    # Process <Post> request for <github_webhook>
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    #
+    post "/github_webhook" do
+        payload = request.body && JSON.parse(request.body.read || '{}')
+        pp payload
+
+        # Enqueue async IMMÉDIATEMENT
+
+        # Réponse 200 rapide (fire & forget)
+        [200, { 'Content-Type' => 'application/json' }, 
+            [{ status: 'received', queued: true }.to_json]]
+        
+    end #<post>
+end #<class>

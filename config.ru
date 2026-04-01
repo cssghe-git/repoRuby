@@ -1,25 +1,31 @@
-# config.ru
-require 'bundler'
-Bundler.require
+#!/usr/bin/env ruby
+require 'bundler/setup'
+Bundler.require(:default, ENV['RACK_ENV'] ||= 'development')
 
-# Workers
-require './test_job.rb'
+# Auto-charge workers
+### Dir['./workers/*.rb'].each { |f| require_relative f }
+require_relative './webhook_async.rb'
 
-# Votre app
-require "./WebHook_Processing.rb"
+# Votre app Sinatra
+require_relative './webhook_processing.rb'
 
-# Config Sidekiq
+# Sidekiq Redis (même pour client/serveur)
 Sidekiq.configure_client do |config|
-  config.redis = { url: 'redis://localhost:6379/0' }
+  config.redis = { url: ENV.fetch('REDIS_URL', 'redis://localhost:6379/0') }
+end
+Sidekiq.configure_server do |config|
+  config.redis = { url: ENV.fetch('REDIS_URL', 'redis://localhost:6379/0') }
 end
 
 require 'sidekiq/web'
 
-# DSL Rack : pas de Rack::Builder.new !
+# Middleware sécurité HTTPS/webhooks
 use Rack::Deflater
+use Rack::ShowExceptions
+use Rack::Head
 
 map '/' do
-  run WebHook_Processing.new
+  run WebhookProcessing
 end
 
 map '/sidekiq' do

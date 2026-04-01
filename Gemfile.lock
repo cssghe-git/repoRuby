@@ -79,6 +79,7 @@ DEPENDENCIES
   faraday
   notion-ruby-client
   puma
+  rack
   rackup
   redis
   sidekiq

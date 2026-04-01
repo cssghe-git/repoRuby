@@ -1,0 +1,22 @@
+Lancement (3 terminaux)
+
+# T1: Redis
+brew services start redis
+
+# T2: Sidekiq
+bundle exec sidekiq -q default
+
+# T3: Serveur
+rackup config.ru -p 4567 -o 0.0.0.0
+
+
+Test
+curl -X POST http://localhost:4567/test_sidekiq -d '{}'
+# → Vérifiez /sidekiq + redis-cli LLEN sidekiq:queue:default
+
+Gemfile minimal :
+gem 'sinatra'
+gem 'sidekiq'
+gem 'rack'
+
+bundle install && redis-cli ping → Parfait !
