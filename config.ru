@@ -24,6 +24,11 @@ use Rack::Deflater
 use Rack::ShowExceptions
 use Rack::Head
 
+# Logs Sidekiq concis (juste timestamp + message)
+Sidekiq.logger.formatter = proc do |severity, datetime, progname, msg|
+  "#{datetime.strftime('%H:%M:%S')} #{msg}\n"
+end
+
 map '/' do
   run WebhookProcessing
 end
