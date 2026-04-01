@@ -57,5 +57,11 @@ class WebhookAsync
     end #<def>
 
     def handle_github(payload)
+        # Extract parts
+        head_commit = payload['head_commit']
+        head_comit.each do |key, value|
+            logger.info ">>>#{key}: #{value}"
+        end
+
     end
 end #<class>

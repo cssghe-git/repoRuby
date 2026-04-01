@@ -46,9 +46,10 @@ class WebhookProcessing < Sinatra::Base
     #
     post "/github_webhook" do
         payload = request.body && JSON.parse(request.body.read || '{}')
-        pp payload
+        ### pp payload
 
         # Enqueue async IMMÉDIATEMENT
+        WebhookAsync.perform_async('Github', payload)
 
         # Réponse 200 rapide (fire & forget)
         [200, { 'Content-Type' => 'application/json' }, 
