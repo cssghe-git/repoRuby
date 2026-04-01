@@ -49,7 +49,7 @@ class WebhookProcessing < Sinatra::Base
         ### pp payload
 
         # Enqueue async IMMÉDIATEMENT
-        WebhookAsync.perform_async('Github', payload)
+        WebhookAsync.perform_async('GitHub', payload)
 
         # Réponse 200 rapide (fire & forget)
         [200, { 'Content-Type' => 'application/json' }, 
