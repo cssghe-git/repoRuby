@@ -26,7 +26,7 @@ use Rack::Head
 
 # Logs Sidekiq concis (juste timestamp + message)
 Sidekiq.logger.formatter = proc do |severity, datetime, progname, msg|
-  "#{datetime.strftime('%H:%M:%S')} #{msg}\n"
+  "#{datetime.strftime('%H:%M:%S')} #{severity} #{msg}\n"
 end
 
 map '/' do

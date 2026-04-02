@@ -24,7 +24,8 @@ class WebhookProcessing < Sinatra::Base
     # Webhook principal (Notion)
     post '/notion_webhook' do
         payload = request.body && JSON.parse(request.body.read || '{}')
-        source  = payload['source']
+        ### pp payload
+       source  = payload['source']
 
         # Log + sécurité basique
         ### pp payload  #to search fields
@@ -37,7 +38,6 @@ class WebhookProcessing < Sinatra::Base
         [200, { 'Content-Type' => 'application/json' }, 
             [{ status: 'received', queued: true }.to_json]]
         
-
     end #<post>
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++
@@ -56,4 +56,22 @@ class WebhookProcessing < Sinatra::Base
             [{ status: 'received', queued: true }.to_json]]
         
     end #<post>
+
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    # Process <Post> request for <fastmail_webhook>
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    #
+    post "/email_webhook" do
+        payload = request.body && JSON.parse(request.body.read || '{}')
+        pp payload
+
+        # Enqueue async IMMÉDIATEMENT
+        WebhookAsync.perform_async('Fastmail', payload)
+
+        # Réponse 200 rapide (fire & forget)
+        [200, { 'Content-Type' => 'application/json' }, 
+            [{ status: 'received', queued: true }.to_json]]
+        
+    end #<post>
+
 end #<class>

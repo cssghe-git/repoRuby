@@ -309,7 +309,7 @@ use Rack::JSONBodyParser
         commits.each_with_index do |commit, index|
             puts    ">>>  #{index + 1}. #{commit['message']}"
         end
-        
+
         status 200
         content_type :json
         { ok: true }.to_json
@@ -319,7 +319,7 @@ use Rack::JSONBodyParser
 #
 =begin
     my URL: https://progenitorial-fredda-headlong.ngrok-free.dev/notion_webhook
-    my URL: https://progenitorial-fredda-headlong.ngrok-free.dev/email_webhook
+    my URL: https://progenitorial-fredda-headlong.ngrok-free.dev/fastmail_webhook
     my URL: https://progenitorial-fredda-headlong.ngrok-free.dev/github_webhook
 
 =end

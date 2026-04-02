@@ -5,6 +5,10 @@ class WebhookAsync
     include Sidekiq::Worker
     sidekiq_options queue: 'default', retry: 3
 
+    #
+    # Main method
+    #************
+    #
     def perform(type, payload)
         logger.info "🔄 Traitement async: #{type}}"
 
@@ -20,6 +24,10 @@ class WebhookAsync
 
     private
 
+    #
+    # Functions
+    #**********
+    #
     # Extract field value for Notion
     def get_prop_value(field: nil)
     #+++++++++++++++++
@@ -33,6 +41,9 @@ class WebhookAsync
         end #<SW1>
     end #<def>
 
+    #
+    # From Notion
+    #************
     def handle_notion(payload)
         # Extract parts
         source      = payload['source']
@@ -56,12 +67,32 @@ class WebhookAsync
 
     end #<def>
 
+    #
+    # From Githubb
+    #*************
     def handle_github(payload)
         # Extract parts
         head_commit = payload['head_commit']
         head_commit.each do |key, value|
             logger.info ">>>#{key}: #{value}"
         end
+        logger.info ">>>"
 
-    end
+    end #<def>
+
+    #
+    # From Fastmail
+    #**************
+    def handle_fastmail(payload)
+        logger.info "Payload fastmail: #{payload}"
+        # Extract parts
+        # Add your logic here
+    end #<def>
+
+    #
+    # From test
+    #**********
+    def handle_test(payload)
+        logger.info "Payload test: #{payload}"
+    end #<def>
 end #<class>
