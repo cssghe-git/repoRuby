@@ -10,7 +10,9 @@ class WebhookAsync
     #************
     #
     def perform(type, payload)
+        logger.info ">>>"
         logger.info "🔄 Traitement async: #{type}}"
+        logger.info ">>>*****************<<<"
 
         case type
         when 'Notion-automation'
@@ -18,7 +20,7 @@ class WebhookAsync
         when 'GitHub' # 
             handle_github(payload)
         else
-            logger.info "Payload test: #{payload}"
+            handle_test(payload)
         end
     end #<def>
 
@@ -84,9 +86,30 @@ class WebhookAsync
     # From Fastmail
     #**************
     def handle_fastmail(payload)
-        logger.info "Payload fastmail: #{payload}"
+        logger.info "Payload fastmail: "
+        pp payload
         # Extract parts
+        schema= payload['schema'] || 'unknown schema'
+        event       = payload['event'] || 'unknown event'
+        message     = payload['message'] || 'unknown message'
+        body        = message['body'] || {}
+
         # Add your logic here
+        sender          = message['from'] || 'unknown sender'
+        subject         = message['subject'] || 'unknown subject'
+        date            = message['date'] || 'unknown date'
+        to              = message['to'] || 'unknown recipient'
+
+        attachements    = body['attachments'] || {}
+        text            = body['text'] || {}
+
+        # display
+        logger.info "📧 Email reçu - le: #{date}"
+        logger.info ">>>De: #{sender}"
+        logger.info ">>>À: #{to}"
+        logger.info ">>>Sujet: #{subject}"
+        logger.info ">>>Texte: #{text}"
+
     end #<def>
 
     #

@@ -14,7 +14,11 @@ class WebhookProcessing < Sinatra::Base
 
     # Test endpoint
     get '/' do
-        '✅ Webhook receiver OK - POST /webhook pour tester'
+        '✅ Webhook receiver OK - GET / pour tester'
+    end
+
+    get '/favicon.ico' do
+        '✅ Webhook receiver OK - GET /favicon.ico pour tester'
     end
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++
@@ -63,7 +67,7 @@ class WebhookProcessing < Sinatra::Base
     #
     post "/email_webhook" do
         payload = request.body && JSON.parse(request.body.read || '{}')
-        pp payload
+        ### pp payload
 
         # Enqueue async IMMÉDIATEMENT
         WebhookAsync.perform_async('Fastmail', payload)
