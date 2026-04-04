@@ -63,7 +63,7 @@ require_relative    'ClStandards.rb'
     mbr_pages   = stds.db_fetch(mbr_dbid)               #get all pages
     log.info("⏭️->Membres:: Pages:#{mbr_pages.size} loaded")
     
-#    exit     if DRY_RUN
+###    exit     if DRY_RUN
 
     log.debug("⏩️->Select pages")
     mbr_pages.select! do |page|                         #select pages
