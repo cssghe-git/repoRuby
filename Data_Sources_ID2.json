@@ -14,5 +14,14 @@
     { "aidf.Mouvements planifiés": "a4c8f343dc8b4aaebae00a95125b8ce2", "name": "Mouvements planifiés"},
     { "aidf.Mouvements réalisés": "026eac7b498141aa940513f487ed75fa", "name": "Mouvements réalisés"},
     { "aidf.Comptes": "ec0b926dde0a430f9c66113b9ccf81b8", "name": "Comptes"},
-    { "aidf.Tiers": "6371e3709c3246f8abb24c87b2a37c1a", "name": "Tiers"}
+    { "aidf.Tiers": "6371e3709c3246f8abb24c87b2a37c1a", "name": "Tiers"},
+
+    { "aidt.Medocs.Achats": "27472117-082a-80ac-92b8-000b3dd6b297", "name": "Achats"},
+    { "aidt.Medocs.Médicaments": "27472117-082a-80d4-a98e-000b33184b91", "name": "Médicaments"},
+    { "aidt.Medocs.Prescriptions": "27472117-082a-80fa-be1f-000bc02a0491", "name": "Prescriptions"},
+    { "aidt.Mdocs.Ordonnances": "27472117-082a-80f1-ad7c-000b41e4d435", "name": "Ordonnances"},
+    { "aidt.Medocs.Calculs": "27472117-082a-805a-afd0-000b492e1195", "name": "Calculs"},
+    { "aidt.Medocs.Patients": "27472117-082a-802e-a980-000bd75da62d", "name": "Patients"},
+    { "aidt.Medocs.Médecins": "27472117-082a-80a9-8870-000b99170866", "name": "Médecins"},
+    { "aidt.Medocs.Paramètres": "27472117-082a-8088-96e8-000b9cd1de1c", "name": "Paramètres"}
 ]
