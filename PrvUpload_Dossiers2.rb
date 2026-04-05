@@ -241,7 +241,7 @@ class   UploadFileToNotion
         while   true
             puts    "\n#{b}TAGS 1::#{r} #{@tagl1}"
             print   "For the DB.Doc [#{@old_level1}] => "
-            level1  = ask(default: "#{@old_level1}")
+            level1  = ask(default: "#{@old_level1}", form: 'up')
             return  false   unless level1 != 'Q'
             ### next    unless level1.size != 3
             @old_level1 = level1
@@ -252,7 +252,7 @@ class   UploadFileToNotion
         while   true
             puts    "\n#{b}TAGS 2::#{r} #{@tagl2}"
             print   "Enter the Object [#{@old_level2}] => "
-            level2  = ask(default: "#{@old_level2}")
+            level2  = ask(default: "#{@old_level2}", form: 'cap')
             return  false   unless level2 != 'Q'
             @old_level2 = level2
             break   if @arr_tags.has_key?(level2)
@@ -262,7 +262,7 @@ class   UploadFileToNotion
         while   true
             puts    "\n#{b}TAGS 3::#{r} #{@tagl3}"
             print   "Enter the Tags [#{@old_level3}] => "
-            level3  = ask(default: "#{@old_level3}")
+            level3  = ask(default: "#{@old_level3}", form: 'cap')
             return  false   unless level3 != 'Q'
             @old_level3 = level3
             break   if @arr_tags.has_key?(level3)
@@ -272,7 +272,7 @@ class   UploadFileToNotion
         while   true
             puts    "\n#{b}TAGS 4::#{r} #{@tagl4}"
             print   "Enter the Type [#{@old_level4}] => "
-            level4  = ask(default: "#{@old_level4}")
+            level4  = ask(default: "#{@old_level4}", form: 'cap')
             return  false   unless level4 != 'Q'
             @old_level4 = level4
             break   if @arr_tags.has_key?(level4)
@@ -295,10 +295,20 @@ class   UploadFileToNotion
     end #<def>
 
 
-    def ask(default: nil)
+    def ask(default: nil, form: nil)
         print   "Your choice [#{default}]: "
         v = STDIN.gets&.strip
         (v.nil? || v.empty?) ? default : v
+        case form
+        when 'low'
+            v = v.downcase
+        when 'up'
+            v = v.upcase
+        when 'cap'
+            v = v.capitalize
+        else
+            v
+        end
     end
 
     def getFileObject()
@@ -562,9 +572,10 @@ class   UploadFileToNotion
         rc  = loadTags()
 
         puts    "\n=== Loop all files ==="
+        loop    = 0
         while   @arr_parameters['P2'] == 'L'
             puts    "\n=== Select file to upload ==="
-            file_select = SelectFile.select_pages(initial_dir: @tk_init_dir)
+            file_select = SelectFile.select_pages(initial_dir: @tk_init_dir, loop: loop)
             puts    "\n=== File selected ==="
             break   unless file_select
             puts    "#{file_select}"
@@ -594,6 +605,7 @@ class   UploadFileToNotion
             rc  = add_new_action()
 
             print   "=> Sequence done with status: #{rc}\n"
+            loop    += 1
         end
         puts    "=> Loop done"
     end #<def>

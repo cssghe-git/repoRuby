@@ -43,7 +43,7 @@ require 'tk'
         puts "Commandes : [n] suivant  [p] précédent  [s] sélectionner numéro  [q] quitter"
     end #<def>
 
-    def self.select_pages(initial_dir: nil)
+    def self.select_pages(initial_dir: nil, loop: 0)
     #++++++++++++++++++++++++++
     #   Select a file within the displayed range
     #
@@ -60,7 +60,7 @@ require 'tk'
             choice  = reply.strip.downcase
             case choice #S2>
             when    'f'
-                sf  = self.TK_Use(initial_dir: initial_dir)
+                sf  = self.TK_Use(initial_dir: initial_dir, loop: loop)
                 return  sf
             when    'q'
                 exit
@@ -160,15 +160,19 @@ require 'tk'
         puts    "End of scan log"
     end #<def>
 
-    def self.TK_Use(initial_dir: nil)
+    def self.TK_Use(initial_dir: "/users/Gilbert/Public", loop: 0)
     #+++++++++++++++++++++
     #
         # create instance
         root = TkRoot.new { title "Sélection d'un répertoire et ensuite le fichier" }
 
         # search directory
-        initial_dir = "/users/Gilbert/Public"   if initial_dir.nil?
-        dir = Tk::chooseDirectory(initialdir: initial_dir)
+        puts "Initial directory: #{initial_dir} for loop: #{loop}"
+        if loop == 0
+            dir = Tk::chooseDirectory(initialdir: initial_dir)
+        else
+            dir = initial_dir
+        end
         if dir && !dir.empty?   #<IF1>
             puts "Vous avez sélectionné le répertoire : #{dir}"
 
@@ -190,7 +194,7 @@ require 'tk'
                     puts "Vous avez sélectionné : #{selected_file}"
                     return selected_file
                 else    #
-                    puts "Numéro invalide."
+                    puts "Numéro invalide, sortie."
                     return nil
                 end #<IF3>
             end
