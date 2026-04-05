@@ -27,11 +27,25 @@ end
 #
 require_relative    'ClStandards.rb'
 
+# ==============================
+# CLI options
+# ==============================
 # Options
-    spec    = {                                         #specific values
+    OPTS    = {                                         #specific options
         debug: 'DEBUG',
         dryrun: false
     }                         
+
+    OptionParser.new do |o|
+  o.banner = "Usage: ruby processor_upd_to_mbr.rb [options] [apply]"
+  o.on("--act-mode=MODE", %w[merge replace], "merge|replace pour ActSecs") { |v| OPTS[:act_mode] = v }
+  o.on("--cdc=CDC", "Filtre CDC exact") { |v| OPTS[:cdc] = v }
+  o.on('--act=ACTIVITE', 'Filtre Activité principale=ACT ou secondaires contient ACT') { |v| OPTS[:act] = v }
+  o.on('--only=N1,N2', Array, 'Limiter aux Demandes listées') { |v| OPTS[:only] = v.map!(&:strip) }
+  o.on('--limit=N', Integer, 'Traiter au plus N UPD') { |v| OPTS[:limit] = v }
+  o.on('--since=YYYY-MM-DD', 'UPD créées depuis cette date (UTC)') { |v| OPTS[:since] = v }
+end.parse!(ARGV)
+###DRY = (ARGV.last != "apply")
 
 # Logger
     log                 = Logger.new(STDOUT)

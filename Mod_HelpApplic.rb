@@ -22,7 +22,7 @@
         #    '010' => ["*","**","***","****","*****"],
             '01'  => ["#---------#{bold}=>Private<= ▼#{reset}---------#","*","*","*","*"],
             '10'  => ["#{bold}PRV=>#{reset}PrvCvrtCsvFile_Iso-Utf8",    "#{prv_dir}", "PrvCvrtCsvFile_Iso-Utf8","N"],
-            '11'  => ["#{bold}PRV=>#{reset}PrvCvrtCsvFileComma",        "#{prv_dir}", "/PrvCvrtCsvFileComma","N"],
+            '11'  => ["#{bold}PRV=>#{reset}PrvPrintAchatsMedocs",       "#{prv_dir}", "/PrvPrintAchatsMedocs","--", %w[debug level simul],],
             '12'  => ["#{bold}PRV=>#{reset}PrvBudget_Calculs",          "#{prv_dir}", "/PrvBudget_Calculs",""],
         #    '020' => ["*","**","***","****","*****"],
             '02'  => ["#---------#{bold}=>Private files<= ▼#{reset}---------#","**","***","****","*****"],

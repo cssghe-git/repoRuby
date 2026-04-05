@@ -154,7 +154,8 @@ class   Standards
         body[:filter]       = filter        if filter
         body[:sorts]        = sort          if sort
         body[:start_cursor] = start_cursor  if start_cursor
-    #    puts    "DBG>>>#{@not_hdr} - #{@not_url}/#{@not_base}/#{db_id}/query"
+        puts    "DBG>>>#{@not_hdr} - #{@not_url}/#{@not_base}/#{db_id}/query"
+        
         res = HTTParty.post("#{@not_url}/#{@not_base}/#{db_id}/query", headers: @not_hdr, body: JSON.dump(body))
         raise "DB query #{db_id} failed: #{res.code} #{res.body}" unless res.success?
     #    DBG    puts    "DBG>>>Result query :"
@@ -175,12 +176,15 @@ class   Standards
             # get a lot of pages
             response    = db_query(db_id, type: type, filter: filter, start_cursor: start_cursor, sort: sort)
             batch       = response['results']
+
             # select
             batch.select! do |page|
                 true
             end
+
             # concat pages selected
             @pages.concat(batch || [])
+
             # no more ?
             break unless response["has_more"]
             start_cursor = response["next_cursor"]
