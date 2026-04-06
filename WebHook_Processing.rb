@@ -78,4 +78,20 @@ class WebhookProcessing < Sinatra::Base
         
     end #<post>
 
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    # Process <Post> request for <tests_webhook>
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    #
+    post "/tests_webhook" do
+        payload = request.body && JSON.parse(request.body.read || '{}')
+        ### pp payload
+
+        # Enqueue async IMMÉDIATEMENT
+        WebhookAsync.perform_async('Tests', payload)
+
+        # Réponse 200 rapide (fire & forget)
+        [200, { 'Content-Type' => 'application/json' }, 
+            [{ status: 'received', queued: true }.to_json]]
+        
+    end #<post>
 end #<class>
