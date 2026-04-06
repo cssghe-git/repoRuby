@@ -14,11 +14,13 @@ class WebhookAsync
         logger.info "🔄 Traitement async: #{type}}"
         logger.info ">>>*****************<<<"
 
-        case type
+        case type                                       #dispatch according to type/fro of webhook
         when 'Notion-automation'
             handle_notion(payload)
-        when 'GitHub' # 
+        when 'GitHub'
             handle_github(payload)
+        when 'Fastmail'
+            handle_fastmail(payload)
         else
             handle_test(payload)
         end
@@ -87,7 +89,7 @@ class WebhookAsync
     #**************
     def handle_fastmail(payload)
         logger.info "Payload fastmail: "
-        pp payload
+        ### pp payload
         # Extract parts
         schema= payload['schema'] || 'unknown schema'
         event       = payload['event'] || 'unknown event'

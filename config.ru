@@ -14,7 +14,12 @@ Sidekiq.configure_client do |config|
   config.redis = { url: ENV.fetch('REDIS_URL', 'redis://localhost:6379/0') }
 end
 Sidekiq.configure_server do |config|
-  config.redis = { url: ENV.fetch('REDIS_URL', 'redis://localhost:6379/0') }
+    config.redis = { url: ENV.fetch('REDIS_URL', 'redis://localhost:6379/0') }
+    config.logger.formatter = Sidekiq::Logger::Formatters::JSON.new
+end
+# Logs Sidekiq concis (juste timestamp + message)
+Sidekiq.logger.formatter = proc do |severity, datetime, progname, msg|
+  "#{datetime.strftime('%H:%M:%S')} #{severity} #{msg}\n"
 end
 
 require 'sidekiq/web'
@@ -23,11 +28,6 @@ require 'sidekiq/web'
 use Rack::Deflater
 use Rack::ShowExceptions
 use Rack::Head
-
-# Logs Sidekiq concis (juste timestamp + message)
-Sidekiq.logger.formatter = proc do |severity, datetime, progname, msg|
-  "#{datetime.strftime('%H:%M:%S')} #{severity} #{msg}\n"
-end
 
 map '/' do
   run WebhookProcessing
