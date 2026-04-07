@@ -8,7 +8,7 @@ threads_count = Integer(ENV['RAILS_MAX_THREADS'] || 5)
 threads threads_count, threads_count
 
 # Port d'écoute (par défaut 4567)
-port ENV['PORT'] || 4567
+port 4567
 
 # Précharger l'application (améliore la performance)
 preload_app!

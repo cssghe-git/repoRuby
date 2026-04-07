@@ -6,3 +6,10 @@
 [5474] - Worker 0 (PID: 5481) booted in 0.0s, phase: 0
 [5474] - Worker 1 (PID: 5482) booted in 0.0s, phase: 0
 [5474] - Worker 2 (PID: 5483) booted in 0.0s, phase: 0
+[5474] - Gracefully shutting down workers...
+[5474] === puma shutdown: 2026-04-07 18:07:24 +0200 ===
+[5474] - Goodbye!
+=== puma startup: 2026-04-07 18:07:32 +0200 ===
+[11979] - Worker 0 (PID: 11982) booted in 0.0s, phase: 0
+[11979] - Worker 1 (PID: 11983) booted in 0.0s, phase: 0
+[11979] - Worker 2 (PID: 11984) booted in 0.0s, phase: 0
