@@ -112,3 +112,7 @@ bundler: failed to load command: puma (/opt/homebrew/lib/ruby/gems/3.4.0/bin/pum
 	from /opt/homebrew/opt/ruby/bin/bundle:25:in '<main>'
 === puma startup: 2026-04-07 17:40:31 +0200 ===
 === puma startup: 2026-04-07 18:07:32 +0200 ===
+140.82.115.115 - - [07/Apr/2026:18:08:01 +0200] "POST /github_webhook HTTP/1.1" 200 - 0.0075
+104.28.165.5 - - [07/Apr/2026:18:08:22 +0200] "GET /notion_request HTTP/1.1" 404 - 0.0036
+104.28.165.5 - - [07/Apr/2026:18:08:23 +0200] "GET /favicon.ico HTTP/1.1" 200 - 0.0016
+=== puma startup: 2026-04-07 18:09:07 +0200 ===

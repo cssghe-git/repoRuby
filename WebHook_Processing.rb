@@ -21,9 +21,9 @@ class WebhookProcessing < Sinatra::Base
         '✅ Webhook receiver OK - GET /favicon.ico pour tester'
     end
 
-#    get '/notion_request' do
-#        '✅ Webhook receiver OK - GET /notion_request pour tester'
-#    end
+    get '/notion_request' do
+        '✅ Webhook receiver OK - GET /notion_request pour tester'
+    end
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     # Process <Post> request for <notion_webhook>

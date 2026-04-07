@@ -13,3 +13,11 @@
 [11979] - Worker 0 (PID: 11982) booted in 0.0s, phase: 0
 [11979] - Worker 1 (PID: 11983) booted in 0.0s, phase: 0
 [11979] - Worker 2 (PID: 11984) booted in 0.0s, phase: 0
+[1;34mINFO [0m 2026-04-07T16:08:01.150Z pid=11983 tid=8l3: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+[11979] - Gracefully shutting down workers...
+[11979] === puma shutdown: 2026-04-07 18:09:00 +0200 ===
+[11979] - Goodbye!
+=== puma startup: 2026-04-07 18:09:07 +0200 ===
+[12377] - Worker 0 (PID: 12380) booted in 0.0s, phase: 0
+[12377] - Worker 1 (PID: 12381) booted in 0.0s, phase: 0
+[12377] - Worker 2 (PID: 12382) booted in 0.0s, phase: 0
