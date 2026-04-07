@@ -33,7 +33,13 @@ BASE_URL                = 'https://api.notion.com/v1'
 ID_FILE_DB              = '20172117082a809784efeb6f051f8e0c'    #upload
 ID_ACTION_DB            = '32972117082a80308f29fdce26746200'    #Action utilisateurs 
 ID_TAGS_DB              = '32a72117082a80ea8dabf4523ddbe769'    #https://www.notion.so/cssghe/32a72117082a80ea8dabf4523ddbe769?v=32a72117082a815c9da8000cad0dadff&source=copy_link
-ID_DOCS_DB              = '32e72117082a804c81c1ee636a1a42e3'    #https://www.notion.so/cssghe/32e72117082a804c81c1ee636a1a42e3?v=32e72117082a8058a714000cf51d6a38&source=copy_link
+ID_DOCS_DB              = '0'    #Documents
+ID_DOCS_BVL             = '2c372117-082a-8033-b77a-000b4e5b6fb6'
+ID_DOCS_FIN             = '2c272117-082a-80ea-a31a-000b9f58c855'
+ID_DOCS_INF             = '2c172117-082a-808d-8936-000b3ad03c19'
+ID_DOCS_OFF             = '2c372117-082a-805a-9cca-000b6c71d553'
+ID_DOCS_SAN             = '2c372117-082a-8020-bd2a-000b4ec7a18b'
+ID_DOCS_DOC             = '33172117-082a-802c-b4aa-000b97e72313'
 
 #
 # Variables globales
@@ -228,42 +234,45 @@ class   UploadFileToNotion
     #
         # all choices
         # Display Tags
+        b   = "\e[1m"
+        r   = "\e[0m"
 
-        # Get Level1
+        # Get Level1/DB
         while   true
-            puts    "TAGS 1:: #{@tagl1}"
-            print   "Enter the Level1 [#{@old_level1}] => "
-            level1  = ask(default: "#{@old_level1}")
+            puts    "\n#{b}TAGS 1::#{r} #{@tagl1}"
+            print   "For the DB.Doc [#{@old_level1}] => "
+            level1  = ask(default: "#{@old_level1}", form: 'up')
             return  false   unless level1 != 'Q'
+            ### next    unless level1.size != 3
             @old_level1 = level1
             break   if @arr_tags.has_key?(level1)
         end 
 
-        # Get Level2
+        # Get Level2/Object
         while   true
-            puts    "TAGS 2:: #{@tagl2}"
-            print   "Enter the Level2 [#{@old_level2}] => "
-            level2  = ask(default: "#{@old_level2}")
+            puts    "\n#{b}TAGS 2::#{r} #{@tagl2}"
+            print   "Enter the Object [#{@old_level2}] => "
+            level2  = ask(default: "#{@old_level2}", form: 'cap')
             return  false   unless level2 != 'Q'
             @old_level2 = level2
             break   if @arr_tags.has_key?(level2)
         end
 
-        # Get Level3
+        # Get Level3/Tags
         while   true
-            puts    "TAGS 3:: #{@tagl3}"
-            print   "Enter the Level3 [#{@old_level3}] => "
-            level3  = ask(default: "#{@old_level3}")
+            puts    "\n#{b}TAGS 3::#{r} #{@tagl3}"
+            print   "Enter the Tags [#{@old_level3}] => "
+            level3  = ask(default: "#{@old_level3}", form: 'cap')
             return  false   unless level3 != 'Q'
             @old_level3 = level3
             break   if @arr_tags.has_key?(level3)
         end
 
-        # Get Level4
+        # Get Level4/Type
         while   true
-            puts    "TAGS 4:: #{@tagl4}"
-            print   "Enter the Level4 [#{@old_level4}] => "
-            level4  = ask(default: "#{@old_level4}")
+            puts    "\n#{b}TAGS 4::#{r} #{@tagl4}"
+            print   "Enter the Type [#{@old_level4}] => "
+            level4  = ask(default: "#{@old_level4}", form: 'cap')
             return  false   unless level4 != 'Q'
             @old_level4 = level4
             break   if @arr_tags.has_key?(level4)
@@ -271,7 +280,7 @@ class   UploadFileToNotion
 
         # Get Emetteur
         while   true
-            print   "Enter the Sender [#{@old_sender}] => "
+            print   "Enter the #{b}Sender#{r} [#{@old_sender}] => "
             sender  = ask(default: "#{@old_sender}")
             return  false   unless sender != 'Q'
             @old_sender = sender
@@ -286,10 +295,20 @@ class   UploadFileToNotion
     end #<def>
 
 
-    def ask(default: nil)
+    def ask(default: nil, form: nil)
         print   "Your choice [#{default}]: "
-        v = STDIN.gets&.strip
+        v = STDIN.gets.chomp.strip
         (v.nil? || v.empty?) ? default : v
+        case form
+        when 'low'
+            v = v.downcase
+        when 'up'
+            v = v.upcase
+        when 'cap'
+            v = v.capitalize
+        else
+            v
+        end
     end
 
     def getFileObject()
@@ -458,20 +477,27 @@ class   UploadFileToNotion
 
         # build properties
         props = {}
-        props['Référence']  = { 'title' => [{ 'text' => { 'content' => @arr_fileinfos['filename'] }} ] }
-        props['Niveau 1']   = { 'relation' => [{ 'id' => @arr_tags[@old_level1][0]} ] }
-        props['Niveau 2']   = { 'relation' => [{ 'id' => @arr_tags[@old_level2][0]} ] }
-        props['Niveau 3']   = { 'relation' => [{ 'id' => @arr_tags[@old_level3][0]} ] }
-        props['Niveau 4']   = { 'relation' => [{ 'id' => @arr_tags[@old_level4][0]} ] }
-        props['Emetteur']   = { 'relation' => [{ 'id' => @arr_tags[@old_sender][0]} ] }
-        props['Texte']      = { 'rich_text' => [{ 'text' => { 'content' => @note } }] }
-        props['Fichier']    = { 'files' => [{ 'file_upload' => { 'id' => @arr_fileinfos['id'] }}] }
+        props['Référence']      = { 'title' => [{ 'text' => { 'content' => @arr_fileinfos['filename'] }} ] }
+    #    props['Niveau 1']       = { 'relation' => [{ 'id' => @arr_tags[@old_level1][0]} ] }
+        props['Objet']          = { 'relation' => [{ 'id' => @arr_tags[@old_level2][0]} ] }
+        props['Tags']           = { 'relation' => [{ 'id' => @arr_tags[@old_level3][0]} ] }
+        props['Type']           = { 'relation' => [{ 'id' => @arr_tags[@old_level4][0]} ] }
+        props['Emetteur']       = { 'relation' => [{ 'id' => @arr_tags[@old_sender][0]} ] }
+        props['Description']    = { 'rich_text' => [{ 'text' => { 'content' => @note } }] }
+        props['Fichier']        = { 'files' => [{ 'file_upload' => { 'id' => @arr_fileinfos['id'] }}] }
 
         ### pp  props
     
         # make payload
+        id_docs_db  = ID_DOCS_BVL   if @old_level1.include?('BVL')
+        id_docs_db  = ID_DOCS_FIN   if @old_level1.include?('FIN')
+        id_docs_db  = ID_DOCS_INF   if @old_level1.include?('INF')
+        id_docs_db  = ID_DOCS_OFF   if @old_level1.include?('OFF')
+        id_docs_db  = ID_DOCS_SAN   if @old_level1.include?('SAN')
+        id_docs_db  = ID_DOCS_DOC   if @old_level1.include?('DOC')
+
         payload = {
-            'parent'      => { 'database_id' => ID_DOCS_DB },
+            'parent'      => { 'data_source_id' => id_docs_db },
             'properties'  => props
         }
 
@@ -546,16 +572,17 @@ class   UploadFileToNotion
         rc  = loadTags()
 
         puts    "\n=== Loop all files ==="
+        loop    = 0
         while   @arr_parameters['P2'] == 'L'
             puts    "\n=== Select file to upload ==="
-            file_select = SelectFile.select_pages(initial_dir: @tk_init_dir)
+            file_select = SelectFile.select_scan(initial_dir: @tk_init_dir, loop: loop)
             puts    "\n=== File selected ==="
             break   unless file_select
             puts    "#{file_select}"
-            @tk_initdir = @arr_fileinfos['directory']
 
             puts    "\n=== Check file type ==="
             exit    3   if checkFileType(file_select) == false
+            @tk_initdir = @arr_fileinfos['directory']
 
             puts    "\n=== Get File-Object ==="
             rc  = getFileObject()
@@ -575,9 +602,10 @@ class   UploadFileToNotion
             rc  = addnewPage()
 
             puts    "\n=== Create page on <Actions> ==="
-            rc  = add_new_action()
+        ###    rc  = add_new_action()
 
             print   "=> Sequence done with status: #{rc}\n"
+            loop    += 1
         end
         puts    "=> Loop done"
     end #<def>

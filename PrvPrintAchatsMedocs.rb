@@ -35,13 +35,15 @@ require_relative    'ClStandards.rb'
     OPTS    = {                                         #specific options
         DEBUG:      'DEBUG',
         DRYRUN:     false,
-        LOGLEVEL:   'INFO'
+        LOGLEVEL:   'INFO',
+        OUTPUT:     'DIS'
     }                         
 
     OptionParser.new do |o|
         o.banner = "Usage: ruby PrvPrintAchatsMedocs.rb [options] [apply]"
         o.on('--debug=DEBUG', 'Mode : Debug or not') { |v| OPTS[:DEBUG] = v }
         o.on('--level=INFO', 'Logger level') { |v| OPTS[:LOGLEVEL] = v }
+        o.on('--out=Display', 'Output type') { |v| OPTS[:OUTPUT] = v }
     end
     DRYRUN = (ARGV.last != "simul")
 
@@ -105,28 +107,41 @@ require_relative    'ClStandards.rb'
 #
 # Save to .pdf
 #*************
-    log.info "Make pdf"
-    # Header
-    html    = '<html><head></head><body><h1>Achat de médicaments</h1>'
-    html    += '<table><caption>tableau</caption<thead><tr><th scop="col">Patient</th><th scope="col">Médicament</th></tr></thead><tbody>'
-    # Body 
-    result  = 0
-    arr_achats.each do |ach|
-        patient     = ach[0].to_s
-        medicament  = ach[1].to_s
-        html    += "<tr><td>#{patient}</td><td>#{medicament}</td></tr>"
-        result  += 1
-    end
-    # Trailer
-    html    += '</tbody><tfoot>'
-    html    += '<tr><th scope = "row">Nombre</th><td>'
-    html    +=  "#{result}"
-    html    += '</td></tfoot></table>'
-    html    += '</body></head>'
+    if OPTS[:OUTPUT] == 'PDF'
+        log.info "Make pdf"
+        # Header
+        html    = '<html><head></head><body><h1>Achat de médicaments</h1>'
+        html    += '<table><caption>tableau</caption<thead><tr><th scop="col">Patient</th><th scope="col">Médicament</th></tr></thead><tbody>'
+        # Body 
+        result  = 0
+        arr_achats.each do |ach|
+            patient     = ach[0].to_s
+            medicament  = ach[1].to_s
+            html    += "<tr><td>#{patient}</td><td>#{medicament}</td></tr>"
+            result  += 1
+        end
+        # Trailer
+        html    += '</tbody><tfoot>'
+        html    += '<tr><th scope = "row">Nombre</th><td>'
+        html    +=  "#{result}"
+        html    += '</td></tfoot></table>'
+        html    += '</body></head>'
 
-    log.info "Write pdf on disk"
-    pdf = PDFKit.new(html, page_size:"A4", print_media_type: true)
-    pdf.to_file("/users/Gilbert/Public/Private/ToSend/Achats_de_Medicaments.pdf")
+        log.info "Write pdf on disk"
+        pdf = PDFKit.new(html, page_size:"A4", print_media_type: true)
+        pdf.to_file("/users/Gilbert/Public/Private/ToSend/Achats_de_Medicaments.pdf")
+    end
+
+# Display
+    if OPTS[:OUTPUT] == 'DIS'
+        log.info "Display results"
+        puts "\nAchat de médicaments :"
+        arr_achats.each do |ach|
+            puts "Patient: #{ach[0]}, Médicament: #{ach[1]}"
+        end
+        puts "Nombre total d'achats : #{arr_achats.size}\n"
+    end
+
 
 # Exit
     log.info "End of process."

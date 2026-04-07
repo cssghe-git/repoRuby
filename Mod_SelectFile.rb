@@ -129,6 +129,74 @@ require 'tk'
         end #<L1>
     end #<def>
 
+    def self.select_scan(initial_dir: nil, loop: 0)
+    #++++++++++++++++++++++++++
+    #   Select a file within the displayed range
+    #
+        while  true  #<L0>
+            root = "."
+            prms    = {
+                :mode      =>  'Auto',
+                :out_dir   =>  "/users/Gilbert/Library/Mobile Documents/com~apple~CloudDocs/Downloads/From Scan",
+                :out_name  =>  "ToDispatch.pdf",
+                :title     =>  "From Scan to Notion-DOSS",
+                :subject   =>  "Unknown",
+                :keywords  =>  "byScript"
+            }
+            scan_pages(prms)
+            Dir.chdir(prms[:out_dir])
+            root    = Dir.pwd
+
+            # First list
+            page_size = 40
+
+            files = Dir.glob(File.join(root, "**", "*")).select { |f| File.file?(f) }
+
+            # Set params
+            current_page = 0
+            total_pages  = (files.size.to_f / page_size).ceil
+            old_dir      = ""
+            cmd          = ""
+
+            # Main loop
+            loop do #<L1>
+                self.show_pages(files, current_page, page_size, old_dir)
+
+                print "> "
+                input = STDIN.gets
+                break unless input
+                cmd = input.strip.downcase
+
+                case cmd    #<S2>
+                when "n"
+                    puts "Next scan iteration"
+                    break
+                when "p"
+                    puts "No yet in use"
+                when "q"
+                    puts "Abandon."
+                    break
+                when "s"
+                    print "Numéro du fichier à sélectionner : "
+                    num = STDIN.gets.to_i
+                    index = num - 1
+                    if index.between?(0, files.size - 1)    #<IF3
+                        puts "Vous avez choisi : #{files[index]}"
+                        # ici vous pouvez traiter le fichier choisi
+                        return  files[index]
+                    else    #<IF3>
+                        puts "Numéro invalide, appuyez sur Entrée pour continuer."
+                        STDIN.gets
+                        return  nil
+                    end #<IF3>
+                else    #<S2>
+                    # touche inconnue : on ignore, boucle suivante
+                end #S2>
+            end #<L1>
+            break   if cmd == "q"
+        end #<L0>
+    end #<def>
+
     def self.scan_pages(prms={})
     #++++++++++++++++++++++++
     #   Scan pages & save on temp folder

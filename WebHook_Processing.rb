@@ -12,7 +12,7 @@ class WebhookProcessing < Sinatra::Base
 
     Sidekiq.strict_args!(false)
 
-    # Test endpoint
+    # Test endpoints
     get '/' do
         '✅ Webhook receiver OK - GET / pour tester'
     end
@@ -20,6 +20,10 @@ class WebhookProcessing < Sinatra::Base
     get '/favicon.ico' do
         '✅ Webhook receiver OK - GET /favicon.ico pour tester'
     end
+
+#    get '/notion_request' do
+#        '✅ Webhook receiver OK - GET /notion_request pour tester'
+#    end
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     # Process <Post> request for <notion_webhook>

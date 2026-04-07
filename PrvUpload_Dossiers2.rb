@@ -479,7 +479,7 @@ class   UploadFileToNotion
         props = {}
         props['Référence']      = { 'title' => [{ 'text' => { 'content' => @arr_fileinfos['filename'] }} ] }
     #    props['Niveau 1']       = { 'relation' => [{ 'id' => @arr_tags[@old_level1][0]} ] }
-        props['Object']         = { 'relation' => [{ 'id' => @arr_tags[@old_level2][0]} ] }
+        props['Objet']          = { 'relation' => [{ 'id' => @arr_tags[@old_level2][0]} ] }
         props['Tags']           = { 'relation' => [{ 'id' => @arr_tags[@old_level3][0]} ] }
         props['Type']           = { 'relation' => [{ 'id' => @arr_tags[@old_level4][0]} ] }
         props['Emetteur']       = { 'relation' => [{ 'id' => @arr_tags[@old_sender][0]} ] }
