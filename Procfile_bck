@@ -1,0 +1,4 @@
+redis: redis-server
+web: bundle exec rackup config.ru -p 4567
+worker: bundle exec sidekiq -r ./sidekiq_config.rb -q default
+web: bundle exec puma -C puma.rb
