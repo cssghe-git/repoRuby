@@ -240,7 +240,7 @@ class   UploadFileToNotion
         # Get Level1/DB
         while   true
             puts    "\n#{b}TAGS 1::#{r} #{@tagl1}"
-            print   "For the DB.Doc [#{@old_level1}] => "
+            print   "For the DB.Doc -#{i}Upcase#{r} [#{@old_level1}] => "
             level1  = ask(default: "#{@old_level1}", form: 'up')
             return  false   unless level1 != 'Q'
             ### next    unless level1.size != 3
@@ -251,7 +251,7 @@ class   UploadFileToNotion
         # Get Level2/Object
         while   true
             puts    "\n#{b}TAGS 2::#{r} #{@tagl2}"
-            print   "Enter the Object [#{@old_level2}] => "
+            print   "Enter the Object -#{i}Capilaize#{r} [#{@old_level2}] => "
             level2  = ask(default: "#{@old_level2}", form: 'cap')
             return  false   unless level2 != 'Q'
             @old_level2 = level2
@@ -261,7 +261,7 @@ class   UploadFileToNotion
         # Get Level3/Tags
         while   true
             puts    "\n#{b}TAGS 3::#{r} #{@tagl3}"
-            print   "Enter the Tags [#{@old_level3}] => "
+            print   "Enter the Tags -#{i}Capilaize#{r} [#{@old_level3}] => "
             level3  = ask(default: "#{@old_level3}", form: 'cap')
             return  false   unless level3 != 'Q'
             @old_level3 = level3
@@ -270,8 +270,8 @@ class   UploadFileToNotion
 
         # Get Level4/Type
         while   true
-            puts    "\n#{b}TAGS 4::#{r} #{@tagl4}"
-            print   "Enter the Type [#{@old_level4}] => "
+            puts    "\n#{b}TAGS 4:: #{@tagl4}"
+            print   "Enter the Type -#{i}Capilaize#{r} [#{@old_level4}] => "
             level4  = ask(default: "#{@old_level4}", form: 'cap')
             return  false   unless level4 != 'Q'
             @old_level4 = level4
@@ -280,7 +280,7 @@ class   UploadFileToNotion
 
         # Get Emetteur
         while   true
-            print   "Enter the #{b}Sender#{r} [#{@old_sender}] => "
+            print   "Enter the #{b}Sender#{r}-#{i}NoForm#{r} [#{@old_sender}] => "
             sender  = ask(default: "#{@old_sender}")
             return  false   unless sender != 'Q'
             @old_sender = sender
@@ -298,7 +298,7 @@ class   UploadFileToNotion
     def ask(default: nil, form: nil)
         print   "Your choice [#{default}]: "
         v = STDIN.gets&.strip
-        (v.nil? || v.empty?) ? default : v
+        v = default if v.nil? || v.empty?
         case form
         when 'low'
             v = v.downcase
@@ -572,16 +572,54 @@ class   UploadFileToNotion
         rc  = loadTags()
 
         puts    "\n=== Loop all files ==="
-        loop    = 0
+        loop        = 0
+        initial_dir = '.'
         while   @arr_parameters['P2'] == 'L'
-            puts    "\n=== Select file to upload on #{@tk_initdir} ==="
-            file_select = SelectFile.select_pages(@tk_init_dir, loop)
+            puts    "\n=== Select file to upload ==="
+            if loop == 0
+                # create instance
+                tkroot = TkRoot.new { title "Sélection d'un répertoire et ensuite le fichier" }
+
+                # search directory
+                puts "Initial directory: #{initial_dir} for loop: #{loop}"
+                dir = Tk::chooseDirectory(initialdir: initial_dir)
+            else
+                dir = initial_dir
+            end
+            if dir && !dir.empty?   #<IF1>
+                puts "Vous avez sélectionné le répertoire : #{dir}"
+                initial_dir = dir
+
+                # select file within the directory
+                files = Dir.glob(File.join(dir, "*")).select { |f| File.file?(f) }
+                if files.empty? #<IF2>
+                    puts "Aucun fichier trouvé dans le répertoire sélectionné."
+                    seledt_file = nil
+                else    #<IF2>
+                    puts "Fichiers disponibles :"
+                    files.each_with_index do |file, index|  #<D3
+                        puts "#{index + 1}. #{File.basename(file)}"
+                    end #<D3>
+
+                    print "Entrez le numéro du fichier à sélectionner : "
+                    selection = STDIN.gets.to_i
+                    if selection.between?(1, files.size)    #<IF3> 
+                        selected_file = files[selection - 1]
+                        puts "Vous avez sélectionné : #{selected_file}"
+                    else    #
+                        puts "Numéro invalide, sortie."
+                        selected_file = nil
+                    end #<IF3>
+                end            
+            else
+                puts "Aucun répertoire sélectionné."
+            end
+
             puts    "\n=== File selected ==="
-            break   unless file_select
-            puts    "#{file_select}"
+            break   unless selected_file
 
             puts    "\n=== Check file type ==="
-            exit    3   if checkFileType(file_select) == false
+            exit    3   if checkFileType(selected_file) == false
             @tk_initdir = @arr_fileinfos['directory']
             puts ">>>DBG: Init_Dir: #{@tk_initdir}"
 

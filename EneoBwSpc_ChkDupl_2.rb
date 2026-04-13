@@ -58,11 +58,19 @@ DRY_RUN = ENV["DRY_RUN"] == "true"
     end
 
     def notion_update_page(page_id, prop_payload, reference)
-        puts    "DBG>>UPDPAGE:: FOR: #{reference} => #{prop_payload}"
-        HTTParty.patch("#{API_BASE}/pages/#{page_id}",
-            headers: HEADERS,
-            body: JSON.dump({ properties: prop_payload })
-        )
+        ### puts    "DBG>>UPDPAGE:: FOR: #{reference} => #{prop_payload}"
+        3.times do
+            begin
+                HTTParty.patch("#{API_BASE}/pages/#{page_id}",
+                    headers: HEADERS,
+                    body: JSON.dump({ properties: prop_payload })
+                )
+                break
+            rescue => e
+                warn "Error updating page #{page_id}: #{e.message}"
+                sleep 5
+            end
+        end
     end
 
     def rich_text_value(str)
@@ -148,13 +156,13 @@ DRY_RUN = ENV["DRY_RUN"] == "true"
             "Prénom nrm" => rich_text_value(prenom_nrm)
         }
         resp = notion_update_page(page_id, props, reference)
-        warn "Update error #{page_id}: #{resp.code} #{resp.body}" unless resp.success?
+        #   warn "Update error #{page_id}: #{resp.code} #{resp.body}" unless resp.success?
     end
 
     def update_duplicates_summary(page_id, text)
         props = { "Duplicates" => rich_text_value(text) }
         resp = notion_update_page(page_id, props,nil)
-        warn "Dupes update error #{page_id}: #{resp.code} #{resp.body}" unless resp.success?
+        #   warn "Dupes update error #{page_id}: #{resp.code} #{resp.body}" unless resp.success?
     end
 
     # Main fonction
@@ -193,10 +201,8 @@ DRY_RUN = ENV["DRY_RUN"] == "true"
 
         puts    "=> 2) Écrire les champs normalisés (idempotent)"
         # 2) Écrire les champs normalisés (idempotent)
-    #    rows.each { |r| update_norm_fields(r[:id], r[:nom_nrm], r[:pren_nrm]) }
         rows.each do |r|
-            puts    "DBG>>ROW: #{r}"
-        #    exit 9
+            ### puts    "DBG>>ROW: #{r}"
             update_norm_fields(r[:id], r[:nom_nrm], r[:pren_nrm], r[:ref])
         end
 

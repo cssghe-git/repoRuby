@@ -25,12 +25,15 @@ end
 # Options
 # ==============================
     OPTS = {
-    debug:    ENV.fetch("DEBUG", "INFO"),            # Y/N
-    dbids:    ENV.fetch("",nil),
-    list:     ENV.fetch("OFF_LIST", 0),           # ex: 4
-    lstdate:  ENV.fetch("OFF_DATE", "2026-12-31"),# pas de date == date du jour
-    errors:   ENV.fetch("OFF_ERRORS", "N"),       # Y/N save or not errors
-    dryrun:   ENV.fetch("DRY_RUN",true)           # simulation
+        debug:    ENV.fetch("DEBUG", "INFO"),            # Y/N
+        dbids:    ENV.fetch("",nil),
+        list:     ENV.fetch("OFF_LIST", 9),           # ex: 9
+        lstdate_1:  ENV.fetch("OFF_DATE_1", "2026-12-31"),# pas de date == date du jour
+        lstdate_2:  ENV.fetch("OFF_DATE_2", "2026-12-31"),# pas de date == date du jour
+        lstdate_3:  ENV.fetch("OFF_DATE_3", "2026-12-31"),# pas de date == date du jour
+        lstdate_4:  ENV.fetch("OFF_DATE_4", "2026-12-31"),# pas de date == date du jour
+        errors:   ENV.fetch("OFF_ERRORS", "N"),       # Y/N save or not errors
+        dryrun:   ENV.fetch("DRY_RUN",true)           # simulation
     }
 =begin
 OptionParser.new do |o|
@@ -43,6 +46,7 @@ end.parse!(ARGV)
 
     DRY_RUN         = OPTS[:dryrun]
     OPTS[:debug]    = true
+    pp OPTS
 
 # Logger
     log                 = Logger.new(STDOUT)
@@ -59,7 +63,7 @@ end.parse!(ARGV)
     # Configuration
     CONFIG              = JSON.parse(File.read(ENV.fetch("NOT_JSON_DBIDS")))
     MBR_DB_ID           = CONFIG.find { |h| h.key?("m25t.Membres") }&.fetch("m25t.Membres")
-    DIRECTORY_TO_PUT    = ENV.fetch("DATA_M25_SEND_DIR","")
+    DIRECTORY_TO_PUT    = ENV.fetch("OFF_CSV_DIR","")
 
     # current date
     now = Time.now
@@ -69,13 +73,13 @@ end.parse!(ARGV)
     LIST_NUMBER         = OPTS[:list].to_i              #1 to 4
     LIST_NAME           = "Liste_#{LIST_NUMBER}"
     LIST_0_DATE         = "2026-01-01"
-    LIST_1_DATE         = "#{OPTS[:lstdate]}"   #must be updated by argv
+    LIST_1_DATE         = "#{OPTS[:lstdate_1]}"   #must be updated by argv
     LIST_1              = "Liste_#{LIST_NUMBER} @ #{now_formatted}" if LIST_NUMBER == 1
-    LIST_2_DATE         = "#{OPTS[:lstdate]}"   #must be updated by argv
+    LIST_2_DATE         = "#{OPTS[:lstdate_2]}"   #must be updated by argv
     LIST_2              = "Liste_#{LIST_NUMBER} @ #{now_formatted}" if LIST_NUMBER == 2
-    LIST_3_DATE         = "#{OPTS[:lstdate]}"   #must be updated by argv
+    LIST_3_DATE         = "#{OPTS[:lstdate_3]}"   #must be updated by argv
     LIST_3              = "Liste_#{LIST_NUMBER} @ #{now_formatted}" if LIST_NUMBER == 3
-    LIST_4_DATE         = ""#{OPTS[:lstdate]}"   #must be updated by argv
+    LIST_4_DATE         = "#{OPTS[:lstdate_4]}"   #must be updated by argv
     LIST_4              = "Liste_#{LIST_NUMBER} @ #{now_formatted}" if LIST_NUMBER == 4
     COTISATION_VALUE_1  = '18'
     COTISATION_VALUE_2  = '9'
@@ -343,7 +347,7 @@ class   ExtractorMBR
         # specific part
         cause   = result['cause']
         case    LIST_NUMBER
-        when    1
+        when    1, 2
             case    cause
             when    'Décès'
                 result[cause]   = 'Y'
@@ -562,7 +566,7 @@ end #<class>
    if __FILE__ == $0
 
         log.info("{INF}Start of script <EneoBwCom_ExtrOffice05>")
-        log.warn("{DBG}Parameters:: Debug:#{OPTS[:debug]} & List:#{OPTS[:list]} # #{OPTS[:lstdate]} on mode: #{DRY_RUN ? 'DRY_RUN (simulation)' : 'PRODUCTION'}")
+        log.warn("{DBG}Parameters:: Debug:#{OPTS[:debug]} & List:#{OPTS[:list]} # #{CHECK_DATE} on mode: #{DRY_RUN ? 'DRY_RUN (simulation)' : 'PRODUCTION'}")
 
         # get new instance
         inst    = ExtractorMBR.new()                    #get new instance
@@ -573,7 +577,7 @@ end #<class>
         DRY_RUN = false if reply == 'Y'
 
         #processing
-        inst.run(OPTS[:lstdate], log)                #processing
+        inst.run(CHECK_DATE, log)                #processing
 
         log.info "{INF}Enf of script"
    end  #<>

@@ -17,7 +17,7 @@ preload_app!
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/puma.pid" }
 
 # Fichiers de logs
-stdout_redirect 'log/puma.stdout.log', 'log/puma.stderr.log', true
+stdout_redirect 'log/puma.stdout.log', 'log/puma.stderr.log', false
 
 # Reconnexion à Redis et autres initialisations lors du démarrage d'un worker
 on_worker_boot do

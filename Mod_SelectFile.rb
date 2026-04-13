@@ -43,16 +43,17 @@ require 'tk'
         puts "Commandes : [n] suivant  [p] précédent  [s] sélectionner numéro  [q] quitter"
     end #<def>
 
-    def self.select_pages(initial_dir: nil, loop: 0)
+    def self.select_pages(initial_dir=nil, loop=0)
     #++++++++++++++++++++++++++
     #   Select a file within the displayed range
     #
-        root = "."
+        @root = initial_dir
+        puts ">>>DBG: Root: #{initial_die}"
 
         # Select start directory
         loop do #<L1>
             puts    '>'
-            print   "Choix pour (F)ichiers ou (S)can ou (Q)uit [P] ? "
+            print   "Choix pour (F)ichiers ou (R)épertoire ou (S)can ou (Q)uit [Q] ? "
             reply   = STDIN.gets.chomp.downcase
             reply   = 'q'   if reply.empty?
 
@@ -60,7 +61,8 @@ require 'tk'
             choice  = reply.strip.downcase
             case choice #S2>
             when    'f'
-                sf  = self.TK_Use(initial_dir: initial_dir, loop: loop)
+            when    'r'
+                sf  = self.TK_Use()
                 return  sf
             when    'q'
                 exit
@@ -75,7 +77,8 @@ require 'tk'
                 }
                 scan_pages(prms)
                 Dir.chdir(prms[:out_dir])
-                root    = Dir.pwd
+                @root    = Dir.pwd
+                puts ">>>DBG: Root: #{@root}"
             else
                 puts    "Choix invalide"
                 next
@@ -85,8 +88,9 @@ require 'tk'
 
         # First list
         page_size = 40
+        puts ">>>DBG: Root: #{@root}"
 
-        files = Dir.glob(File.join(root, "**", "*")).select { |f| File.file?(f) }
+        files = Dir.glob(File.join(@root, "**", "*")).select { |f| File.file?(f) }
 
         # Set params
         current_page = 0
@@ -134,7 +138,7 @@ require 'tk'
     #   Select a file within the displayed range
     #
         while  true  #<L0>
-            root = "."
+            @root = "."
             prms    = {
                 :mode      =>  'Auto',
                 :out_dir   =>  "/users/Gilbert/Library/Mobile Documents/com~apple~CloudDocs/Downloads/From Scan",
@@ -145,12 +149,13 @@ require 'tk'
             }
             scan_pages(prms)
             Dir.chdir(prms[:out_dir])
-            root    = Dir.pwd
+            @root    = Dir.pwd
+            puts ">>>DBG: Root: #{@root}"
 
             # First list
             page_size = 40
 
-            files = Dir.glob(File.join(root, "**", "*")).select { |f| File.file?(f) }
+            files = Dir.glob(File.join(@root, "**", "*")).select { |f| File.file?(f) }
 
             # Set params
             current_page = 0
@@ -228,11 +233,11 @@ require 'tk'
         puts    "End of scan log"
     end #<def>
 
-    def self.TK_Use(initial_dir: "/users/Gilbert/Public", loop: 0)
+    def self.TK_Use(initial_dir: "/users/Gilbert", loop: 0)
     #+++++++++++++++++++++
     #
         # create instance
-        root = TkRoot.new { title "Sélection d'un répertoire et ensuite le fichier" }
+        tkroot = TkRoot.new { title "Sélection d'un répertoire et ensuite le fichier" }
 
         # search directory
         puts "Initial directory: #{initial_dir} for loop: #{loop}"

@@ -1,6 +1,7 @@
 require 'sidekiq'
 require 'json'
 
+
 class WebhookAsync
     include Sidekiq::Worker
     sidekiq_options queue: 'default', retry: 3
@@ -21,6 +22,8 @@ class WebhookAsync
             handle_github(payload)
         when 'Fastmail'
             handle_fastmail(payload)
+        when 'Notion-request'
+            handle_notion_request(payload)
         else
             handle_test(payload)
         end
@@ -46,9 +49,12 @@ class WebhookAsync
     end #<def>
 
     #
-    # From Notion
-    #************
+    # From Notion - WebHook (automation)
+    #**********************
     def handle_notion(payload)
+        # Display payload
+        pp payload
+        
         # Extract parts
         source      = payload['source']
         data        = payload['data']
@@ -62,12 +68,50 @@ class WebhookAsync
         end
 
         # display
-        logger.info "📝 Notion mise à jour - page: #{data['id']}"
+        logger.info "📝 Notion automation - page: #{data['id']}"
         logger.info ">>>Reference: #{prop_hash['Référence'] || 'None'}"
         prop_hash.each do |fld|
             logger.info ">>>#{fld}: #{prop_hash[fld]}"
         end
         logger.info ">>>"
+
+    end #<def>
+
+    #
+    # From Notion - request (POST)
+    #****************************
+    def handle_notion_request(payload)
+        logger.info "Payload Notion request"
+        # Extract parts
+        uuid            = payload['request_id'] || 'unknown uuid'
+        request_method  = payload['REQUEST_METHOD'] || 'unknown method'
+        request_path    = payload['PATH_INFO'] || 'unknown path'
+        request_uri     = payload['REQUEST_URI'] || 'unknown uri'
+
+        # Extract parameters
+        params = request_uri.split('?').last || ''
+        arr_params = params.split('&')
+        arr_prm = {}
+        arr_params.each do |par|
+            par2 = par.split('=') if par.include?('=')
+            arr_prm[par2[0]] = par2[1] if par2
+        end
+        function        = arr_params[0] || 'unknown function'
+        callback_url    = arr_prm['callback'] || 'None'
+        name            = arr_prm['nom'] || 'unknown name'
+        # Log details
+        logger.info ">>>Details for Request ID: #{uuid}"
+        logger.info ">>>Method: #{request_method}"
+        logger.info ">>>Path: #{request_path}"
+        logger.info ">>>URI: #{request_uri}"
+        logger.info ">>>Params: #{params}"
+        logger.info ">>>Extracted params: #{arr_params}"
+        logger.info ">>>Callback URL: #{callback_url}"
+        logger.info ">>>Request: #{function} for #{name}"
+
+        # make a response
+        result = "OK"
+        #   HTTP.post(callback_url, json: { status: 'done', result: result })    
 
     end #<def>
 

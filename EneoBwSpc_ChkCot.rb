@@ -240,7 +240,7 @@ end #<class>
         "or":   [
             { "property": "Type", "select": {"equals": "Totaux"}},
             { "property": "Type", "select": {"equals": "Paiement"}},
-            { "property": "Type", "select": {"equals": "Consolidé"}},
+            { "property": "Type", "select": {"equals": "Child"}},
         ]
     }
     cot_sort    = [

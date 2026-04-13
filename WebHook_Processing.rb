@@ -1,6 +1,8 @@
 require 'sinatra/base'
 require 'json'
 require 'logger'
+require 'securerandom'
+require 'redis'
 
 class WebhookProcessing < Sinatra::Base
     configure :production, :development do
@@ -21,10 +23,26 @@ class WebhookProcessing < Sinatra::Base
         '✅ Webhook receiver OK - GET /favicon.ico pour tester'
     end
 
-    get '/notion_request' do
-        '✅ Webhook receiver OK - GET /notion_request pour tester'
-    end
 
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    # Process <GET> request for <notion_request>
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    #
+    get "/notion_request" do
+        payload = env
+        ### pp payload
+        # UUID
+        request_id = SecureRandom.uuid
+        payload['request_id'] = request_id
+
+        # Enqueue async IMMÉDIATEMENT
+        WebhookAsync.perform_async('Notion-request', payload)
+
+        # Réponse 200 rapide (fire & forget)
+        [200, { 'Content-Type' => 'application/json' }, 
+            [{ status: 'received', queued: true }.to_json]]
+        
+    end #<get>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     # Process <Post> request for <notion_webhook>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
@@ -83,15 +101,18 @@ class WebhookProcessing < Sinatra::Base
     end #<post>
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++
-    # Process <Post> request for <tests_webhook>
+    # Process <Post> request for <notion_request>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
-    post "/tests_webhook" do
-        payload = request.body && JSON.parse(request.body.read || '{}')
+    post "/notion_request" do
+        payload = env
         ### pp payload
+        # UUID
+        request_id = SecureRandom.uuid
+        payload['request_id'] = request_id
 
         # Enqueue async IMMÉDIATEMENT
-        WebhookAsync.perform_async('Tests', payload)
+        WebhookAsync.perform_async('Notion-request', payload)
 
         # Réponse 200 rapide (fire & forget)
         [200, { 'Content-Type' => 'application/json' }, 
