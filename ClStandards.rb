@@ -154,7 +154,7 @@ class   Standards
         body[:filter]       = filter        if filter
         body[:sorts]        = sort          if sort
         body[:start_cursor] = start_cursor  if start_cursor
-        puts    "DBG>>>#{@not_hdr} - #{@not_url}/#{@not_base}/#{db_id}/query"
+        ### puts    "DBG>>>#{@not_hdr} - #{@not_url}/#{@not_base}/#{db_id}/query"
         
         res = HTTParty.post("#{@not_url}/#{@not_base}/#{db_id}/query", headers: @not_hdr, body: JSON.dump(body))
         raise "DB query #{db_id} failed: #{res.code} #{res.body}" unless res.success?

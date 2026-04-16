@@ -49,6 +49,17 @@ class WebhookAsync
     end #<def>
 
     #
+    # Append to file
+    # **************
+    def append_to_file(fields={})
+        File.open('/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log.txt', 'a') do |f|
+            f.puts ">>>Data @ #{Time.now}:"
+            f.puts "Webhook data: #{fields || 'unknown prms'}"
+            f.puts "<<<End of data>>>"
+        end
+    end
+
+    #
     # From Notion - WebHook (automation)
     #**********************
     def handle_notion(payload)
@@ -74,6 +85,13 @@ class WebhookAsync
             logger.info ">>>#{fld}: #{prop_hash[fld]}"
         end
         logger.info ">>>"
+
+        # Append to file
+        prms = {}
+        prms['URI'] = "notion_webhook"
+        prms['page_id'] = data['id']
+        prms['properties'] = prop_hash
+        append_to_file(prms)
 
     end #<def>
 
@@ -119,6 +137,7 @@ class WebhookAsync
     # From Githubb
     #*************
     def handle_github(payload)
+        pp payload
         # Extract parts
         head_commit = payload['head_commit']
         head_commit.each do |key, value|

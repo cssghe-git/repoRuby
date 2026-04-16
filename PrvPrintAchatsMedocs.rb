@@ -33,17 +33,17 @@ require_relative    'ClStandards.rb'
 # ==============================
 # Options
     OPTS    = {                                         #specific options
-        DEBUG:      'DEBUG',
+        DEBUG:      false,
         DRYRUN:     false,
         LOGLEVEL:   'INFO',
-        OUTPUT:     'DIS'
+        OUTPUT:     'PDF'
     }                         
 
     OptionParser.new do |o|
         o.banner = "Usage: ruby PrvPrintAchatsMedocs.rb [options] [apply]"
         o.on('--debug=DEBUG', 'Mode : Debug or not') { |v| OPTS[:DEBUG] = v }
         o.on('--level=INFO', 'Logger level') { |v| OPTS[:LOGLEVEL] = v }
-        o.on('--out=Display', 'Output type') { |v| OPTS[:OUTPUT] = v }
+        o.on('--output=PDF', 'Output type') { |v| OPTS[:OUTPUT] = v }
     end
     DRYRUN = (ARGV.last != "simul")
 
@@ -51,6 +51,8 @@ require_relative    'ClStandards.rb'
     log                 = Logger.new(STDOUT)
     log.level           = OPTS[:LOGLEVEL].to_sym
     log.datetime_format = '%H:%M:%S'
+
+    log.info "PRMS::LOG:#{OPTS[:LOGLEVEL]} - OUTPUT:#{OPTS[:OUTPUT]}"
 
 # Variables
     arr_achats  = []

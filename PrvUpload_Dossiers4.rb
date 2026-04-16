@@ -147,7 +147,8 @@ class   UploadFileToNotion
         end #<L1>
 
         # Dispatch about type
-        @arr_tags       = {}
+        @arr_tags = {}
+        @arr_tags_l1, @arr_tags_l2, @arr_tags_l3, @arr_tags_l4 = [], [], [], []
         all_pages.each do |page|    #<L1>
             page_id     = page['id']
             properties  = page['properties']
@@ -245,7 +246,7 @@ class   UploadFileToNotion
             return  false   unless level1 != 'Q'
             ### next    unless level1.size != 3
             @old_level1 = level1
-            break   if @arr_tags.has_key?(level1)
+            break   if @tagl1.include?(level1)
         end 
 
         # Get Level2/Object
@@ -255,7 +256,7 @@ class   UploadFileToNotion
             level2  = ask(default: "#{@old_level2}", form: 'cap')
             return  false   unless level2 != 'Q'
             @old_level2 = level2
-            break   if @arr_tags.has_key?(level2)
+            break   if @tagl2.include?(level2)
         end
 
         # Get Level3/Tags
@@ -265,7 +266,7 @@ class   UploadFileToNotion
             level3  = ask(default: "#{@old_level3}", form: 'cap')
             return  false   unless level3 != 'Q'
             @old_level3 = level3
-            break   if @arr_tags.has_key?(level3)
+            break   if @tagl3.include?(level3)
         end
 
         # Get Level4/Type
@@ -275,7 +276,7 @@ class   UploadFileToNotion
             level4  = ask(default: "#{@old_level4}", form: 'cap')
             return  false   unless level4 != 'Q'
             @old_level4 = level4
-            break   if @arr_tags.has_key?(level4)
+            break   if @tagl4.include?(level4)
         end
 
         # Get Emetteur

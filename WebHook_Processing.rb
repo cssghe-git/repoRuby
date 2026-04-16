@@ -1,3 +1,24 @@
+#
+=begin
+        WebhookProcessing.rb
+        Function => on port 4567 - Recevoir les webhooks de Notion, GitHub, Fastmail, etc. et les mettre en file d'attente pour traitement asynchrone
+        GET => 
+            / : pour tester que le serveur est en ligne
+            /favicon.ico : 
+            /notion_request : pour recevoir les requêtes de Notion for request (ex: recherche de données)
+        POST =>
+            /notion_webhook : pour recevoir les webhooks de Notion (automatisations)
+            /github_webhook : pour recevoir les webhooks de GitHub
+            /email_webhook : pour recevoir les webhooks de Fastmail
+            /notion_request : pour recevoir les requêtes de Notion for request (ex: recherche de données)
+        Traitement =>
+            Enregistrer le payload dans Redis (optionnel, pour debug ou historique)
+            Enqueue le payload dans Sidekiq pour traitement asynchrone immédiat
+        URLs =>
+            via ngrok => https://progenitorial-fredda-headlong.ngrok-free.dev/?
+            via localnet => webhook => https://uabojmzplh.localto.net/?
+=end
+
 require 'sinatra/base'
 require 'json'
 require 'logger'
@@ -16,7 +37,7 @@ class WebhookProcessing < Sinatra::Base
 
     # Test endpoints
     get '/' do
-        '✅ Webhook receiver OK - GET / pour tester'
+        '✅ Webhook receiver OK - GET / for tests only'
     end
 
     get '/favicon.ico' do
@@ -30,7 +51,8 @@ class WebhookProcessing < Sinatra::Base
     #
     get "/notion_request" do
         payload = env
-        ### pp payload
+        puts ">>>DBG>Notion_Request>Payload/env => "
+
         # UUID
         request_id = SecureRandom.uuid
         payload['request_id'] = request_id
@@ -49,16 +71,26 @@ class WebhookProcessing < Sinatra::Base
     #
     # Webhook principal (Notion)
     post '/notion_webhook' do
+        env_part = env
+        $stdout.puts ">>>DBG>Notion_Webhook>Env_Part => "
+        $stdout.puts env_part.inspect
+
+        # Extract X fields
+        x_array = {}
+        x_array[:x_from_object]   = env['HTTP_X_NOTION_FROM_OBJECT'] || 'unknown object'
+        x_array[:x_from_page]     = env['HTTP_X_NOTION_FROM_PAGE'] || 'unknown page'
+        x_array[:x_signature]     = env['HTTP_X_SIGN'] || 'unknown signature'
+    
+        # Extract data
         payload = request.body && JSON.parse(request.body.read || '{}')
-        ### pp payload
-       source  = payload['source']
+        source  = payload['source']
 
         # Log + sécurité basique
         ### pp payload  #to search fields
         logger.info "Webhook reçu: #{source['type'] || 'unknown'} from #{request.ip}"
 
         # Enqueue async IMMÉDIATEMENT
-        WebhookAsync.perform_async('Notion-automation', payload)
+        WebhookAsync.perform_async('Notion-automation', payload, x_array)
 
         # Réponse 200 rapide (fire & forget)
         [200, { 'Content-Type' => 'application/json' }, 
@@ -71,6 +103,10 @@ class WebhookProcessing < Sinatra::Base
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
     post "/github_webhook" do
+        payload = env
+        puts ">>>DBG>Payload/env => "
+        pp payload
+
         payload = request.body && JSON.parse(request.body.read || '{}')
         ### pp payload
 
@@ -106,13 +142,15 @@ class WebhookProcessing < Sinatra::Base
     #
     post "/notion_request" do
         payload = env
-        ### pp payload
+        $stdout.puts ">>>DBG>Notion_Request>Payload/env => "
+        $stdout.puts payload.inspect
+
         # UUID
         request_id = SecureRandom.uuid
         payload['request_id'] = request_id
 
         # Enqueue async IMMÉDIATEMENT
-        WebhookAsync.perform_async('Notion-request', payload)
+    ###    WebhookAsync.perform_async('Notion-request', payload)
 
         # Réponse 200 rapide (fire & forget)
         [200, { 'Content-Type' => 'application/json' }, 
