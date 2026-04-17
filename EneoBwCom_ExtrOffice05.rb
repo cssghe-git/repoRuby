@@ -367,8 +367,15 @@ class   ExtractorMBR
             when    'Modification'
                 result[cause]   = 'Y'
             end
-            puts    "{TRT}>REF: #{prop['Référence']} => NOM: #{result['Nom']}-#{result['Prénom']} : CAUSES: D:#{result['Décès']}+A:#{result['Ancien']}+B:#{result['Membre']}+N:#{result['Nouveau']}+M:#{result['Modification']} - CODE: #{result['code']}"    if result['code'] == 'Y'
-            puts    "DBG>>>DatePaiement: #{prop['Date paiement']}"  if result['code'] == 'Y' and OPTS[:errors]=='Y'
+            puts    "{TRT}>*****"                                   if result['code'] == 'Y'
+            puts    "{TRT}>REF: #{prop['Référence']} => CAUSES:"    if result['code'] == 'Y'
+            puts    "{TRT} -Décès:#{result['Décès']}"               if result['code'] == 'Y'
+            puts    "{TRT} -Ancien:#{result['Ancien']}"             if result['code'] == 'Y'
+            puts    "{TRT} -Membre:#{result['Membre']}"             if result['code'] == 'Y'
+            puts    "{TRT} -Nouveau:#{result['Nouveau']}"           if result['code'] == 'Y'
+            puts    "{TRT} -Modification:#{result['Modification']}" if result['code'] == 'Y'
+            puts    "{TRT} - DatePaiement: #{prop['Date paiement']}"  if result['code'] == 'Y'
+            puts    "{TRT} -> CODE: #{result['code']}"              if result['code'] == 'Y'
         when    2
             #L =liste_nr
             #déjà 'décès' => code L#1
@@ -420,7 +427,7 @@ class   ExtractorMBR
                                                                 {'name' => LIST_4} ] }
         end
 
-        puts    "DBG>>>Statut secrétariat: /1=Décès, /2=Sortie, /3=Membre, /4=Nouveau => #{prop['Statut secrétariat']}" if OPTS[:errors]=='Y'
+        puts    "DBG>>>Statut secrétariat: /1=Décès, /2=Sortie, /3=Membre, /4=Nouveau => #{prop['Statut secrétariat']}"
 
         return  if DRY_RUN
     #    return  #for tests
@@ -465,7 +472,7 @@ class   ExtractorMBR
                 'Cotis-1', 'Cotis-2', 'CPE',
                 'Eneo', 'EneoSport', 'V-A',
                 'CDC Pr', 'CDC Sc',
-                'Nouveau', 'Modification', 'Ancien', 'Décès',
+                'Nouveau', 'Membre', 'Modification', 'Ancien', 'Décès',
                 'ActPrc'
             ]
             # Données
@@ -501,6 +508,7 @@ class   ExtractorMBR
                     result['CDC Pr'],
                     result['CDC Sc'],
                     result['Nouveau'],
+                    result['Membre'],
                     result['Modification'],
                     result['Ancien'],
                     result['Décès'],
@@ -566,7 +574,8 @@ end #<class>
    if __FILE__ == $0
 
         log.info("{INF}Start of script <EneoBwCom_ExtrOffice05>")
-        log.warn("{DBG}Parameters:: Debug:#{OPTS[:debug]} & List:#{OPTS[:list]} # #{CHECK_DATE} on mode: #{DRY_RUN ? 'DRY_RUN (simulation)' : 'PRODUCTION'}")
+        log.warn("{INF}Parameters:: Debug:#{OPTS[:debug]} & List:#{OPTS[:list]} # #{CHECK_DATE} on mode: #{DRY_RUN ? 'DRY_RUN (simulation)' : 'PRODUCTION'}")
+        log.warn("{INF}Nouveau statut => 2/? #{LIST_2}")
 
         # get new instance
         inst    = ExtractorMBR.new()                    #get new instance

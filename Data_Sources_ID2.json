@@ -23,5 +23,12 @@
     { "aidt.Medocs.Calculs": "27472117-082a-805a-afd0-000b492e1195", "name": "Calculs"},
     { "aidt.Medocs.Patients": "27472117-082a-802e-a980-000bd75da62d", "name": "Patients"},
     { "aidt.Medocs.Médecins": "27472117-082a-80a9-8870-000b99170866", "name": "Médecins"},
-    { "aidt.Medocs.Paramètres": "27472117-082a-8088-96e8-000b9cd1de1c", "name": "Paramètres"}
+    { "aidt.Medocs.Paramètres": "27472117-082a-8088-96e8-000b9cd1de1c", "name": "Paramètres"},
+
+    {"BVL": "2c372117-082a-8033-b77a-000b4e5b6fb", "name": "BVL"},
+    {"FIN": "2c272117-082a-80ea-a31a-000b9f58c855", "name": "FIN"},
+    {"INF": "2c172117-082a-808d-8936-000b3ad03c19", "name": "INF"},
+    {"OFF": "2c372117-082a-805a-9cca-000b6c71d553", "name": "OFF"},
+    {"SAN": "2c372117-082a-8020-bd2a-000b4ec7a18b", "name": "SAN"}
+
 ]

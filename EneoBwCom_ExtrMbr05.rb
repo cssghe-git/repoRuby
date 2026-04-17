@@ -209,9 +209,9 @@ class NotionMembersExtractor
         enc_format.each do |key, value|
             puts    "Format: #{key} => #{value}"
         end
-        print   "Please select the encoder by letter {U(TF-8)/W(indows)} [U] => "
+        print   "Please select the encoder by letter {U(TF-8)/W(indows)} [W] => "
         format_key  = $stdin.gets.chomp.to_s.upcase
-        format_key  = 'U'   if format_key.empty?
+        format_key  = 'W'   if format_key.empty?
         puts    "=>Encoder: #{enc_format[format_key]} selected"
         return  enc_format[format_key]
     end

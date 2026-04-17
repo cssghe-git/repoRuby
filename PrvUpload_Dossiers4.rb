@@ -249,8 +249,10 @@ class   UploadFileToNotion
             break   if @tagl1.include?(level1)
         end 
 
-        # Get Level2/Object
+        # Get Level2/Dossier
+        @old_level2 = "Unknown"
         while   true
+            break
             puts    "\n#{b}TAGS 2::#{r} #{@tagl2}"
             print   "Enter the Object -#{i}Capilaize#{r} [#{@old_level2}] => "
             level2  = ask(default: "#{@old_level2}", form: 'cap')
@@ -263,14 +265,16 @@ class   UploadFileToNotion
         while   true
             puts    "\n#{b}TAGS 3::#{r} #{@tagl3}"
             print   "Enter the Tags -#{i}Capilaize#{r} [#{@old_level3}] => "
-            level3  = ask(default: "#{@old_level3}", form: 'cap')
+            level3  = ask(default: "#{@old_level3}", form: 'nil')
             return  false   unless level3 != 'Q'
             @old_level3 = level3
             break   if @tagl3.include?(level3)
         end
 
         # Get Level4/Type
+        @old_level4 = "Unknown"
         while   true
+            break
             puts    "\n#{b}TAGS 4:: #{@tagl4}"
             print   "Enter the Type -#{i}Capilaize#{r} [#{@old_level4}] => "
             level4  = ask(default: "#{@old_level4}", form: 'cap')
@@ -282,10 +286,12 @@ class   UploadFileToNotion
         # Get Emetteur
         while   true
             print   "Enter the #{b}Sender#{r}-#{i}NoForm#{r} [#{@old_sender}] => "
-            sender  = ask(default: "#{@old_sender}")
+            sender  = ask(default: "#{@old_sender}", form: 'nil')
             return  false   unless sender != 'Q'
             @old_sender = sender
             break   if @arr_tags.has_key?(sender)
+            @old_sender = "Unknown"
+            break
         end
 
         # Get Note
