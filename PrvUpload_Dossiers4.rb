@@ -32,7 +32,9 @@ BASE_URL                = 'https://api.notion.com/v1'
 
 ID_FILE_DB              = '20172117082a809784efeb6f051f8e0c'    #upload
 ID_ACTION_DB            = '32972117082a80308f29fdce26746200'    #Action utilisateurs 
-ID_TAGS_DB              = '32a72117082a80ea8dabf4523ddbe769'    #https://www.notion.so/cssghe/32a72117082a80ea8dabf4523ddbe769?v=32a72117082a815c9da8000cad0dadff&source=copy_link
+ID_DOSS_DB              = '34472117082a80b2a596d4863a40b6f9'    #https://www.notion.so/cssghe/34472117082a80b2a596d4863a40b6f9?v=34472117082a8043bc90000c8317b8fd&source=copy_link
+ID_TAGS_DB              = '32a72117082a80ea8dabf4523ddbe769'    #https://www.notion.so/cssghe/32a72117082a80ea8dabf4523ddbe769?v=34472117082a80f596fd000c551c2274&source=copy_link
+ID_TYPE_DB              = '34472117082a80eb939fd3f66a0fe282'    #https://www.notion.so/cssghe/34472117082a80eb939fd3f66a0fe282?v=34472117082a80ff8996000c4dce4b46&source=copy_link
 ID_DOCS_DB              = '0'    #Documents
 ID_DOCS_BVL             = '2c372117-082a-8033-b77a-000b4e5b6fb6'
 ID_DOCS_FIN             = '2c272117-082a-80ea-a31a-000b9f58c855'
@@ -106,6 +108,58 @@ class   UploadFileToNotion
         @arr_parameters
     end #<def>
 
+    def loadDossiers()
+    #+++++++++++++++
+    #   INP:    ?
+    #   OUT:    ?
+    #
+        # Settings
+        myheaders = {
+            'Authorization'     => "Bearer #{NOTION_TOKEN}",
+            'Notion-Version'    => NOTION_API_VERSION_OLD,
+            'Content-Type'      => 'application/json'
+        }
+        query = {
+        #    filter: {},
+            sorts: [{ property: 'Nom', direction: 'ascending' }]
+        }
+        all_pages       = []
+        has_more        = true
+        start_cursor    = nil
+
+        # Read all pages
+        while has_more  #<L1>
+            query[:start_cursor] = start_cursor if start_cursor
+
+            response = HTTParty.post(
+                "#{BASE_URL}/databases/#{ID_DOSS_DB}/query",
+                headers: myheaders,
+                body: query.to_json
+            )
+
+            unless response.success?    #<IF2>
+                puts "=> #{__method__} : Erreur query: #{response['message']}"
+                pp  response
+                break
+            end #<IF2>
+
+            all_pages.concat(response['results'])
+            has_more        = response['has_more']
+            start_cursor    = response['next_cursor']
+        end #<L1>
+
+        # Dispatch about type
+        @arr_dossiers = {}
+        all_pages.each do |page|    #<L1>
+            page_id             = page['id']
+            properties          = page['properties']
+            ### pp page['properties']
+            value               = properties['Nom']
+            nom                 = value["title"].map { _1["plain_text"] }.join
+           @arr_dossiers[nom]   = [page_id]
+        end #<L1>
+    end #<def>
+
     def loadTags()
     #+++++++++++
     #   INP:    ?
@@ -155,13 +209,13 @@ class   UploadFileToNotion
             ### pp page['properties']
             value   = properties['Référence']
             nom     = value["title"].map { _1["plain_text"] }.join
-            value   = properties['Level 1']
+            value   = properties['Area']
             l1      = value['checkbox']
-            value   = properties['Level 2']
+            value   = properties['Dossier']
             l2      = value['checkbox']
-            value   = properties['Level 3']
+            value   = properties['Tag']
             l3      = value['checkbox']
-            value   = properties['Level 4']
+            value   = properties['Type']
             l4      = value['checkbox']
             @arr_tags[nom]  = [page_id,l1,l2,l3,l4]
         end #<L1>
@@ -174,6 +228,59 @@ class   UploadFileToNotion
         @tagl4   = @arr_tags.select{|_, v| v[4]}.keys
         #   exit 9
     end #<def>
+
+    def loadTypes()
+    #++++++++++++
+    #   INP:    ?
+    #   OUT:    ?
+    #
+        # Settings
+        myheaders = {
+            'Authorization'     => "Bearer #{NOTION_TOKEN}",
+            'Notion-Version'    => NOTION_API_VERSION_OLD,
+            'Content-Type'      => 'application/json'
+        }
+        query = {
+        #    filter: {},
+            sorts: [{ property: 'Nom', direction: 'ascending' }]
+        }
+        all_pages       = []
+        has_more        = true
+        start_cursor    = nil
+
+        # Read all pages
+        while has_more  #<L1>
+            query[:start_cursor] = start_cursor if start_cursor
+
+            response = HTTParty.post(
+                "#{BASE_URL}/databases/#{ID_TYPE_DB}/query",
+                headers: myheaders,
+                body: query.to_json
+            )
+
+            unless response.success?    #<IF2>
+                puts "=> #{__method__} : Erreur query: #{response['message']}"
+                pp  response
+                break
+            end #<IF2>
+
+            all_pages.concat(response['results'])
+            has_more        = response['has_more']
+            start_cursor    = response['next_cursor']
+        end #<L1>
+
+        # Dispatch about type
+        @arr_types = {}
+        all_pages.each do |page|    #<L1>
+            page_id         = page['id']
+            properties      = page['properties']
+            ### pp page['properties']
+            value           = properties['Nom']
+            nom             = value["title"].map { _1["plain_text"] }.join
+           @arr_types[nom]  = [page_id]
+        end #<L1>
+    end #<def>
+
 
     def checkTag()
     #+++++++++++
@@ -238,10 +345,10 @@ class   UploadFileToNotion
         b   = "\e[1m"
         r   = "\e[0m"
 
-        # Get Level1/DB
+        # Get Level1/Area/DB from Tags
         while   true
-            puts    "\n#{b}TAGS 1::#{r} #{@tagl1}"
-            print   "For the DB.Doc -#{i}Upcase#{r} [#{@old_level1}] => "
+            puts    "\n#{b}AREA::#{r} #{@tagl1}"
+            print   "For the DB.Doc -#{b}Upcase#{r} [#{@old_level1}] => "
             level1  = ask(default: "#{@old_level1}", form: 'up')
             return  false   unless level1 != 'Q'
             ### next    unless level1.size != 3
@@ -249,43 +356,40 @@ class   UploadFileToNotion
             break   if @tagl1.include?(level1)
         end 
 
-        # Get Level2/Dossier
-        @old_level2 = "Unknown"
+        # Get Level2/Dossier from Dossiers
         while   true
-            break
-            puts    "\n#{b}TAGS 2::#{r} #{@tagl2}"
-            print   "Enter the Object -#{i}Capilaize#{r} [#{@old_level2}] => "
+            puts    "\n#{b}DOSIER::#{r} #{@arr_dossiers.keys.join(', ')}"
+            print   "Enter the Object -#{b}Capilaize#{r} [#{@old_level2}] => "
             level2  = ask(default: "#{@old_level2}", form: 'cap')
             return  false   unless level2 != 'Q'
             @old_level2 = level2
-            break   if @tagl2.include?(level2)
+            break   if @arr_dossiers.key?(level2)
         end
 
-        # Get Level3/Tags
+        # Get Level3/Tags from Tags
         while   true
-            puts    "\n#{b}TAGS 3::#{r} #{@tagl3}"
-            print   "Enter the Tags -#{i}Capilaize#{r} [#{@old_level3}] => "
+            puts    "\n#{b}TAGS::#{r} #{@tagl3}"
+            print   "Enter the Tags -#{b}Capilaize#{r} [#{@old_level3}] => "
             level3  = ask(default: "#{@old_level3}", form: 'nil')
             return  false   unless level3 != 'Q'
             @old_level3 = level3
             break   if @tagl3.include?(level3)
         end
 
-        # Get Level4/Type
-        @old_level4 = "Unknown"
+        # Get Level4/Type from Types
         while   true
-            break
-            puts    "\n#{b}TAGS 4:: #{@tagl4}"
-            print   "Enter the Type -#{i}Capilaize#{r} [#{@old_level4}] => "
+            puts    "\n#{b}TYPE::#{r} #{@arr_types.keys.join(', ')}"
+            print   "Enter the Type -#{b}Capilaize#{r} [#{@old_level4}] => "
             level4  = ask(default: "#{@old_level4}", form: 'cap')
             return  false   unless level4 != 'Q'
             @old_level4 = level4
-            break   if @tagl4.include?(level4)
+            break   if @arr_types.key?(level4)
         end
 
-        # Get Emetteur
+        # Get Emetteur from Tags
         while   true
-            print   "Enter the #{b}Sender#{r}-#{i}NoForm#{r} [#{@old_sender}] => "
+            puts    "\n#{b}Sender::#{r} #{@tagl4}"
+            print   "Enter the #{b}Sender#{r}-#{b}NoForm#{r} [#{@old_sender}] => "
             sender  = ask(default: "#{@old_sender}", form: 'nil')
             return  false   unless sender != 'Q'
             @old_sender = sender
@@ -486,9 +590,9 @@ class   UploadFileToNotion
         props = {}
         props['Référence']      = { 'title' => [{ 'text' => { 'content' => @arr_fileinfos['filename'] }} ] }
     #    props['Niveau 1']       = { 'relation' => [{ 'id' => @arr_tags[@old_level1][0]} ] }
-        props['Objet']          = { 'relation' => [{ 'id' => @arr_tags[@old_level2][0]} ] }
+    #    props['Dossier']        = { 'relation' => [{ 'id' => @arr_tags[@old_level2][0]} ] }
         props['Tags']           = { 'relation' => [{ 'id' => @arr_tags[@old_level3][0]} ] }
-        props['Type']           = { 'relation' => [{ 'id' => @arr_tags[@old_level4][0]} ] }
+    #    props['Type']           = { 'relation' => [{ 'id' => @arr_tags[@old_level4][0]} ] }
         props['Emetteur']       = { 'relation' => [{ 'id' => @arr_tags[@old_sender][0]} ] }
         props['Description']    = { 'rich_text' => [{ 'text' => { 'content' => @note } }] }
         props['Fichier']        = { 'files' => [{ 'file_upload' => { 'id' => @arr_fileinfos['id'] }}] }
@@ -576,7 +680,9 @@ class   UploadFileToNotion
         getParameters()
 
         puts    "\n=== Get Common values ==="
+        rc  = loadDossiers()
         rc  = loadTags()
+        rec = loadTypes()
 
         puts    "\n=== Loop all files ==="
         loop        = 0

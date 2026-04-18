@@ -28,3 +28,612 @@
 [26456] - Worker 0 (PID: 43045) booted in 0.02s, phase: 0
 [26456] - Worker 1 (PID: 43046) booted in 0.02s, phase: 0
 [1;34mINFO [0m 2026-04-17T09:48:15.448Z pid=43047 tid=yan: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+>>>DBG>Payload/env => 
+{"rack.version" => [1, 6],
+ "rack.errors" => #<IO:log/puma.stderr.log>,
+ "rack.multithread" => true,
+ "rack.multiprocess" => true,
+ "rack.run_once" => false,
+ "rack.url_scheme" => "https",
+ "SCRIPT_NAME" => "",
+ "QUERY_STRING" => "",
+ "SERVER_SOFTWARE" => "puma 7.2.0 On The Corner",
+ "GATEWAY_INTERFACE" => "CGI/1.2",
+ "rack.after_reply" => [],
+ "rack.response_finished" => [],
+ "REQUEST_METHOD" => "POST",
+ "REQUEST_PATH" => "/github_webhook",
+ "REQUEST_URI" => "/github_webhook",
+ "SERVER_PROTOCOL" => "HTTP/1.1",
+ "HTTP_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
+ "HTTP_USER_AGENT" => "GitHub-Hookshot/1439734",
+ "CONTENT_LENGTH" => "8107",
+ "HTTP_ACCEPT" => "*/*",
+ "CONTENT_TYPE" => "application/json",
+ "HTTP_X_FORWARDED_FOR" => "140.82.115.249",
+ "HTTP_X_FORWARDED_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
+ "HTTP_X_FORWARDED_PROTO" => "https",
+ "HTTP_X_GITHUB_DELIVERY" => "d5a3d626-3a57-11f1-887e-e318383c4997",
+ "HTTP_X_GITHUB_EVENT" => "push",
+ "HTTP_X_GITHUB_HOOK_ID" => "603554883",
+ "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" => "1195298323",
+ "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE" => "repository",
+ "HTTP_X_HUB_SIGNATURE" => "sha1=61f53cac0b23ac5f5d84439dc247d3e9b315d7f0",
+ "HTTP_X_HUB_SIGNATURE_256" =>
+  "sha256=3681c1ab0a7e67e12b587be1ab220ca0dafdb38190413e48315627adabfde5db",
+ "HTTP_ACCEPT_ENCODING" => "gzip",
+ "puma.request_body_wait" => 0.22100000083446503,
+ "SERVER_NAME" => "progenitorial-fredda-headlong.ngrok-free.dev",
+ "SERVER_PORT" => "443",
+ "PATH_INFO" => "/github_webhook",
+ "REMOTE_ADDR" => "127.0.0.1",
+ "puma.socket" => #<TCPSocket:fd 16, AF_INET, 127.0.0.1, 4567>,
+ "rack.hijack?" => true,
+ "rack.hijack" =>
+  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
+ "rack.input" => #<StringIO:0x00000001225c6d18>,
+ "puma.config" =>
+  #<Puma::Configuration:0x0000000120c2a1e8
+   @_options=
+    #<Puma::UserFileDefaultOptions:0x0000000120d02ae8
+     @default_options=
+      {auto_trim_time: 30,
+       binds: ["tcp://0.0.0.0:9292"],
+       fiber_per_request: false,
+       debug: false,
+       enable_keep_alives: true,
+       early_hints: nil,
+       environment: "development",
+       first_data_timeout: 30,
+       idle_timeout: nil,
+       io_selector_backend: :auto,
+       log_requests: false,
+       logger: #<IO:log/puma.stdout.log>,
+       max_keep_alive: 999,
+       max_threads: 5,
+       min_threads: 0,
+       mode: :http,
+       mutate_stdout_and_stderr_to_sync_on_write: true,
+       out_of_band: [],
+       persistent_timeout: 65,
+       prune_bundler: false,
+       queue_requests: true,
+       rackup: "config.ru",
+       raise_exception_on_sigterm: true,
+       reaping_time: 1,
+       remote_address: :socket,
+       silence_single_worker_warning: false,
+       silence_fork_callback_warning: false,
+       tag: "repoRuby",
+       tcp_host: "0.0.0.0",
+       tcp_port: 9292,
+       wait_for_less_busy_worker: 0.005,
+       worker_boot_timeout: 60,
+       worker_check_interval: 5,
+       worker_culling_strategy: :youngest,
+       worker_shutdown_timeout: 30,
+       worker_timeout: 60,
+       workers: 0,
+       http_content_length_limit: nil,
+       events:
+        #<Puma::Events:0x0000000120d02e58
+         @hooks={ping!: [], after_booted: [], state: []}>,
+       preload_app: true},
+     @file_options=
+      {config_files: ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+       max_threads: 5,
+       binds: ["tcp://0.0.0.0:4567"],
+       preload_app: true,
+       pidfile: "tmp/pids/puma.pid",
+       redirect_stdout: "log/puma.stdout.log",
+       redirect_stderr: "log/puma.stderr.log",
+       redirect_append: false,
+       before_worker_boot:
+        [{block: #<Proc:0x0000000120980820 puma.rb:23>,
+          cluster_only: true,
+          id: nil}]},
+     @user_options=
+      {log_writer:
+        #<Puma::LogWriter:0x00000001210b9380
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000120d02f48
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x0000000120969fd0>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       logger:
+        #<Puma::LogWriter:0x00000001210b9380
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000120d02f48
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x0000000120969fd0>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       environment: "development",
+       worker_write: #<IO:fd 9>}>,
+   @clamped=true,
+   @default_dsl=
+    #<Puma::DSL:0x0000000120d024d0
+     @config=#<Puma::Configuration:0x0000000120c2a1e8 ...>,
+     @options=
+      {auto_trim_time: 30,
+       binds: ["tcp://0.0.0.0:9292"],
+       fiber_per_request: false,
+       debug: false,
+       enable_keep_alives: true,
+       early_hints: nil,
+       environment: "development",
+       first_data_timeout: 30,
+       idle_timeout: nil,
+       io_selector_backend: :auto,
+       log_requests: false,
+       logger: #<IO:log/puma.stdout.log>,
+       max_keep_alive: 999,
+       max_threads: 5,
+       min_threads: 0,
+       mode: :http,
+       mutate_stdout_and_stderr_to_sync_on_write: true,
+       out_of_band: [],
+       persistent_timeout: 65,
+       prune_bundler: false,
+       queue_requests: true,
+       rackup: "config.ru",
+       raise_exception_on_sigterm: true,
+       reaping_time: 1,
+       remote_address: :socket,
+       silence_single_worker_warning: false,
+       silence_fork_callback_warning: false,
+       tag: "repoRuby",
+       tcp_host: "0.0.0.0",
+       tcp_port: 9292,
+       wait_for_less_busy_worker: 0.005,
+       worker_boot_timeout: 60,
+       worker_check_interval: 5,
+       worker_culling_strategy: :youngest,
+       worker_shutdown_timeout: 30,
+       worker_timeout: 60,
+       workers: 0,
+       http_content_length_limit: nil,
+       events:
+        #<Puma::Events:0x0000000120d02e58
+         @hooks={ping!: [], after_booted: [], state: []}>,
+       preload_app: true},
+     @plugins=[]>,
+   @events=
+    #<Puma::Events:0x0000000120d02e58
+     @hooks={ping!: [], after_booted: [], state: []}>,
+   @file_dsl=
+    #<Puma::DSL:0x0000000120d02570
+     @config=#<Puma::Configuration:0x0000000120c2a1e8 ...>,
+     @options=
+      {config_files: ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+       max_threads: 5,
+       binds: ["tcp://0.0.0.0:4567"],
+       preload_app: true,
+       pidfile: "tmp/pids/puma.pid",
+       redirect_stdout: "log/puma.stdout.log",
+       redirect_stderr: "log/puma.stderr.log",
+       redirect_append: false,
+       before_worker_boot:
+        [{block: #<Proc:0x0000000120980820 puma.rb:23>,
+          cluster_only: true,
+          id: nil}]},
+     @path="puma.rb",
+     @plugins=[]>,
+   @hooks={before_worker_boot: true},
+   @loaded=true,
+   @plugins=#<Puma::PluginLoader:0x0000000120d02a20 @instances=[]>,
+   @puma_bundler_pruned=false,
+   @user_dsl=
+    #<Puma::DSL:0x0000000120d02688
+     @config=#<Puma::Configuration:0x0000000120c2a1e8 ...>,
+     @options=
+      {log_writer:
+        #<Puma::LogWriter:0x00000001210b9380
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000120d02f48
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x0000000120969fd0>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       logger:
+        #<Puma::LogWriter:0x00000001210b9380
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000120d02f48
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x0000000120969fd0>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       environment: "development",
+       worker_write: #<IO:fd 9>},
+     @plugins=[]>>,
+ "sinatra.commonlogger" => true,
+ "rack.logger" =>
+  #<Logger:0x0000000122528d98
+   @default_formatter=
+    #<Logger::Formatter:0x000000012254e4a8 @datetime_format=nil>,
+   @formatter=nil,
+   @level=1,
+   @level_override={},
+   @logdev=
+    #<Logger::LogDevice:0x000000012244a480
+     @binmode=false,
+     @dev=#<IO:log/puma.stderr.log>,
+     @filename="log/puma.stderr.log",
+     @mon_data=#<Monitor:0x000000012254e408>,
+     @mon_data_owner_object_id=1448,
+     @reraise_write_errors=[],
+     @shift_age=0,
+     @shift_period_suffix="%Y%m%d",
+     @shift_size=1048576,
+     @skip_header=false>,
+   @progname=nil>,
+ "rack.request.query_hash" => {},
+ "rack.request.form_pairs" => [],
+ "rack.request.form_hash" => {},
+ "sinatra.route" => "POST /github_webhook"}
+[1;34mINFO [0m 2026-04-17T12:20:35.457Z pid=43045 tid=yal: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+[1;34mINFO [0m 2026-04-17T17:50:25.444Z pid=43046 tid=yam: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 43045
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 43046
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 43047
+[26456] - Worker 1 (PID: 80029) booted in 0.01s, phase: 0
+[26456] - Worker 0 (PID: 80031) booted in 0.01s, phase: 0
+[26456] - Worker 2 (PID: 80032) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 80029
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 80031
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 80032
+[26456] - Worker 1 (PID: 80140) booted in 0.05s, phase: 0
+[26456] - Worker 0 (PID: 80141) booted in 0.03s, phase: 0
+[26456] - Worker 2 (PID: 80142) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 80140
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 80141
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 80142
+[26456] - Worker 0 (PID: 80273) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 80274) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 80275) booted in 0.01s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 80273
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 80274
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 80275
+[26456] - Worker 2 (PID: 80488) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 80487) booted in 0.01s, phase: 0
+[26456] - Worker 1 (PID: 80489) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 80487
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 80488
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 80489
+[26456] - Worker 1 (PID: 80626) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 80627) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 80628) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 80626
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 80627
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 80628
+[26456] - Worker 2 (PID: 80884) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 80882) booted in 0.01s, phase: 0
+[26456] - Worker 1 (PID: 80883) booted in 0.01s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 80882
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 80883
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 80884
+[26456] - Worker 0 (PID: 81014) booted in 0.02s, phase: 0
+[26456] - Worker 1 (PID: 81015) booted in 0.01s, phase: 0
+[26456] - Worker 2 (PID: 81016) booted in 0.01s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 81014
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 81015
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 81016
+[26456] - Worker 0 (PID: 81156) booted in 0.01s, phase: 0
+[26456] - Worker 1 (PID: 81157) booted in 0.01s, phase: 0
+[26456] - Worker 2 (PID: 81158) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 81156
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 81157
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 81158
+[26456] - Worker 1 (PID: 81290) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 81291) booted in 0.03s, phase: 0
+[26456] - Worker 2 (PID: 81292) booted in 0.03s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 81290
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 81291
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 81292
+[26456] - Worker 1 (PID: 81429) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 81430) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 81431) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 81429
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 81430
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 81431
+[26456] - Worker 1 (PID: 81612) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 81613) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 81614) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 81612
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 81613
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 81614
+[26456] - Worker 0 (PID: 81919) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 81920) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 81921) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 81919
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 81920
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 81921
+[26456] - Worker 0 (PID: 82215) booted in 0.01s, phase: 0
+[26456] - Worker 1 (PID: 82216) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 82217) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 82215
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 82216
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 82217
+[26456] - Worker 0 (PID: 82394) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 82395) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 82396) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 82394
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 82395
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 82396
+[26456] - Worker 1 (PID: 82547) booted in 0.04s, phase: 0
+[26456] - Worker 2 (PID: 82548) booted in 0.04s, phase: 0
+[26456] - Worker 0 (PID: 82546) booted in 0.04s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 82546
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 82547
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 82548
+[26456] - Worker 0 (PID: 82770) booted in 0.01s, phase: 0
+[26456] - Worker 1 (PID: 82771) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 82772) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 82770
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 82771
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 82772
+[26456] ! Out-of-sync worker list, no 82770 worker
+[26456] ! Out-of-sync worker list, no 82771 worker
+[26456] - Worker 1 (PID: 82921) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 82920) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 82922) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 82920
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 82921
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 82922
+[26456] - Worker 0 (PID: 83081) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 83082) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 83083) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 83081
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 83082
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 83083
+[26456] - Worker 0 (PID: 83206) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 83207) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 83208) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 83206
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 83207
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 83208
+[26456] - Worker 1 (PID: 83350) booted in 0.05s, phase: 0
+[26456] - Worker 0 (PID: 83348) booted in 0.06s, phase: 0
+[26456] - Worker 2 (PID: 83349) booted in 0.06s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 83348
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 83349
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 83350
+[26456] - Worker 1 (PID: 83535) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 83536) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 83537) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 83535
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 83536
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 83537
+[26456] - Worker 2 (PID: 83642) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 83640) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 83643) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 83640
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 83642
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 83643
+[26456] - Worker 1 (PID: 83757) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 83758) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 83759) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 83757
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 83758
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 83759
+[26456] - Worker 1 (PID: 83937) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 83936) booted in 0.01s, phase: 0
+[26456] - Worker 2 (PID: 83938) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 83936
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 83937
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 83938
+[26456] - Worker 0 (PID: 84059) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 84060) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 84061) booted in 0.01s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 84059
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 84060
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 84061
+[26456] - Worker 0 (PID: 84194) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 84195) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 84196) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 84194
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 84195
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 84196
+[26456] - Worker 2 (PID: 84335) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 84334) booted in 0.01s, phase: 0
+[26456] - Worker 1 (PID: 84336) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 84334
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 84335
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 84336
+[26456] - Worker 0 (PID: 84467) booted in 0.01s, phase: 0
+[26456] - Worker 1 (PID: 84468) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 84469) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 84467
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 84468
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 84469
+[26456] - Worker 0 (PID: 84621) booted in 0.01s, phase: 0
+[26456] - Worker 1 (PID: 84622) booted in 0.01s, phase: 0
+[26456] - Worker 2 (PID: 84623) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 84621
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 84622
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 84623
+[26456] ! Out-of-sync worker list, no 84621 worker
+[26456] ! Out-of-sync worker list, no 84622 worker
+[26456] - Worker 0 (PID: 84737) booted in 0.02s, phase: 0
+[26456] - Worker 1 (PID: 84738) booted in 0.01s, phase: 0
+[26456] - Worker 2 (PID: 84739) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 84737
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 84738
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 84739
+[26456] - Worker 2 (PID: 84848) booted in 0.05s, phase: 0
+[26456] - Worker 0 (PID: 84847) booted in 0.05s, phase: 0
+[26456] - Worker 1 (PID: 84849) booted in 0.05s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 84847
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 84848
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 84849
+[26456] - Worker 0 (PID: 84965) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 84966) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 84967) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 84965
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 84966
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 84967
+[26456] - Worker 0 (PID: 85083) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 85084) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 85085) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85083
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85084
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85085
+[26456] - Worker 1 (PID: 85177) booted in 0.05s, phase: 0
+[26456] - Worker 2 (PID: 85179) booted in 0.05s, phase: 0
+[26456] - Worker 0 (PID: 85176) booted in 0.05s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85176
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85177
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85179
+[26456] - Worker 0 (PID: 85283) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 85284) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 85285) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85283
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85284
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85285
+[26456] - Worker 2 (PID: 85395) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 85396) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 85397) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85395
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85396
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85397
+[26456] - Worker 2 (PID: 85511) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 85512) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 85513) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85511
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85512
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85513
+[26456] - Worker 2 (PID: 85631) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 85632) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 85633) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85631
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85632
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85633
+[26456] - Worker 0 (PID: 85833) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 85834) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 85835) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85833
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85834
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85835
+[26456] - Worker 0 (PID: 85969) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 85970) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 85971) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85969
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85970
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85971
+[26456] - Worker 2 (PID: 86115) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 86116) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 86117) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 86115
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 86116
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 86117
+[26456] - Worker 0 (PID: 86237) booted in 0.01s, phase: 0
+[26456] - Worker 1 (PID: 86238) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 86240) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 86237
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 86238
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 86240
+[26456] - Worker 0 (PID: 86356) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 86357) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 86358) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 86356
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 86357
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 86358
+[26456] - Worker 0 (PID: 86553) booted in 0.01s, phase: 0
+[26456] - Worker 1 (PID: 86554) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 86555) booted in 0.01s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 86553
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 86554
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 86555
+[26456] - Worker 0 (PID: 86669) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 86670) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 86671) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 86669
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 86670
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 86671
+[26456] - Worker 0 (PID: 86785) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 86786) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 86787) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 86785
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 86786
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 86787
+[26456] - Worker 0 (PID: 86893) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 86894) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 86895) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 86893
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 86894
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 86895
+[26456] - Worker 1 (PID: 87086) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 87087) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 87088) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 87086
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 87087
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 87088
+[26456] - Worker 0 (PID: 87241) booted in 0.01s, phase: 0
+[26456] - Worker 1 (PID: 87242) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 87243) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 87241
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 87242
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 87243
+[26456] - Worker 0 (PID: 87360) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 87361) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 87362) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 87360
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 87361
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 87362
+[26456] - Worker 0 (PID: 87490) booted in 0.0s, phase: 0
+[26456] - Worker 1 (PID: 87491) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 87492) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 87490
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 87491
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 87492
+[26456] - Worker 1 (PID: 87614) booted in 0.01s, phase: 0
+[26456] - Worker 0 (PID: 87615) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 87616) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 87614
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 87615
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 87616
+[26456] - Worker 1 (PID: 88361) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 88362) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 88363) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 88361
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 88362
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 88363
+[26456] - Worker 1 (PID: 88535) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 88534) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 88536) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 88534
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 88535
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 88536
+[26456] - Worker 1 (PID: 88640) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 88641) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 88642) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 88640
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 88641
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 88642
+[26456] - Worker 0 (PID: 88811) booted in 0.01s, phase: 0
+[26456] - Worker 1 (PID: 88812) booted in 0.0s, phase: 0
+[26456] - Worker 2 (PID: 88813) booted in 0.0s, phase: 0
+[26456] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 88811
+[26456] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 88812
+[26456] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 88813
+[26456] - Worker 1 (PID: 2467) booted in 0.0s, phase: 0
+[26456] - Worker 0 (PID: 2466) booted in 0.01s, phase: 0
+[26456] - Worker 2 (PID: 2468) booted in 0.0s, phase: 0
+[1;34mINFO [0m 2026-04-18T10:14:29.191Z pid=2468 tid=2e4: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
