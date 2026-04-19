@@ -173,7 +173,7 @@ class   UploadFileToNotion
         }
         query = {
         #    filter: {},
-            sorts: [{ property: 'Référence', direction: 'ascending' }]
+            sorts: [{ property: 'Nom', direction: 'ascending' }]
         }
         all_pages       = []
         has_more        = true
@@ -207,7 +207,7 @@ class   UploadFileToNotion
             page_id     = page['id']
             properties  = page['properties']
             ### pp page['properties']
-            value   = properties['Référence']
+            value   = properties['Nom']
             nom     = value["title"].map { _1["plain_text"] }.join
             value   = properties['Area']
             l1      = value['checkbox']
@@ -215,7 +215,7 @@ class   UploadFileToNotion
             l2      = value['checkbox']
             value   = properties['Tag']
             l3      = value['checkbox']
-            value   = properties['Type']
+            value   = properties['Emetteur']
             l4      = value['checkbox']
             @arr_tags[nom]  = [page_id,l1,l2,l3,l4]
         end #<L1>
@@ -588,11 +588,8 @@ class   UploadFileToNotion
 
         # build properties
         props = {}
-        props['Référence']      = { 'title' => [{ 'text' => { 'content' => @arr_fileinfos['filename'] }} ] }
-    #    props['Niveau 1']       = { 'relation' => [{ 'id' => @arr_tags[@old_level1][0]} ] }
-    #    props['Dossier']        = { 'relation' => [{ 'id' => @arr_tags[@old_level2][0]} ] }
+        props['Nom']      = { 'title' => [{ 'text' => { 'content' => @arr_fileinfos['filename'] }} ] }
         props['Tags']           = { 'relation' => [{ 'id' => @arr_tags[@old_level3][0]} ] }
-    #    props['Type']           = { 'relation' => [{ 'id' => @arr_tags[@old_level4][0]} ] }
         props['Emetteur']       = { 'relation' => [{ 'id' => @arr_tags[@old_sender][0]} ] }
         props['Description']    = { 'rich_text' => [{ 'text' => { 'content' => @note } }] }
         props['Fichier']        = { 'files' => [{ 'file_upload' => { 'id' => @arr_fileinfos['id'] }}] }

@@ -1,5 +1,5 @@
 #
-#   Program:    PrvUploadToNotion
+#   Program:    PrcUploadToNotion
 #   Parameters: P1 => debug => Y or N
 #               P2 => nil
 #               P3 => nil

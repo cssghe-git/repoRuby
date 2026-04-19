@@ -119,7 +119,7 @@ class   UploadFileToNotion
         }
         query = {
         #    filter: {},
-            sorts: [{ property: 'Référence', direction: 'ascending' }]
+            sorts: [{ property: 'Nom', direction: 'ascending' }]
         }
         all_pages       = []
         has_more        = true
@@ -152,15 +152,15 @@ class   UploadFileToNotion
             page_id     = page['id']
             properties  = page['properties']
             ### pp page['properties']
-            value   = properties['Référence']
+            value   = properties['Nom']
             nom     = value["title"].map { _1["plain_text"] }.join
-            value   = properties['Level 1']
+            value   = properties['Area']
             l1      = value['checkbox']
-            value   = properties['Level 2']
+            value   = properties['Dossier']
             l2      = value['checkbox']
-            value   = properties['Level 3']
+            value   = properties['Tag']
             l3      = value['checkbox']
-            value   = properties['Level 4']
+            value   = properties['Emetteur']
             l4      = value['checkbox']
             @arr_tags[nom]  = [page_id,l1,l2,l3,l4]
         end #<L1>
@@ -249,7 +249,9 @@ class   UploadFileToNotion
         end 
 
         # Get Level2/Object
+        @old_level2 = "Tbd"
         while   true
+            break
             puts    "\n#{b}TAGS 2::#{r} #{@tagl2}"
             print   "Enter the Object [#{@old_level2}] => "
             level2  = ask(default: "#{@old_level2}", form: 'cap')
@@ -268,8 +270,10 @@ class   UploadFileToNotion
             break   if @arr_tags.has_key?(level3)
         end
 
-        # Get Level4/Type
+        # Get Level4/Type``
+        @old_level4 = "Tbd"
         while   true
+            break
             puts    "\n#{b}TAGS 4::#{r} #{@tagl4}"
             print   "Enter the Type [#{@old_level4}] => "
             level4  = ask(default: "#{@old_level4}", form: 'cap')
@@ -477,11 +481,11 @@ class   UploadFileToNotion
 
         # build properties
         props = {}
-        props['Référence']      = { 'title' => [{ 'text' => { 'content' => @arr_fileinfos['filename'] }} ] }
+        props['Nom']      = { 'title' => [{ 'text' => { 'content' => @arr_fileinfos['filename'] }} ] }
     #    props['Niveau 1']       = { 'relation' => [{ 'id' => @arr_tags[@old_level1][0]} ] }
-        props['Objet']          = { 'relation' => [{ 'id' => @arr_tags[@old_level2][0]} ] }
+    #    props['Dossier']        = { 'relation' => [{ 'id' => @arr_tags[@old_level2][0]} ] }
         props['Tags']           = { 'relation' => [{ 'id' => @arr_tags[@old_level3][0]} ] }
-        props['Type']           = { 'relation' => [{ 'id' => @arr_tags[@old_level4][0]} ] }
+    #    props['Type']           = { 'relation' => [{ 'id' => @arr_tags[@old_level4][0]} ] }
         props['Emetteur']       = { 'relation' => [{ 'id' => @arr_tags[@old_sender][0]} ] }
         props['Description']    = { 'rich_text' => [{ 'text' => { 'content' => @note } }] }
         props['Fichier']        = { 'files' => [{ 'file_upload' => { 'id' => @arr_fileinfos['id'] }}] }
