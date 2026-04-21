@@ -10,14 +10,14 @@ class WebhookAsync
     # Main method
     #************
     #
-    def perform(type, payload)
+    def perform(type, payload, x_array = nil)
         logger.info ">>>"
         logger.info "🔄 Traitement async: #{type}}"
         logger.info ">>>*****************<<<"
 
         case type                                       #dispatch according to type/fro of webhook
         when 'Notion-automation'
-            handle_notion(payload)
+            handle_notion(payload, x_array)
         when 'GitHub'
             handle_github(payload)
         when 'Fastmail'
@@ -82,7 +82,7 @@ class WebhookAsync
     #
     # From Notion - WebHook (automation)
     #**********************
-    def handle_notion(payload)
+    def handle_notion(payload, x_array = nil)
         # Display payload
         pp payload
         
@@ -92,6 +92,12 @@ class WebhookAsync
         object      = data['object']
         properties  = data['properties']
 
+        # Extract X fields
+        x_from_object   = x_array[:x_from_object] || 'unknown object'
+        x_from_page     = x_array[:x_from_page] || 'unknown page'
+        x_signature     = x_array[:x_signature] || 'unknown signature'
+        pp x_array
+        
         # Configure fields
         prop_hash   = {}
         properties.each do |key, value|
