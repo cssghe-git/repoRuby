@@ -45,6 +45,26 @@ class WebhookAsync
         when    "title"         then field["title"].map { _1["plain_text"] }.join
         when    'select'        then field["select"] && field["select"]["name"]
         when    'multi_select'  then (field["multi_select"] || []).map { _1["name"] }
+        when    "rich_text"     then field["rich_text"].map { _1["plain_text"] }.join
+        when    "status"        then field["status"] && field["status"]["name"]
+        when    "date"          then field["date"] && field["date"]["start"]
+        when    "email"         then field["email"]
+        when    "phone_number"  then field["phone_number"]
+        when    "checkbox"      then field["checkbox"]
+        when    "number"        then field["number"]
+        when    "relation"      then (field["relation"] || []).map { _1["id"] }
+        when    "people"        then (field["people"]   || []).map { _1["id"] }
+        when    "formula"
+            f = field["formula"]
+            return nil unless f
+            case f["type"]
+            when    "string"  then f["string"]
+            when    "number"  then f["number"]
+            when    "boolean" then f["boolean"]
+            when    "date"    then f["date"] && f["date"]["start"]
+            end
+        else
+            field[field["type"]]
         end #<SW1>
     end #<def>
 
@@ -137,7 +157,7 @@ class WebhookAsync
     # From Githubb
     #*************
     def handle_github(payload)
-        pp payload
+        # pp payload
         # Extract parts
         head_commit = payload['head_commit']
         head_commit.each do |key, value|
