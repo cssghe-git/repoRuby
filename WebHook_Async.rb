@@ -84,7 +84,7 @@ class WebhookAsync
     #**********************
     def handle_notion(payload, x_array = nil)
         # Display payload
-        pp payload
+        #   pp payload
         
         # Extract parts
         source      = payload['source']
@@ -97,7 +97,7 @@ class WebhookAsync
         x_from_page     = x_array[:x_from_page] || 'unknown page'
         x_signature     = x_array[:x_signature] || 'unknown signature'
         pp x_array
-        
+
         # Configure fields
         prop_hash   = {}
         properties.each do |key, value|

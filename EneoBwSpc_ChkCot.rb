@@ -94,7 +94,7 @@ class   Cot_Checks
     #   OUT:    arr_cotisations: []
     #   FUNCT:  load array from COT pages
     #
-        puts    "DBG>>#{__method__}>FILTER:#{filter} - SORT:#{sort}"
+        ### puts    "DBG>>#{__method__}>FILTER:#{filter} - SORT:#{sort}"
         body = { page_size: page_size }
         body[:filter]   = filter    if filter
         body[:sorts]    = sort      if sort
@@ -217,7 +217,7 @@ class   Cot_Checks
             prv_activity    = activity
             str             = "REF:#{reference}"
             str_len         = 35-str.size
-            suppl           = " "* str_len
+            suppl           = str_len > 0 ? " "* str_len : " "
             puts    str + suppl + "=> #{encode} | #{attente} | #{paye}  ==> State: #{state}"
         #    puts    " => Encodés:#{encode} - En attente:#{attente} - Payés:#{paye}"
         end
