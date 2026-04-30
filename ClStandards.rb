@@ -11,26 +11,44 @@ begin
   require "dotenv"; Dotenv.load
 rescue LoadError
 end
+
+require_relative 'Mod_Debuggable.rb'
+
+#
+# Include Modules
+#****************
+include Debuggable
 #
 # Class
 #******
+#++++++++++++++++
 class   Standards
 #++++++++++++++++
 #
 #   Actions:    ?
 
 #
+# Class includes
+#===============
+    include Debuggable
+#
 # Class variables
 #================
+    # Getter & Setter
+    #++++++++++++++++
+    attr_accessor   = :log
+
     @@Instances = 0
 # Logger
-    @@log                 = Logger.new(STDOUT)
-    @@log.level           = Logger::INFO
-    @@log.datetime_format = '%H:%M:%S'
+    @@log                   = Logger.new(STDOUT)
+    @@log.level             = Logger::INFO
+    @@log.datetime_format   = '%H:%M:%S'
+    @@log_std               ="STD:#{__method__}::"
 #
 # Instances variables
 #====================
-    @opts   = {
+
+        @opts   = {
         debug:          ENV.fetch('DEBUG', 'INFO'),
         exec:           ENV.fetch('EXEC', 'S'),
         dryrun:         ENV.fetch('DRY_RUN', true),
@@ -56,16 +74,17 @@ class   Standards
 #
 # Code
 #*****
-    # Getter & Setter
-    #++++++++++++++++
-    attr_accessor   :opts, :dry_run
-
+    #
     # Methodes
     #+++++++++
 
-    def initialize(options=[], old='New')
+    def initialize(options=[], old='New', debug=false)
     #=============
-#        # Common Options from ENV
+        @debug  = debug
+        puts    debug_vars      if @debug
+        @@log.info @@log_std + "STD->New instance settings - style: #{old}" if @debug
+
+        # Common Options from ENV
         @opts   = {
             debug:          ENV.fetch('DEBUG', 'INFO'),
             exec:           ENV.fetch('EXEC', 'S'),
@@ -88,7 +107,7 @@ class   Standards
         @dbids      = JSON.parse(File.read(@opts[:not_jsondbids]))  #load json file dbids
         @dry_run    = @opts[:dryrun]
 
-        # Notion variables
+        # Notion variables & header according to version
         @not_ver    = old
         if @not_ver == 'New'
             @not_hdr    = {
@@ -179,6 +198,7 @@ class   Standards
 
             # select
             batch.select! do |page|
+                yield page if block_given?
                 true
             end
 
@@ -303,6 +323,11 @@ class   Standards
     end
 
     # Format all properties according to type
+    # samples:
+    #   new_props = {}
+    #   new_props["Title"] = title("My page title")
+    #   new_props["Status"] = select("In Progress") ... etc
+    #
     def title(str)      = { "type"=>"title","title"=>[{"type"=>"text","text"=>{"content"=>str.to_s}}] }
     def select(v)       = { "type"=>"select","select"=> v ? {"name"=>v} : nil }
     def mulsel(arr)     = { "type"=>"multi_select","multi_select"=> Array(arr).compact.map{|n| {"name"=>n} } }

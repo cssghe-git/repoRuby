@@ -72,7 +72,6 @@ class   Cot_Checks
 
 # Class variables
 #****************
-    @not_hdr    = {}                                    #Header for each request
 
 # Methods
 #********
@@ -84,6 +83,10 @@ class   Cot_Checks
     #   FUNCT:  init new instance
     #
         @not_hdr    = NOTION_HDR
+        @count_totaux = 0
+        @count_paiement = 0
+        @count_child = 0
+        @paiement_recs = [0,0,0,0,0]    #Total records for each paiement status
     end #<def>
 
     # Query on COT
@@ -254,24 +257,41 @@ class   Cot_Checks
             type        = get_prop(page,'Type')
             reference   = get_prop(page,'Référence')
             etat        = get_prop(page,'Etat')
+            parent      = get_prop(page,'relParent')
             puts    "<>"
             puts    "DBG>>>REF: #{reference} -> Type: #{type}"
             case    type
             when    'Totaux'
                 #    pp  page
+                @count_totaux += 1
                 puts    "#{type}=>Etat:#{etat} | Status:#{get_prop(page,'Status')} | COT:#{get_prop(page,'Nbr cotisations')} | #{get_prop(page,'Total réduit')}"
                 puts    "- - -REL=>ACT:#{get_prop(page,'relActivité')} | #{get_prop(page,'relAllacts')} | Cont:#{get_prop(page,'ContainerCOT')}"
                 puts    "- - -ENF=>#{get_prop(page,'rlbEnfant')}"
             when    'Paiement'
+                @count_paiement += 1
+                index = reference[10].to_i
+                @paiement_recs[index] += 1 if index >= 0 
                 puts    "#{type}=>Etat:#{etat} | Status:#{get_prop(page,'Status')} | COT:#{get_prop(page,'Nbr cotisations')} | #{get_prop(page,'Total réduit')}"
                 puts    "- - -REL=>ACT:#{get_prop(page,'relActivité')} | #{get_prop(page,'relAllacts')} | Cont:#{get_prop(page,'ContainerCOT')}"
                 puts    "- - -ENF=>#{get_prop(page,'rlbEnfant')}"
             when    'Child'
+                @count_child += 1
                 puts    "#{type}=>Etat:#{etat} | Status:#{get_prop(page,'Status')} | COT:#{get_prop(page,'Nbr cotisations')} | #{get_prop(page,'Total réduit')}"
                 puts    "- - -REL=>ACT:#{get_prop(page,'relActivité')} | #{get_prop(page,'relAllacts')} | Cont:#{get_prop(page,'ContainerCOT')}"
                 puts    "- - -MBR=>#{get_prop(page,'relMembre')} | PAR:#{get_prop(page,'relParent')}"
             end
         end
+    end #<def>
+
+    def display_totaux()
+    #=================
+        puts "Pages <Totaux>: #{@count_totaux}"
+        puts "Pages <Paiement>: #{@count_paiement} -> #{@paiement_recs.sum} records"
+        @paiement_recs.each_with_index do |count, index|
+            puts "Pages <Paiement> children #{index}: #{count}"
+        end
+    puts "Pages <Child>: #{@count_child}"
+
     end #<def>
 
 end #<class>
@@ -305,6 +325,8 @@ end #<class>
     log.info("Display pages")
     not_inst.display_cot(array_cot)
 
-
+    # Totaux
+    not_inst.display_totaux()
+    
 # Exit
     log.info("#{$0} done")

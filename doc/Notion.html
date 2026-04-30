@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>class Notion - RDoc Documentation</title>
+
+
+  <meta
+    name="keywords"
+    content="ruby,class,Notion"
+  >
+
+    <meta
+      name="description"
+      content="class Notion: ------------------------------------------------------------ Client Notion minimal (HTTParty) --------------------------------------------------------"
+    >
+
+
+
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="class Notion - RDoc Documentation">
+
+
+
+    <meta property="og:description" content="------------------------------------------------------------ Client Notion minimal (HTTParty) --------------------------------------------------------">
+
+
+
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="class Notion - RDoc Documentation">
+
+
+
+    <meta name="twitter:description" content="------------------------------------------------------------ Client Notion minimal (HTTParty) --------------------------------------------------------">
+
+
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script
+  src="./js/theme-toggle.js?v=7.2.0"
+></script>
+
+<script
+  src="./js/search_navigation.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_data.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_ranker.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_controller.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/c_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/aliki.js?v=7.2.0"
+  defer
+></script>
+
+<link
+  href="./css/rdoc.css?v=7.2.0"
+  rel="stylesheet"
+>
+
+
+
+
+<body role="document" class="class has-toc">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Chevron (right arrow) - used for expand/collapse -->
+  <symbol
+    id="icon-chevron"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </symbol>
+
+  <!-- File/Document - Pages section -->
+  <symbol
+    id="icon-file"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+    ></path>
+
+    <polyline points="14 2 14 8 20 8"></polyline>
+  </symbol>
+
+  <!-- Layers/Stack - Classes and Modules section -->
+  <symbol
+    id="icon-layers"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+    <polyline points="2 17 12 22 22 17"></polyline>
+    <polyline points="2 12 12 17 22 12"></polyline>
+  </symbol>
+
+  <!-- Curly braces with C - Class Methods section -->
+  <symbol
+    id="icon-class-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      C
+    </text>
+  </symbol>
+
+  <!-- Curly braces with I - Instance Methods section -->
+  <symbol
+    id="icon-instance-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      I
+    </text>
+  </symbol>
+
+  <!-- Double chevrons up - Ancestors section -->
+  <symbol
+    id="icon-ancestors"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="17 11 12 6 7 11"></polyline>
+    <polyline points="17 18 12 13 7 18"></polyline>
+  </symbol>
+
+  <!-- User with plus - Included Modules section -->
+  <symbol
+    id="icon-includes"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+
+    <line
+      x1="20"
+      y1="8"
+      x2="20"
+      y2="14"
+    ></line>
+
+    <line
+      x1="23"
+      y1="11"
+      x2="17"
+      y2="11"
+    ></line>
+  </symbol>
+
+  <!-- User with check - Extended Modules section -->
+  <symbol
+    id="icon-extends"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+    <polyline points="17 11 19 13 23 9"></polyline>
+  </symbol>
+
+  <!-- List - Sections section -->
+  <symbol
+    id="icon-list"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line
+      x1="8"
+      y1="6"
+      x2="21"
+      y2="6"
+    ></line>
+
+    <line
+      x1="8"
+      y1="12"
+      x2="21"
+      y2="12"
+    ></line>
+
+    <line
+      x1="8"
+      y1="18"
+      x2="21"
+      y2="18"
+    ></line>
+
+    <line
+      x1="3"
+      y1="6"
+      x2="3.01"
+      y2="6"
+    ></line>
+
+    <line
+      x1="3"
+      y1="12"
+      x2="3.01"
+      y2="12"
+    ></line>
+
+    <line
+      x1="3"
+      y1="18"
+      x2="3.01"
+      y2="18"
+    ></line>
+  </symbol>
+</svg>
+
+<header class="top-navbar">
+  <a href="./index.html" class="navbar-brand">
+    RDoc Documentation
+  </a>
+
+  <!-- Desktop search bar -->
+  <div class="navbar-search navbar-search-desktop" role="search">
+    <form action="#" method="get" accept-charset="utf-8">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results-desktop"
+             type="text" name="search" placeholder="Search (/) for a class, method..."
+             spellcheck="false" autocomplete="off"
+             title="Type to search, Up and Down to navigate, Enter to load">
+      <ul id="search-results-desktop" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="initially-hidden search-results"></ul>
+    </form>
+  </div>
+
+  <!-- Mobile search icon button -->
+  <button id="search-toggle" class="navbar-search-mobile" aria-label="Open search" type="button">
+    <span aria-hidden="true">🔍</span>
+  </button>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+  </button>
+</header>
+
+<!-- Search Modal (Mobile) -->
+<div id="search-modal" class="search-modal" hidden aria-modal="true" role="dialog" aria-label="Search">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <form class="search-modal-form" action="#" method="get" accept-charset="utf-8">
+        <span class="search-modal-icon" aria-hidden="true">🔍</span>
+        <input id="search-field-mobile" role="combobox" aria-label="Search"
+               aria-autocomplete="list" aria-controls="search-results-mobile"
+               type="text" name="search" placeholder="Search documentation"
+               spellcheck="false" autocomplete="off">
+        <button type="button" class="search-modal-close" aria-label="Close search" id="search-modal-close">
+          <span aria-hidden="true">esc</span>
+        </button>
+      </form>
+    </div>
+    <div class="search-modal-body">
+      <ul id="search-results-mobile" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="search-results search-modal-results initially-hidden"></ul>
+      <div class="search-modal-empty">
+        <p>No recent searches</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+  <span aria-hidden="true">&#9776;</span>
+</div>
+
+
+<nav id="navigation" role="navigation" hidden>
+  
+
+
+
+
+
+  
+
+  
+<div id="parent-class-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-ancestors"></use></svg>
+      </span>
+      <span class="nav-section-title">Ancestors</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+    <ul><li><a href="Object.html">Object</a><ul><li>BasicObject</li></ul></li></ul>
+  </details>
+</div>
+
+
+  
+<div id="includes-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-includes"></use></svg>
+      </span>
+      <span class="nav-section-title">Included Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+
+    <ul class="nav-list">
+
+
+      <li><span class="include">HTTParty</span></li>
+
+
+    </ul>
+  </details>
+</div>
+
+
+  
+
+  
+  <div class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg><use href="#icon-class-methods"></use></svg>
+        </span>
+        <span class="nav-section-title">Class Methods</span>
+        <span class="nav-section-chevron">
+          <svg><use href="#icon-chevron"></use></svg>
+        </span>
+      </summary>
+      <ul class="nav-list" role="directory">
+
+        <li ><a href="#method-c-new">new</a></li>
+
+      </ul>
+    </details>
+  </div>
+
+
+
+  <div class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg><use href="#icon-instance-methods"></use></svg>
+        </span>
+        <span class="nav-section-title">Instance Methods</span>
+        <span class="nav-section-chevron">
+          <svg><use href="#icon-chevron"></use></svg>
+        </span>
+      </summary>
+      <ul class="nav-list" role="directory">
+
+        <li ><a href="#method-i-add_stock">add_stock</a></li>
+
+        <li ><a href="#method-i-create_page">create_page</a></li>
+
+        <li ><a href="#method-i-get_stock">get_stock</a></li>
+
+        <li ><a href="#method-i-get_title">get_title</a></li>
+
+        <li ><a href="#method-i-patch">patch</a></li>
+
+        <li ><a href="#method-i-post">post</a></li>
+
+        <li ><a href="#method-i-query_database">query_database</a></li>
+
+        <li ><a href="#method-i-retrieve_page">retrieve_page</a></li>
+
+        <li ><a href="#method-i-set_stock">set_stock</a></li>
+
+        <li ><a href="#method-i-update_page">update_page</a></li>
+
+      </ul>
+    </details>
+  </div>
+
+
+  <div id="classindex-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-layers"></use></svg>
+      </span>
+      <span class="nav-section-title">Classes and Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+
+    <ul class="link-list nav-list"><li><code><a href="./API_Notion.html">API_Notion</a></code></li><li><code><a href="./CotMgt.html">CotMgt</a></code></li><li><code><a href="./Cot_Checks.html">Cot_Checks</a></code></li><li><code><a href="./CsvToNotion.html">CsvToNotion</a></code></li><li><code><a href="./Debuggable.html">Debuggable</a></code></li><li><code><a href="./ExtractorMBR.html">ExtractorMBR</a></code></li><li><code><a href="./HelloFrame.html">HelloFrame</a></code></li><li><code><a href="./HelpApplic.html">HelpApplic</a></code></li><li><details><summary><code><a href="./M25_Members.html">M25_Members</a></code></summary><ul class="link-list nav-list"><li><code><a href="./M25_Members/Members.html">Members</a></code></li></ul></details></li><li><code><a href="./M25t_Membres.html">M25t_Membres</a></code></li><li><code><a href="./Notion.html">Notion</a></code></li><li><code><a href="./NotionClient.html">NotionClient</a></code></li><li><code><a href="./NotionMembersExtractor.html">NotionMembersExtractor</a></code></li><li><code><a href="./Object.html">Object</a></code></li><li><code><a href="./SelectFile.html">SelectFile</a></code></li><li><code><a href="./Standards.html">Standards</a></code></li><li><code><a href="./TestJob.html">TestJob</a></code></li><li><code><a href="./UploadFileToNotion.html">UploadFileToNotion</a></code></li><li><code><a href="./WebhookAsync.html">WebhookAsync</a></code></li><li><code><a href="./WebhookProcessing.html">WebhookProcessing</a></code></li></ul>
+  </details>
+</div>
+
+</nav>
+
+<main role="main" aria-labelledby="class-notion">
+  
+  
+
+  <span id="class-Notion" class="legacy-anchor"></span>
+  <h1 id="class-notion" class="anchor-link class">
+    class Notion
+  </h1>
+
+  <section class="description">
+    <hr>
+
+<p>Client <a href="Notion.html"><code>Notion</code></a> minimal (HTTParty)</p>
+<hr>
+
+  </section>
+
+
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
+
+
+
+
+
+
+
+
+
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
+       <header>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
+       </header>
+
+
+      <div id="method-c-new" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-new" title="Link to this method">
+                <span class="method-name">new</span>
+                <span class="method-args">(token:)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="new-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwSpc_MbrCheck_IA.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">token:</span>)
+  <span class="ruby-ivar">@headers</span> = {
+    <span class="ruby-string">&quot;Authorization&quot;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-node">&quot;Bearer #{token}&quot;</span>,
+    <span class="ruby-string">&quot;Notion-Version&quot;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">NOTION_VERSION</span>,
+    <span class="ruby-string">&quot;Content-Type&quot;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;application/json&quot;</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+    </section>
+
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
+       <header>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
+       </header>
+
+
+      <div id="method-i-add_stock" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-add_stock" title="Link to this method">
+                <span class="method-name">add_stock</span>
+                <span class="method-args">(notion, article_page_id, delta)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="add_stock-source">
+            <pre class="ruby"><span class="ruby-comment"># File PrvGestionCde.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_stock</span>(<span class="ruby-identifier">notion</span>, <span class="ruby-identifier">article_page_id</span>, <span class="ruby-identifier">delta</span>)
+<span class="ruby-comment">#------------</span>
+    <span class="ruby-identifier">current</span> = <span class="ruby-identifier">get_stock</span>(<span class="ruby-identifier">notion</span>, <span class="ruby-identifier">article_page_id</span>)
+    <span class="ruby-identifier">set_stock</span>(<span class="ruby-identifier">notion</span>, <span class="ruby-identifier">article_page_id</span>, <span class="ruby-identifier">current</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">delta</span>.<span class="ruby-identifier">to_f</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-create_page" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-create_page" title="Link to this method">
+                <span class="method-name">create_page</span>
+                <span class="method-args">(parent_database_id:, properties:)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="create_page-source">
+            <pre class="ruby"><span class="ruby-comment"># File PrvGestionCde.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_page</span>(<span class="ruby-value">parent_database_id:</span>, <span class="ruby-value">properties:</span>)
+<span class="ruby-comment">#--------------</span>
+    <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;DBG&gt;&gt;&gt;ID:#{parent_database_id}&quot;</span>
+    <span class="ruby-identifier">body</span> = { <span class="ruby-value">parent:</span> { <span class="ruby-value">database_id:</span> <span class="ruby-identifier">parent_database_id</span> }, <span class="ruby-value">properties:</span> <span class="ruby-identifier">properties</span> }
+    <span class="ruby-identifier">post</span>(<span class="ruby-string">&quot;/pages&quot;</span>, <span class="ruby-identifier">body</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-get_stock" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-get_stock" title="Link to this method">
+                <span class="method-name">get_stock</span>
+                <span class="method-args">(notion, article_page_id)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="get_stock-source">
+            <pre class="ruby"><span class="ruby-comment"># File PrvGestionCde.rb, line 146</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_stock</span>(<span class="ruby-identifier">notion</span>, <span class="ruby-identifier">article_page_id</span>)
+<span class="ruby-comment">#------------</span>
+    <span class="ruby-identifier">page</span> = <span class="ruby-identifier">notion</span>.<span class="ruby-identifier">retrieve_page</span>(<span class="ruby-identifier">article_page_id</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;HTTP #{page.code}: #{page.body}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">between?</span>(<span class="ruby-value">200</span>, <span class="ruby-value">299</span>)
+    <span class="ruby-identifier">json</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">body</span>)
+    <span class="ruby-identifier">json</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&quot;properties&quot;</span>, <span class="ruby-constant">PROP_ART_STOCK</span>, <span class="ruby-string">&quot;number&quot;</span>).<span class="ruby-identifier">to_f</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-get_title" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-get_title" title="Link to this method">
+                <span class="method-name">get_title</span>
+                <span class="method-args">(notion, page_id)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="get_title-source">
+            <pre class="ruby"><span class="ruby-comment"># File PrvGestionCde.rb, line 138</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_title</span>(<span class="ruby-identifier">notion</span>, <span class="ruby-identifier">page_id</span>)
+<span class="ruby-comment">#------------</span>
+    <span class="ruby-identifier">page</span> = <span class="ruby-identifier">notion</span>.<span class="ruby-identifier">retrieve_page</span>(<span class="ruby-identifier">page_id</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;HTTP #{page.code}: #{page.body}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">between?</span>(<span class="ruby-value">200</span>, <span class="ruby-value">299</span>)
+    <span class="ruby-identifier">json</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">body</span>)
+    <span class="ruby-identifier">json</span>.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&quot;properties&quot;</span>, <span class="ruby-string">&quot;Référence&quot;</span>, <span class="ruby-string">&quot;content&quot;</span>).<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-patch" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-patch" title="Link to this method">
+                <span class="method-name">patch</span>
+                <span class="method-args">(path, body_hash)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="patch-source">
+            <pre class="ruby"><span class="ruby-comment"># File PrvGestionCde.rb, line 131</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">patch</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">body_hash</span>)
+<span class="ruby-comment">#--------</span>
+    <span class="ruby-identifier">resp</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">patch</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value">headers:</span> <span class="ruby-ivar">@headers</span>, <span class="ruby-value">body:</span> <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">body_hash</span>))
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;HTTP #{resp.code}: #{resp.body}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">between?</span>(<span class="ruby-value">200</span>, <span class="ruby-value">299</span>)
+    <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">resp</span>.<span class="ruby-identifier">body</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-post" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-post" title="Link to this method">
+                <span class="method-name">post</span>
+                <span class="method-args">(path, body_hash)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="post-source">
+            <pre class="ruby"><span class="ruby-comment"># File PrvGestionCde.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">post</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">body_hash</span>)
+<span class="ruby-comment">#-------</span>
+    <span class="ruby-identifier">resp</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">post</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value">headers:</span> <span class="ruby-ivar">@headers</span>, <span class="ruby-value">body:</span> <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">body_hash</span>))
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;HTTP #{resp.code}: #{resp.body}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">between?</span>(<span class="ruby-value">200</span>, <span class="ruby-value">299</span>)
+    <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">resp</span>.<span class="ruby-identifier">body</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-query_database" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-query_database" title="Link to this method">
+                <span class="method-name">query_database</span>
+                <span class="method-args">(database_id, filter: nil, page_size: 100)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="query_database-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwSpc_MbrCheck_IA.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">query_database</span>(<span class="ruby-identifier">database_id</span>, <span class="ruby-value">filter:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">page_size:</span> <span class="ruby-value">100</span>)
+  <span class="ruby-identifier">results</span> = []
+  <span class="ruby-identifier">start_cursor</span> = <span class="ruby-keyword">nil</span>
+
+  <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">body</span> = { <span class="ruby-value">page_size:</span> <span class="ruby-identifier">page_size</span> }
+    <span class="ruby-identifier">body</span>[<span class="ruby-value">:filter</span>] = <span class="ruby-identifier">filter</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">filter</span>
+    <span class="ruby-identifier">body</span>[<span class="ruby-value">:start_cursor</span>] = <span class="ruby-identifier">start_cursor</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">start_cursor</span>
+
+    <span class="ruby-identifier">resp</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">post</span>(<span class="ruby-node">&quot;/data_sources/#{database_id}/query&quot;</span>, <span class="ruby-value">headers:</span> <span class="ruby-ivar">@headers</span>, <span class="ruby-value">body:</span> <span class="ruby-identifier">body</span>.<span class="ruby-identifier">to_json</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Query failed #{resp.code}: #{resp.body}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">between?</span>(<span class="ruby-value">200</span>, <span class="ruby-value">299</span>)
+
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">parsed_response</span>
+    <span class="ruby-identifier">results</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">data</span>[<span class="ruby-string">&quot;results&quot;</span>])
+    <span class="ruby-keyword">break</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">data</span>[<span class="ruby-string">&quot;has_more&quot;</span>]
+
+    <span class="ruby-identifier">start_cursor</span> = <span class="ruby-identifier">data</span>[<span class="ruby-string">&quot;next_cursor&quot;</span>]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">results</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-retrieve_page" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-retrieve_page" title="Link to this method">
+                <span class="method-name">retrieve_page</span>
+                <span class="method-args">(page_id)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="retrieve_page-source">
+            <pre class="ruby"><span class="ruby-comment"># File PrvGestionCde.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_page</span>(<span class="ruby-identifier">page_id</span>)
+<span class="ruby-comment">#----------------</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">get</span>(<span class="ruby-node">&quot;/pages/#{page_id}&quot;</span>, <span class="ruby-value">headers:</span> <span class="ruby-ivar">@headers</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-set_stock" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-set_stock" title="Link to this method">
+                <span class="method-name">set_stock</span>
+                <span class="method-args">(notion, article_page_id, new_stock)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="set_stock-source">
+            <pre class="ruby"><span class="ruby-comment"># File PrvGestionCde.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_stock</span>(<span class="ruby-identifier">notion</span>, <span class="ruby-identifier">article_page_id</span>, <span class="ruby-identifier">new_stock</span>)
+<span class="ruby-comment">#------------</span>
+    <span class="ruby-identifier">notion</span>.<span class="ruby-identifier">update_page</span>(
+        <span class="ruby-value">page_id:</span> <span class="ruby-identifier">article_page_id</span>,
+        <span class="ruby-value">properties:</span> {
+            <span class="ruby-constant">PROP_ART_STOCK</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">prop_number</span>(<span class="ruby-identifier">new_stock</span>.<span class="ruby-identifier">to_f</span>)
+        }
+    )
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-update_page" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-update_page" title="Link to this method">
+                <span class="method-name">update_page</span>
+                <span class="method-args">(page_id, properties:)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="update_page-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwSpc_MbrCheck_IA.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update_page</span>(<span class="ruby-identifier">page_id</span>, <span class="ruby-value">properties:</span>)
+  <span class="ruby-identifier">body</span> = { <span class="ruby-value">properties:</span> <span class="ruby-identifier">properties</span> }
+  <span class="ruby-identifier">resp</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">patch</span>(<span class="ruby-node">&quot;/pages/#{page_id}&quot;</span>, <span class="ruby-value">headers:</span> <span class="ruby-ivar">@headers</span>, <span class="ruby-value">body:</span> <span class="ruby-identifier">body</span>.<span class="ruby-identifier">to_json</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Update failed #{resp.code}: #{resp.body}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">between?</span>(<span class="ruby-value">200</span>, <span class="ruby-value">299</span>)
+  <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">parsed_response</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+    </section>
+
+
+
+
+  </section>
+
+</main>
+
+<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+  <div class="toc-sticky">
+    <h3 class="toc-heading">On This Page</h3>
+    <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
+      <!-- Generated by JavaScript based on page headings -->
+    </nav>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  
+
+  <div class="footer-bottom">
+    <p>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+

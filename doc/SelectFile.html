@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>module SelectFile - RDoc Documentation</title>
+
+
+  <meta
+    name="keywords"
+    content="ruby,module,SelectFile"
+  >
+
+    <meta
+      name="description"
+      content="Documentation for the SelectFile module"
+    >
+
+
+
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="module SelectFile - RDoc Documentation">
+
+
+
+    <meta
+      property="og:description"
+      content="Documentation for SelectFile module - API reference and code examples"
+    >
+
+
+
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="module SelectFile - RDoc Documentation">
+
+
+
+    <meta
+      name="twitter:description"
+      content="Documentation for SelectFile module - API reference and code examples"
+    >
+
+
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script
+  src="./js/theme-toggle.js?v=7.2.0"
+></script>
+
+<script
+  src="./js/search_navigation.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_data.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_ranker.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_controller.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/c_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/aliki.js?v=7.2.0"
+  defer
+></script>
+
+<link
+  href="./css/rdoc.css?v=7.2.0"
+  rel="stylesheet"
+>
+
+
+
+
+<body role="document" class="module has-toc">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Chevron (right arrow) - used for expand/collapse -->
+  <symbol
+    id="icon-chevron"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </symbol>
+
+  <!-- File/Document - Pages section -->
+  <symbol
+    id="icon-file"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+    ></path>
+
+    <polyline points="14 2 14 8 20 8"></polyline>
+  </symbol>
+
+  <!-- Layers/Stack - Classes and Modules section -->
+  <symbol
+    id="icon-layers"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+    <polyline points="2 17 12 22 22 17"></polyline>
+    <polyline points="2 12 12 17 22 12"></polyline>
+  </symbol>
+
+  <!-- Curly braces with C - Class Methods section -->
+  <symbol
+    id="icon-class-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      C
+    </text>
+  </symbol>
+
+  <!-- Curly braces with I - Instance Methods section -->
+  <symbol
+    id="icon-instance-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      I
+    </text>
+  </symbol>
+
+  <!-- Double chevrons up - Ancestors section -->
+  <symbol
+    id="icon-ancestors"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="17 11 12 6 7 11"></polyline>
+    <polyline points="17 18 12 13 7 18"></polyline>
+  </symbol>
+
+  <!-- User with plus - Included Modules section -->
+  <symbol
+    id="icon-includes"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+
+    <line
+      x1="20"
+      y1="8"
+      x2="20"
+      y2="14"
+    ></line>
+
+    <line
+      x1="23"
+      y1="11"
+      x2="17"
+      y2="11"
+    ></line>
+  </symbol>
+
+  <!-- User with check - Extended Modules section -->
+  <symbol
+    id="icon-extends"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+    <polyline points="17 11 19 13 23 9"></polyline>
+  </symbol>
+
+  <!-- List - Sections section -->
+  <symbol
+    id="icon-list"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line
+      x1="8"
+      y1="6"
+      x2="21"
+      y2="6"
+    ></line>
+
+    <line
+      x1="8"
+      y1="12"
+      x2="21"
+      y2="12"
+    ></line>
+
+    <line
+      x1="8"
+      y1="18"
+      x2="21"
+      y2="18"
+    ></line>
+
+    <line
+      x1="3"
+      y1="6"
+      x2="3.01"
+      y2="6"
+    ></line>
+
+    <line
+      x1="3"
+      y1="12"
+      x2="3.01"
+      y2="12"
+    ></line>
+
+    <line
+      x1="3"
+      y1="18"
+      x2="3.01"
+      y2="18"
+    ></line>
+  </symbol>
+</svg>
+
+<header class="top-navbar">
+  <a href="./index.html" class="navbar-brand">
+    RDoc Documentation
+  </a>
+
+  <!-- Desktop search bar -->
+  <div class="navbar-search navbar-search-desktop" role="search">
+    <form action="#" method="get" accept-charset="utf-8">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results-desktop"
+             type="text" name="search" placeholder="Search (/) for a class, method..."
+             spellcheck="false" autocomplete="off"
+             title="Type to search, Up and Down to navigate, Enter to load">
+      <ul id="search-results-desktop" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="initially-hidden search-results"></ul>
+    </form>
+  </div>
+
+  <!-- Mobile search icon button -->
+  <button id="search-toggle" class="navbar-search-mobile" aria-label="Open search" type="button">
+    <span aria-hidden="true">🔍</span>
+  </button>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+  </button>
+</header>
+
+<!-- Search Modal (Mobile) -->
+<div id="search-modal" class="search-modal" hidden aria-modal="true" role="dialog" aria-label="Search">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <form class="search-modal-form" action="#" method="get" accept-charset="utf-8">
+        <span class="search-modal-icon" aria-hidden="true">🔍</span>
+        <input id="search-field-mobile" role="combobox" aria-label="Search"
+               aria-autocomplete="list" aria-controls="search-results-mobile"
+               type="text" name="search" placeholder="Search documentation"
+               spellcheck="false" autocomplete="off">
+        <button type="button" class="search-modal-close" aria-label="Close search" id="search-modal-close">
+          <span aria-hidden="true">esc</span>
+        </button>
+      </form>
+    </div>
+    <div class="search-modal-body">
+      <ul id="search-results-mobile" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="search-results search-modal-results initially-hidden"></ul>
+      <div class="search-modal-empty">
+        <p>No recent searches</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+  <span aria-hidden="true">&#9776;</span>
+</div>
+
+
+<nav id="navigation" role="navigation" hidden>
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <div class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg><use href="#icon-class-methods"></use></svg>
+        </span>
+        <span class="nav-section-title">Class Methods</span>
+        <span class="nav-section-chevron">
+          <svg><use href="#icon-chevron"></use></svg>
+        </span>
+      </summary>
+      <ul class="nav-list" role="directory">
+
+        <li ><a href="#method-c-TK_Use">TK_Use</a></li>
+
+        <li ><a href="#method-c-scan_pages">scan_pages</a></li>
+
+        <li ><a href="#method-c-select_pages">select_pages</a></li>
+
+        <li ><a href="#method-c-select_scan">select_scan</a></li>
+
+        <li ><a href="#method-c-show_pages">show_pages</a></li>
+
+      </ul>
+    </details>
+  </div>
+
+
+
+
+  <div id="classindex-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-layers"></use></svg>
+      </span>
+      <span class="nav-section-title">Classes and Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+
+    <ul class="link-list nav-list"><li><code><a href="./API_Notion.html">API_Notion</a></code></li><li><code><a href="./CotMgt.html">CotMgt</a></code></li><li><code><a href="./Cot_Checks.html">Cot_Checks</a></code></li><li><code><a href="./CsvToNotion.html">CsvToNotion</a></code></li><li><code><a href="./Debuggable.html">Debuggable</a></code></li><li><code><a href="./ExtractorMBR.html">ExtractorMBR</a></code></li><li><code><a href="./HelloFrame.html">HelloFrame</a></code></li><li><code><a href="./HelpApplic.html">HelpApplic</a></code></li><li><details><summary><code><a href="./M25_Members.html">M25_Members</a></code></summary><ul class="link-list nav-list"><li><code><a href="./M25_Members/Members.html">Members</a></code></li></ul></details></li><li><code><a href="./M25t_Membres.html">M25t_Membres</a></code></li><li><code><a href="./Notion.html">Notion</a></code></li><li><code><a href="./NotionClient.html">NotionClient</a></code></li><li><code><a href="./NotionMembersExtractor.html">NotionMembersExtractor</a></code></li><li><code><a href="./Object.html">Object</a></code></li><li><code><a href="./SelectFile.html">SelectFile</a></code></li><li><code><a href="./Standards.html">Standards</a></code></li><li><code><a href="./TestJob.html">TestJob</a></code></li><li><code><a href="./UploadFileToNotion.html">UploadFileToNotion</a></code></li><li><code><a href="./WebhookAsync.html">WebhookAsync</a></code></li><li><code><a href="./WebhookProcessing.html">WebhookProcessing</a></code></li></ul>
+  </details>
+</div>
+
+</nav>
+
+<main role="main" aria-labelledby="module-selectfile">
+  
+  
+
+  <span id="module-SelectFile" class="legacy-anchor"></span>
+  <h1 id="module-selectfile" class="anchor-link module">
+    module SelectFile
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
+
+
+
+
+
+
+
+
+
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
+       <header>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
+       </header>
+
+
+      <div id="method-c-TK_Use" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-TK_Use" title="Link to this method">
+                <span class="method-name">TK_Use</span>
+                <span class="method-args">(initial_dir: &quot;/users/Gilbert&quot;, loop: 0)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="TK_Use-source">
+            <pre class="ruby"><span class="ruby-comment"># File Mod_SelectFile.rb, line 236</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">TK_Use</span>(<span class="ruby-value">initial_dir:</span> <span class="ruby-string">&quot;/users/Gilbert&quot;</span>, <span class="ruby-value">loop:</span> <span class="ruby-value">0</span>)
+<span class="ruby-comment">#+++++++++++++++++++++</span>
+<span class="ruby-comment">#</span>
+    <span class="ruby-comment"># create instance</span>
+    <span class="ruby-identifier ruby-title">tkroot</span> = <span class="ruby-constant">TkRoot</span>.<span class="ruby-identifier">new</span> { <span class="ruby-identifier">title</span> <span class="ruby-string">&quot;Sélection d&#39;un répertoire et ensuite le fichier&quot;</span> }
+
+    <span class="ruby-comment"># search directory</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Initial directory: #{initial_dir} for loop: #{loop}&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">loop</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+        <span class="ruby-identifier">dir</span> = <span class="ruby-constant">Tk</span><span class="ruby-operator">::</span><span class="ruby-identifier">chooseDirectory</span>(<span class="ruby-value">initialdir:</span> <span class="ruby-identifier">initial_dir</span>)
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">dir</span> = <span class="ruby-identifier">initial_dir</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">dir</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">dir</span>.<span class="ruby-identifier">empty?</span>   <span class="ruby-comment">#&lt;IF1&gt;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Vous avez sélectionné le répertoire : #{dir}&quot;</span>
+
+        <span class="ruby-comment"># select file within the directory</span>
+        <span class="ruby-identifier">files</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-string">&quot;*&quot;</span>)).<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">f</span>) }
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">files</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-comment">#&lt;IF2&gt;</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Aucun fichier trouvé dans le répertoire sélectionné.&quot;</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">else</span>    <span class="ruby-comment">#&lt;IF2&gt;</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Fichiers disponibles :&quot;</span>
+            <span class="ruby-identifier">files</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>  <span class="ruby-comment">#&lt;D3</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{index + 1}. #{File.basename(file)}&quot;</span>
+            <span class="ruby-keyword">end</span> <span class="ruby-comment">#&lt;D3&gt;</span>
+
+            <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;Entrez le numéro du fichier à sélectionner : &quot;</span>
+            <span class="ruby-identifier">selection</span> = <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">gets</span>.<span class="ruby-identifier">to_i</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">selection</span>.<span class="ruby-identifier">between?</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">files</span>.<span class="ruby-identifier">size</span>)    <span class="ruby-comment">#&lt;IF3&gt; </span>
+                <span class="ruby-identifier">selected_file</span> = <span class="ruby-identifier">files</span>[<span class="ruby-identifier">selection</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Vous avez sélectionné : #{selected_file}&quot;</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">selected_file</span>
+            <span class="ruby-keyword">else</span>    <span class="ruby-comment">#</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Numéro invalide, sortie.&quot;</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+            <span class="ruby-keyword">end</span> <span class="ruby-comment">#&lt;IF3&gt;</span>
+        <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Aucun répertoire sélectionné.&quot;</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-scan_pages" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-scan_pages" title="Link to this method">
+                <span class="method-name">scan_pages</span>
+                <span class="method-args">(prms={})</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="scan_pages-source">
+            <pre class="ruby"><span class="ruby-comment"># File Mod_SelectFile.rb, line 205</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">scan_pages</span>(<span class="ruby-identifier">prms</span>={})
+<span class="ruby-comment">#++++++++++++++++++++++++</span>
+<span class="ruby-comment">#   Scan pages &amp; save on temp folder</span>
+<span class="ruby-comment">#   INP:    prms {mode: out_dir: out_name: title: author: subject: keywords:}</span>
+<span class="ruby-comment">#</span>
+    <span class="ruby-identifier">mode</span>            = <span class="ruby-identifier">prms</span>[<span class="ruby-value">:mode</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;Auto&#39;</span>
+    <span class="ruby-identifier">scan_dir</span>        = <span class="ruby-identifier">prms</span>[<span class="ruby-value">:out_dir</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&quot;/users/Gilbert/Temp&quot;</span>
+    <span class="ruby-identifier">scan_name</span>       = <span class="ruby-identifier">prms</span>[<span class="ruby-value">:out_name</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&quot;ToKeep.pdf&quot;</span>
+    <span class="ruby-identifier">pdf_title</span>       = <span class="ruby-node">&quot; --pdftitle #{prms[:title]}&quot;</span>
+    <span class="ruby-identifier">pdf_author</span>      = <span class="ruby-node">&quot; --pdfauthor #{prms[:author]}&quot;</span>
+    <span class="ruby-identifier">pdf_subject</span>     = <span class="ruby-node">&quot; --pdfsubject #{prms[:subject]}&quot;</span>
+    <span class="ruby-identifier">pdf_keywords</span>    = <span class="ruby-node">&quot; --pdfkeywords #{prms[:keywords]}&quot;</span>
+    <span class="ruby-keyword">case</span>    <span class="ruby-identifier">mode</span>
+    <span class="ruby-keyword">when</span>    <span class="ruby-string">&#39;Auto&#39;</span>
+        <span class="ruby-identifier">scan_prog</span>       = <span class="ruby-string">&quot;/Applications/NAPS2.app/Contents/MacOS/NAPS2 console -v -a &quot;</span>
+        <span class="ruby-identifier">cmdopen3</span>        = <span class="ruby-node">&quot;#{scan_prog}#{pdf_title}#{pdf_author}#{pdf_subject}#{pdf_keywords} &quot;</span>
+    <span class="ruby-keyword">when</span>    <span class="ruby-string">&#39;Output&#39;</span>
+        <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">stdin</span>, <span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">stderr</span>, <span class="ruby-identifier">wait_thr</span> = <span class="ruby-constant">Open3</span>.<span class="ruby-identifier">popen3</span>(<span class="ruby-identifier">cmdopen3</span>)
+    <span class="ruby-identifier">output</span> = <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">read</span>
+    <span class="ruby-identifier">error</span> = <span class="ruby-identifier">stderr</span>.<span class="ruby-identifier">read</span>
+    <span class="ruby-identifier">exit_status</span> = <span class="ruby-identifier">wait_thr</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">exitstatus</span>
+
+    <span class="ruby-identifier">puts</span>    <span class="ruby-string">&quot;Log of scan =&gt; &quot;</span>
+    <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;- Output: #{output}&quot;</span>
+    <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;- Error: #{error}&quot;</span>
+    <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;- Exit status: #{exit_status}&quot;</span>
+    <span class="ruby-identifier">puts</span>    <span class="ruby-string">&quot;End of scan log&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-select_pages" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-select_pages" title="Link to this method">
+                <span class="method-name">select_pages</span>
+                <span class="method-args">(initial_dir=nil, loop=0)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="select_pages-source">
+            <pre class="ruby"><span class="ruby-comment"># File Mod_SelectFile.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">select_pages</span>(<span class="ruby-identifier">initial_dir</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">loop</span>=<span class="ruby-value">0</span>)
+<span class="ruby-comment">#++++++++++++++++++++++++++</span>
+<span class="ruby-comment">#   Select a file within the displayed range</span>
+<span class="ruby-comment">#</span>
+    <span class="ruby-ivar">@root</span> = <span class="ruby-identifier">initial_dir</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;&gt;&gt;&gt;DBG: Root: #{initial_die}&quot;</span>
+
+    <span class="ruby-comment"># Select start directory</span>
+    <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span> <span class="ruby-comment">#&lt;L1&gt;</span>
+        <span class="ruby-identifier">puts</span>    <span class="ruby-string">&#39;&gt;&#39;</span>
+        <span class="ruby-identifier">print</span>   <span class="ruby-string">&quot;Choix pour (F)ichiers ou (R)épertoire ou (S)can ou (Q)uit [Q] ? &quot;</span>
+        <span class="ruby-identifier">reply</span>   = <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">gets</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">downcase</span>
+        <span class="ruby-identifier">reply</span>   = <span class="ruby-string">&#39;q&#39;</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">reply</span>.<span class="ruby-identifier">empty?</span>
+
+        <span class="ruby-identifier">current_pwd</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>
+        <span class="ruby-identifier">choice</span>  = <span class="ruby-identifier">reply</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">downcase</span>
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">choice</span> <span class="ruby-comment">#S2&gt;</span>
+        <span class="ruby-keyword">when</span>    <span class="ruby-string">&#39;f&#39;</span>
+        <span class="ruby-keyword">when</span>    <span class="ruby-string">&#39;r&#39;</span>
+            <span class="ruby-identifier">sf</span>  = <span class="ruby-keyword">self</span>.<span class="ruby-constant">TK_Use</span>()
+            <span class="ruby-keyword">return</span>  <span class="ruby-identifier">sf</span>
+        <span class="ruby-keyword">when</span>    <span class="ruby-string">&#39;q&#39;</span>
+            <span class="ruby-identifier">exit</span>
+        <span class="ruby-keyword">when</span>    <span class="ruby-string">&#39;s&#39;</span>
+            <span class="ruby-identifier">prms</span>    = {
+                <span class="ruby-value">:mode</span>      <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&#39;Auto&#39;</span>,
+                <span class="ruby-value">:out_dir</span>   <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&quot;/users/Gilbert/Library/Mobile Documents/com~apple~CloudDocs/Downloads/From Scan&quot;</span>,
+                <span class="ruby-value">:out_name</span>  <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&quot;ToDispatch.pdf&quot;</span>,
+                <span class="ruby-value">:title</span>     <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&quot;From Scan to Notion-DOSS&quot;</span>,
+                <span class="ruby-value">:subject</span>   <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&quot;Unknown&quot;</span>,
+                <span class="ruby-value">:keywords</span>  <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&quot;byScript&quot;</span>
+            }
+            <span class="ruby-identifier">scan_pages</span>(<span class="ruby-identifier">prms</span>)
+            <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">prms</span>[<span class="ruby-value">:out_dir</span>])
+            <span class="ruby-ivar">@root</span>    = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;&gt;&gt;&gt;DBG: Root: #{@root}&quot;</span>
+        <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">puts</span>    <span class="ruby-string">&quot;Choix invalide&quot;</span>
+            <span class="ruby-keyword">next</span>
+        <span class="ruby-keyword">end</span> <span class="ruby-comment">#S2&gt;</span>
+        <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span> <span class="ruby-comment">#&lt;L1&gt;</span>
+
+    <span class="ruby-comment"># First list</span>
+    <span class="ruby-identifier">page_size</span> = <span class="ruby-value">40</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;&gt;&gt;&gt;DBG: Root: #{@root}&quot;</span>
+
+    <span class="ruby-identifier">files</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-ivar">@root</span>, <span class="ruby-string">&quot;**&quot;</span>, <span class="ruby-string">&quot;*&quot;</span>)).<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">f</span>) }
+
+    <span class="ruby-comment"># Set params</span>
+    <span class="ruby-identifier">current_page</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">total_pages</span>  = (<span class="ruby-identifier">files</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">page_size</span>).<span class="ruby-identifier">ceil</span>
+    <span class="ruby-identifier">old_dir</span>      = <span class="ruby-string">&quot;&quot;</span>
+
+    <span class="ruby-comment"># Main loop</span>
+    <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span> <span class="ruby-comment">#&lt;L1&gt;</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show_pages</span>(<span class="ruby-identifier">files</span>, <span class="ruby-identifier">current_page</span>, <span class="ruby-identifier">page_size</span>, <span class="ruby-identifier">old_dir</span>)
+
+        <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;&gt; &quot;</span>
+        <span class="ruby-identifier">input</span> = <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">gets</span>
+        <span class="ruby-keyword">break</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">input</span>
+        <span class="ruby-identifier">cmd</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">downcase</span>
+
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">cmd</span>    <span class="ruby-comment">#&lt;S2&gt;</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;n&quot;</span>
+            <span class="ruby-identifier">current_page</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_page</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">total_pages</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;p&quot;</span>
+            <span class="ruby-identifier">current_page</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_page</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;q&quot;</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Abandon.&quot;</span>
+            <span class="ruby-keyword">break</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;s&quot;</span>
+            <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;Numéro du fichier à sélectionner : &quot;</span>
+            <span class="ruby-identifier">num</span> = <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">gets</span>.<span class="ruby-identifier">to_i</span>
+            <span class="ruby-identifier">index</span> = <span class="ruby-identifier">num</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">between?</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">files</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)    <span class="ruby-comment">#&lt;IF3</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Vous avez choisi : #{files[index]}&quot;</span>
+                <span class="ruby-comment"># ici vous pouvez traiter le fichier choisi</span>
+                <span class="ruby-keyword">return</span>  <span class="ruby-identifier">files</span>[<span class="ruby-identifier">index</span>]
+            <span class="ruby-keyword">else</span>    <span class="ruby-comment">#&lt;IF3&gt;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Numéro invalide, appuyez sur Entrée pour continuer.&quot;</span>
+                <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">gets</span>
+                <span class="ruby-keyword">return</span>  <span class="ruby-keyword">nil</span>
+            <span class="ruby-keyword">end</span> <span class="ruby-comment">#&lt;IF3&gt;</span>
+        <span class="ruby-keyword">else</span>    <span class="ruby-comment">#&lt;S2&gt;</span>
+            <span class="ruby-comment"># touche inconnue : on ignore, boucle suivante</span>
+        <span class="ruby-keyword">end</span> <span class="ruby-comment">#S2&gt;</span>
+    <span class="ruby-keyword">end</span> <span class="ruby-comment">#&lt;L1&gt;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-select_scan" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-select_scan" title="Link to this method">
+                <span class="method-name">select_scan</span>
+                <span class="method-args">(initial_dir: nil, loop: 0)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="select_scan-source">
+            <pre class="ruby"><span class="ruby-comment"># File Mod_SelectFile.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">select_scan</span>(<span class="ruby-value">initial_dir:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">loop:</span> <span class="ruby-value">0</span>)
+<span class="ruby-comment">#++++++++++++++++++++++++++</span>
+<span class="ruby-comment">#   Select a file within the displayed range</span>
+<span class="ruby-comment">#</span>
+    <span class="ruby-keyword">while</span>  <span class="ruby-keyword">true</span>  <span class="ruby-comment">#&lt;L0&gt;</span>
+        <span class="ruby-ivar">@root</span> = <span class="ruby-string">&quot;.&quot;</span>
+        <span class="ruby-identifier">prms</span>    = {
+            <span class="ruby-value">:mode</span>      <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&#39;Auto&#39;</span>,
+            <span class="ruby-value">:out_dir</span>   <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&quot;/users/Gilbert/Library/Mobile Documents/com~apple~CloudDocs/Downloads/From Scan&quot;</span>,
+            <span class="ruby-value">:out_name</span>  <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&quot;ToDispatch.pdf&quot;</span>,
+            <span class="ruby-value">:title</span>     <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&quot;From Scan to Notion-DOSS&quot;</span>,
+            <span class="ruby-value">:subject</span>   <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&quot;Unknown&quot;</span>,
+            <span class="ruby-value">:keywords</span>  <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&quot;byScript&quot;</span>
+        }
+        <span class="ruby-identifier">scan_pages</span>(<span class="ruby-identifier">prms</span>)
+        <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">prms</span>[<span class="ruby-value">:out_dir</span>])
+        <span class="ruby-ivar">@root</span>    = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;&gt;&gt;&gt;DBG: Root: #{@root}&quot;</span>
+
+        <span class="ruby-comment"># First list</span>
+        <span class="ruby-identifier">page_size</span> = <span class="ruby-value">40</span>
+
+        <span class="ruby-identifier">files</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-ivar">@root</span>, <span class="ruby-string">&quot;**&quot;</span>, <span class="ruby-string">&quot;*&quot;</span>)).<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">f</span>) }
+
+        <span class="ruby-comment"># Set params</span>
+        <span class="ruby-identifier">current_page</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">total_pages</span>  = (<span class="ruby-identifier">files</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">page_size</span>).<span class="ruby-identifier">ceil</span>
+        <span class="ruby-identifier">old_dir</span>      = <span class="ruby-string">&quot;&quot;</span>
+        <span class="ruby-identifier">cmd</span>          = <span class="ruby-string">&quot;&quot;</span>
+
+        <span class="ruby-comment"># Main loop</span>
+        <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span> <span class="ruby-comment">#&lt;L1&gt;</span>
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show_pages</span>(<span class="ruby-identifier">files</span>, <span class="ruby-identifier">current_page</span>, <span class="ruby-identifier">page_size</span>, <span class="ruby-identifier">old_dir</span>)
+
+            <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;&gt; &quot;</span>
+            <span class="ruby-identifier">input</span> = <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">gets</span>
+            <span class="ruby-keyword">break</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">input</span>
+            <span class="ruby-identifier">cmd</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">downcase</span>
+
+            <span class="ruby-keyword">case</span> <span class="ruby-identifier">cmd</span>    <span class="ruby-comment">#&lt;S2&gt;</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Next scan iteration&quot;</span>
+                <span class="ruby-keyword">break</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;p&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;No yet in use&quot;</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;q&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Abandon.&quot;</span>
+                <span class="ruby-keyword">break</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;s&quot;</span>
+                <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;Numéro du fichier à sélectionner : &quot;</span>
+                <span class="ruby-identifier">num</span> = <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">gets</span>.<span class="ruby-identifier">to_i</span>
+                <span class="ruby-identifier">index</span> = <span class="ruby-identifier">num</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">between?</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">files</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)    <span class="ruby-comment">#&lt;IF3</span>
+                    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Vous avez choisi : #{files[index]}&quot;</span>
+                    <span class="ruby-comment"># ici vous pouvez traiter le fichier choisi</span>
+                    <span class="ruby-keyword">return</span>  <span class="ruby-identifier">files</span>[<span class="ruby-identifier">index</span>]
+                <span class="ruby-keyword">else</span>    <span class="ruby-comment">#&lt;IF3&gt;</span>
+                    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Numéro invalide, appuyez sur Entrée pour continuer.&quot;</span>
+                    <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">gets</span>
+                    <span class="ruby-keyword">return</span>  <span class="ruby-keyword">nil</span>
+                <span class="ruby-keyword">end</span> <span class="ruby-comment">#&lt;IF3&gt;</span>
+            <span class="ruby-keyword">else</span>    <span class="ruby-comment">#&lt;S2&gt;</span>
+                <span class="ruby-comment"># touche inconnue : on ignore, boucle suivante</span>
+            <span class="ruby-keyword">end</span> <span class="ruby-comment">#S2&gt;</span>
+        <span class="ruby-keyword">end</span> <span class="ruby-comment">#&lt;L1&gt;</span>
+        <span class="ruby-keyword">break</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">cmd</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;q&quot;</span>
+    <span class="ruby-keyword">end</span> <span class="ruby-comment">#&lt;L0&gt;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-c-show_pages" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-show_pages" title="Link to this method">
+                <span class="method-name">show_pages</span>
+                <span class="method-args">(files, page, page_size, old_dir=&quot;&quot;)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="show_pages-source">
+            <pre class="ruby"><span class="ruby-comment"># File Mod_SelectFile.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">show_pages</span>(<span class="ruby-identifier">files</span>, <span class="ruby-identifier">page</span>, <span class="ruby-identifier">page_size</span>, <span class="ruby-identifier">old_dir</span>=<span class="ruby-string">&quot;&quot;</span>)
+<span class="ruby-comment">#++++++++++++++++++++++++</span>
+<span class="ruby-comment">#   Display a range of files</span>
+<span class="ruby-comment">#</span>
+    <span class="ruby-identifier">start_idx</span> = <span class="ruby-identifier">page</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">page_size</span>
+    <span class="ruby-identifier">end_idx</span>   = [<span class="ruby-identifier">start_idx</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">page_size</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">files</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">min</span>
+
+<span class="ruby-comment">#    system(&quot;clear&quot;) # sur macOS, efface l&#39;écran du Terminal</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Fichiers #{start_idx + 1} à #{end_idx + 1} sur #{files.size} (page #{page + 1}/#{(files.size.to_f / page_size).ceil})&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;-&quot;</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>
+
+    (<span class="ruby-identifier">start_idx</span><span class="ruby-operator">..</span><span class="ruby-identifier">end_idx</span>).<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">idx</span>, <span class="ruby-identifier">offset</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">array</span> = <span class="ruby-identifier">files</span>[<span class="ruby-identifier">idx</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>)
+        <span class="ruby-identifier">new_dir</span> = <span class="ruby-identifier">array</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-2</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;/&quot;</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">new_dir</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">old_dir</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;\n&quot;</span><span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">*</span><span class="ruby-value">20</span><span class="ruby-node">+&quot;==&gt; #{new_dir} &lt;==&quot;</span><span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">*</span><span class="ruby-value">20</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;-&quot;</span><span class="ruby-operator">*</span><span class="ruby-value">24</span><span class="ruby-string">+&quot;=&quot;</span><span class="ruby-operator">*</span><span class="ruby-identifier">new_dir</span>.<span class="ruby-identifier">length</span><span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">*</span><span class="ruby-value">24</span>
+            <span class="ruby-identifier">old_dir</span> = <span class="ruby-identifier">new_dir</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{idx + 1}. #{files[idx]}&quot;</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;-&quot;</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Commandes : [n] suivant  [p] précédent  [s] sélectionner numéro  [q] quitter&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>******************</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+  </section>
+
+</main>
+
+<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+  <div class="toc-sticky">
+    <h3 class="toc-heading">On This Page</h3>
+    <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
+      <!-- Generated by JavaScript based on page headings -->
+    </nav>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  
+
+  <div class="footer-bottom">
+    <p>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+

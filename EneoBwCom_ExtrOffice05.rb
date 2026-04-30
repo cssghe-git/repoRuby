@@ -28,8 +28,8 @@ end
         debug:    ENV.fetch("DEBUG", "INFO"),            # Y/N
         dbids:    ENV.fetch("",nil),
         list:     ENV.fetch("OFF_LIST", 9),           # ex: 9
-        lstdate_1:  ENV.fetch("OFF_DATE_1", "2026-12-31"),# pas de date == date du jour
-        lstdate_2:  ENV.fetch("OFF_DATE_2", "2026-12-31"),# pas de date == date du jour
+        lstdate_1:  ENV.fetch("OFF_DATE_1", "2026-02-17"),# pas de date == date du jour
+        lstdate_2:  ENV.fetch("OFF_DATE_2", "2026-04-30"),# pas de date == date du jour
         lstdate_3:  ENV.fetch("OFF_DATE_3", "2026-12-31"),# pas de date == date du jour
         lstdate_4:  ENV.fetch("OFF_DATE_4", "2026-12-31"),# pas de date == date du jour
         errors:   ENV.fetch("OFF_ERRORS", "N"),       # Y/N save or not errors
@@ -121,7 +121,7 @@ class   ExtractorMBR
     end #<def>
 
     # Extract pages
-    def extractPages(check_date)
+    def extractPages(p_check_date)
     #+++++++++++++++
     #   INP:
     #   OUT:    pages_selected as []
@@ -132,9 +132,11 @@ class   ExtractorMBR
             filter: {
                 and: [
                     { or: [
-                        { property: 'Modifs Privées', date: { "after": check_date } },
-                        { property: 'Modifs Eneo', date: { "after": check_date } },
-                        { property: 'Date paiement', date: { "after": check_date } }
+                        { property: 'Modifs Privées', date: { "after": "2026-02-17" } },
+                        { property: 'Modifs Eneo', date: { "after": "2026-02-17" } },
+                        { property: 'Date sortie', date: { "after": "2026-02-17" } },
+                        { property: 'Date décès', date: { "after": "2026-02-17" } },
+                        { property: 'Date paiement', date: { "after": "2026-02-17" } }
                     ] },
                     { property: 'CDC', select: { "equals": "NIV" } }
                 ]
@@ -224,7 +226,7 @@ class   ExtractorMBR
     end #<def>
 
     # Select pages accoding to list Nr
-    def selectPage(prop='')
+    def selectPage(prop='', step=0)
     #+++++++++++++
     #   INP:    properties []
     #   OUT:    array {code=>true or false, cause=>?}
@@ -237,7 +239,7 @@ class   ExtractorMBR
         result['cause'] = 'None'                        #no reason
         list_code   = "0"                               #statut secrétariat
 
-        mbrcheck    = "*"
+        mbrcheck    = "Verfaillie-Sonja"
 
         # common part
         nomprenom           = prop['Référence'].split("-")
@@ -260,6 +262,7 @@ class   ExtractorMBR
         list_value          = prop['Statut secrétariat']    unless prop['Statut secrétariat'].size==0
         list_code           = list_value[list_value.size-2] unless prop['Statut secrétariat'].size==0
 
+        puts    "{SEL}>REF: #{prop['Référence']} => "
         puts    "DBG>PROPS before test ▼"   if prop['Référence'] == mbrcheck
         pp  prop  if prop['Référence'] == mbrcheck
 
@@ -298,16 +301,19 @@ class   ExtractorMBR
 
             # membre (cotisation)
             @count_naiss    += 1    unless !prop['Date naissance'].nil?
+            puts    "Date naissance vide: #{prop['Référence']}" unless !prop['Date naissance'].nil?
+            #
             if (prop['Cotisation'] == COTISATION_VALUE_1 or
                 prop['Cotisation'] == COTISATION_VALUE_2) and
                 !prop['Date paiement'].nil? and
                 !prop['Date naissance'].nil?
+                #
                 result['code']  = 'Y'
                 result['cause'] = 'Membre'
                 list_code       = 3
                 @count_cotis    += 1
 
-                # nouveau
+                # nouveau / seagma vide
                 puts    "DBG>Seagma during test: #{prop['Seagma']}" if prop['Référence'] == mbrcheck
                 if prop['Seagma'].nil?
                     result['Nouveau']   = 'Y'
@@ -317,31 +323,13 @@ class   ExtractorMBR
 
                 # modification
                 unless prop['Modifs Privées'].nil?
-#                    result['code']  = 'Y'
-#                    result['cause'] = 'Modification'
                     result['Modification']  = 'Y'
                     @count_modif    += 1
                 end
             else
                 break
             end
-=begin
-            # nouveau
-            puts    "DBG>Seagma during test: #{prop['Seagma']}" if prop['Référence'] == mbrcheck
-            unless  prop['Seagma'].nil?
-                result['code']      = 'Y'
-                result['cause']     = 'Nouveau'
-                list_code       = 4
-                break
-            end
 
-            # modification
-            unless prop['Modifs Privées'].nil?
-                result['code']  = 'Y'
-                result['cause'] = 'Modification'
-                break
-            end
-=end
         end
 
         # specific part
@@ -354,28 +342,29 @@ class   ExtractorMBR
             when    'Ancien'
                 result[cause]   = 'Y'
             when    'Membre'
-                 if prop['Date paiement'] > CHECK_DATE
+                if prop['Date paiement'] > "2026-02-17"
                     result['Cotis-1']   = prop['Cotisation']    if prop['Cotisation'] == COTISATION_VALUE_1
                     result['Cotis-2']   = prop['Cotisation']    if prop['Cotisation'] == COTISATION_VALUE_2
                     result['CPE']       = prop['Type cotisation']
                     result[cause]   = 'Y'
                 else
-                    return  false
+                    result['code']  = 'N'
+                    return  result
                 end
             when    "Nouveau"
                 result[cause]   = 'Y'
             when    'Modification'
                 result[cause]   = 'Y'
             end
-            puts    "{TRT}>*****"                                   if result['code'] == 'Y'
-            puts    "{TRT}>REF: #{prop['Référence']} => CAUSES:"    if result['code'] == 'Y'
-            puts    "{TRT} -Décès:#{result['Décès']}"               if result['code'] == 'Y'
-            puts    "{TRT} -Ancien:#{result['Ancien']}"             if result['code'] == 'Y'
-            puts    "{TRT} -Membre:#{result['Membre']}"             if result['code'] == 'Y'
-            puts    "{TRT} -Nouveau:#{result['Nouveau']}"           if result['code'] == 'Y'
-            puts    "{TRT} -Modification:#{result['Modification']}" if result['code'] == 'Y'
-            puts    "{TRT} - DatePaiement: #{prop['Date paiement']}"  if result['code'] == 'Y'
-            puts    "{TRT} -> CODE: #{result['code']}"              if result['code'] == 'Y'
+            puts    "{TRT}>*****"                                   if result['code'] == 'Y' and step == 1
+            puts    "{TRT}>REF: #{prop['Référence']} => CAUSES:"    if result['code'] == 'Y' and step == 1
+        #    puts    "{TRT} -Décès:#{result['Décès']}"               if result['code'] == 'Y' and step == 1
+        #    puts    "{TRT} -Ancien:#{result['Ancien']}"             if result['code'] == 'Y' and step == 1
+        #    puts    "{TRT} -Membre:#{result['Membre']}"             if result['code'] == 'Y' and step == 1
+        #    puts    "{TRT} -Nouveau:#{result['Nouveau']}"           if result['code'] == 'Y' and step == 1
+        #    puts    "{TRT} -Modification:#{result['Modification']}" if result['code'] == 'Y' and step == 1
+        #    puts    "{TRT} -DatePaiement: #{prop['Date paiement']}"  if result['code'] == 'Y' and step == 1
+        #    puts    "{TRT} -> CODE: #{result['code']}"              if result['code'] == 'Y' and step == 1
         when    2
             #L =liste_nr
             #déjà 'décès' => code L#1
@@ -390,8 +379,10 @@ class   ExtractorMBR
         when    3
         when    4
         else
-            return false
+            return result
         end
+
+        #
         puts    "DBG>Result after test ▼"   if prop['Référence'] == mbrcheck
         pp  result  if prop['Référence'] == mbrcheck
 
@@ -430,8 +421,6 @@ class   ExtractorMBR
         puts    "DBG>>>Statut secrétariat: /1=Décès, /2=Sortie, /3=Membre, /4=Nouveau => #{prop['Statut secrétariat']}"
 
         return  if DRY_RUN
-    #    return  #for tests
-        
 
         # En/Hors service
 
@@ -439,7 +428,6 @@ class   ExtractorMBR
         prop['Modifs Privées']  = {'date' => nil} 
         # Modifd eneo
         prop['Modifs Eneo']  = {'date' => nil} 
-
 
         # Update
         payload = { "properties" => prop }
@@ -476,14 +464,16 @@ class   ExtractorMBR
                 'ActPrc'
             ]
             # Données
+            count_proc2 = 0
             pages_selected.each do |member|
+                count_proc2 += 1
                 # extract properties
                 props = extract_properties(member)
                 
                 # select according to list nr
-                result  = selectPage(props)
+                result  = selectPage(props, 2)
             #    pp result
-                next    if result['code'] != 'Y'    #next page if false
+                next    if result['code']!= 'Y'    #next page if false
                 count_csv   += 1
 
                 # Format
@@ -513,23 +503,22 @@ class   ExtractorMBR
                     result['Ancien'],
                     result['Décès'],
                     result['ActPrc']
-
                 ]
             end
+            puts    "PROC2: #{count_proc2} lus et #{count_csv} écrits"
         end
-
-        puts "✓ Export CSV créé: #{CSVFILE_OUTPUT} (#{count_csv} membres)"
+        puts    "\n✓ Export CSV créé: #{CSVFILE_OUTPUT} (#{count_csv} membres)"
 
         return  count_csv
     end #<def>
 
     # Processing
-    def run(check_date,log)
+    def run(p_check_date,log)
     #++++++
     #
         log.info "{INF}=== MBR extract for Office ==="
-        log.warn    "{TRT}=== Extract pages ==="    if OPTS[:debug]
-        pages_extracted  = extractPages(check_date)
+        log.warn    "{TRT}=== Extract pages ===Check-Date: #{CHECK_DATE}"
+        pages_extracted  = extractPages(CHECK_DATE)
 
         if pages_extracted.empty?
             log.warn "{ERR}Aucun membre trouvé"
@@ -542,11 +531,19 @@ class   ExtractorMBR
         pages_selected  = []
         errors_selected = []
 
+        count_proc1 = 0
+        arr_results = []
         pages_extracted.each do |page|
+            count_proc1 += 1
             props = extract_properties(page)
-            pages_selected.push(page)   if selectPage(props)
-        #    break   if props['Référence'] == "Binnemans-Jean-Pierre"
+            puts    "{CHK}>REF: #{props['Référence']}"
+            result  = selectPage(props, 1)
+        #    pp  result
+            arr_results.push(result)    if result['code'] == 'Y'
+            pages_selected.push(page)   if result['code'] == 'Y'
         end
+        puts    "PROC1:#{count_proc1} lus et #{pages_selected.size} sélectionnés"
+        ### pp  arr_results
 
         if pages_selected.empty?
             log.warn "{ERR}Aucun membre sélectionné"
@@ -557,11 +554,17 @@ class   ExtractorMBR
         end
 
         log.info "{INF}=== Create csv file ==="
-        count_csv   = saveToCsv(pages_selected)
+        count_csv   = saveToCsv(pages_extracted)
 
-        log.info("Date naissance vide:#{@count_naiss}")
-        log.info("Counters:Décès:#{@count_deces} Sortie:#{@count_sortie} Nouveau:#{@count_nouveau} Cotis:#{@count_cotis} Modif:#{@count_modif}")
-        log.info("CSV:#{count_csv} - MBR:#{pages_extracted.count} - SEL:#{pages_selected.count}")
+        log.info("GET:#{pages_extracted.count} ")
+        log.info("SELECT:#{pages_selected.count} ")
+        log.info("Date naissance vide:#{@count_naiss/2}")
+        log.info("SEAGMA:#{@count_nouveau/2}")
+        log.info("Sorties:#{@count_sortie/2}")
+        log.info("Décès:#{@count_deces/2}")
+        log.info("Modifications privées:#{@count_modif/2}")
+        log.info("COTISATIONS:#{@count_cotis/2}")
+        log.info("CSV:#{count_csv}")
     end #<def>
 
 end #<class>
@@ -571,7 +574,7 @@ end #<class>
 #   Utilisation
 # ==============================
 #
-   if __FILE__ == $0
+    if __FILE__ == $0
 
         log.info("{INF}Start of script <EneoBwCom_ExtrOffice05>")
         log.warn("{INF}Parameters:: Debug:#{OPTS[:debug]} & List:#{OPTS[:list]} # #{CHECK_DATE} on mode: #{DRY_RUN ? 'DRY_RUN (simulation)' : 'PRODUCTION'}")
@@ -589,4 +592,4 @@ end #<class>
         inst.run(CHECK_DATE, log)                #processing
 
         log.info "{INF}Enf of script"
-   end  #<>
+    end  #<>

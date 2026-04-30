@@ -59,7 +59,7 @@ end.parse!(ARGV)
     # Configuration
     CONFIG              = JSON.parse(File.read(ENV.fetch("NOT_JSON_DBIDS")))
     MBR_DB_ID           = CONFIG.find { |h| h.key?("m25t.Membres") }&.fetch("m25t.Membres")
-    DIRECTORY_TO_PUT    = ENV.fetch("DATA_M25_SEND_DIR","")
+    DIRECTORY_TO_PUT    = ENV.fetch("OFF_CSV_DIR","")
 
     # current date
     now = Time.now

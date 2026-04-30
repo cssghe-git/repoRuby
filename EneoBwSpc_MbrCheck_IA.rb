@@ -41,7 +41,7 @@ class Notion
       "Notion-Version" => NOTION_VERSION,
       "Content-Type" => "application/json"
     }
-  end
+  end   #<def>
 
   def query_database(database_id, filter: nil, page_size: 100)
     results = []
@@ -63,22 +63,22 @@ class Notion
     end
 
     results
-  end
+  end   #<def>
 
   def update_page(page_id, properties:)
     body = { properties: properties }
     resp = self.class.patch("/pages/#{page_id}", headers: @headers, body: body.to_json)
     raise "Update failed #{resp.code}: #{resp.body}" unless resp.code.between?(200, 299)
     resp.parsed_response
-  end
-end
+  end   #<def>
+end #<class>
 
 def page_id(page) = page["id"]
 
 def title_plain(prop)
   arr = prop&.dig("title") || []
   arr.map { |t| t.dig("plain_text") }.join
-end
+end #<def>
 
 def select_name(prop) = prop&.dig("select", "name")
 
@@ -90,22 +90,25 @@ def checkbox_true?(prop) = prop&.dig("checkbox") == true
 
 def people_ids(prop)
   (prop&.dig("people") || []).map { |p| p["id"] }.compact
-end
+end #<def>
 
 def relation_ids(prop)
   (prop&.dig("relation") || []).map { |r| r["id"] }.compact
-end
+end #<def>
 
 def same_set?(a, b)
   a.compact.uniq.sort == b.compact.uniq.sort
-end
+end 
 
 def normalize_secondaries(names)
   names = names.map { |n| n.to_s.strip }.reject(&:empty?)
   names = names.reject { |n| n.casecmp("None").zero? }
   names.uniq.first(5)
-end
+end #<def>
 
+#
+# Main
+#*****
 notion = Notion.new(token: NOTION_TOKEN)
 
 puts "DRY_RUN=#{DRY_RUN} (set DRY_RUN=false pour écrire)"

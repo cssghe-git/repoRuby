@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>class NotionMembersExtractor - RDoc Documentation</title>
+
+
+  <meta
+    name="keywords"
+    content="ruby,class,NotionMembersExtractor"
+  >
+
+    <meta
+      name="description"
+      content="Documentation for the NotionMembersExtractor class"
+    >
+
+
+
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="class NotionMembersExtractor - RDoc Documentation">
+
+
+
+    <meta
+      property="og:description"
+      content="Documentation for NotionMembersExtractor class - API reference and code examples"
+    >
+
+
+
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="class NotionMembersExtractor - RDoc Documentation">
+
+
+
+    <meta
+      name="twitter:description"
+      content="Documentation for NotionMembersExtractor class - API reference and code examples"
+    >
+
+
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script
+  src="./js/theme-toggle.js?v=7.2.0"
+></script>
+
+<script
+  src="./js/search_navigation.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_data.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_ranker.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/search_controller.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/c_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/bash_highlighter.js?v=7.2.0"
+  defer
+></script>
+
+<script
+  src="./js/aliki.js?v=7.2.0"
+  defer
+></script>
+
+<link
+  href="./css/rdoc.css?v=7.2.0"
+  rel="stylesheet"
+>
+
+
+
+
+<body role="document" class="class has-toc">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Chevron (right arrow) - used for expand/collapse -->
+  <symbol
+    id="icon-chevron"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </symbol>
+
+  <!-- File/Document - Pages section -->
+  <symbol
+    id="icon-file"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path
+      d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+    ></path>
+
+    <polyline points="14 2 14 8 20 8"></polyline>
+  </symbol>
+
+  <!-- Layers/Stack - Classes and Modules section -->
+  <symbol
+    id="icon-layers"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+    <polyline points="2 17 12 22 22 17"></polyline>
+    <polyline points="2 12 12 17 22 12"></polyline>
+  </symbol>
+
+  <!-- Curly braces with C - Class Methods section -->
+  <symbol
+    id="icon-class-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      C
+    </text>
+  </symbol>
+
+  <!-- Curly braces with I - Instance Methods section -->
+  <symbol
+    id="icon-instance-methods"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 3C3.5 3 2 4.5 2 7v3c0 1.5-1 2-1 2s1 .5 1 2v5c0 2.5 1.5 4 4 4"></path>
+    <path d="M18 3c2.5 0 4 1.5 4 4v3c0 1.5 1 2 1 2s-1 .5-1 2v5c0 2.5-1.5 4-4 4"></path>
+
+    <text
+      x="12"
+      y="17"
+      text-anchor="middle"
+      font-size="13"
+      font-weight="bold"
+      fill="currentColor"
+      stroke="none"
+    >
+      I
+    </text>
+  </symbol>
+
+  <!-- Double chevrons up - Ancestors section -->
+  <symbol
+    id="icon-ancestors"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="17 11 12 6 7 11"></polyline>
+    <polyline points="17 18 12 13 7 18"></polyline>
+  </symbol>
+
+  <!-- User with plus - Included Modules section -->
+  <symbol
+    id="icon-includes"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+
+    <line
+      x1="20"
+      y1="8"
+      x2="20"
+      y2="14"
+    ></line>
+
+    <line
+      x1="23"
+      y1="11"
+      x2="17"
+      y2="11"
+    ></line>
+  </symbol>
+
+  <!-- User with check - Extended Modules section -->
+  <symbol
+    id="icon-extends"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="8.5" cy="7" r="4"></circle>
+    <polyline points="17 11 19 13 23 9"></polyline>
+  </symbol>
+
+  <!-- List - Sections section -->
+  <symbol
+    id="icon-list"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line
+      x1="8"
+      y1="6"
+      x2="21"
+      y2="6"
+    ></line>
+
+    <line
+      x1="8"
+      y1="12"
+      x2="21"
+      y2="12"
+    ></line>
+
+    <line
+      x1="8"
+      y1="18"
+      x2="21"
+      y2="18"
+    ></line>
+
+    <line
+      x1="3"
+      y1="6"
+      x2="3.01"
+      y2="6"
+    ></line>
+
+    <line
+      x1="3"
+      y1="12"
+      x2="3.01"
+      y2="12"
+    ></line>
+
+    <line
+      x1="3"
+      y1="18"
+      x2="3.01"
+      y2="18"
+    ></line>
+  </symbol>
+</svg>
+
+<header class="top-navbar">
+  <a href="./index.html" class="navbar-brand">
+    RDoc Documentation
+  </a>
+
+  <!-- Desktop search bar -->
+  <div class="navbar-search navbar-search-desktop" role="search">
+    <form action="#" method="get" accept-charset="utf-8">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results-desktop"
+             type="text" name="search" placeholder="Search (/) for a class, method..."
+             spellcheck="false" autocomplete="off"
+             title="Type to search, Up and Down to navigate, Enter to load">
+      <ul id="search-results-desktop" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="initially-hidden search-results"></ul>
+    </form>
+  </div>
+
+  <!-- Mobile search icon button -->
+  <button id="search-toggle" class="navbar-search-mobile" aria-label="Open search" type="button">
+    <span aria-hidden="true">🔍</span>
+  </button>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+  </button>
+</header>
+
+<!-- Search Modal (Mobile) -->
+<div id="search-modal" class="search-modal" hidden aria-modal="true" role="dialog" aria-label="Search">
+  <div class="search-modal-backdrop"></div>
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <form class="search-modal-form" action="#" method="get" accept-charset="utf-8">
+        <span class="search-modal-icon" aria-hidden="true">🔍</span>
+        <input id="search-field-mobile" role="combobox" aria-label="Search"
+               aria-autocomplete="list" aria-controls="search-results-mobile"
+               type="text" name="search" placeholder="Search documentation"
+               spellcheck="false" autocomplete="off">
+        <button type="button" class="search-modal-close" aria-label="Close search" id="search-modal-close">
+          <span aria-hidden="true">esc</span>
+        </button>
+      </form>
+    </div>
+    <div class="search-modal-body">
+      <ul id="search-results-mobile" aria-label="Search Results"
+          aria-busy="false" aria-expanded="false"
+          aria-atomic="false" class="search-results search-modal-results initially-hidden"></ul>
+      <div class="search-modal-empty">
+        <p>No recent searches</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+  <span aria-hidden="true">&#9776;</span>
+</div>
+
+
+<nav id="navigation" role="navigation" hidden>
+  
+
+
+
+
+
+  
+
+  
+<div id="parent-class-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-ancestors"></use></svg>
+      </span>
+      <span class="nav-section-title">Ancestors</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+    <ul><li><a href="Object.html">Object</a><ul><li>BasicObject</li></ul></li></ul>
+  </details>
+</div>
+
+
+  
+
+  
+
+  
+  <div class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg><use href="#icon-class-methods"></use></svg>
+        </span>
+        <span class="nav-section-title">Class Methods</span>
+        <span class="nav-section-chevron">
+          <svg><use href="#icon-chevron"></use></svg>
+        </span>
+      </summary>
+      <ul class="nav-list" role="directory">
+
+        <li ><a href="#method-c-new">new</a></li>
+
+      </ul>
+    </details>
+  </div>
+
+
+
+  <div class="nav-section">
+    <details class="nav-section-collapsible" open>
+      <summary class="nav-section-header">
+        <span class="nav-section-icon">
+          <svg><use href="#icon-instance-methods"></use></svg>
+        </span>
+        <span class="nav-section-title">Instance Methods</span>
+        <span class="nav-section-chevron">
+          <svg><use href="#icon-chevron"></use></svg>
+        </span>
+      </summary>
+      <ul class="nav-list" role="directory">
+
+        <li ><a href="#method-i-display_members">display_members</a></li>
+
+        <li ><a href="#method-i-enterActivity">enterActivity</a></li>
+
+        <li ><a href="#method-i-enterContentFormat">enterContentFormat</a></li>
+
+        <li ><a href="#method-i-enterDisplayFormat">enterDisplayFormat</a></li>
+
+        <li ><a href="#method-i-enterEncoderFormat">enterEncoderFormat</a></li>
+
+        <li ><a href="#method-i-export_to_csv">export_to_csv</a></li>
+
+        <li ><a href="#method-i-export_to_xlsx">export_to_xlsx</a></li>
+
+        <li ><a href="#method-i-extract_properties">extract_properties</a></li>
+
+        <li ><a href="#method-i-extract_property_value">extract_property_value</a></li>
+
+        <li ><a href="#method-i-format_database_id">format_database_id</a></li>
+
+        <li ><a href="#method-i-get_page_details">get_page_details</a></li>
+
+        <li ><a href="#method-i-query_members">query_members</a></li>
+
+        <li ><a href="#method-i-run">run</a></li>
+
+      </ul>
+    </details>
+  </div>
+
+
+  <div id="classindex-section" class="nav-section">
+  <details class="nav-section-collapsible" open>
+    <summary class="nav-section-header">
+      <span class="nav-section-icon">
+        <svg><use href="#icon-layers"></use></svg>
+      </span>
+      <span class="nav-section-title">Classes and Modules</span>
+      <span class="nav-section-chevron">
+        <svg><use href="#icon-chevron"></use></svg>
+      </span>
+    </summary>
+
+    <ul class="link-list nav-list"><li><code><a href="./API_Notion.html">API_Notion</a></code></li><li><code><a href="./CotMgt.html">CotMgt</a></code></li><li><code><a href="./Cot_Checks.html">Cot_Checks</a></code></li><li><code><a href="./CsvToNotion.html">CsvToNotion</a></code></li><li><code><a href="./Debuggable.html">Debuggable</a></code></li><li><code><a href="./ExtractorMBR.html">ExtractorMBR</a></code></li><li><code><a href="./HelloFrame.html">HelloFrame</a></code></li><li><code><a href="./HelpApplic.html">HelpApplic</a></code></li><li><details><summary><code><a href="./M25_Members.html">M25_Members</a></code></summary><ul class="link-list nav-list"><li><code><a href="./M25_Members/Members.html">Members</a></code></li></ul></details></li><li><code><a href="./M25t_Membres.html">M25t_Membres</a></code></li><li><code><a href="./Notion.html">Notion</a></code></li><li><code><a href="./NotionClient.html">NotionClient</a></code></li><li><code><a href="./NotionMembersExtractor.html">NotionMembersExtractor</a></code></li><li><code><a href="./Object.html">Object</a></code></li><li><code><a href="./SelectFile.html">SelectFile</a></code></li><li><code><a href="./Standards.html">Standards</a></code></li><li><code><a href="./TestJob.html">TestJob</a></code></li><li><code><a href="./UploadFileToNotion.html">UploadFileToNotion</a></code></li><li><code><a href="./WebhookAsync.html">WebhookAsync</a></code></li><li><code><a href="./WebhookProcessing.html">WebhookProcessing</a></code></li></ul>
+  </details>
+</div>
+
+</nav>
+
+<main role="main" aria-labelledby="class-notionmembersextractor">
+  
+  
+
+  <span id="class-NotionMembersExtractor" class="legacy-anchor"></span>
+  <h1 id="class-notionmembersextractor" class="anchor-link class">
+    class NotionMembersExtractor
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+
+  <span id="5Buntitled-5D" class="legacy-anchor"></span>
+  <section class="documentation-section anchor-link">
+
+
+
+
+
+    <section class="constants-list">
+      <header>
+        <h3 id="untitled-constants"><a href="#untitled-constants">Constants</a></h3>
+      </header>
+      <dl>
+
+        <dt id="BASE_URL">BASE_URL</dt>
+
+        <dd>
+
+          
+        </dd>
+
+
+        <dt id="CONFIG">CONFIG</dt>
+
+        <dd>
+
+          
+        </dd>
+
+
+        <dt id="CONTAINER_DATABASE_ID">CONTAINER_DATABASE_ID</dt>
+
+        <dd>
+
+          
+        </dd>
+
+
+        <dt id="COTISATION_INIT">COTISATION_INIT</dt>
+
+        <dd>
+
+          
+        </dd>
+
+
+        <dt id="DBMBR_ID">DBMBR_ID</dt>
+
+        <dd>
+
+          
+        </dd>
+
+
+        <dt id="DIRECTORY_TO_PUT">DIRECTORY_TO_PUT</dt>
+
+        <dd>
+
+          
+        </dd>
+
+
+        <dt id="DIRECTORY_TO_SAVE">DIRECTORY_TO_SAVE</dt>
+
+        <dd>
+
+          
+        </dd>
+
+
+        <dt id="NOTION_API_TOKEN">NOTION_API_TOKEN</dt>
+
+        <dd>
+
+          
+        </dd>
+
+
+        <dt id="NOTION_API_VERSION">NOTION_API_VERSION</dt>
+
+        <dd>
+
+          <p>***************************</p>
+        </dd>
+
+
+      </dl>
+    </section>
+
+
+
+
+
+
+
+
+     <section id="public-class-untitled-method-details" class="method-section anchor-link">
+       <header>
+         <h3 id="public-class-untitled-methods"><a href="#public-class-untitled-methods">Public Class Methods</a></h3>
+       </header>
+
+
+      <div id="method-c-new" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-c-new" title="Link to this method">
+                <span class="method-name">new</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="new-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>()
+<span class="ruby-comment">#+++++++++++++</span>
+    <span class="ruby-ivar">@token</span>              = <span class="ruby-constant">NOTION_API_TOKEN</span>
+    <span class="ruby-ivar">@container_db_id</span>    = <span class="ruby-identifier">format_database_id</span>(<span class="ruby-constant">CONTAINER_DATABASE_ID</span>)
+    <span class="ruby-ivar">@mbr_db_id</span>          = <span class="ruby-constant">DBMBR_ID</span>
+    <span class="ruby-ivar">@headers</span> = {
+        <span class="ruby-string">&#39;Authorization&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-node">&quot;Bearer #{@token}&quot;</span>,
+        <span class="ruby-string">&#39;Notion-Version&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">NOTION_API_VERSION</span>,
+        <span class="ruby-string">&#39;Content-Type&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;application/json&#39;</span>
+    }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+    </section>
+
+
+
+
+
+
+
+     <section id="public-instance-untitled-method-details" class="method-section anchor-link">
+       <header>
+         <h3 id="public-instance-untitled-methods"><a href="#public-instance-untitled-methods">Public Instance Methods</a></h3>
+       </header>
+
+
+      <div id="method-i-display_members" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-display_members" title="Link to this method">
+                <span class="method-name">display_members</span>
+                <span class="method-args">(members, activity_name = &#39;Tous&#39;, display_format = &#39;X&#39;)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="display_members-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 523</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display_members</span>(<span class="ruby-identifier">members</span>, <span class="ruby-identifier">activity_name</span> = <span class="ruby-string">&#39;Tous&#39;</span>, <span class="ruby-identifier">display_format</span> = <span class="ruby-string">&#39;X&#39;</span>)
+  <span class="ruby-comment">#++++++++++++++++++</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;\n=== Membres - #{activity_name} ===&quot;</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{members.count} membre(s) trouvé(s)\n&quot;</span>
+
+      <span class="ruby-identifier">members</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">member</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">props</span> = <span class="ruby-identifier">extract_properties</span>(<span class="ruby-identifier">member</span>)
+          
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">display_format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;L&#39;</span>
+              <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;#{props[&#39;Référence&#39;]} =&gt;&quot;</span> <span class="ruby-operator">+</span> 
+                  <span class="ruby-node">&quot; CDC:#{props[&#39;CDC&#39;]} #&quot;</span> <span class="ruby-operator">+</span>
+                  <span class="ruby-node">&quot; ActPrc:#{props[&#39;Activité principale&#39;]} #&quot;</span> <span class="ruby-operator">+</span>
+                  <span class="ruby-string">&quot; ActSecs:props[&#39;Activités secondaires] #&quot;</span> <span class="ruby-operator">+</span>
+                  <span class="ruby-node">&quot; Email:#{props[&#39;Email&#39;]} #&quot;</span>
+          <span class="ruby-keyword">else</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━&quot;</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{props[:Référence]}&quot;</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  CDC: #{props[:CDC]}&quot;</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Activité principale: #{props[&#39;Activité principale&#39;]}&quot;</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Activités secondaires: #{props[&#39;Activités secondaires&#39;]&amp;.join(&#39;, &#39;)}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Activités secondaires&#39;</span>]&amp;.<span class="ruby-identifier">any?</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Email: #{props[:Email]}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">props</span>[<span class="ruby-value">:Email</span>]
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Gsm: #{props[:Gsm]}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">props</span>[<span class="ruby-value">:Gsm</span>]
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Naissance: #{props[&#39;Date naissance&#39;][8..9]}-#{props[&#39;Date naissance&#39;][5..6]}-#{props[&#39;Date naissance&#39;][0..3]}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>].<span class="ruby-identifier">nil?</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Contrôles: #{props[:Contrôles]}&quot;</span>
+          <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━&quot;</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">display_format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;F&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Affiche les membres dans la console</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-enterActivity" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-enterActivity" title="Link to this method">
+                <span class="method-name">enterActivity</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="enterActivity-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 235</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enterActivity</span>()
+<span class="ruby-comment">#++++++++++++++++</span>
+    <span class="ruby-identifier">lst_activity</span>    = [
+        <span class="ruby-string">&#39;Amicale_des_Archers&#39;</span>,
+        <span class="ruby-string">&#39;Aquagym_1&#39;</span>,
+        <span class="ruby-string">&#39;Aquagym_2&#39;</span>,
+        <span class="ruby-string">&#39;Aquagym_3&#39;</span>,
+        <span class="ruby-string">&#39;Art_Floral&#39;</span>,
+        <span class="ruby-string">&#39;Danse&#39;</span>,
+        <span class="ruby-string">&#39;Dessin&#39;</span>,
+        <span class="ruby-string">&#39;Gymnastique_1&#39;</span>,
+        <span class="ruby-string">&#39;Gymnastique_2&#39;</span>,
+        <span class="ruby-string">&#39;Informatique&#39;</span>,
+        <span class="ruby-string">&#39;Marcheurs_du_Jeudi&#39;</span>,
+        <span class="ruby-string">&#39;Marche_Nordique&#39;</span>,
+        <span class="ruby-string">&#39;Pilates&#39;</span>,
+        <span class="ruby-string">&#39;Randonneurs_du_Brabant&#39;</span>,
+        <span class="ruby-string">&#39;Scrapbooking&#39;</span>,
+        <span class="ruby-string">&#39;TaiChi&#39;</span>,
+        <span class="ruby-string">&#39;Tennis_de_Table&#39;</span>,
+        <span class="ruby-string">&#39;Vie_Active&#39;</span>
+    ]
+    <span class="ruby-identifier">lst_activity</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">act</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;#{index+1} =&gt; #{act}&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">print</span>   <span class="ruby-string">&quot;Please select the activity by N° =&gt; &quot;</span>
+    <span class="ruby-identifier">actindex</span>    = <span class="ruby-identifier">$stdin</span>.<span class="ruby-identifier">gets</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">exit</span>    <span class="ruby-value">9</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">actindex</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">actselect</span>   = <span class="ruby-identifier">lst_activity</span>[<span class="ruby-identifier">actindex</span><span class="ruby-value">-1</span>]
+    <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;=&gt;Activity selected: #{actselect}&quot;</span>
+
+    <span class="ruby-keyword">return</span>  <span class="ruby-identifier">actselect</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Enter activity</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-enterContentFormat" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-enterContentFormat" title="Link to this method">
+                <span class="method-name">enterContentFormat</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="enterContentFormat-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 219</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enterContentFormat</span>()
+<span class="ruby-comment">#+++++++++++++++++++++</span>
+    <span class="ruby-identifier">con_format</span>  = {
+        <span class="ruby-string">&#39;F&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Full&#39;</span>,
+        <span class="ruby-string">&#39;P&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Paiem&#39;</span>
+    }
+    <span class="ruby-identifier">con_format</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">print</span>   <span class="ruby-string">&quot;Please select the content by letter {F(ull)/P(artial)} [F] =&gt; &quot;</span>
+    <span class="ruby-identifier">content_key</span> = <span class="ruby-identifier">$stdin</span>.<span class="ruby-identifier">gets</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>
+    <span class="ruby-identifier">content_key</span> = <span class="ruby-string">&#39;F&#39;</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">content_key</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;=&gt;Content: #{con_format[content_key]} selected&quot;</span>
+    <span class="ruby-keyword">return</span>  <span class="ruby-identifier">con_format</span>[<span class="ruby-identifier">content_key</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-enterDisplayFormat" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-enterDisplayFormat" title="Link to this method">
+                <span class="method-name">enterDisplayFormat</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="enterDisplayFormat-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 178</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enterDisplayFormat</span>()
+<span class="ruby-comment">#+++++++++++++++++++++</span>
+    <span class="ruby-identifier">lst_format</span>  = {
+        <span class="ruby-string">&#39;Fiche&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;F&#39;</span>,
+        <span class="ruby-string">&#39;Liste&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;L&#39;</span>,
+        <span class="ruby-string">&#39;Reset&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;R&#39;</span>,
+        <span class="ruby-string">&#39;CSV&#39;</span>   <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;C&#39;</span>,
+        <span class="ruby-string">&#39;XLSX&#39;</span>  <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;X&#39;</span>,
+        <span class="ruby-string">&#39;C&#39;</span>     <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Csv&#39;</span>,
+        <span class="ruby-string">&#39;F&#39;</span>     <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Fiche&#39;</span>,
+        <span class="ruby-string">&#39;L&#39;</span>     <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Liste&#39;</span>,
+        <span class="ruby-string">&#39;R&#39;</span>     <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Reset&#39;</span>,
+        <span class="ruby-string">&#39;X&#39;</span>     <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Xlsx&#39;</span>
+    }
+    <span class="ruby-identifier">lst_format</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;Format: #{key} =&gt; #{value}&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">print</span>   <span class="ruby-string">&quot;Please select the format by letter =&gt; &quot;</span>
+    <span class="ruby-identifier">format_key</span>  = <span class="ruby-identifier">$stdin</span>.<span class="ruby-identifier">gets</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>
+    <span class="ruby-identifier">format_key</span>  = <span class="ruby-string">&#39;Reset&#39;</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">format_key</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;=&gt;Format: #{lst_format[format_key]} selected&quot;</span>
+    <span class="ruby-keyword">return</span>  <span class="ruby-identifier">lst_format</span>[<span class="ruby-identifier">format_key</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Enter display format</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-enterEncoderFormat" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-enterEncoderFormat" title="Link to this method">
+                <span class="method-name">enterEncoderFormat</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="enterEncoderFormat-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 203</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enterEncoderFormat</span>()
+<span class="ruby-comment">#+++++++++++++++++++++</span>
+    <span class="ruby-identifier">enc_format</span>  = {
+        <span class="ruby-string">&#39;U&#39;</span> <span class="ruby-operator">=&gt;</span>  <span class="ruby-string">&#39;UTF-8&#39;</span>,
+        <span class="ruby-string">&#39;W&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;CP1252&#39;</span>
+    }
+    <span class="ruby-identifier">enc_format</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;Format: #{key} =&gt; #{value}&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">print</span>   <span class="ruby-string">&quot;Please select the encoder by letter {U(TF-8)/W(indows)} [W] =&gt; &quot;</span>
+    <span class="ruby-identifier">format_key</span>  = <span class="ruby-identifier">$stdin</span>.<span class="ruby-identifier">gets</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>
+    <span class="ruby-identifier">format_key</span>  = <span class="ruby-string">&#39;W&#39;</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">format_key</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;=&gt;Encoder: #{enc_format[format_key]} selected&quot;</span>
+    <span class="ruby-keyword">return</span>  <span class="ruby-identifier">enc_format</span>[<span class="ruby-identifier">format_key</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Enter encoder format</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-export_to_csv" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-export_to_csv" title="Link to this method">
+                <span class="method-name">export_to_csv</span>
+                <span class="method-args">(members, filename, activity_name = &#39;Tous&#39;, display_format=&#39;X&#39;, encoder_format = &#39;X&#39;)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="export_to_csv-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 270</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">export_to_csv</span>(<span class="ruby-identifier">members</span>, <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">activity_name</span> = <span class="ruby-string">&#39;Tous&#39;</span>, <span class="ruby-identifier">display_format</span>=<span class="ruby-string">&#39;X&#39;</span>, <span class="ruby-identifier">encoder_format</span> = <span class="ruby-string">&#39;X&#39;</span>)
+<span class="ruby-comment">#++++++++++++++++</span>
+    <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;=&gt;Export to .csv with ENCODER: #{encoder_format}&quot;</span>
+    <span class="ruby-comment"># Create rows</span>
+    <span class="ruby-identifier">csv_out</span> = []
+    <span class="ruby-identifier">members</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">member</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">props</span> = <span class="ruby-identifier">extract_properties</span>(<span class="ruby-identifier">member</span>)
+        
+        <span class="ruby-comment"># Format</span>
+        <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Demande&#39;</span>]        = <span class="ruby-string">&#39;&#39;</span>    <span class="ruby-keyword">if</span> <span class="ruby-identifier">display_format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;R&#39;</span>
+        <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Cotisation&#39;</span>]     = <span class="ruby-string">&#39;0&#39;</span>   <span class="ruby-keyword">if</span> <span class="ruby-constant">COTISATION_INIT</span>
+        <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>] = <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>][<span class="ruby-value">8</span><span class="ruby-operator">..</span><span class="ruby-value">9</span>]<span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>][<span class="ruby-value">5</span><span class="ruby-operator">..</span><span class="ruby-value">6</span>]<span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>][<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>]   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date sortie&#39;</span>]    = <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date sortie&#39;</span>][<span class="ruby-value">8</span><span class="ruby-operator">..</span><span class="ruby-value">9</span>]<span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date sortie&#39;</span>][<span class="ruby-value">5</span><span class="ruby-operator">..</span><span class="ruby-value">6</span>]<span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date sortie&#39;</span>][<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>]   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date sortie&#39;</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date décès&#39;</span>]     = <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date décès&#39;</span>][<span class="ruby-value">8</span><span class="ruby-operator">..</span><span class="ruby-value">9</span>]<span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date décès&#39;</span>][<span class="ruby-value">5</span><span class="ruby-operator">..</span><span class="ruby-value">6</span>]<span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date décès&#39;</span>][<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>]   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date décès&#39;</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;=&gt;Membre: #{props[&#39;Référence&#39;]}&quot;</span>
+        <span class="ruby-comment"># Save</span>
+        <span class="ruby-identifier">csv_out</span> <span class="ruby-operator">&lt;&lt;</span> [
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Demande&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Référence&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;CDC&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Activité principale&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Activités secondaires&#39;</span>]&amp;.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;, &#39;</span>),
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Civilité&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Adresse&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Gsm&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Fixe&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Email&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Cotisation&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;V-A&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date sortie&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date décès&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Contrôles&#39;</span>]
+        ]
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@count_out</span>  = <span class="ruby-identifier">csv_out</span>.<span class="ruby-identifier">count</span>
+    <span class="ruby-identifier">index</span>   = <span class="ruby-value">0</span>
+    <span class="ruby-comment"># Save to file</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-string">&#39;w&#39;</span>, <span class="ruby-value">encoding:</span> <span class="ruby-string">&#39;UTF-8&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-string">&quot;\uFEFF&quot;</span>)  <span class="ruby-comment"># Insère le BOM au début</span>
+        
+        <span class="ruby-identifier">csv</span> = <span class="ruby-constant">CSV</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">f</span>, <span class="ruby-value">col_sep:</span> <span class="ruby-string">&#39;;&#39;</span>, <span class="ruby-value">encoding:</span> <span class="ruby-identifier">encoder_format</span>)
+        <span class="ruby-comment"># En-têtes</span>
+        <span class="ruby-identifier">csv</span> <span class="ruby-operator">&lt;&lt;</span> [
+            <span class="ruby-string">&#39;Demande&#39;</span>,
+            <span class="ruby-string">&#39;Référence&#39;</span>, <span class="ruby-string">&#39;CDC&#39;</span>, 
+            <span class="ruby-string">&#39;Activité principale&#39;</span>, <span class="ruby-string">&#39;Activités secondaires&#39;</span>,
+            <span class="ruby-string">&#39;Civilité&#39;</span>, <span class="ruby-string">&#39;Adresse&#39;</span>, <span class="ruby-string">&#39;Gsm&#39;</span>, <span class="ruby-string">&#39;Fixe&#39;</span>, <span class="ruby-string">&#39;Email&#39;</span>,
+            <span class="ruby-string">&#39;Date naissance&#39;</span>, <span class="ruby-string">&#39;Cotisation&#39;</span>, 
+            <span class="ruby-string">&#39;V-A&#39;</span>,
+            <span class="ruby-string">&#39;Date sortie&#39;</span>, <span class="ruby-string">&#39;Date décès&#39;</span>,
+            <span class="ruby-string">&#39;Contrôles&#39;</span>
+        ]
+        <span class="ruby-comment"># Données</span>
+        <span class="ruby-keyword">while</span> <span class="ruby-identifier">index</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@count_out</span>
+            <span class="ruby-identifier">csv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">csv_out</span>[<span class="ruby-identifier">index</span>]
+            <span class="ruby-identifier">index</span>   <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;✓ Export CSV créé: #{filename}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Exporte en CSV</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-export_to_xlsx" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-export_to_xlsx" title="Link to this method">
+                <span class="method-name">export_to_xlsx</span>
+                <span class="method-args">(members, filename, activity_name = &#39;Tous&#39;, display_format=&#39;X&#39;, encoder_format = &#39;X&#39;, content_format = &#39;F&#39;)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="export_to_xlsx-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 333</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">export_to_xlsx</span>(<span class="ruby-identifier">members</span>, <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">activity_name</span> = <span class="ruby-string">&#39;Tous&#39;</span>, <span class="ruby-identifier">display_format</span>=<span class="ruby-string">&#39;X&#39;</span>, <span class="ruby-identifier">encoder_format</span> = <span class="ruby-string">&#39;X&#39;</span>, <span class="ruby-identifier">content_format</span> = <span class="ruby-string">&#39;F&#39;</span>)
+<span class="ruby-comment">#+++++++++++++++++</span>
+    <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;=&gt;Export to .xlsx for: #{activity_name} with ENCODER: #{encoder_format} CONTENT: #{content_format}&quot;</span>
+    <span class="ruby-comment"># Create rows</span>
+    <span class="ruby-identifier">csv_out</span>     = []                                <span class="ruby-comment">#contains all rows</span>
+    <span class="ruby-identifier">members</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">member</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">props</span> = <span class="ruby-identifier">extract_properties</span>(<span class="ruby-identifier">member</span>)          <span class="ruby-comment">#properties for 1 mbr</span>
+        
+        <span class="ruby-comment"># Format</span>
+        <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Demande&#39;</span>]        = <span class="ruby-string">&#39;&#39;</span>    <span class="ruby-keyword">if</span> <span class="ruby-identifier">display_format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;R&#39;</span>
+        <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Cotisation&#39;</span>]     = <span class="ruby-string">&#39;0&#39;</span>   <span class="ruby-keyword">if</span> <span class="ruby-constant">COTISATION_INIT</span>
+        <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>] = <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>][<span class="ruby-value">8</span><span class="ruby-operator">..</span><span class="ruby-value">9</span>]<span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>][<span class="ruby-value">5</span><span class="ruby-operator">..</span><span class="ruby-value">6</span>]<span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>][<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>]   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date sortie&#39;</span>]    = <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date sortie&#39;</span>][<span class="ruby-value">8</span><span class="ruby-operator">..</span><span class="ruby-value">9</span>]<span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date sortie&#39;</span>][<span class="ruby-value">5</span><span class="ruby-operator">..</span><span class="ruby-value">6</span>]<span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date sortie&#39;</span>][<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>]   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date sortie&#39;</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date décès&#39;</span>]     = <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date décès&#39;</span>][<span class="ruby-value">8</span><span class="ruby-operator">..</span><span class="ruby-value">9</span>]<span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date décès&#39;</span>][<span class="ruby-value">5</span><span class="ruby-operator">..</span><span class="ruby-value">6</span>]<span class="ruby-string">+&quot;-&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date décès&#39;</span>][<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>]   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date décès&#39;</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;=&gt;Membre: #{props[&#39;Référence&#39;]}&quot;</span>
+        <span class="ruby-comment"># Content ?</span>
+    <span class="ruby-comment">#    puts    &quot;DBG&gt;&gt;&gt;#{props[&#39;Activité principale&#39;]} - #{props[&#39;Activité principale&#39;].class}&quot;</span>
+    <span class="ruby-comment">#    pp props[&#39;Activité principale&#39;]</span>
+        <span class="ruby-keyword">next</span>    <span class="ruby-keyword">if</span> <span class="ruby-identifier">content_format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Paiem&#39;</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Activité principale&#39;</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-keyword">next</span>    <span class="ruby-keyword">if</span> <span class="ruby-identifier">content_format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Paiem&#39;</span> <span class="ruby-keyword">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Activité principale&#39;</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">activity_name</span>)
+        <span class="ruby-keyword">next</span>    <span class="ruby-keyword">if</span> <span class="ruby-identifier">content_format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Paiem&#39;</span> <span class="ruby-keyword">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Cotisation&#39;</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;18&#39;</span>)
+        <span class="ruby-comment"># Save</span>
+        <span class="ruby-identifier">csv_out</span> <span class="ruby-operator">&lt;&lt;</span> [                                <span class="ruby-comment">#append row</span>
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Demande&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Référence&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;CDC&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Activité principale&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Activités secondaires&#39;</span>]&amp;.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;, &#39;</span>),
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Civilité&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Adresse&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Gsm&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Fixe&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Email&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date naissance&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Cotisation&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;V-A&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date sortie&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Date décès&#39;</span>],
+            <span class="ruby-identifier">props</span>[<span class="ruby-string">&#39;Contrôles&#39;</span>]
+        ]
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@count_out</span>  = <span class="ruby-identifier">csv_out</span>.<span class="ruby-identifier">count</span>
+
+    <span class="ruby-comment"># Save to file</span>
+    <span class="ruby-comment"># 1-Créer un nouveau classeur</span>
+    <span class="ruby-identifier">workbook</span> = <span class="ruby-constant">WriteXLSX</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">filename</span>)
+
+    <span class="ruby-comment"># 2.1-Ajouter une feuille avec un nom spécifique</span>
+    <span class="ruby-identifier">worksheet</span> = <span class="ruby-identifier">workbook</span>.<span class="ruby-identifier">add_worksheet</span>(<span class="ruby-string">&#39;Membres&#39;</span>)
+    <span class="ruby-comment"># 2.2-Définir la largeur de chaque colonne</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">0</span>,<span class="ruby-value">0</span>,<span class="ruby-value">15</span>)                    <span class="ruby-comment">#demande</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>,<span class="ruby-value">20</span>)                    <span class="ruby-comment">#reference</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">2</span>,<span class="ruby-value">2</span>,<span class="ruby-value">5</span>)                     <span class="ruby-comment">#CDC</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">3</span>,<span class="ruby-value">3</span>,<span class="ruby-value">20</span>)                    <span class="ruby-comment">#act prc</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">4</span>,<span class="ruby-value">4</span>,<span class="ruby-value">20</span>)                    <span class="ruby-comment">#act sec</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">5</span>,<span class="ruby-value">5</span>,<span class="ruby-value">10</span>)                    <span class="ruby-comment">#civilite</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">6</span>,<span class="ruby-value">6</span>,<span class="ruby-value">25</span>)                    <span class="ruby-comment">#adresse</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">7</span>,<span class="ruby-value">7</span>,<span class="ruby-value">15</span>)                    <span class="ruby-comment">#gsm</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">8</span>,<span class="ruby-value">8</span>,<span class="ruby-value">15</span>)                    <span class="ruby-comment">#fixe</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">9</span>,<span class="ruby-value">9</span>,<span class="ruby-value">20</span>)                    <span class="ruby-comment">#email</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">10</span>,<span class="ruby-value">10</span>,<span class="ruby-value">15</span>)                  <span class="ruby-comment">#date naissance</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">11</span>,<span class="ruby-value">11</span>,<span class="ruby-value">10</span>)                  <span class="ruby-comment">#cotisation</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">12</span>,<span class="ruby-value">12</span>,<span class="ruby-value">5</span>)                   <span class="ruby-comment">#v-a</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">13</span>,<span class="ruby-value">13</span>,<span class="ruby-value">15</span>)                  <span class="ruby-comment">#date sortie</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">14</span>,<span class="ruby-value">14</span>,<span class="ruby-value">15</span>)                  <span class="ruby-comment">#date décès</span>
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">set_column</span>(<span class="ruby-value">15</span>,<span class="ruby-value">15</span>,<span class="ruby-value">20</span>)                  <span class="ruby-comment">#contrôles</span>
+    <span class="ruby-comment"># 2.3-Définir les styles</span>
+    <span class="ruby-identifier">style_wrap</span>  = <span class="ruby-identifier">workbook</span>.<span class="ruby-identifier">add_format</span>(<span class="ruby-value">wrap_text:</span><span class="ruby-keyword">true</span>)
+    <span class="ruby-identifier">style_bold</span>  = <span class="ruby-identifier">workbook</span>.<span class="ruby-identifier">add_format</span>(<span class="ruby-value">bold:</span><span class="ruby-keyword">true</span>)
+
+    <span class="ruby-comment"># 3-Définir les listes déroulantes</span>
+    <span class="ruby-identifier">listes_choix</span>    = [
+                        [],                         <span class="ruby-comment">#0</span>
+                        [],                         <span class="ruby-comment">#1</span>
+                        [                           <span class="ruby-comment">#2-CDC</span>
+                        <span class="ruby-string">&quot;BLA&quot;</span>, <span class="ruby-string">&quot;BLC&quot;</span>, <span class="ruby-string">&quot;BLH&quot;</span>,
+                        <span class="ruby-string">&quot;CLB&quot;</span>, <span class="ruby-string">&quot;CSE&quot;</span>,
+                        <span class="ruby-string">&quot;EXT&quot;</span>,
+                        <span class="ruby-string">&quot;GEN&quot;</span>, <span class="ruby-string">&quot;GNP&quot;</span>, <span class="ruby-string">&quot;JOD&quot;</span>, <span class="ruby-string">&quot;LAS&quot;</span>,
+                        <span class="ruby-string">&quot;NIV&quot;</span>,
+                        <span class="ruby-string">&quot;OTT&quot;</span>, <span class="ruby-string">&quot;PEW&quot;</span>, <span class="ruby-string">&quot;REB&quot;</span>, <span class="ruby-string">&quot;RIX&quot;</span>,
+                        <span class="ruby-string">&quot;SDA&quot;</span>, <span class="ruby-string">&quot;SEN&quot;</span>, <span class="ruby-string">&quot;TUB&quot;</span>,
+                        <span class="ruby-string">&quot;VIL&quot;</span>, <span class="ruby-string">&quot;VLV&quot;</span>,
+                        <span class="ruby-string">&quot;WAL&quot;</span>, <span class="ruby-string">&quot;WAT&quot;</span>, <span class="ruby-string">&quot;WAV&quot;</span>
+                        ],
+                        [                           <span class="ruby-comment">#3-ACTPRC</span>
+                        <span class="ruby-string">&quot;Amicale_des_Archers&quot;</span>,
+                        <span class="ruby-string">&quot;Aquagym_1&quot;</span>, <span class="ruby-string">&quot;Aquagym_2&quot;</span>, <span class="ruby-string">&quot;Aquagym_3&quot;</span>,
+                        <span class="ruby-string">&quot;Art_Floral&quot;</span>, <span class="ruby-string">&quot;Danse&quot;</span>, <span class="ruby-string">&quot;Dessin&quot;</span>,
+                        <span class="ruby-string">&quot;Gymnastique_1&quot;</span>, <span class="ruby-string">&quot;Gymnastique_2&quot;</span>,
+                        <span class="ruby-string">&quot;Informatique&quot;</span>,
+                        <span class="ruby-string">&quot;Marche_Nordique&quot;</span>, <span class="ruby-string">&quot;Marcheurs_du_Jeudi&quot;</span>,
+                        <span class="ruby-string">&quot;Pilates&quot;</span>, <span class="ruby-string">&quot;Randonneurs_du_Brabant&quot;</span>,
+                        <span class="ruby-string">&quot;Scrapbookin&quot;</span>, <span class="ruby-string">&quot;TaiChi&quot;</span>,
+                        <span class="ruby-string">&quot;Tennis_de_Table&quot;</span>, <span class="ruby-string">&quot;Vie_Active&quot;</span>
+                        ],
+                        [                           <span class="ruby-comment">#4-ACTSECS</span>
+                        <span class="ruby-string">&quot;Amicale_des_Archers&quot;</span>,
+                        <span class="ruby-string">&quot;Aquagym_1&quot;</span>, <span class="ruby-string">&quot;Aquagym_2&quot;</span>, <span class="ruby-string">&quot;Aquagym_3&quot;</span>,
+                        <span class="ruby-string">&quot;Art_Floral&quot;</span>, <span class="ruby-string">&quot;Danse&quot;</span>, <span class="ruby-string">&quot;Dessin&quot;</span>,
+                        <span class="ruby-string">&quot;Gymnastique_1&quot;</span>, <span class="ruby-string">&quot;Gymnastique_2&quot;</span>,
+                        <span class="ruby-string">&quot;Informatique&quot;</span>,
+                        <span class="ruby-string">&quot;Marche_Nordique&quot;</span>, <span class="ruby-string">&quot;Marcheurs_du_Jeudi&quot;</span>,
+                        <span class="ruby-string">&quot;Pilates&quot;</span>, <span class="ruby-string">&quot;Randonneurs_du_Brabant&quot;</span>,
+                        <span class="ruby-string">&quot;Scrapbookin&quot;</span>, <span class="ruby-string">&quot;TaiChi&quot;</span>,
+                        <span class="ruby-string">&quot;Tennis_de_Table&quot;</span>, <span class="ruby-string">&quot;Vie_Active&quot;</span>
+                        ],
+                        [                           <span class="ruby-comment">#5-CIVILITE</span>
+                        <span class="ruby-string">&quot;M.&quot;</span>, <span class="ruby-string">&quot;Mme&quot;</span>
+                        ],
+                        [],                         <span class="ruby-comment">#6</span>
+                        [],                         <span class="ruby-comment">#7</span>
+                        [],                         <span class="ruby-comment">#8</span>
+                        [],                         <span class="ruby-comment">#9</span>
+                        [],                         <span class="ruby-comment">#10</span>
+                        [                           <span class="ruby-comment">#11-COTISATION</span>
+                        <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">&quot;9&quot;</span>, <span class="ruby-string">&quot;18&quot;</span>
+                        ],
+                        [                           <span class="ruby-comment">#12-V-A</span>
+                        <span class="ruby-string">&quot;V&quot;</span>, <span class="ruby-string">&quot;A&quot;</span>, <span class="ruby-string">&quot;VA&quot;</span>
+                        ],
+                        [],                         <span class="ruby-comment">#13</span>
+                        [],                         <span class="ruby-comment">#14</span>
+                        []                          <span class="ruby-comment">#15</span>
+                    ]
+    <span class="ruby-identifier">liste_cols</span>      = [<span class="ruby-string">&#39;A&#39;</span>, <span class="ruby-string">&#39;B&#39;</span>, <span class="ruby-string">&#39;C&#39;</span>, <span class="ruby-string">&#39;D&#39;</span>, <span class="ruby-string">&#39;E&#39;</span>, <span class="ruby-string">&#39;F&#39;</span>, <span class="ruby-string">&#39;G&#39;</span>, <span class="ruby-string">&#39;H&#39;</span>,
+                        <span class="ruby-string">&#39;I&#39;</span>, <span class="ruby-string">&#39;J&#39;</span>, <span class="ruby-string">&#39;K&#39;</span>, <span class="ruby-string">&#39;L&#39;</span>, <span class="ruby-string">&#39;M&#39;</span>, <span class="ruby-string">&#39;N&#39;</span>, <span class="ruby-string">&#39;O&#39;</span>, <span class="ruby-string">&#39;P&#39;</span>
+                    ]
+
+    <span class="ruby-comment"># 4-En-têtes</span>
+    <span class="ruby-comment">#           Titres                              index</span>
+    <span class="ruby-identifier">headers</span> = [
+                <span class="ruby-string">&quot;Demande&quot;</span>,                          <span class="ruby-comment">#0</span>
+               <span class="ruby-string">&quot;Référence&quot;</span>,                         <span class="ruby-comment">#1</span>
+               <span class="ruby-string">&quot;CDC&quot;</span>,                               <span class="ruby-comment">#2 - liste</span>
+               <span class="ruby-string">&quot;Activité principale&quot;</span>,               <span class="ruby-comment">#3 - liste</span>
+               <span class="ruby-string">&quot;Activités secondaires&quot;</span>,             <span class="ruby-comment">#4 - liste</span>
+               <span class="ruby-string">&quot;Civilité&quot;</span>,                          <span class="ruby-comment">#5 - liste</span>
+               <span class="ruby-string">&quot;Adresse&quot;</span>,                           <span class="ruby-comment">#6</span>
+               <span class="ruby-string">&quot;Gsm&quot;</span>,                               <span class="ruby-comment">#7</span>
+               <span class="ruby-string">&quot;Fixe&quot;</span>,                              <span class="ruby-comment">#8</span>
+               <span class="ruby-string">&quot;Email&quot;</span>,                             <span class="ruby-comment">#9</span>
+               <span class="ruby-string">&quot;Date naissance&quot;</span>,                    <span class="ruby-comment">#10</span>
+               <span class="ruby-string">&quot;Cotisation&quot;</span>,                        <span class="ruby-comment">#11 - liste</span>
+               <span class="ruby-string">&quot;V-A&quot;</span>,                               <span class="ruby-comment">#12 - liste</span>
+               <span class="ruby-string">&quot;Date sortie&quot;</span>,                       <span class="ruby-comment">#13</span>
+               <span class="ruby-string">&quot;Date décès&quot;</span>,                        <span class="ruby-comment">#14</span>
+               <span class="ruby-string">&quot;Contrôles&quot;</span>                          <span class="ruby-comment">#15</span>
+            ]
+    <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">write_row</span>(<span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">headers</span>, <span class="ruby-identifier">style_bold</span>)
+
+    <span class="ruby-comment">#5-rows</span>
+    <span class="ruby-identifier">index</span>   = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">row</span>     = <span class="ruby-value">1</span>
+    <span class="ruby-identifier">csv_out</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">col</span> = <span class="ruby-value">1</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">col</span> <span class="ruby-keyword">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">15</span>
+            <span class="ruby-keyword">case</span> <span class="ruby-identifier">col</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-value">2</span>, <span class="ruby-value">3</span>, <span class="ruby-value">5</span>, <span class="ruby-value">11</span>, <span class="ruby-value">12</span>                    <span class="ruby-comment">#liste</span>
+                <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">row</span>, <span class="ruby-identifier">col</span>, <span class="ruby-node">&quot;#{data[col]}&quot;</span>)
+                <span class="ruby-identifier">cell_ref</span> = <span class="ruby-node">&quot;#{liste_cols[col]}#{row}&quot;</span> <span class="ruby-comment"># cell (A..P 1..N)</span>
+                <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">data_validation</span>(<span class="ruby-identifier">cell_ref</span>, {
+                                <span class="ruby-value">validate:</span> <span class="ruby-string">&#39;list&#39;</span>,
+                                <span class="ruby-value">source:</span> <span class="ruby-identifier">listes_choix</span>[<span class="ruby-identifier">col</span>],
+                                <span class="ruby-value">dropdown:</span> <span class="ruby-keyword">true</span>,
+                                <span class="ruby-value">input_message:</span> <span class="ruby-string">&#39;Sélectionnez une option&#39;</span>,
+                                <span class="ruby-value">input_title:</span> <span class="ruby-string">&#39;Liste déroulante&#39;</span>
+                                })
+            <span class="ruby-keyword">when</span> <span class="ruby-value">4</span>                                  <span class="ruby-comment">#liste + style</span>
+                <span class="ruby-identifier">temp</span>    = <span class="ruby-identifier">data</span>[<span class="ruby-identifier">col</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\s+/</span>, <span class="ruby-string">&quot;&quot;</span>)
+                <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">row</span>, <span class="ruby-identifier">col</span>, <span class="ruby-identifier">temp</span>, <span class="ruby-identifier">style_wrap</span>)
+                <span class="ruby-identifier">cell_ref</span> = <span class="ruby-node">&quot;#{liste_cols[col]}#{row}&quot;</span> <span class="ruby-comment"># cell (A..P 1..N)</span>
+                <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">data_validation</span>(<span class="ruby-identifier">cell_ref</span>, {
+                                <span class="ruby-value">validate:</span> <span class="ruby-string">&#39;list&#39;</span>,
+                                <span class="ruby-value">source:</span> <span class="ruby-identifier">listes_choix</span>[<span class="ruby-identifier">col</span>],
+                                <span class="ruby-value">dropdown:</span> <span class="ruby-keyword">true</span>,
+                                <span class="ruby-value">input_message:</span> <span class="ruby-string">&#39;Sélectionnez une option&#39;</span>,
+                                <span class="ruby-value">input_title:</span> <span class="ruby-string">&#39;Liste déroulante&#39;</span>
+                                })
+            <span class="ruby-keyword">else</span>                                    <span class="ruby-comment">#normal</span>
+                <span class="ruby-identifier">worksheet</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">row</span>, <span class="ruby-identifier">col</span>, <span class="ruby-node">&quot;#{data[col]}&quot;</span>)
+            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">row</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-comment">#6-close</span>
+    <span class="ruby-identifier">workbook</span>.<span class="ruby-identifier">close</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Exporte en xlsx</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-extract_properties" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-extract_properties" title="Link to this method">
+                <span class="method-name">extract_properties</span>
+                <span class="method-args">(page)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="extract_properties-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">extract_properties</span>(<span class="ruby-identifier">page</span>)
+<span class="ruby-comment">#+++++++++++++++++++++</span>
+    <span class="ruby-identifier">props</span> = {}
+    <span class="ruby-identifier">page</span>[<span class="ruby-string">&#39;properties&#39;</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">props</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">extract_property_value</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">props</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Extrait les propriétés</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-extract_property_value" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-extract_property_value" title="Link to this method">
+                <span class="method-name">extract_property_value</span>
+                <span class="method-args">(prop)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="extract_property_value-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 146</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">extract_property_value</span>(<span class="ruby-identifier">prop</span>)
+<span class="ruby-comment">#+++++++++++++++++++++++++</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">prop</span>[<span class="ruby-string">&#39;type&#39;</span>]
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;title&#39;</span>
+        <span class="ruby-identifier">prop</span>[<span class="ruby-string">&#39;title&#39;</span>]&amp;.<span class="ruby-identifier">first</span>&amp;.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;text&#39;</span>, <span class="ruby-string">&#39;content&#39;</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;rich_text&#39;</span>
+        <span class="ruby-identifier">prop</span>[<span class="ruby-string">&#39;rich_text&#39;</span>]&amp;.<span class="ruby-identifier">first</span>&amp;.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;text&#39;</span>, <span class="ruby-string">&#39;content&#39;</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;select&#39;</span>
+        <span class="ruby-identifier">prop</span>[<span class="ruby-string">&#39;select&#39;</span>]&amp;.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;name&#39;</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;multi_select&#39;</span>
+        <span class="ruby-identifier">prop</span>[<span class="ruby-string">&#39;multi_select&#39;</span>]&amp;.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">opt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">opt</span>[<span class="ruby-string">&#39;name&#39;</span>] }
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;status&#39;</span>
+        <span class="ruby-identifier">prop</span>[<span class="ruby-string">&#39;status&#39;</span>]&amp;.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;name&#39;</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;email&#39;</span>
+        <span class="ruby-identifier">prop</span>[<span class="ruby-string">&#39;email&#39;</span>]
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;phone_number&#39;</span>
+        <span class="ruby-identifier">prop</span>[<span class="ruby-string">&#39;phone_number&#39;</span>]
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;checkbox&#39;</span>
+        <span class="ruby-identifier">prop</span>[<span class="ruby-string">&#39;checkbox&#39;</span>]
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;date&#39;</span>
+        <span class="ruby-identifier">prop</span>[<span class="ruby-string">&#39;date&#39;</span>]&amp;.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;start&#39;</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;unique_id&#39;</span>
+        <span class="ruby-identifier">prop</span>[<span class="ruby-string">&#39;unique_id&#39;</span>]&amp;.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;number&#39;</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;formula&#39;</span>
+        <span class="ruby-identifier">value</span>   = <span class="ruby-identifier">prop</span>[<span class="ruby-string">&#39;formula&#39;</span>]&amp;.<span class="ruby-identifier">dig</span>(<span class="ruby-string">&#39;string&#39;</span>)
+        <span class="ruby-identifier">value</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;:&#39;</span>)[<span class="ruby-value">1</span>]     <span class="ruby-keyword">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Extrait la valeur d’une propriété</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-format_database_id" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-format_database_id" title="Link to this method">
+                <span class="method-name">format_database_id</span>
+                <span class="method-args">(id)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="format_database_id-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">format_database_id</span>(<span class="ruby-identifier">id</span>)
+<span class="ruby-comment">#+++++++++++++++++++++</span>
+    <span class="ruby-identifier">clean_id</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&#39;-&#39;</span>, <span class="ruby-string">&#39;&#39;</span>)
+    <span class="ruby-node">&quot;#{clean_id[0..7]}-#{clean_id[8..11]}-#{clean_id[12..15]}-#{clean_id[16..19]}-#{clean_id[20..31]}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Formate l’ID au format UUID</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-get_page_details" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-get_page_details" title="Link to this method">
+                <span class="method-name">get_page_details</span>
+                <span class="method-args">(page_id)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="get_page_details-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 126</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_page_details</span>(<span class="ruby-identifier">page_id</span>)
+<span class="ruby-comment">#+++++++++++++++++++</span>
+    <span class="ruby-identifier">response</span> = <span class="ruby-constant">HTTParty</span>.<span class="ruby-identifier">get</span>(
+        <span class="ruby-node">&quot;#{BASE_URL}/pages/#{page_id}&quot;</span>,
+        <span class="ruby-value">headers:</span> <span class="ruby-ivar">@headers</span>
+    )
+    <span class="ruby-identifier">response</span>.<span class="ruby-identifier">success?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">response</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Récupère les détails d’une page</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-query_members" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-query_members" title="Link to this method">
+                <span class="method-name">query_members</span>
+                <span class="method-args">(activity_filter = nil)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="query_members-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">query_members</span>(<span class="ruby-identifier">activity_filter</span> = <span class="ruby-keyword">nil</span>)
+<span class="ruby-comment">#++++++++++++++++</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@mbr_db_id</span>
+    
+    <span class="ruby-identifier">query</span> = {
+        <span class="ruby-value">filter:</span> {},
+        <span class="ruby-value">sorts:</span> [{ <span class="ruby-value">property:</span> <span class="ruby-string">&#39;Référence&#39;</span>, <span class="ruby-value">direction:</span> <span class="ruby-string">&#39;ascending&#39;</span> }]
+    }
+
+    <span class="ruby-comment"># Ajouter filtre activité si spécifié</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">activity_filter</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">activity_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;Tous&#39;</span>
+        <span class="ruby-identifier">query</span>[<span class="ruby-value">:filter</span>] = {
+        <span class="ruby-value">or:</span> [
+            { <span class="ruby-value">property:</span> <span class="ruby-string">&#39;Activité principale&#39;</span>, <span class="ruby-value">select:</span> { <span class="ruby-value">equals:</span> <span class="ruby-identifier">activity_filter</span> } },
+            { <span class="ruby-value">property:</span> <span class="ruby-string">&#39;Activités secondaires&#39;</span>, <span class="ruby-value">multi_select:</span> { <span class="ruby-value">contains:</span> <span class="ruby-identifier">activity_filter</span> } }
+            ]
+        }
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># Filtre membres en service</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">query</span>[<span class="ruby-value">:filter</span>].<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">query</span>[<span class="ruby-value">:filter</span>] = { <span class="ruby-value">property:</span> <span class="ruby-string">&#39;En/Hors service&#39;</span>, <span class="ruby-value">checkbox:</span> { <span class="ruby-value">equals:</span> <span class="ruby-keyword">true</span> } }
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">query</span>[<span class="ruby-value">:filter</span>] = {
+        <span class="ruby-value">and:</span> [
+            <span class="ruby-identifier">query</span>[<span class="ruby-value">:filter</span>],
+            { <span class="ruby-value">property:</span> <span class="ruby-string">&#39;En/Hors service&#39;</span>, <span class="ruby-value">checkbox:</span> { <span class="ruby-value">equals:</span> <span class="ruby-keyword">true</span> } }
+
+            <span class="ruby-comment"># Insérez ici une propriété supplémentaire, n&#39;oubliez pas la &#39;,&#39; </span>
+            <span class="ruby-comment">#       à la ligne précédente</span>
+            <span class="ruby-comment">#</span>
+        ]
+        }
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-identifier">all_members</span>     = []
+    <span class="ruby-identifier">has_more</span>        = <span class="ruby-keyword">true</span>
+    <span class="ruby-identifier">start_cursor</span>    = <span class="ruby-keyword">nil</span>
+    
+    <span class="ruby-keyword">while</span> <span class="ruby-identifier">has_more</span>
+        <span class="ruby-identifier">query</span>[<span class="ruby-value">:start_cursor</span>] = <span class="ruby-identifier">start_cursor</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">start_cursor</span>
+
+        <span class="ruby-identifier">response</span> = <span class="ruby-constant">HTTParty</span>.<span class="ruby-identifier">post</span>(
+        <span class="ruby-node">&quot;#{BASE_URL}/data_sources/#{@mbr_db_id}/query&quot;</span>,
+        <span class="ruby-value">headers:</span> <span class="ruby-ivar">@headers</span>,
+        <span class="ruby-value">body:</span> <span class="ruby-identifier">query</span>.<span class="ruby-identifier">to_json</span>
+        )
+
+        <span class="ruby-keyword">unless</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">success?</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Erreur query: #{response[&#39;message&#39;]}&quot;</span>
+        <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">all_members</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;results&#39;</span>])
+    <span class="ruby-identifier">has_more</span> = <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;has_more&#39;</span>]
+    <span class="ruby-identifier">start_cursor</span> = <span class="ruby-identifier">response</span>[<span class="ruby-string">&#39;next_cursor&#39;</span>]
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-ivar">@count_inp</span>  = <span class="ruby-identifier">all_members</span>.<span class="ruby-identifier">count</span>
+    <span class="ruby-identifier">all_members</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <p>Query les membres avec filtre optionnel</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-run" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-run" title="Link to this method">
+                <span class="method-name">run</span>
+                <span class="method-args">(activity_filter = nil, export_csv = false, display_format = &#39;X&#39;, encoder_format = &#39;X&#39;, content_format = &#39;F&#39;)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+          <div class="method-source-code" id="run-source">
+            <pre class="ruby"><span class="ruby-comment"># File EneoBwCom_ExtrMbr05.rb, line 555</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">run</span>(<span class="ruby-identifier">activity_filter</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">export_csv</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">display_format</span> = <span class="ruby-string">&#39;X&#39;</span>, <span class="ruby-identifier">encoder_format</span> = <span class="ruby-string">&#39;X&#39;</span>, <span class="ruby-identifier">content_format</span> = <span class="ruby-string">&#39;F&#39;</span>)
+<span class="ruby-comment">#++++++</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;=== Extraction des membres ===Format: #{display_format} - Encodage: #{encoder_format} - Content: #{content_format}&quot;</span>
+
+    <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@mbr_db_id</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;✗ Data Source MBR non trouvé&quot;</span>
+        <span class="ruby-keyword">return</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># Query les membres</span>
+    <span class="ruby-identifier">activity_name</span> = <span class="ruby-identifier">activity_filter</span> <span class="ruby-operator">||</span> <span class="ruby-string">&#39;Tous&#39;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;\nFiltre activité: #{activity_name}&quot;</span>
+
+    <span class="ruby-identifier">members</span> = <span class="ruby-identifier">query_members</span>(<span class="ruby-identifier">activity_filter</span>)
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">members</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;=&gt;Aucun membre trouvé&quot;</span>
+        <span class="ruby-keyword">return</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># Afficher ou exporter</span>
+    <span class="ruby-identifier">puts</span>    <span class="ruby-string">&quot;=== Export ou affichage des membres ===&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">export_csv</span>
+        <span class="ruby-identifier">timestamp</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&#39;%y%m%d_%H%M&#39;</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">display_format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;CSV&#39;</span>
+            <span class="ruby-identifier">filename</span> = <span class="ruby-node">&quot;#{DIRECTORY_TO_PUT}/M25-ListeMembres_#{activity_name.gsub(&#39; &#39;, &#39;_&#39;)}-Envoi_#{timestamp}.csv&quot;</span>
+            <span class="ruby-identifier">export_to_csv</span>(<span class="ruby-identifier">members</span>, <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">activity_name</span>, <span class="ruby-identifier">display_format</span>, <span class="ruby-identifier">encoder_format</span>)
+        <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">filename</span> = <span class="ruby-node">&quot;#{DIRECTORY_TO_PUT}/M25-ListeMembres_#{activity_name.gsub(&#39; &#39;, &#39;_&#39;)}-Envoi_#{timestamp}.xlsx&quot;</span>
+            <span class="ruby-identifier">export_to_xlsx</span>(<span class="ruby-identifier">members</span>, <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">activity_name</span>, <span class="ruby-identifier">display_format</span>, <span class="ruby-identifier">encoder_format</span>, <span class="ruby-identifier">content_format</span>)
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;=&gt;Display as #{display_format}&quot;</span>
+        <span class="ruby-identifier">display_members</span>(<span class="ruby-identifier">members</span>, <span class="ruby-identifier">activity_name</span>, <span class="ruby-identifier">display_format</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">puts</span>    <span class="ruby-node">&quot;=&gt;Counters:: INP:#{@count_inp} - OUT:#{@count_out}\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+        <div class="method-description">
+
+
+          <pre class="ruby"><span class="ruby-constant">Exécution</span>
+</pre>
+
+<span id="method-i-run-label-" class="legacy-anchor"></span>
+<h6 id="method-i-run-"><a href="#method-i-run-"></a></h6>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+    </section>
+
+
+
+
+  </section>
+
+</main>
+
+<aside class="table-of-contents" role="complementary" aria-label="Table of Contents">
+  <div class="toc-sticky">
+    <h3 class="toc-heading">On This Page</h3>
+    <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
+      <!-- Generated by JavaScript based on page headings -->
+    </nav>
+  </div>
+</aside>
+
+
+<footer class="site-footer">
+  
+
+  <div class="footer-bottom">
+    <p>
+      Generated by <a href="https://ruby.github.io/rdoc/">RDoc 7.2.0</a>
+      using the Aliki theme by <a href="http://st0012.dev">Stan Lo</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+

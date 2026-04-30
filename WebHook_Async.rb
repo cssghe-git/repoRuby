@@ -10,6 +10,7 @@ class WebhookAsync
     # Main method
     #************
     #
+    # Dispatch according to type of request (from who)
     def perform(type, payload, x_array = nil)
         logger.info ">>>"
         logger.info "🔄 Traitement async: #{type}}"
@@ -180,7 +181,7 @@ class WebhookAsync
         logger.info "Payload fastmail: "
         ### pp payload
         # Extract parts
-        schema= payload['schema'] || 'unknown schema'
+        schema      = payload['schema'] || 'unknown schema'
         event       = payload['event'] || 'unknown event'
         message     = payload['message'] || 'unknown message'
         body        = message['body'] || {}
@@ -194,12 +195,19 @@ class WebhookAsync
         attachements    = body['attachments'] || {}
         text            = body['text'] || {}
 
+        contents = body.map {|c| contents[c] = c}
+
         # display
         logger.info "📧 Email reçu - le: #{date}"
         logger.info ">>>De: #{sender}"
         logger.info ">>>À: #{to}"
         logger.info ">>>Sujet: #{subject}"
         logger.info ">>>Texte: #{text}"
+        if contents.size > 0
+            contents.each do |c|
+                logger.info "#{c}"
+            end
+        end
 
     end #<def>
 
