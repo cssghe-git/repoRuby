@@ -46,8 +46,8 @@ module M25_Members
     #++++++++++++++++
         attr_accessor   :cdc_pages, :act_pages, :mbr_pages, :cot_pages
         attr_accessor   :cdc_ids, :act_ids
-        attr_accessor   :mbr_properties
-        attr_accessor   :mbr_values, :mbr_hash, :cdc_hash, :act_hash, :cot_hash
+        attr_accessor   :mbr_properties, :mbr_selpages
+        attr_accessor   :mbr_values, :hash_mbr, :hash_cdc, :hash_act, :hash_cot
 
     # Instance methods
     #=================
@@ -117,6 +117,7 @@ module M25_Members
             page_props                          = get_properties(page)
             @hash_mbr[page_props['Référence']]  = page
         end
+        @mbr_selpages   = @mbr_pages
 
         #4-Load COT
         @cot_pages  = db_fetch(@cot_id)
@@ -130,27 +131,29 @@ module M25_Members
     # Select pages
     def select_pages()
     #+++++++++++++++++
+    #   funct:  select on all pages read
     #   call:   members.select_pages do |page, properties|
     #               select page by yield if return true
     #           end
-        mbr_pages   = @mbr_pages.select do |page|       # select
+        @mbr_selpages   = []
+        @mbr_selpages   = @mbr_pages.select do |page|       # select
             yield(page, get_properties(page)) ? true : false
         end
-        @@log.info @@log_mbr + "SEL: #{mbr_pages.size}"     if @debug
-        @mbr_pages  = mbr_pages                         # select result
+        @@log.info @@log_mbr + "SEL: #{mbr_selpages.size}"     if @debug
     end #<def>
 
     # Process all pages
     def process_pages()
     #++++++++++++++++
-    #   call: members.process_pages do |page, properties, values|
-    #           # process page, properties and values by yield
-    #         end
+    #   funct:  process on all pages selected
+    #   call:   members.process_pages do |page, properties, values|
+    #               # process page, properties and values by yield
+    #           end
     #   properties: hash of page properties with their types and values
     #   values:     hash of values with their raw values (e.g. id, )
     #
         @@log.info @@log_mbr + "Process MBR pages"   if @debug
-        @mbr_pages.each do |page|
+        @mbr_selpages.each do |page|
                 @mbr_values         = {}    #{id: , ?}
                 # Process page
                 @mbr_properties     = {}
@@ -167,7 +170,7 @@ module M25_Members
     #
         @@log.info @@log_mbr + "Create MBR hash"    if @debug
         @mbr_hash   = {}
-        @pages.each do |page|
+        pages.each do |page|
             @mbr_properties = get_properties(page)
             @mbr_hash[@mbr_properties['Référence']]  = page
         end
