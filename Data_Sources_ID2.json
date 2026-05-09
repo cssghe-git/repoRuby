@@ -29,6 +29,7 @@
     {"FIN": "2c272117-082a-80ea-a31a-000b9f58c855", "name": "FIN"},
     {"INF": "2c172117-082a-808d-8936-000b3ad03c19", "name": "INF"},
     {"OFF": "2c372117-082a-805a-9cca-000b6c71d553", "name": "OFF"},
-    {"SAN": "2c372117-082a-8020-bd2a-000b4ec7a18b", "name": "SAN"}
+    {"SAN": "2c372117-082a-8020-bd2a-000b4ec7a18b", "name": "SAN"},
 
+    {"E-mails": "30672117082a800e849cc411e1a8d143", "name": "E-mails"}
 ]

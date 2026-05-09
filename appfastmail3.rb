@@ -37,8 +37,10 @@ FASTMAIL_TOKEN      = ENV.fetch("FASTMAIL_TOKEN")
 SESSION_URL         = ENV.fetch("FASTMAIL_SESSION_URL", "https://api.fastmail.com/jmap/session")
 SINATRA_WEBHOOK_URL = ENV.fetch("SINATRA_WEBHOOK_URL", "").strip
 NOTION              = Notion::Client.new(token: ENV.fetch("NOT_APITOKEN"))
-DB_ID               = ENV.fetch("DB_EMAILS")
 STATE_FILE          = "email_state.json"
+CONFIG              = JSON.parse(File.read(File.join(__dir__, "Data_Sources_ID2.json")))
+DB_ID               = CONFIG.find { |h| h.key?("E-mails") }&.fetch("E-mails")
+
 
 #-----------------------------
 # Logger

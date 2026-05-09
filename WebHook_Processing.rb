@@ -44,6 +44,10 @@ class WebhookProcessing < Sinatra::Base
         '✅ Webhook receiver OK - GET /favicon.ico pour tester'
     end
 
+    get '/cssghe-tests' do
+        '✅ Webhook receiver OK - GET /cssghe-tests pour tester'
+    end
+
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     # Process <GET> request for <notion_request>
@@ -65,6 +69,7 @@ class WebhookProcessing < Sinatra::Base
             [{ status: 'received', queued: true }.to_json]]
         
     end #<get>
+
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     # Process <Post> request for <notion_webhook>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
@@ -84,13 +89,36 @@ class WebhookProcessing < Sinatra::Base
         # Extract data
         payload = request.body && JSON.parse(request.body.read || '{}')
         source  = payload['source']
+        token   = payload['verification_token']
+        x_array[:x_token] = token || 'unknown token'
 
         # Log + sécurité basique
         ### pp payload  #to search fields
-        logger.info "Webhook reçu: #{source['type'] || 'unknown'} from #{request.ip}"
+        logger.info "Webhook reçu: #{source['type'] || 'unknown'} from #{request.ip} with Token: #{token}"
 
         # Enqueue async IMMÉDIATEMENT
         WebhookAsync.perform_async('Notion-automation', payload, x_array)
+
+        # Réponse 200 rapide (fire & forget)
+        [200, { 'Content-Type' => 'application/json' }, 
+            [{ status: 'received', queued: true }.to_json]]
+        
+    end #<post>
+
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    # Process <Post> request for <Notion_busycal>
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    #
+    post "/notion_busycal" do
+        payload = env
+        puts ">>>DBG>Payload/env => "
+        pp payload
+
+        payload = request.body && JSON.parse(request.body.read || '{}')
+        ### pp payload
+
+        # Enqueue async IMMÉDIATEMENT
+        WebhookAsync.perform_async('Notion-busycal', payload)
 
         # Réponse 200 rapide (fire & forget)
         [200, { 'Content-Type' => 'application/json' }, 

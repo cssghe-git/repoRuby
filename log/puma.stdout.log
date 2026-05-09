@@ -1,7 +1,31 @@
-=== puma startup: 2026-05-07 16:59:05 +0200 ===
-[83146] - Worker 0 (PID: 83151) booted in 0.0s, phase: 0
-[83146] - Worker 1 (PID: 83152) booted in 0.0s, phase: 0
-[83146] - Worker 2 (PID: 83153) booted in 0.0s, phase: 0
-[83146] - Gracefully shutting down workers...
-[83146] === puma shutdown: 2026-05-07 16:59:20 +0200 ===
-[83146] - Goodbye!
+=== puma startup: 2026-05-08 19:36:02 +0200 ===
+[28544] - Worker 0 (PID: 28547) booted in 0.0s, phase: 0
+[28544] - Worker 1 (PID: 28548) booted in 0.0s, phase: 0
+[28544] - Worker 2 (PID: 28549) booted in 0.0s, phase: 0
+[28544] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 28547
+[28544] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 28548
+[28544] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 28549
+[28544] - Worker 0 (PID: 29869) booted in 0.01s, phase: 0
+[28544] - Worker 1 (PID: 29870) booted in 0.0s, phase: 0
+[28544] - Worker 2 (PID: 29871) booted in 0.0s, phase: 0
+[28544] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 29869
+[28544] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 29870
+[28544] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 29871
+[28544] - Worker 1 (PID: 29967) booted in 0.0s, phase: 0
+[28544] - Worker 2 (PID: 29968) booted in 0.0s, phase: 0
+[28544] - Worker 0 (PID: 29969) booted in 0.0s, phase: 0
+[28544] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 29967
+[28544] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 29968
+[28544] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 29969
+[28544] - Worker 0 (PID: 30050) booted in 0.0s, phase: 0
+[28544] - Worker 1 (PID: 30051) booted in 0.0s, phase: 0
+[28544] - Worker 2 (PID: 30052) booted in 0.0s, phase: 0
+[28544] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 30050
+[28544] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 30051
+[28544] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 30052
+[28544] - Worker 0 (PID: 30190) booted in 0.0s, phase: 0
+[28544] - Worker 1 (PID: 30191) booted in 0.0s, phase: 0
+[28544] - Worker 2 (PID: 30192) booted in 0.0s, phase: 0
+[28544] - Gracefully shutting down workers...
+[28544] === puma shutdown: 2026-05-08 20:55:54 +0200 ===
+[28544] - Goodbye!

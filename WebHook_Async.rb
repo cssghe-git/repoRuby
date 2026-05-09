@@ -13,7 +13,7 @@ class WebhookAsync
     # Dispatch according to type of request (from who)
     def perform(type, payload, x_array = nil)
         logger.info ">>>"
-        logger.info "🔄 Traitement async: #{type}}"
+        logger.info "🔄 Traitement async: #{type}"
         logger.info ">>>*****************<<<"
 
         case type                                       #dispatch according to type/fro of webhook
@@ -25,6 +25,8 @@ class WebhookAsync
             handle_fastmail(payload)
         when 'Notion-request'
             handle_notion_request(payload)
+        when 'Notion-busycal'
+            handle_notion_busycal(payload)
         else
             handle_test(payload)
         end
@@ -157,6 +159,22 @@ class WebhookAsync
         # make a response
         result = "OK"
         #   HTTP.post(callback_url, json: { status: 'done', result: result })    
+
+    end #<def>
+
+    #
+    # From Notion - busycal
+    #****************************
+    def handle_notion_busycal(payload)
+        logger.info "Payload Notion busycal"
+        # Extract parts
+        uuid            = payload['request_id'] || 'unknown uuid'
+        request_method  = payload['REQUEST_METHOD'] || 'unknown method'
+        request_path    = payload['PATH_INFO'] || 'unknown path'
+        request_uri     = payload['REQUEST_URI'] || 'unknown uri'
+
+        # Extract parameters
+        pp payload
 
     end #<def>
 
