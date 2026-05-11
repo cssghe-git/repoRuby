@@ -1,7 +1,22 @@
+#!/usr/bin/env ruby
+#
+=begin
+
+=end
+
 require 'sidekiq'
 require 'json'
+require 'httparty'
+require "active_support/security_utils"
+#
+begin
+  require "dotenv"; Dotenv.load
+rescue LoadError
+end
 
-
+#
+# Define class for processing webhooks asynchronously with Sidekiq
+#
 class WebhookAsync
     include Sidekiq::Worker
     sidekiq_options queue: 'default', retry: 3
@@ -11,23 +26,32 @@ class WebhookAsync
     #************
     #
     # Dispatch according to type of request (from who)
-    def perform(type, payload, x_array = nil)
-        logger.info ">>>"
-        logger.info "🔄 Traitement async: #{type}"
-        logger.info ">>>*****************<<<"
+    def perform(type = 'None', payload = {}, x_array = nil, raw_body = nil)
 
-        case type                                       #dispatch according to type/fro of webhook
-        when 'Notion-automation'
+        build = "260511-0726"  #to identify code version in logs
+
+        logger.info ">>>"
+        logger.info "🔄 Traitement async:: VRP: #{build} for: #{type}"
+        logger.info ">>>******************************************<<<"
+
+        # Dispatch according to type/from of webhook
+        case type                                       
+        when 'Notion-automation'    #from Notion - WebHook (automation) - old version
             handle_notion(payload, x_array)
-        when 'GitHub'
+
+        when 'GitHub'               #from Github
             handle_github(payload)
-        when 'Fastmail'
+
+        when 'Fastmail'             #from Fastmail 
             handle_fastmail(payload)
-        when 'Notion-request'
-            handle_notion_request(payload)
-        when 'Notion-busycal'
+
+        when 'Notion-request'       #from Notion - request (POST) - webhook integration - new version
+            handle_notion_request(payload, raw_body)
+
+        when 'Notion-busycal'       #from Notion - busycal (POST)
             handle_notion_busycal(payload)
-        else
+            
+        else                        #tests
             handle_test(payload)
         end
     end #<def>
@@ -74,21 +98,94 @@ class WebhookAsync
     #
     # Append to file
     # **************
-    def append_to_file(fields={})
-        File.open('/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log.txt', 'a') do |f|
+    def append_to_file(fields: {})
+        return if fields.empty?
+
+        # Define file path based on field value (if any)
+        file_switch = fields['file_path'] || 0
+        fields_json = {}
+        case file_switch
+        when 0
+            file_path = '/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log.txt'
+        when 'json'
+            file_path = "/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log_#{file_switch}_#{Time.now.strftime('%Y-%m-%d')}.json"
+            fields_json = JSON.pretty_generate(fields)
+        else            
+            file_path = "/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log_#{file_switch}.txt"
+        end
+
+        # Append data to file, text format or Json format
+        File.open(file_path, 'a') do |f|
             f.puts ">>>Data @ #{Time.now}:"
-            f.puts "Webhook data: #{fields || 'unknown prms'}"
+            f.puts "Webhook data: #{fields || 'none'}"  if fields_json.empty?
+            f.puts "Webhook data: #{fields_json}"       unless fields_json.empty?
             f.puts "<<<End of data>>>"
+            f.puts ">>>"
         end
     end
 
     #
-    # From Notion - WebHook (automation)
+    # Check signature
+    #*****************
+    def check_signature(signature: nil, raw_body: nil)
+    #
+        return false if signature.nil?
+        return false if raw_body.nil?
+
+        # Retrieve the verification_token from initial request
+        verification_token = ENV['NOT_WEBHOOK_VERIFY'] || 'secret_oDGXV4Lvg8oX6e1x2MrXveF7UlEPlIKito7G89Wxdxy'
+
+        digest = OpenSSL::HMAC.hexdigest("SHA256", verification_token, raw_body)
+        calculated_signature = "sha256=#{digest}"
+
+        # Constant-time comparison
+        is_trusted_payload = ActiveSupport::SecurityUtils.secure_compare(
+            calculated_signature,
+            signature
+            )
+
+        unless is_trusted_payload
+            # Ignore the event
+            logger.warn "⚠️ Signature mismatch - check payload"
+        end
+        return is_trusted_payload
+    end
+    #
+    # Display page
+    #*************
+    def display_page(page_id: nil)
+        return if page_id.nil?
+
+        # Notion API request parameters
+        not_url = ENV['NOT_HTTPBASE'] || 'https://api.notion.com/v1'
+        not_hdr = {
+            'Authorization'     => ENV['NOT_WEBHOOK_TOKEN'] ||'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',
+            'Notion-Version'    => ENV['NOT_APINEW'] || '2026-03-11',
+            'Content-Type'      => 'application/json'
+        }
+        # http request
+        res = HTTParty.get("#{not_url}/pages/#{page_id}", headers: not_hdr)
+        response = res.success? ? res.parsed_response : nil
+        return if response.nil?
+
+        # display
+        logger.info "📄 Page: #{response['id']}"
+        logger.info ">>>Created time: #{response['created_time']}"
+        logger.info ">>>Last edited time: #{response['last_edited_time']}"
+        logger.info ">>>Properties ⇟"
+        props = response['properties'] || {}
+        props.each do |key, value|
+            logger.info ">>>>>>#{key}: #{get_prop_value(field: value)}"
+        end
+     end
+
+    #*****#####*****#####*****#####*****#####*****#####*****
+    #
+    # From Notion - WebHook (old automation)
     #**********************
     def handle_notion(payload, x_array = nil)
-        # Display payload
-        #   pp payload
-        
+        # Extract fields & log it
+        #        
         # Extract parts
         source      = payload['source']
         data        = payload['data']
@@ -117,72 +214,130 @@ class WebhookAsync
 
         # Append to file
         prms = {}
-        prms['URI'] = "notion_webhook"
-        prms['page_id'] = data['id']
-        prms['properties'] = prop_hash
-        append_to_file(prms)
+        prms['file_path']   = 'notion_automation'
+        prms['URI']         = "notion_automation"
+        prms['page_id']     = data['id']
+        prms['properties']  = prop_hash
+        append_to_file(fields: prms)
 
     end #<def>
 
     #
-    # From Notion - request (POST)
+    # From Notion - request (POST) - webhook integration
     #****************************
-    def handle_notion_request(payload)
+    def handle_notion_request(payload = {}, raw_body = {})
+        #raw_body contains ENV fields (headers) - for logging and security checks
+        #"secret_oDGXV4Lvg8oX6e1x2MrXveF7UlEPlIKito7G89Wxdxy"
+        #"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"
+        #
         logger.info "Payload Notion request"
+        pp payload      unless payload.empty?
+        return          if payload.empty?
+
+        # Check signature
+        signature   = payload['notion_signature'] || 'unknown signature'
+        rc          = check_signature(signature: signature, raw_body: raw_body)
+        logger.info ">>>Signature check: #{rc ? 'OK' : 'FAILED'}"
+
         # Extract parts
+        timestamp       = payload['timestamp'] || 'unknown timestamp'
         uuid            = payload['request_id'] || 'unknown uuid'
-        request_method  = payload['REQUEST_METHOD'] || 'unknown method'
-        request_path    = payload['PATH_INFO'] || 'unknown path'
-        request_uri     = payload['REQUEST_URI'] || 'unknown uri'
+        entity          = payload['entity'] || nil
+        entity_id       = entity['id'] || 'unknown entity id'
+        entity_type     = entity['type'] || 'unknown entity type'
+        type            = payload['type'] || 'unknown type'
+        data            = payload['data'] || {}
+        parent_id       = data['parent_id'] || 'unknown parent id'
+        parent_type     = data['parent_type'] || 'unknown parent type'  #page, database,
 
-        # Extract parameters
-        params = request_uri.split('?').last || ''
-        arr_params = params.split('&')
-        arr_prm = {}
-        arr_params.each do |par|
-            par2 = par.split('=') if par.include?('=')
-            arr_prm[par2[0]] = par2[1] if par2
+        logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
+        # Process according to type of entity & type of action
+        case entity_type
+        when 'page'
+        #    logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
+            case type
+            when 'page.created'
+                display_page(page_id: entity_id)
+
+            when "page.properties_updated"
+                display_page(page_id: entity_id)
+
+            else
+                logger.info ">>>Request for: #{entity_type} => type: #{parent_type}"
+            end
+
+        when 'view'
+        #    logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
+            # Add your logic here to handle view request
+            # type can be: 1-view.updated, 2-view.created, 
+            # if 1: data['updated_fields']["?"]
+            # if 2: data['view_type']
+
+        when 'data_source'
+        #    logger.info ">>>Request for #{entity_type}: #{entity_id}"
+            # Add your logic here to handle data source request
+            # type can be: 1-data_source.schema_updated, 
+            # if 1: data['updated_properties'][['name':], ['action':]]
+
+        when 'person'
+        #    logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
+            # Add your logic here to handle person request
+
+        when 'block'
+        #    logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
+            # Add your logic here to handle block request
+            # type can be : 1-database.created, 
+
+        when 'database'
+        #    logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
+            # Add your logic here to handle database request
+
+        else
+            logger.warn ">>>Unknown entity type: #{entity_type}"
         end
-        function        = arr_params[0] || 'unknown function'
-        callback_url    = arr_prm['callback'] || 'None'
-        name            = arr_prm['nom'] || 'unknown name'
-        # Log details
-        logger.info ">>>Details for Request ID: #{uuid}"
-        logger.info ">>>Method: #{request_method}"
-        logger.info ">>>Path: #{request_path}"
-        logger.info ">>>URI: #{request_uri}"
-        logger.info ">>>Params: #{params}"
-        logger.info ">>>Extracted params: #{arr_params}"
-        logger.info ">>>Callback URL: #{callback_url}"
-        logger.info ">>>Request: #{function} for #{name}"
 
-        # make a response
-        result = "OK"
-        #   HTTP.post(callback_url, json: { status: 'done', result: result })    
-
+        # Append to file
+        prms = {}
+        prms['file_path']   = 'notion_request'
+        prms['URI']         = "notion_request"
+        prms['page_id']     = entity_id
+        prms['entity_type'] = entity_type
+        prms['type']        = type
+        append_to_file(fields: prms)
     end #<def>
 
     #
     # From Notion - busycal
     #****************************
-    def handle_notion_busycal(payload)
+    def handle_notion_busycal(payload = {})
         logger.info "Payload Notion busycal"
+#        pp payload      unless payload.empty?
+        return          if payload.empty?
+
         # Extract parts
         uuid            = payload['request_id'] || 'unknown uuid'
         request_method  = payload['REQUEST_METHOD'] || 'unknown method'
         request_path    = payload['PATH_INFO'] || 'unknown path'
         request_uri     = payload['REQUEST_URI'] || 'unknown uri'
 
-        # Extract parameters
-        pp payload
-
+        # Append to file
+        prms = {}
+        prms['file_path']   = 'notion_busycal'
+        prms['URI']         = "notion_busycal"
+        prms['method']      = request_method
+        prms['path']        = request_path
+        prms['url']         = request_uri
+        append_to_file(fields: prms)
     end #<def>
 
     #
     # From Githubb
     #*************
-    def handle_github(payload)
-        # pp payload
+    def handle_github(payload = {})
+        logger.info "Payload Github"
+#        pp payload      unless payload.empty?
+        return          if payload.empty?
+
         # Extract parts
         head_commit = payload['head_commit']
         head_commit.each do |key, value|
@@ -190,14 +345,23 @@ class WebhookAsync
         end
         logger.info ">>>"
 
+        # Append to file
+        prms = {}
+        prms['file_path']   = 'github_request'
+        prms['URI']         = "github_request"
+        prms['commits']     = head_commit
+        append_to_file(fields: prms)
+
     end #<def>
 
     #
     # From Fastmail
     #**************
-    def handle_fastmail(payload)
+    def handle_fastmail(payload = {})
         logger.info "Payload fastmail: "
-        ### pp payload
+    #    pp payload      unless payload.empty?
+        return          if payload.empty?
+
         # Extract parts
         schema      = payload['schema'] || 'unknown schema'
         event       = payload['event'] || 'unknown event'
@@ -226,6 +390,17 @@ class WebhookAsync
                 logger.info "#{c}"
             end
         end
+
+        # Append to file
+        prms = {}
+        prms['file_path']   = 'json'
+        prms['URI']         = "fastmail_request"
+        prms['date']        = date
+        prms['from']        = sender
+        prms['to']          = to
+        prms['subject']     = subject
+        prms['text']        = text
+        append_to_file(fields: prms)
 
     end #<def>
 

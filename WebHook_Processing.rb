@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 #
 =begin
         WebhookProcessing.rb
@@ -5,18 +6,22 @@
         GET => 
             / : pour tester que le serveur est en ligne
             /favicon.ico : 
-            /notion_request : pour recevoir les requêtes de Notion for request (ex: recherche de données)
+            /cssghe-tests : pour tester que le serveur est en ligne
+            /?
         POST =>
-            /notion_webhook : pour recevoir les webhooks de Notion (automatisations)
+            /cssghe-tests : pour tester que le serveur reçoit les POSTs
+            /notion_webhook : pour recevoir les webhooks de Notion (automatisations - old)
             /github_webhook : pour recevoir les webhooks de GitHub
             /email_webhook : pour recevoir les webhooks de Fastmail
-            /notion_request : pour recevoir les requêtes de Notion for request (ex: recherche de données)
+            /notion_request : pour recevoir les webhooks de Notion en mode 'CssGhe_Webhooks'
         Traitement =>
             Enregistrer le payload dans Redis (optionnel, pour debug ou historique)
             Enqueue le payload dans Sidekiq pour traitement asynchrone immédiat
         URLs =>
             via ngrok => https://progenitorial-fredda-headlong.ngrok-free.dev/?
             via localnet => webhook => https://uabojmzplh.localto.net/?
+        TESTS =>
+            curl -v 'https://progenitorial-fredda-headlong.ngrok-free.dev/cssghe-tests'
 =end
 
 require 'sinatra/base'
@@ -24,6 +29,7 @@ require 'json'
 require 'logger'
 require 'securerandom'
 require 'redis'
+require 'openssl'
 
 class WebhookProcessing < Sinatra::Base
     configure :production, :development do
@@ -32,6 +38,8 @@ class WebhookProcessing < Sinatra::Base
         enable :logging
     end
 
+    set :protection, false
+    set :body_parser, nil
 
     Sidekiq.strict_args!(false)
 
@@ -48,6 +56,15 @@ class WebhookProcessing < Sinatra::Base
         '✅ Webhook receiver OK - GET /cssghe-tests pour tester'
     end
 
+    post '/cssghe-tests' do
+
+        # Enqueue async IMMÉDIATEMENT
+        WebhookAsync.perform_async('Tests')
+
+        [200, { 'Content-Type' => 'application/json' }, 
+            [{ status: 'received', queued: true }.to_json]]
+    end
+
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     # Process <GET> request for <notion_request>
@@ -62,13 +79,13 @@ class WebhookProcessing < Sinatra::Base
         payload['request_id'] = request_id
 
         # Enqueue async IMMÉDIATEMENT
-        WebhookAsync.perform_async('Notion-request', payload)
 
         # Réponse 200 rapide (fire & forget)
         [200, { 'Content-Type' => 'application/json' }, 
             [{ status: 'received', queued: true }.to_json]]
         
     end #<get>
+
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     # Process <Post> request for <notion_webhook>
@@ -94,7 +111,7 @@ class WebhookProcessing < Sinatra::Base
 
         # Log + sécurité basique
         ### pp payload  #to search fields
-        logger.info "Webhook reçu: #{source['type'] || 'unknown'} from #{request.ip} with Token: #{token}"
+        logger.info "Webhook reçu: #{source['type'] || 'unknown'} from #{request.ip} "
 
         # Enqueue async IMMÉDIATEMENT
         WebhookAsync.perform_async('Notion-automation', payload, x_array)
@@ -110,10 +127,6 @@ class WebhookProcessing < Sinatra::Base
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
     post "/notion_busycal" do
-        payload = env
-        puts ">>>DBG>Payload/env => "
-        pp payload
-
         payload = request.body && JSON.parse(request.body.read || '{}')
         ### pp payload
 
@@ -169,20 +182,27 @@ class WebhookProcessing < Sinatra::Base
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
     post "/notion_request" do
-        payload = env
+
+        request.body.rewind  # Rewind the body to read it again
+        raw_body = request.body.read
+
+        payload = request.body && JSON.parse(raw_body || '{}')
         $stdout.puts ">>>DBG>Notion_Request>Payload/env => "
         $stdout.puts payload.inspect
 
         # UUID
-        request_id = SecureRandom.uuid
-        payload['request_id'] = request_id
+        request_id                  = SecureRandom.uuid
+
+        # Extract parts
+        payload['request_id']       = request_id
+        payload['notion_signature'] = request.env['HTTP_X_NOTION_SIGNATURE'] || 'unknown signature'
 
         # Enqueue async IMMÉDIATEMENT
-    ###    WebhookAsync.perform_async('Notion-request', payload)
+        WebhookAsync.perform_async('Notion-request', payload, nil, raw_body)
 
         # Réponse 200 rapide (fire & forget)
         [200, { 'Content-Type' => 'application/json' }, 
-            [{ status: 'received', queued: true }.to_json]]
+            [{ text: 'Webhook-notion_request', status: 'received', queued: true }.to_json]]
         
     end #<post>
 end #<class>
