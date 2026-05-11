@@ -102,16 +102,16 @@ class WebhookAsync
         return if fields.empty?
 
         # Define file path based on field value (if any)
-        file_switch = fields['file_path'] || 0
+        file_switch = fields['file_switch'] || 0
         fields_json = {}
         case file_switch
         when 0
             file_path = '/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log.txt'
         when 'json'
-            file_path = "/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log_#{file_switch}_#{Time.now.strftime('%Y-%m-%d')}.json"
+            file_path = "/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log_#{fields['file_path']}_#{Time.now.strftime('%Y-%m-%d')}.json"
             fields_json = JSON.pretty_generate(fields)
         else            
-            file_path = "/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log_#{file_switch}.txt"
+            file_path = "/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log_#{fields['file_path']}_#{Time.now.strftime('%Y-%m-%d')}.txt"
         end
 
         # Append data to file, text format or Json format
@@ -214,6 +214,7 @@ class WebhookAsync
 
         # Append to file
         prms = {}
+        prms['file_switch'] = 'None'
         prms['file_path']   = 'notion_automation'
         prms['URI']         = "notion_automation"
         prms['page_id']     = data['id']
@@ -298,11 +299,13 @@ class WebhookAsync
 
         # Append to file
         prms = {}
+        prms['file_switch'] = 'json'
         prms['file_path']   = 'notion_request'
         prms['URI']         = "notion_request"
         prms['page_id']     = entity_id
         prms['entity_type'] = entity_type
         prms['type']        = type
+        prms['data']        = data
         append_to_file(fields: prms)
     end #<def>
 
@@ -323,6 +326,7 @@ class WebhookAsync
         # Append to file
         prms = {}
         prms['file_path']   = 'notion_busycal'
+        prms['file_switch'] = 'None'
         prms['URI']         = "notion_busycal"
         prms['method']      = request_method
         prms['path']        = request_path
@@ -347,6 +351,7 @@ class WebhookAsync
 
         # Append to file
         prms = {}
+        prms['file_switch'] = 'None'
         prms['file_path']   = 'github_request'
         prms['URI']         = "github_request"
         prms['commits']     = head_commit
@@ -393,7 +398,8 @@ class WebhookAsync
 
         # Append to file
         prms = {}
-        prms['file_path']   = 'json'
+        prms['file_switch'] = 'json'
+        prms['file_path']   = 'fastmail_request'
         prms['URI']         = "fastmail_request"
         prms['date']        = date
         prms['from']        = sender

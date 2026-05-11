@@ -1,4 +1,5 @@
-=== puma startup: 2026-05-11 09:50:50 +0200 ===
-[36939] - Worker 0 (PID: 36942) booted in 0.0s, phase: 0
-[36939] - Worker 1 (PID: 36943) booted in 0.0s, phase: 0
-[36939] - Worker 2 (PID: 36944) booted in 0.0s, phase: 0
+=== puma startup: 2026-05-11 10:06:58 +0200 ===
+[38377] - Worker 0 (PID: 38381) booted in 0.0s, phase: 0
+[38377] - Worker 1 (PID: 38382) booted in 0.0s, phase: 0
+[38377] - Worker 2 (PID: 38383) booted in 0.0s, phase: 0
+[1;34mINFO [0m 2026-05-11T11:07:46.842Z pid=38382 tid=t7y: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
