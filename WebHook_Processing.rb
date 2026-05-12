@@ -127,6 +127,7 @@ class WebhookProcessing < Sinatra::Base
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
     post "/notion_busycal" do
+        $stdout.puts ">>>DBG>Notion_BusyCal => "
         payload = request.body && JSON.parse(request.body.read || '{}')
         ### pp payload
 
@@ -144,6 +145,7 @@ class WebhookProcessing < Sinatra::Base
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
     post "/github_webhook" do
+        $stdout.puts ">>>DBG>Github_Webhook => "
         payload = env
         puts ">>>DBG>Payload/env => "
         pp payload
@@ -165,6 +167,7 @@ class WebhookProcessing < Sinatra::Base
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
     post "/email_webhook" do
+        $stdout.puts ">>>DBG>Email_Webhook => "
         payload = request.body && JSON.parse(request.body.read || '{}')
         ### pp payload
 
@@ -180,14 +183,15 @@ class WebhookProcessing < Sinatra::Base
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     # Process <Post> request for <notion_request>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
+    #   from webhook integration: CssGhe_Webhooks
     #
     post "/notion_request" do
+        $stdout.puts ">>>DBG>Notion_Request "
 
         request.body.rewind  # Rewind the body to read it again
         raw_body = request.body.read
 
         payload = request.body && JSON.parse(raw_body || '{}')
-        $stdout.puts ">>>DBG>Notion_Request>Payload/env => "
         $stdout.puts payload.inspect
 
         # UUID

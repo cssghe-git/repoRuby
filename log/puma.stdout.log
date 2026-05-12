@@ -1,5 +1,8 @@
-=== puma startup: 2026-05-11 10:06:58 +0200 ===
-[38377] - Worker 0 (PID: 38381) booted in 0.0s, phase: 0
-[38377] - Worker 1 (PID: 38382) booted in 0.0s, phase: 0
-[38377] - Worker 2 (PID: 38383) booted in 0.0s, phase: 0
-[1;34mINFO [0m 2026-05-11T11:07:46.842Z pid=38382 tid=t7y: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+=== puma startup: 2026-05-12 08:36:16 +0200 ===
+[21027] - Worker 0 (PID: 21030) booted in 0.0s, phase: 0
+[21027] - Worker 1 (PID: 21031) booted in 0.0s, phase: 0
+[21027] - Worker 2 (PID: 21032) booted in 0.0s, phase: 0
+>>>DBG>Notion_Request 
+{"test" => "webhook"}
+[1;34mINFO [0m 2026-05-12T06:38:20.352Z pid=21032 tid=gmg: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+>>>DBG>Email_Webhook => 

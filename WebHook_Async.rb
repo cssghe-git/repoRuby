@@ -28,7 +28,7 @@ class WebhookAsync
     # Dispatch according to type of request (from who)
     def perform(type = 'None', payload = {}, x_array = nil, raw_body = nil)
 
-        build = "260511-0726"  #to identify code version in logs
+        build = "260512-1014"  #to identify code version in logs
 
         logger.info ">>>"
         logger.info "🔄 Traitement async:: VRP: #{build} for: #{type}"
@@ -117,7 +117,7 @@ class WebhookAsync
         # Append data to file, text format or Json format
         File.open(file_path, 'a') do |f|
             f.puts ">>>Data @ #{Time.now}:"
-            f.puts "Webhook data: #{fields || 'none'}"  if fields_json.empty?
+            f.puts "Webhook data: #{fields || 'none'}"  if fields.empty?
             f.puts "Webhook data: #{fields_json}"       unless fields_json.empty?
             f.puts "<<<End of data>>>"
             f.puts ">>>"
@@ -153,8 +153,13 @@ class WebhookAsync
     #
     # Display page
     #*************
-    def display_page(page_id: nil)
+    def display_page(prms: {})
+        # Extract parameters
+        page_id = prms['page_id'] || nil
         return if page_id.nil?
+        api_version = prms['api_version'] || '2020-01-01'
+        return if api_version == '2020-01-01'  #to avoid processing old version of webhook
+        get_type = prms['get_type'] || 'None'
 
         # Notion API request parameters
         not_url = ENV['NOT_HTTPBASE'] || 'https://api.notion.com/v1'
@@ -163,8 +168,19 @@ class WebhookAsync
             'Notion-Version'    => ENV['NOT_APINEW'] || '2026-03-11',
             'Content-Type'      => 'application/json'
         }
-        # http request
-        res = HTTParty.get("#{not_url}/pages/#{page_id}", headers: not_hdr)
+        # http request according to get_type
+        case get_type
+        when 'page'
+            res = HTTParty.get("#{not_url}/pages/#{page_id}", headers: not_hdr)
+        when 'database'
+            res = HTTParty.get("#{not_url}/databases/#{page_id}", headers: not_hdr)
+        when 'data_source'
+            res = HTTParty.get("#{not_url}/data_sources/#{page_id}", headers: not_hdr)
+        else
+            logger.warn ">>>Unknown get_type: #{get_type}"
+            return
+        end
+
         response = res.success? ? res.parsed_response : nil
         return if response.nil?
 
@@ -185,7 +201,7 @@ class WebhookAsync
     #**********************
     def handle_notion(payload, x_array = nil)
         # Extract fields & log it
-        #        
+        #
         # Extract parts
         source      = payload['source']
         data        = payload['data']
@@ -236,71 +252,105 @@ class WebhookAsync
         return          if payload.empty?
 
         # Check signature
+        #++++++++++++++++
         signature   = payload['notion_signature'] || 'unknown signature'
         rc          = check_signature(signature: signature, raw_body: raw_body)
         logger.info ">>>Signature check: #{rc ? 'OK' : 'FAILED'}"
 
-        # Extract parts
-        timestamp       = payload['timestamp'] || 'unknown timestamp'
-        uuid            = payload['request_id'] || 'unknown uuid'
+        # Extract parts - level 1
+        #++++++++++++++++++++++++
+        timestamp       = payload['timestamp'] || nil
+        uuid            = payload['request_id'] || nil
+        api_version     = payload['api_version'] || nil
         entity          = payload['entity'] || nil
+        type            = payload['type'] || nil
+    #    data            = payload['data'] || nil
+        flag_ok         = [timestamp, uuid, api_version, entity, type].all? { |part| !part.nil? }
+        return      unless flag_ok
+    #    parent          = payload['parent'] || {}
+
+        # Extract parts - level 2
+        #++++++++++++++++++++++++
         entity_id       = entity['id'] || 'unknown entity id'
         entity_type     = entity['type'] || 'unknown entity type'
-        type            = payload['type'] || 'unknown type'
-        data            = payload['data'] || {}
-        parent_id       = data['parent_id'] || 'unknown parent id'
-        parent_type     = data['parent_type'] || 'unknown parent type'  #page, database,
+    #    parent_id       = parent['id'] || 'unknown parent id'
+    #    parent_type     = parent['type'] || 'unknown parent type'  #page, database,
+        # For display
+        prms = {}
+        prms['page_id']     = entity_id
+        prms['api_version'] = api_version
 
-        logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
         # Process according to type of entity & type of action
+        #+++++++++++++++++++++++++++++++++++++++++++++++++++++
+        logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
         case entity_type
         when 'page'
-        #    logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
+            prms['get_type'] = 'page'
             case type
             when 'page.created'
-                display_page(page_id: entity_id)
+                display_page(prms: prms)
 
             when "page.properties_updated"
-                display_page(page_id: entity_id)
+                display_page(prms: prms)
 
             else
-                logger.info ">>>Request for: #{entity_type} => type: #{parent_type}"
+                logger.info ">>>Request for: #{entity_type} => type: #{type}"
             end
 
         when 'view'
-        #    logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
-            # Add your logic here to handle view request
-            # type can be: 1-view.updated, 2-view.created, 
-            # if 1: data['updated_fields']["?"]
-            # if 2: data['view_type']
+            case type
+            when 'view.updated'
+                #display_view(prms: prms)
 
-        when 'data_source'
-        #    logger.info ">>>Request for #{entity_type}: #{entity_id}"
-            # Add your logic here to handle data source request
-            # type can be: 1-data_source.schema_updated, 
-            # if 1: data['updated_properties'][['name':], ['action':]]
+            when 'view.created'
+                #display_view(prms: prms)
+
+            when 'view.deleted'
+                #display_view(prms: prms)
+
+            else
+                logger.info ">>>Request for: #{entity_type} => type: #{type}"
+            end
 
         when 'person'
-        #    logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
-            # Add your logic here to handle person request
-
-        when 'block'
-        #    logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
-            # Add your logic here to handle block request
-            # type can be : 1-database.created, 
 
         when 'database'
-        #    logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
-            # Add your logic here to handle database request
+            prms['get_type'] = 'database'
+            case type
+            when 'database.created', 'database.content_updated', 'database.schema_updated',
+                'database.deleted'
+            else
+                logger.info ">>>Request for: #{entity_type} => type: #{type}"
+            end
 
+        when 'data_source'
+            prms['get_type'] = 'data_source'
+            case type
+            when 'data_source.created', 'data_source.content_updated', 'data_source.schema_updated', 'data_source.deleted'
+            else
+                logger.info ">>>Request for: #{entity_type} => type: #{type}"
+            end
+
+        when 'file_upload'
+            case type
+            when 'file_upload.created'
+                display_file_upload(prms: prms)
+
+            when 'file_upload.completed'
+                display_file_upload(prms: prms)
+
+            else
+                logger.info ">>>Request for: #{entity_type} => type: #{type}"
+            end
         else
             logger.warn ">>>Unknown entity type: #{entity_type}"
         end
 
         # Append to file
+        #++++++++++++++++
         prms = {}
         prms['file_switch'] = 'json'
-        prms['file_path']   = 'notion_request'
+        prms['file_path']   = "notion_request for: #{type}"
         prms['URI']         = "notion_request"
         prms['page_id']     = entity_id
         prms['entity_type'] = entity_type
