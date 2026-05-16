@@ -28,7 +28,7 @@ class WebhookAsync
     # Dispatch according to type of request (from who)
     def perform(type = 'None', payload = {}, x_array = nil, raw_body = nil)
 
-        build = "260512-1014"  #to identify code version in logs
+        build = "260515-1850"  #to identify code version in logs
 
         logger.info ">>>"
         logger.info "🔄 Traitement async:: VRP: #{build} for: #{type}"
@@ -151,15 +151,12 @@ class WebhookAsync
         return is_trusted_payload
     end
     #
-    # Display page
+    # Display Data
     #*************
     def display_page(prms: {})
-        # Extract parameters
-        page_id = prms['page_id'] || nil
-        return if page_id.nil?
-        api_version = prms['api_version'] || '2020-01-01'
-        return if api_version == '2020-01-01'  #to avoid processing old version of webhook
-        get_type = prms['get_type'] || 'None'
+        return      'Unknown'       unless display_common(prms: prms)
+        page_id     = prms['page_id'] || nil
+        get_type    = prms['get_type'] || 'None'
 
         # Notion API request parameters
         not_url = ENV['NOT_HTTPBASE'] || 'https://api.notion.com/v1'
@@ -176,29 +173,83 @@ class WebhookAsync
             res = HTTParty.get("#{not_url}/databases/#{page_id}", headers: not_hdr)
         when 'data_source'
             res = HTTParty.get("#{not_url}/data_sources/#{page_id}", headers: not_hdr)
+        when 'file_upload'
+            res = HTTParty.get("#{not_url}/file_uploads/#{page_id}", headers: not_hdr)
         else
             logger.warn ">>>Unknown get_type: #{get_type}"
-            return
+            return  'Unknown'
         end
 
         response = res.success? ? res.parsed_response : nil
-        return if response.nil?
+        return  'Unknown' if response.nil?
 
-        # display
+        # Extract Author / User
+        authors = extract_authors(prms: prms)
+        # Display
         logger.info "📄 Page: #{response['id']}"
         logger.info ">>>Created time: #{response['created_time']}"
         logger.info ">>>Last edited time: #{response['last_edited_time']}"
+        logger.info ">>>Authors: #{authors}"
         logger.info ">>>Properties ⇟"
         props = response['properties'] || {}
+        props_exlude = ['Couverture']
         props.each do |key, value|
+            next if props_exlude.include?(key)
             logger.info ">>>>>>#{key}: #{get_prop_value(field: value)}"
         end
-     end
-
-    #*****#####*****#####*****#####*****#####*****#####*****
+        response['authors'] = authors
+        return response
+    end
     #
-    # From Notion - WebHook (old automation)
+    # Display view
+    def display_view(prms: {})
+        return      unless display_common(prms: prms)
+        get_type = prms['get_type'] || 'None'
+    end
+    #
+    # Display file uploaded
+    def display_file_upload(prms: {})
+        return      unless display_common(prms: prms)
+        get_type = prms['get_type'] || 'None'
+
+    end
+    #
+    # Common part for Display anything
+    def display_common(prms: {})
+        # Extract parameters
+        page_id     = prms['page_id'] || nil
+        return  false       if page_id.nil?
+        api_version = prms['api_version'] || '2020-01-01'
+        return  false   if api_version == '2020-01-01'  #to avoid processing old version of webhook
+        return  true
+    end
+    #
+    # Extract authors
+    def extract_authors(prms: {})
+        authors_id      = prms['authors_id'] || 'unknown authors id'
+        authors_type    = prms['authors_type'] || 'unknown authors type'
+        return 'Bot'    if authors_type == 'bot'
+
+        # Notion API request parameters
+        not_url = ENV['NOT_HTTPBASE'] || 'https://api.notion.com/v1'
+        not_hdr = {
+            'Authorization'     => ENV['NOT_WEBHOOK_TOKEN'] ||'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',
+            'Notion-Version'    => ENV['NOT_APINEW'] || '2026-03-11',
+            'Content-Type'      => 'application/json'
+        }    
+        # HTTP request to get authors details    
+        res = HTTParty.get("#{not_url}/users/#{authors_id}", headers: not_hdr)
+        response = res.success? ? res.parsed_response : nil
+        return  'Unknown'   if response.nil?
+        return response['name'] || 'None'
+    end
+    #
+    #   Webhooks processing
     #**********************
+    #
+    #                           From Notion - WebHook (old automation)
+    #                           **********************
+    #
     def handle_notion(payload, x_array = nil)
         # Extract fields & log it
         #
@@ -240,8 +291,9 @@ class WebhookAsync
     end #<def>
 
     #
-    # From Notion - request (POST) - webhook integration
-    #****************************
+    #                   From Notion - request (POST) - webhook integration
+    #                   ****************************
+    #
     def handle_notion_request(payload = {}, raw_body = {})
         #raw_body contains ENV fields (headers) - for logging and security checks
         #"secret_oDGXV4Lvg8oX6e1x2MrXveF7UlEPlIKito7G89Wxdxy"
@@ -261,10 +313,11 @@ class WebhookAsync
         #++++++++++++++++++++++++
         timestamp       = payload['timestamp'] || nil
         uuid            = payload['request_id'] || nil
+        authors         = payload['authors'][0] || nil
         api_version     = payload['api_version'] || nil
         entity          = payload['entity'] || nil
         type            = payload['type'] || nil
-    #    data            = payload['data'] || nil
+        data            = payload['data'] || nil
         flag_ok         = [timestamp, uuid, api_version, entity, type].all? { |part| !part.nil? }
         return      unless flag_ok
     #    parent          = payload['parent'] || {}
@@ -273,25 +326,33 @@ class WebhookAsync
         #++++++++++++++++++++++++
         entity_id       = entity['id'] || 'unknown entity id'
         entity_type     = entity['type'] || 'unknown entity type'
-    #    parent_id       = parent['id'] || 'unknown parent id'
-    #    parent_type     = parent['type'] || 'unknown parent type'  #page, database,
+        authors_id      = authors['id'] || 'unknown authors id'
+        authors_type    = authors['type'] || 'unknown authors type'  #person, integration
         # For display
         prms = {}
         prms['page_id']     = entity_id
         prms['api_version'] = api_version
+        prms['authors_id']  = authors_id
+        prms['authors_type']= authors_type
+        authors             = "Error"
 
         # Process according to type of entity & type of action
         #+++++++++++++++++++++++++++++++++++++++++++++++++++++
         logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
+        # Display
+        #++++++++
+        response = {}
         case entity_type
         when 'page'
             prms['get_type'] = 'page'
             case type
             when 'page.created'
-                display_page(prms: prms)
+                response = display_page(prms: prms)
+                return      if response == 'Unknown'  #to avoid processing old version of webhook
 
             when "page.properties_updated"
-                display_page(prms: prms)
+                response = display_page(prms: prms)
+                return      if response == 'Unknown'  #to avoid processing old version of webhook
 
             else
                 logger.info ">>>Request for: #{entity_type} => type: #{type}"
@@ -332,12 +393,13 @@ class WebhookAsync
             end
 
         when 'file_upload'
+            prms['get_type'] = 'file_upload'
             case type
             when 'file_upload.created'
-                display_file_upload(prms: prms)
+                #display_file_upload(prms: prms)
 
             when 'file_upload.completed'
-                display_file_upload(prms: prms)
+                #display_file_upload(prms: prms)
 
             else
                 logger.info ">>>Request for: #{entity_type} => type: #{type}"
@@ -349,19 +411,25 @@ class WebhookAsync
         # Append to file
         #++++++++++++++++
         prms = {}
-        prms['file_switch'] = 'json'
-        prms['file_path']   = "notion_request for: #{type}"
-        prms['URI']         = "notion_request"
-        prms['page_id']     = entity_id
+        prms['file_switch'] = 'json'                    #format of file to save (json or text)
+        prms['file_path']   = "notion_request"          #filename
+        prms['URI']         = "notion_request"          #URI
+        prms['page_id']     = entity_id                 #page ID
         prms['entity_type'] = entity_type
         prms['type']        = type
         prms['data']        = data
+        prms['authors']     = response['authors']
+    #    prms['properties']  = response['properties']
+        props = response['properties'] || {}
+        props.each do |key, value|
+            prms[key] = get_prop_value(field: value)
+        end        
         append_to_file(fields: prms)
     end #<def>
 
     #
-    # From Notion - busycal
-    #****************************
+    #                           From Notion - busycal
+    #                           *********************
     def handle_notion_busycal(payload = {})
         logger.info "Payload Notion busycal"
 #        pp payload      unless payload.empty?
@@ -385,8 +453,8 @@ class WebhookAsync
     end #<def>
 
     #
-    # From Githubb
-    #*************
+    #                           From Github
+    #                           *************
     def handle_github(payload = {})
         logger.info "Payload Github"
 #        pp payload      unless payload.empty?
@@ -410,8 +478,8 @@ class WebhookAsync
     end #<def>
 
     #
-    # From Fastmail
-    #**************
+    #                           From Fastmail
+    #                           *************
     def handle_fastmail(payload = {})
         logger.info "Payload fastmail: "
     #    pp payload      unless payload.empty?
