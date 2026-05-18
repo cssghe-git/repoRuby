@@ -28,8 +28,9 @@ class WebhookAsync
     # Dispatch according to type of request (from who)
     def perform(type = 'None', payload = {}, x_array = nil, raw_body = nil)
 
-        build = "260515-1850"  #to identify code version in logs
-
+        build = "260518-0910"  #to identify code version in logs
+        logger.datetime_format = '%H:%M:%S'
+        
         logger.info ">>>"
         logger.info "🔄 Traitement async:: VRP: #{build} for: #{type}"
         logger.info ">>>******************************************<<<"
@@ -169,6 +170,7 @@ class WebhookAsync
         case get_type
         when 'page'
             res = HTTParty.get("#{not_url}/pages/#{page_id}", headers: not_hdr)
+
         when 'database'
             res = HTTParty.get("#{not_url}/databases/#{page_id}", headers: not_hdr)
         when 'data_source'
@@ -185,17 +187,19 @@ class WebhookAsync
 
         # Extract Author / User
         authors = extract_authors(prms: prms)
+
+        uuid    = prms['uuid'] || 'unknown'
         # Display
-        logger.info "📄 Page: #{response['id']}"
-        logger.info ">>>Created time: #{response['created_time']}"
-        logger.info ">>>Last edited time: #{response['last_edited_time']}"
-        logger.info ">>>Authors: #{authors}"
-        logger.info ">>>Properties ⇟"
+        logger.info "<#{uuid}>📄 Page: #{response['id']}"
+        logger.info "<#{uuid}>>>>Created time: #{response['created_time']}"
+        logger.info "<#{uuid}>>>>Last edited time: #{response['last_edited_time']}"
+        logger.info "<#{uuid}>>>>Authors: #{authors}"
+        logger.info "<#{uuid}>>>>Properties ⇟"
         props = response['properties'] || {}
         props_exlude = ['Couverture']
         props.each do |key, value|
             next if props_exlude.include?(key)
-            logger.info ">>>>>>#{key}: #{get_prop_value(field: value)}"
+            logger.info "<#{uuid}>>>>>>#{key}: #{get_prop_value(field: value)}"
         end
         response['authors'] = authors
         return response
@@ -203,8 +207,52 @@ class WebhookAsync
     #
     # Display view
     def display_view(prms: {})
-        return      unless display_common(prms: prms)
-        get_type = prms['get_type'] || 'None'
+        return      'Unknown'unless display_common(prms: prms)
+        page_id     = prms['page_id'] || nil
+        get_type    = prms['get_type'] || 'None'
+
+        # Notion API request parameters
+        not_url = ENV['NOT_HTTPBASE'] || 'https://api.notion.com/v1'
+        not_hdr = {
+            'Authorization'     => ENV['NOT_WEBHOOK_TOKEN'] ||'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',
+            'Notion-Version'    => ENV['NOT_APINEW'] || '2026-03-11',
+            'Content-Type'      => 'application/json'
+        }
+        # http request according to get_type
+        case get_type
+        when 'view'
+            res = HTTParty.get("#{not_url}/views/#{page_id}", headers: not_hdr)
+        else
+            logger.warn ">>>Unknown get_type: #{get_type}"
+            return  'Unknown'
+        end
+
+        response = res.success? ? res.parsed_response : nil
+        return  'Unknown' if response.nil?
+
+        # Extract Author / User
+        authors = extract_authors(prms: prms)
+
+        uuid    = prms['uuid'] || 'unknown'
+        # Display
+        logger.info "<#{uuid}>📄 Page: #{response['id']}"
+        logger.info "<#{uuid}>>>>Created time: #{response['created_time']}"
+        logger.info "<#{uuid}>>>>Last edited time: #{response['last_edited_time']}"
+        logger.info "<#{uuid}>>>>Authors: #{authors}"
+
+        logger.info "<#{uuid}>>>>name: #{response['name']}"
+        logger.info "<#{uuid}>>>>type: #{response['type']}"
+        configuration = response['configuration'] || {}
+        return response     unless configuration.any?
+        pp configuration
+        group_by = configuration['group_by'] || {}
+        logger.info "<#{uuid}>>>>Configuration:"
+        logger.info "<#{uuid}>>>>>>property: #{group_by['property_name']}"
+        logger.info "<#{uuid}>>>>>>type: #{group_by['type']}"
+        logger.info "<#{uuid}>>>>>>group_by: #{group_by['group_by']}"
+        logger.info "<#{uuid}>>>>>>sort: #{group_by['sort']}"
+
+        return response
     end
     #
     # Display file uploaded
@@ -254,6 +302,8 @@ class WebhookAsync
         # Extract fields & log it
         #
         # Extract parts
+        timestamp   = payload['timestamp'] || nil
+        uuid        = payload['request_id'] || nil
         source      = payload['source']
         data        = payload['data']
         object      = data['object']
@@ -272,12 +322,12 @@ class WebhookAsync
         end
 
         # display
-        logger.info "📝 Notion automation - page: #{data['id']}"
-        logger.info ">>>Reference: #{prop_hash['Référence'] || 'None'}"
+        logger.info "<#{uuid}>📝 Notion automation - page: #{data['id']}"
+        logger.info "<#{uuid}>>>>Reference: #{prop_hash['Référence'] || 'None'}"
         prop_hash.each do |fld|
-            logger.info ">>>#{fld}: #{prop_hash[fld]}"
+            logger.info "<#{uuid}>>>>#{fld}: #{prop_hash[fld]}"
         end
-        logger.info ">>>"
+        logger.info ">#{uuid}>>"
 
         # Append to file
         prms = {}
@@ -299,7 +349,9 @@ class WebhookAsync
         #"secret_oDGXV4Lvg8oX6e1x2MrXveF7UlEPlIKito7G89Wxdxy"
         #"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"
         #
-        logger.info "Payload Notion request"
+        timestamp       = payload['timestamp'] || nil
+        uuid            = payload['request_id'] || nil
+        logger.info "<#{uuid}>Payload Notion request"
         pp payload      unless payload.empty?
         return          if payload.empty?
 
@@ -307,13 +359,11 @@ class WebhookAsync
         #++++++++++++++++
         signature   = payload['notion_signature'] || 'unknown signature'
         rc          = check_signature(signature: signature, raw_body: raw_body)
-        logger.info ">>>Signature check: #{rc ? 'OK' : 'FAILED'}"
+        logger.info "<#{uuid}>Signature check: #{rc ? 'OK' : 'FAILED'}"
 
         # Extract parts - level 1
         #++++++++++++++++++++++++
-        timestamp       = payload['timestamp'] || nil
-        uuid            = payload['request_id'] || nil
-        authors         = payload['authors'][0] || nil
+        authors         = payload['authors'][0] || nil  unless payload['authors'].nil? || payload['authors'].empty?
         api_version     = payload['api_version'] || nil
         entity          = payload['entity'] || nil
         type            = payload['type'] || nil
@@ -334,16 +384,18 @@ class WebhookAsync
         prms['api_version'] = api_version
         prms['authors_id']  = authors_id
         prms['authors_type']= authors_type
+        prms['uuid']        = uuid
         authors             = "Error"
 
         # Process according to type of entity & type of action
         #+++++++++++++++++++++++++++++++++++++++++++++++++++++
-        logger.info ">>>Request for #{entity_type}: #{entity_id} - type: #{type}"
+        logger.info "<#{uuid}>Request for #{entity_type}: #{entity_id} - type: #{type}"
         # Display
         #++++++++
         response = {}
         case entity_type
         when 'page'
+            response = 'Unknown'
             prms['get_type'] = 'page'
             case type
             when 'page.created'
@@ -359,15 +411,20 @@ class WebhookAsync
             end
 
         when 'view'
+            response = 'Unknown'
+            prms['get_type'] = 'view'
             case type
             when 'view.updated'
-                #display_view(prms: prms)
+                response = display_view(prms: prms)
+                return      if response == 'Unknown'  #to avoid processing old version of webhook
 
             when 'view.created'
-                #display_view(prms: prms)
+                response = display_view(prms: prms)
+                return      if response == 'Unknown'  #to avoid processing old version of webhook
 
             when 'view.deleted'
-                #display_view(prms: prms)
+                response = display_view(prms: prms)
+                return      if response == 'Unknown'  #to avoid processing old version of webhook
 
             else
                 logger.info ">>>Request for: #{entity_type} => type: #{type}"
@@ -402,10 +459,10 @@ class WebhookAsync
                 #display_file_upload(prms: prms)
 
             else
-                logger.info ">>>Request for: #{entity_type} => type: #{type}"
+                logger.info "<#{uuid}>Request for: #{entity_type} => type: #{type}"
             end
         else
-            logger.warn ">>>Unknown entity type: #{entity_type}"
+            logger.warn "<#{uuid}>Unknown entity type: #{entity_type}"
         end
 
         # Append to file
@@ -436,7 +493,8 @@ class WebhookAsync
         return          if payload.empty?
 
         # Extract parts
-        uuid            = payload['request_id'] || 'unknown uuid'
+        timestamp       = payload['timestamp'] || nil
+        uuid            = payload['request_id'] || nil
         request_method  = payload['REQUEST_METHOD'] || 'unknown method'
         request_path    = payload['PATH_INFO'] || 'unknown path'
         request_uri     = payload['REQUEST_URI'] || 'unknown uri'
@@ -461,6 +519,8 @@ class WebhookAsync
         return          if payload.empty?
 
         # Extract parts
+        timestamp       = payload['timestamp'] || nil
+        uuid            = payload['request_id'] || nil
         head_commit = payload['head_commit']
         head_commit.each do |key, value|
             logger.info ">>>#{key}: #{value}"
@@ -482,10 +542,12 @@ class WebhookAsync
     #                           *************
     def handle_fastmail(payload = {})
         logger.info "Payload fastmail: "
-    #    pp payload      unless payload.empty?
+        pp payload      unless payload.empty?
         return          if payload.empty?
 
         # Extract parts
+        timestamp       = payload['timestamp'] || nil
+        uuid            = payload['request_id'] || nil
         schema      = payload['schema'] || 'unknown schema'
         event       = payload['event'] || 'unknown event'
         message     = payload['message'] || 'unknown message'

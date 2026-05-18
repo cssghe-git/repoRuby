@@ -113,6 +113,9 @@ class WebhookProcessing < Sinatra::Base
         ### pp payload  #to search fields
         logger.info "Webhook reçu: #{source['type'] || 'unknown'} from #{request.ip} "
 
+        request_id              = SecureRandom.uuid
+        payload['request_id']   = request_id
+
         # Enqueue async IMMÉDIATEMENT
         WebhookAsync.perform_async('Notion-automation', payload, x_array)
 
@@ -130,6 +133,9 @@ class WebhookProcessing < Sinatra::Base
         $stdout.puts ">>>DBG>Notion_BusyCal => "
         payload = request.body && JSON.parse(request.body.read || '{}')
         ### pp payload
+
+        request_id              = SecureRandom.uuid
+        payload['request_id']   = request_id
 
         # Enqueue async IMMÉDIATEMENT
         WebhookAsync.perform_async('Notion-busycal', payload)
@@ -153,6 +159,9 @@ class WebhookProcessing < Sinatra::Base
         payload = request.body && JSON.parse(request.body.read || '{}')
         ### pp payload
 
+        request_id              = SecureRandom.uuid
+        payload['request_id']   = request_id
+
         # Enqueue async IMMÉDIATEMENT
         WebhookAsync.perform_async('GitHub', payload)
 
@@ -171,6 +180,9 @@ class WebhookProcessing < Sinatra::Base
         payload = request.body && JSON.parse(request.body.read || '{}')
         ### pp payload
 
+        request_id              = SecureRandom.uuid
+        payload['request_id']   = request_id
+
         # Enqueue async IMMÉDIATEMENT
         WebhookAsync.perform_async('Fastmail', payload)
 
@@ -186,27 +198,29 @@ class WebhookProcessing < Sinatra::Base
     #   from webhook integration: CssGhe_Webhooks
     #
     post "/notion_request" do
-        $stdout.puts ">>>DBG>Notion_Request "
+    start = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
-        request.body.rewind  # Rewind the body to read it again
-        raw_body = request.body.read
+    $stdout.puts ">>>DBG>Notion_Request"
 
-        payload = request.body && JSON.parse(raw_body || '{}')
-        $stdout.puts payload.inspect
+    request.body.rewind # Rewind the body to read it again
+    raw_body = request.body.read
 
-        # UUID
-        request_id                  = SecureRandom.uuid
 
-        # Extract parts
-        payload['request_id']       = request_id
-        payload['notion_signature'] = request.env['HTTP_X_NOTION_SIGNATURE'] || 'unknown signature'
+    payload = request.body && JSON.parse(raw_body || '{}')
+    $stdout.puts payload.inspect
 
-        # Enqueue async IMMÉDIATEMENT
-        WebhookAsync.perform_async('Notion-request', payload, nil, raw_body)
+    request_id = SecureRandom.uuid
 
-        # Réponse 200 rapide (fire & forget)
-        [200, { 'Content-Type' => 'application/json' }, 
-            [{ text: 'Webhook-notion_request', status: 'received', queued: true }.to_json]]
-        
+    payload['request_id']       = request_id
+    payload['notion_signature'] = request.env['HTTP_X_NOTION_SIGNATURE'] || 'unknown signature'
+
+    # enqueue ASAP
+    WebhookAsync.perform_async('Notion-request', payload, nil, raw_body)
+
+    elapsed_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - start) * 1000).round(1)
+    $stdout.puts ">>>DBG>Notion_Request done in #{elapsed_ms}ms"
+
+    [200, { 'Content-Type' => 'application/json' },
+        [{ text: 'Webhook-notion_request', status: 'received', queued: true }.to_json]]
     end #<post>
 end #<class>

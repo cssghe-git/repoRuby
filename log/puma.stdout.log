@@ -1,8 +1,35 @@
-=== puma startup: 2026-05-12 08:36:16 +0200 ===
-[21027] - Worker 0 (PID: 21030) booted in 0.0s, phase: 0
-[21027] - Worker 1 (PID: 21031) booted in 0.0s, phase: 0
-[21027] - Worker 2 (PID: 21032) booted in 0.0s, phase: 0
->>>DBG>Notion_Request 
-{"test" => "webhook"}
-[1;34mINFO [0m 2026-05-12T06:38:20.352Z pid=21032 tid=gmg: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
->>>DBG>Email_Webhook => 
+=== puma startup: 2026-05-18 09:47:08 +0200 ===
+[82087] - Worker 0 (PID: 82090) booted in 0.0s, phase: 0
+[82087] - Worker 1 (PID: 82091) booted in 0.0s, phase: 0
+[82087] - Worker 2 (PID: 82092) booted in 0.0s, phase: 0
+[82087] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 82090
+[82087] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 82091
+[82087] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 82092
+[82087] - Worker 2 (PID: 85495) booted in 0.01s, phase: 0
+[82087] - Worker 0 (PID: 85493) booted in 0.01s, phase: 0
+[82087] - Worker 1 (PID: 85494) booted in 0.01s, phase: 0
+[82087] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85493
+[82087] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85494
+[82087] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85495
+[82087] - Worker 0 (PID: 85568) booted in 0.01s, phase: 0
+[82087] - Worker 1 (PID: 85569) booted in 0.0s, phase: 0
+[82087] - Worker 2 (PID: 85570) booted in 0.0s, phase: 0
+[82087] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85568
+[82087] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85569
+[82087] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85570
+[82087] - Worker 0 (PID: 85621) booted in 0.01s, phase: 0
+[82087] - Worker 1 (PID: 85622) booted in 0.01s, phase: 0
+[82087] - Worker 2 (PID: 85623) booted in 0.0s, phase: 0
+[82087] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85621
+[82087] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85622
+[82087] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85623
+[82087] - Worker 1 (PID: 85663) booted in 0.01s, phase: 0
+[82087] - Worker 0 (PID: 85662) booted in 0.01s, phase: 0
+[82087] - Worker 2 (PID: 85664) booted in 0.01s, phase: 0
+[82087] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85662
+[82087] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85663
+[82087] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85664
+[82087] ! Out-of-sync worker list, no 85662 worker
+[82087] - Worker 2 (PID: 85718) booted in 0.01s, phase: 0
+[82087] - Worker 1 (PID: 85717) booted in 0.01s, phase: 0
+[82087] - Worker 0 (PID: 85716) booted in 0.01s, phase: 0
