@@ -91,7 +91,7 @@ class WebhookProcessing < Sinatra::Base
     # Process <Post> request for <notion_webhook>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
-    # Webhook principal (Notion)
+    # Webhook (Notion)
     post '/notion_webhook' do
         env_part = env
         $stdout.puts ">>>DBG>Notion_Webhook>Env_Part => "
@@ -203,10 +203,11 @@ class WebhookProcessing < Sinatra::Base
     $stdout.puts ">>>DBG>Notion_Request"
 
     request.body.rewind # Rewind the body to read it again
-    raw_body = request.body.read
+    raw_hdr     = request.body.read # Read the raw body for signature verification
+    raw_body    = raw_hdr.dup # Duplicate raw_hdr to raw_body for parsing
 
 
-    payload = request.body && JSON.parse(raw_body || '{}')
+    payload = raw_body.empty? ? {} : JSON.parse(raw_body)
     $stdout.puts payload.inspect
 
     request_id = SecureRandom.uuid
@@ -215,7 +216,7 @@ class WebhookProcessing < Sinatra::Base
     payload['notion_signature'] = request.env['HTTP_X_NOTION_SIGNATURE'] || 'unknown signature'
 
     # enqueue ASAP
-    WebhookAsync.perform_async('Notion-request', payload, nil, raw_body)
+    WebhookAsync.perform_async('Notion-request', payload, raw_body, raw_hdr)
 
     elapsed_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - start) * 1000).round(1)
     $stdout.puts ">>>DBG>Notion_Request done in #{elapsed_ms}ms"

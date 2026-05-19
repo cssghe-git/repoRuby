@@ -26,11 +26,11 @@ class WebhookAsync
     #************
     #
     # Dispatch according to type of request (from who)
-    def perform(type = 'None', payload = {}, x_array = nil, raw_body = nil)
+    def perform(type = 'None', payload = {}, raw_body = nil, raw_hdr = nil)
 
-        build = "260518-0910"  #to identify code version in logs
+        build = "260519-0555"  #to identify code version in logs
         logger.datetime_format = '%H:%M:%S'
-        
+
         logger.info ">>>"
         logger.info "🔄 Traitement async:: VRP: #{build} for: #{type}"
         logger.info ">>>******************************************<<<"
@@ -38,7 +38,7 @@ class WebhookAsync
         # Dispatch according to type/from of webhook
         case type                                       
         when 'Notion-automation'    #from Notion - WebHook (automation) - old version
-            handle_notion(payload, x_array)
+            handle_notion(payload, row_body)
 
         when 'GitHub'               #from Github
             handle_github(payload)
@@ -47,7 +47,7 @@ class WebhookAsync
             handle_fastmail(payload)
 
         when 'Notion-request'       #from Notion - request (POST) - webhook integration - new version
-            handle_notion_request(payload, raw_body)
+            handle_notion_request(payload, raw_body, raw_hdr)
 
         when 'Notion-busycal'       #from Notion - busycal (POST)
             handle_notion_busycal(payload)
@@ -128,15 +128,15 @@ class WebhookAsync
     #
     # Check signature
     #*****************
-    def check_signature(signature: nil, raw_body: nil)
+    def check_signature(signature: nil, raw_hdr: nil)
     #
         return false if signature.nil?
-        return false if raw_body.nil?
+        return false if raw_hdr.nil?
 
         # Retrieve the verification_token from initial request
-        verification_token = ENV['NOT_WEBHOOK_VERIFY'] || 'secret_oDGXV4Lvg8oX6e1x2MrXveF7UlEPlIKito7G89Wxdxy'
+        verification_token = ENV['NOT_WEBHOOK_VERIFY'] || 'unknown'
 
-        digest = OpenSSL::HMAC.hexdigest("SHA256", verification_token, raw_body)
+        digest = OpenSSL::HMAC.hexdigest("SHA256", verification_token, raw_hdr)
         calculated_signature = "sha256=#{digest}"
 
         # Constant-time comparison
@@ -162,7 +162,7 @@ class WebhookAsync
         # Notion API request parameters
         not_url = ENV['NOT_HTTPBASE'] || 'https://api.notion.com/v1'
         not_hdr = {
-            'Authorization'     => ENV['NOT_WEBHOOK_TOKEN'] ||'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',
+            'Authorization'     => ENV['NOT_WEBHOOK_TOKEN'] ||'unknown',
             'Notion-Version'    => ENV['NOT_APINEW'] || '2026-03-11',
             'Content-Type'      => 'application/json'
         }
@@ -214,7 +214,7 @@ class WebhookAsync
         # Notion API request parameters
         not_url = ENV['NOT_HTTPBASE'] || 'https://api.notion.com/v1'
         not_hdr = {
-            'Authorization'     => ENV['NOT_WEBHOOK_TOKEN'] ||'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',
+            'Authorization'     => ENV['NOT_WEBHOOK_TOKEN'] ||'unknown',
             'Notion-Version'    => ENV['NOT_APINEW'] || '2026-03-11',
             'Content-Type'      => 'application/json'
         }
@@ -244,7 +244,7 @@ class WebhookAsync
         logger.info "<#{uuid}>>>>type: #{response['type']}"
         configuration = response['configuration'] || {}
         return response     unless configuration.any?
-        pp configuration
+        #pp configuration
         group_by = configuration['group_by'] || {}
         logger.info "<#{uuid}>>>>Configuration:"
         logger.info "<#{uuid}>>>>>>property: #{group_by['property_name']}"
@@ -281,7 +281,7 @@ class WebhookAsync
         # Notion API request parameters
         not_url = ENV['NOT_HTTPBASE'] || 'https://api.notion.com/v1'
         not_hdr = {
-            'Authorization'     => ENV['NOT_WEBHOOK_TOKEN'] ||'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',
+            'Authorization'     => ENV['NOT_WEBHOOK_TOKEN'] ||'unknown',
             'Notion-Version'    => ENV['NOT_APINEW'] || '2026-03-11',
             'Content-Type'      => 'application/json'
         }    
@@ -295,70 +295,29 @@ class WebhookAsync
     #   Webhooks processing
     #**********************
     #
-    #                           From Notion - WebHook (old automation)
-    #                           **********************
-    #
-    def handle_notion(payload, x_array = nil)
-        # Extract fields & log it
-        #
-        # Extract parts
-        timestamp   = payload['timestamp'] || nil
-        uuid        = payload['request_id'] || nil
-        source      = payload['source']
-        data        = payload['data']
-        object      = data['object']
-        properties  = data['properties']
-
-        # Extract X fields
-        x_from_object   = x_array[:x_from_object] || 'unknown object'
-        x_from_page     = x_array[:x_from_page] || 'unknown page'
-        x_signature     = x_array[:x_signature] || 'unknown signature'
-        pp x_array
-
-        # Configure fields
-        prop_hash   = {}
-        properties.each do |key, value|
-            prop_hash[key]  = get_prop_value(field: value)
-        end
-
-        # display
-        logger.info "<#{uuid}>📝 Notion automation - page: #{data['id']}"
-        logger.info "<#{uuid}>>>>Reference: #{prop_hash['Référence'] || 'None'}"
-        prop_hash.each do |fld|
-            logger.info "<#{uuid}>>>>#{fld}: #{prop_hash[fld]}"
-        end
-        logger.info ">#{uuid}>>"
-
-        # Append to file
-        prms = {}
-        prms['file_switch'] = 'None'
-        prms['file_path']   = 'notion_automation'
-        prms['URI']         = "notion_automation"
-        prms['page_id']     = data['id']
-        prms['properties']  = prop_hash
-        append_to_file(fields: prms)
-
-    end #<def>
-
     #
     #                   From Notion - request (POST) - webhook integration
     #                   ****************************
     #
-    def handle_notion_request(payload = {}, raw_body = {})
-        #raw_body contains ENV fields (headers) - for logging and security checks
-        #"secret_oDGXV4Lvg8oX6e1x2MrXveF7UlEPlIKito7G89Wxdxy"
-        #"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"
+    def handle_notion_request(payload = {}, raw_body = {}, raw_hdr = {})
+        #raw_hdr contains ENV fields (headers) - for logging and security checks
+        #"Secret=>see .ENV"
+        #"Token=>see .ENV"
         #
         timestamp       = payload['timestamp'] || nil
-        uuid            = payload['request_id'] || nil
+        uuid_full       = payload['request_id'] || nil
+        uuid            = uuid_full.split('-')[0]  #to have a shorter uuid for display
+        logger.info "<#{uuid}>raw_hdr Notion request"
+    #    pp raw_hdr      #unless raw_hdr.empty?
+        return          if raw_hdr.empty?
         logger.info "<#{uuid}>Payload Notion request"
-        pp payload      unless payload.empty?
+        pp payload      #unless payload.empty?
         return          if payload.empty?
 
         # Check signature
         #++++++++++++++++
         signature   = payload['notion_signature'] || 'unknown signature'
-        rc          = check_signature(signature: signature, raw_body: raw_body)
+        rc          = check_signature(signature: signature, raw_hdr: raw_hdr)
         logger.info "<#{uuid}>Signature check: #{rc ? 'OK' : 'FAILED'}"
 
         # Extract parts - level 1
@@ -370,7 +329,6 @@ class WebhookAsync
         data            = payload['data'] || nil
         flag_ok         = [timestamp, uuid, api_version, entity, type].all? { |part| !part.nil? }
         return      unless flag_ok
-    #    parent          = payload['parent'] || {}
 
         # Extract parts - level 2
         #++++++++++++++++++++++++
@@ -395,15 +353,17 @@ class WebhookAsync
         response = {}
         case entity_type
         when 'page'
-            response = 'Unknown'
+        #    response = 'None'
             prms['get_type'] = 'page'
             case type
             when 'page.created'
                 response = display_page(prms: prms)
+            #    logger.info "<#{uuid}>Response: #{response}"
                 return      if response == 'Unknown'  #to avoid processing old version of webhook
 
             when "page.properties_updated"
                 response = display_page(prms: prms)
+            #    logger.info "<#{uuid}>Response: #{response}"
                 return      if response == 'Unknown'  #to avoid processing old version of webhook
 
             else
@@ -476,12 +436,61 @@ class WebhookAsync
         prms['type']        = type
         prms['data']        = data
         prms['authors']     = response['authors']
-    #    prms['properties']  = response['properties']
+
         props = response['properties'] || {}
         props.each do |key, value|
             prms[key] = get_prop_value(field: value)
-        end        
+        end
+
+        # Append to file
         append_to_file(fields: prms)
+    end #<def>
+
+    #                           From Notion - WebHook (old automation)
+    #                           **********************
+    #
+    def handle_notion(payload, x_array = nil)
+        pp payload
+
+        # Extract fields & log it
+        #
+        # Extract parts
+        timestamp   = payload['timestamp'] || nil
+        uuid        = payload['request_id'] || nil
+        source      = payload['source']
+        data        = payload['data']
+        object      = data['object']
+        properties  = data['properties']
+
+        # Extract X fields
+        x_from_object   = x_array[:x_from_object] || 'unknown object'
+        x_from_page     = x_array[:x_from_page] || 'unknown page'
+        x_signature     = x_array[:x_signature] || 'unknown signature'
+        #pp x_array
+
+        # Configure fields
+        prop_hash   = {}
+        properties.each do |key, value|
+            prop_hash[key]  = get_prop_value(field: value)
+        end
+
+        # display
+        logger.info "<#{uuid}>📝 Notion automation - page: #{data['id']}"
+        logger.info "<#{uuid}>>>>Reference: #{prop_hash['Référence'] || 'None'}"
+        prop_hash.each do |fld|
+            logger.info "<#{uuid}>>>>#{fld}: #{prop_hash[fld]}"
+        end
+        logger.info ">#{uuid}>>"
+
+        # Append to file
+        prms = {}
+        prms['file_switch'] = 'None'
+        prms['file_path']   = 'notion_automation'
+        prms['URI']         = "notion_automation"
+        prms['page_id']     = data['id']
+        prms['properties']  = prop_hash
+        append_to_file(fields: prms)
+
     end #<def>
 
     #
@@ -489,7 +498,7 @@ class WebhookAsync
     #                           *********************
     def handle_notion_busycal(payload = {})
         logger.info "Payload Notion busycal"
-#        pp payload      unless payload.empty?
+        pp payload
         return          if payload.empty?
 
         # Extract parts
@@ -515,15 +524,17 @@ class WebhookAsync
     #                           *************
     def handle_github(payload = {})
         logger.info "Payload Github"
-#        pp payload      unless payload.empty?
+        pp payload
         return          if payload.empty?
 
         # Extract parts
-        timestamp       = payload['timestamp'] || nil
-        uuid            = payload['request_id'] || nil
-        head_commit = payload['head_commit']
-        head_commit.each do |key, value|
-            logger.info ">>>#{key}: #{value}"
+        timestamp   = payload['timestamp'] || nil
+        uuid        = payload['request_id'] || nil
+        head_commit = payload['head_commit'] || {}
+        if !head_commit.empty?
+            head_commit.each do |key, value|
+                logger.info "<#{uuid}>>>>#{key}: #{value}"
+            end
         end
         logger.info ">>>"
 
@@ -542,22 +553,24 @@ class WebhookAsync
     #                           *************
     def handle_fastmail(payload = {})
         logger.info "Payload fastmail: "
-        pp payload      unless payload.empty?
+        pp payload
         return          if payload.empty?
 
         # Extract parts
-        timestamp       = payload['timestamp'] || nil
-        uuid            = payload['request_id'] || nil
+        timestamp   = payload['timestamp'] || nil
+        uuid        = payload['request_id'] || nil
         schema      = payload['schema'] || 'unknown schema'
         event       = payload['event'] || 'unknown event'
         message     = payload['message'] || 'unknown message'
         body        = message['body'] || {}
 
         # Add your logic here
-        sender          = message['from'] || 'unknown sender'
-        subject         = message['subject'] || 'unknown subject'
-        date            = message['date'] || 'unknown date'
-        to              = message['to'] || 'unknown recipient'
+        sender = message['from'] || 'unknown sender'
+        subject = message['subject'] || 'unknown subject'
+        date    = message['date'] || 'unknown date'
+        to      = message['to'] || 'unknown recipient'
+
+        return      if body.empty?
 
         attachements    = body['attachments'] || {}
         text            = body['text'] || {}
