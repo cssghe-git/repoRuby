@@ -28,7 +28,7 @@ class WebhookAsync
     # Dispatch according to type of request (from who)
     def perform(type = 'None', payload = {}, raw_body = nil, raw_hdr = nil)
 
-        build = "260519-0555"  #to identify code version in logs
+        build = "260522_1533"  #to identify code version in logs
         logger.datetime_format = '%H:%M:%S'
 
         logger.info ">>>"
@@ -107,12 +107,12 @@ class WebhookAsync
         fields_json = {}
         case file_switch
         when 0
-            file_path = '/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log.txt'
+            file_path = '/users/Gilbert/Public/Private/ToLogs/webhooks_log.txt'
         when 'json'
-            file_path = "/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log_#{fields['file_path']}_#{Time.now.strftime('%Y-%m-%d')}.json"
+            file_path = "/users/Gilbert/Public/Private/ToLogs/webhooks_log_#{fields['file_path']}_#{Time.now.strftime('%Y-%m-%d')}.json"
             fields_json = JSON.pretty_generate(fields)
         else            
-            file_path = "/users/Gilbert/Public/MemberLists/ToKeep/webhooks_log_#{fields['file_path']}_#{Time.now.strftime('%Y-%m-%d')}.txt"
+            file_path = "/users/Gilbert/Public/Private/ToLogs/webhooks_log_#{fields['file_path']}_#{Time.now.strftime('%Y-%m-%d')}.txt"
         end
 
         # Append data to file, text format or Json format
@@ -133,6 +133,8 @@ class WebhookAsync
         return false if signature.nil?
         return false if raw_hdr.nil?
 
+    #    pp raw_hdr
+
         # Retrieve the verification_token from initial request
         verification_token = ENV['NOT_WEBHOOK_VERIFY'] || 'unknown'
 
@@ -151,9 +153,10 @@ class WebhookAsync
         end
         return is_trusted_payload
     end
+
     #
-    # Display Data
-    #*************
+    # Display Data/Page
+    #******************
     def display_page(prms: {})
         return      'Unknown'       unless display_common(prms: prms)
         page_id     = prms['page_id'] || nil
@@ -204,8 +207,10 @@ class WebhookAsync
         response['authors'] = authors
         return response
     end
+
     #
     # Display view
+    #**************
     def display_view(prms: {})
         return      'Unknown'unless display_common(prms: prms)
         page_id     = prms['page_id'] || nil
@@ -254,15 +259,19 @@ class WebhookAsync
 
         return response
     end
+
     #
     # Display file uploaded
+    #**********************
     def display_file_upload(prms: {})
         return      unless display_common(prms: prms)
         get_type = prms['get_type'] || 'None'
 
     end
+
     #
     # Common part for Display anything
+    #*********************************
     def display_common(prms: {})
         # Extract parameters
         page_id     = prms['page_id'] || nil
@@ -271,9 +280,12 @@ class WebhookAsync
         return  false   if api_version == '2020-01-01'  #to avoid processing old version of webhook
         return  true
     end
+
     #
     # Extract authors
+    #****************
     def extract_authors(prms: {})
+        # Exxtract values
         authors_id      = prms['authors_id'] || 'unknown authors id'
         authors_type    = prms['authors_type'] || 'unknown authors type'
         return 'Bot'    if authors_type == 'bot'
@@ -289,21 +301,23 @@ class WebhookAsync
         res = HTTParty.get("#{not_url}/users/#{authors_id}", headers: not_hdr)
         response = res.success? ? res.parsed_response : nil
         return  'Unknown'   if response.nil?
+
         return response['name'] || 'None'
     end
+
+    #************************
+    #   Webhooks processing *
+    #************************
     #
-    #   Webhooks processing
-    #**********************
-    #
-    #
+    #                   ****************************
     #                   From Notion - request (POST) - webhook integration
     #                   ****************************
     #
     def handle_notion_request(payload = {}, raw_body = {}, raw_hdr = {})
         #raw_hdr contains ENV fields (headers) - for logging and security checks
-        #"Secret=>see .ENV"
-        #"Token=>see .ENV"
         #
+        # Extract values & display if needed
+        #+++++++++++++++++++++++++++++++++++
         timestamp       = payload['timestamp'] || nil
         uuid_full       = payload['request_id'] || nil
         uuid            = uuid_full.split('-')[0]  #to have a shorter uuid for display
@@ -311,14 +325,15 @@ class WebhookAsync
     #    pp raw_hdr      #unless raw_hdr.empty?
         return          if raw_hdr.empty?
         logger.info "<#{uuid}>Payload Notion request"
-        pp payload      #unless payload.empty?
+    #    pp payload      #unless payload.empty?
         return          if payload.empty?
 
         # Check signature
         #++++++++++++++++
-        signature   = payload['notion_signature'] || 'unknown signature'
-        rc          = check_signature(signature: signature, raw_hdr: raw_hdr)
-        logger.info "<#{uuid}>Signature check: #{rc ? 'OK' : 'FAILED'}"
+        signature   = payload['notion_signature']
+        logger.info "<#{uuid}>Check signature: #{signature}"
+    #    rc          = check_signature(signature: signature, raw_hdr: raw_hdr)
+    #    logger.info "<#{uuid}>Signature check: #{rc ? 'OK' : 'FAILED'}"
 
         # Extract parts - level 1
         #++++++++++++++++++++++++
@@ -427,6 +442,7 @@ class WebhookAsync
 
         # Append to file
         #++++++++++++++++
+        # Load parameters
         prms = {}
         prms['file_switch'] = 'json'                    #format of file to save (json or text)
         prms['file_path']   = "notion_request"          #filename
@@ -493,7 +509,7 @@ class WebhookAsync
 
     end #<def>
 
-    #
+    #                           ********************
     #                           From Notion - busycal
     #                           *********************
     def handle_notion_busycal(payload = {})
@@ -519,7 +535,7 @@ class WebhookAsync
         append_to_file(fields: prms)
     end #<def>
 
-    #
+    #                           ***********
     #                           From Github
     #                           *************
     def handle_github(payload = {})
@@ -548,12 +564,12 @@ class WebhookAsync
 
     end #<def>
 
-    #
+    #                           *************
     #                           From Fastmail
     #                           *************
     def handle_fastmail(payload = {})
         logger.info "Payload fastmail: "
-        pp payload
+    #    pp payload
         return          if payload.empty?
 
         # Extract parts
@@ -562,15 +578,15 @@ class WebhookAsync
         schema      = payload['schema'] || 'unknown schema'
         event       = payload['event'] || 'unknown event'
         message     = payload['message'] || 'unknown message'
-        body        = message['body'] || {}
 
         # Add your logic here
-        sender = message['from'] || 'unknown sender'
+        body    = message['body'] || {}
+        sender  = message['from'][0]['email'] || 'unknown sender'
         subject = message['subject'] || 'unknown subject'
         date    = message['date'] || 'unknown date'
         to      = message['to'] || 'unknown recipient'
 
-        return      if body.empty?
+    #    return      if body.empty?
 
         attachements    = body['attachments'] || {}
         text            = body['text'] || {}
@@ -583,11 +599,11 @@ class WebhookAsync
         logger.info ">>>À: #{to}"
         logger.info ">>>Sujet: #{subject}"
         logger.info ">>>Texte: #{text}"
-        if contents.size > 0
-            contents.each do |c|
-                logger.info "#{c}"
-            end
-        end
+    #    if contents.size > 0
+    #        contents.each do |c|
+    #            logger.info "#{c}"
+    #        end
+    #    end
 
         # Append to file
         prms = {}

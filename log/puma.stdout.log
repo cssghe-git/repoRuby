@@ -1,35 +1,14 @@
-=== puma startup: 2026-05-18 09:47:08 +0200 ===
-[82087] - Worker 0 (PID: 82090) booted in 0.0s, phase: 0
-[82087] - Worker 1 (PID: 82091) booted in 0.0s, phase: 0
-[82087] - Worker 2 (PID: 82092) booted in 0.0s, phase: 0
-[82087] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 82090
-[82087] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 82091
-[82087] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 82092
-[82087] - Worker 2 (PID: 85495) booted in 0.01s, phase: 0
-[82087] - Worker 0 (PID: 85493) booted in 0.01s, phase: 0
-[82087] - Worker 1 (PID: 85494) booted in 0.01s, phase: 0
-[82087] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85493
-[82087] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85494
-[82087] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85495
-[82087] - Worker 0 (PID: 85568) booted in 0.01s, phase: 0
-[82087] - Worker 1 (PID: 85569) booted in 0.0s, phase: 0
-[82087] - Worker 2 (PID: 85570) booted in 0.0s, phase: 0
-[82087] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85568
-[82087] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85569
-[82087] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85570
-[82087] - Worker 0 (PID: 85621) booted in 0.01s, phase: 0
-[82087] - Worker 1 (PID: 85622) booted in 0.01s, phase: 0
-[82087] - Worker 2 (PID: 85623) booted in 0.0s, phase: 0
-[82087] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85621
-[82087] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85622
-[82087] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85623
-[82087] - Worker 1 (PID: 85663) booted in 0.01s, phase: 0
-[82087] - Worker 0 (PID: 85662) booted in 0.01s, phase: 0
-[82087] - Worker 2 (PID: 85664) booted in 0.01s, phase: 0
-[82087] ! Terminating timed out worker (Worker 0 failed to check in within 60 seconds): 85662
-[82087] ! Terminating timed out worker (Worker 1 failed to check in within 60 seconds): 85663
-[82087] ! Terminating timed out worker (Worker 2 failed to check in within 60 seconds): 85664
-[82087] ! Out-of-sync worker list, no 85662 worker
-[82087] - Worker 2 (PID: 85718) booted in 0.01s, phase: 0
-[82087] - Worker 1 (PID: 85717) booted in 0.01s, phase: 0
-[82087] - Worker 0 (PID: 85716) booted in 0.01s, phase: 0
+=== puma startup: 2026-05-22 15:24:28 +0200 ===
+[46439] - Worker 0 (PID: 46443) booted in 0.0s, phase: 0
+[46439] - Worker 1 (PID: 46444) booted in 0.0s, phase: 0
+[46439] - Worker 2 (PID: 46445) booted in 0.0s, phase: 0
+>>>DBG>Notion_Request
+RAW:{"id":"8a94ae83-9e23-427c-a181-0086abb923b9","timestamp":"2026-05-22T13:27:32.345Z","workspace_id":"930df1e7-bd0e-46aa-8c3a-f2945fce17fd","workspace_name":"CssGhe's Notion","subscription_id":"368d872b-594c-812b-93d6-00993481f96b","integration_id":"368d872b-594c-816b-8dd8-0037f356034f","authors":[{"id":"5fedf47c-da8f-4d83-a227-806df3375254","type":"person"}],"attempt_number":1,"api_version":"2026-03-11","entity":{"id":"36872117-082a-809a-aecc-d97fe8722b49","type":"page"},"type":"page.properties_updated","data":{"parent":{"id":"13572117-082a-80e0-acc8-f5d50c791ed7","type":"database","data_source_id":"13572117-082a-8153-8340-000b5065dabd"},"updated_properties":["%60NTV"]}}
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:4f02623f3042b34846de760ffac154a8f957b4d7c9817a8d6e92baa882ba8d0d - Calculated:4f02623f3042b34846de760ffac154a8f957b4d7c9817a8d6e92baa882ba8d0d
+raw_body.bytesize: 678
+received_signature: 4f02623f3042b34846de760ffac154a8f957b4d7c9817a8d6e92baa882ba8d0d
+calculated_signature: 4f02623f3042b34846de760ffac154a8f957b4d7c9817a8d6e92baa882ba8d0d
+same length: true
+is_trusted: true
+[1;34mINFO [0m 2026-05-22T13:28:34.369Z pid=46443 tid=yvn: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+>>>DBG>Notion_Request done in 7.8ms

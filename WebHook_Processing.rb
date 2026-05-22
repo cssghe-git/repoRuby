@@ -3,6 +3,7 @@
 =begin
         WebhookProcessing.rb
         Function => on port 4567 - Recevoir les webhooks de Notion, GitHub, Fastmail, etc. et les mettre en file d'attente pour traitement asynchrone
+        Build:  260522-1533
         GET => 
             / : pour tester que le serveur est en ligne
             /favicon.ico : 
@@ -30,6 +31,7 @@ require 'logger'
 require 'securerandom'
 require 'redis'
 require 'openssl'
+require "rack/utils"
 
 class WebhookProcessing < Sinatra::Base
     configure :production, :development do
@@ -202,21 +204,33 @@ class WebhookProcessing < Sinatra::Base
 
     $stdout.puts ">>>DBG>Notion_Request"
 
-    request.body.rewind # Rewind the body to read it again
-    raw_hdr     = request.body.read # Read the raw body for signature verification
-    raw_body    = raw_hdr.dup # Duplicate raw_hdr to raw_body for parsing
+    request.body.rewind
+    raw_body = request.body.read
+    ### $stdout.puts "RAW:#{raw_body}"
+    ### $stdout.puts "ENV:#{env.inspect}"
 
+    received_signature = request.env["HTTP_X_NOTION_SIGNATURE"]&.to_s&.strip
+    received_signature = received_signature.sub(/\Asha256=/, "")
 
-    payload = raw_body.empty? ? {} : JSON.parse(raw_body)
-    $stdout.puts payload.inspect
+    verification_token = ENV['NOT_WEBHOOK_VERIFY']  #'secret_?'
+    calculated_signature = OpenSSL::HMAC.hexdigest("SHA256", verification_token, raw_body)
+    is_trusted = ActiveSupport::SecurityUtils.secure_compare(calculated_signature, received_signature)
 
-    request_id = SecureRandom.uuid
+    ### $stdout.puts "raw_body.bytesize: #{raw_body.bytesize}"
+    ### $stdout.puts "received_signature: #{received_signature[0..65]}"
+    ### $stdout.puts "calculated_signature: #{calculated_signature[0..65]}"
+    ### $stdout.puts "same length: #{received_signature.bytesize == calculated_signature.bytesize}"
+    ###$stdout.puts "is_trusted: #{is_trusted}"
+    $stdout.puts "SIGN::Token:#{verification_token} - Received:#{received_signature} - Calculated:#{calculated_signature} - Trusted: #{is_trusted}"
 
-    payload['request_id']       = request_id
-    payload['notion_signature'] = request.env['HTTP_X_NOTION_SIGNATURE'] || 'unknown signature'
+    request.body.rewind
+    payload = JSON.parse(raw_body)    
+    payload['request_id']       = SecureRandom.uuid
+    payload['notion_signature'] = is_trusted
+    ### $stdout.puts payload.inspect
 
     # enqueue ASAP
-    WebhookAsync.perform_async('Notion-request', payload, raw_body, raw_hdr)
+    WebhookAsync.perform_async('Notion-request', payload, raw_body, raw_body)
 
     elapsed_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - start) * 1000).round(1)
     $stdout.puts ">>>DBG>Notion_Request done in #{elapsed_ms}ms"
