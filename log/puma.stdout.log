@@ -12,3 +12,2557 @@ same length: true
 is_trusted: true
 [1;34mINFO [0m 2026-05-22T13:28:34.369Z pid=46443 tid=yvn: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
 >>>DBG>Notion_Request done in 7.8ms
+>>>DBG>Github_Webhook => 
+>>>DBG>Payload/env => 
+{"rack.version" => [1, 6],
+ "rack.errors" => #<IO:log/puma.stderr.log>,
+ "rack.multithread" => true,
+ "rack.multiprocess" => true,
+ "rack.run_once" => false,
+ "rack.url_scheme" => "https",
+ "SCRIPT_NAME" => "",
+ "QUERY_STRING" => "",
+ "SERVER_SOFTWARE" => "puma 7.2.0 On The Corner",
+ "GATEWAY_INTERFACE" => "CGI/1.2",
+ "rack.after_reply" => [],
+ "rack.response_finished" => [],
+ "REQUEST_METHOD" => "POST",
+ "REQUEST_PATH" => "/github_webhook",
+ "REQUEST_URI" => "/github_webhook",
+ "SERVER_PROTOCOL" => "HTTP/1.1",
+ "HTTP_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
+ "HTTP_USER_AGENT" => "GitHub-Hookshot/a55126a",
+ "CONTENT_LENGTH" => "8631",
+ "HTTP_ACCEPT" => "*/*",
+ "CONTENT_TYPE" => "application/json",
+ "HTTP_X_FORWARDED_FOR" => "140.82.115.159",
+ "HTTP_X_FORWARDED_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
+ "HTTP_X_FORWARDED_PROTO" => "https",
+ "HTTP_X_GITHUB_DELIVERY" => "7d0be1f0-55e3-11f1-9f2c-00d1541eec2c",
+ "HTTP_X_GITHUB_EVENT" => "push",
+ "HTTP_X_GITHUB_HOOK_ID" => "603554883",
+ "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" => "1195298323",
+ "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE" => "repository",
+ "HTTP_X_HUB_SIGNATURE" => "sha1=a23379417095ff7a572af7f644006c6cbcc048fb",
+ "HTTP_X_HUB_SIGNATURE_256" =>
+  "sha256=801e0072601e51e201bbfaaad4c3f088a09dbdc1976d62139f2e39641f6762ae",
+ "HTTP_ACCEPT_ENCODING" => "gzip",
+ "puma.request_body_wait" => 0.09299999475479126,
+ "SERVER_NAME" => "progenitorial-fredda-headlong.ngrok-free.dev",
+ "SERVER_PORT" => "443",
+ "PATH_INFO" => "/github_webhook",
+ "REMOTE_ADDR" => "127.0.0.1",
+ "puma.socket" => #<TCPSocket:fd 16, AF_INET, 127.0.0.1, 4567>,
+ "rack.hijack?" => true,
+ "rack.hijack" =>
+  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
+ "rack.input" => #<StringIO:0x00000001226fb5a8>,
+ "puma.config" =>
+  #<Puma::Configuration:0x0000000122b1f8c8
+   @_options=
+    #<Puma::UserFileDefaultOptions:0x0000000122715a70
+     @default_options=
+      {auto_trim_time: 30,
+       binds: ["tcp://0.0.0.0:9292"],
+       fiber_per_request: false,
+       debug: false,
+       enable_keep_alives: true,
+       early_hints: nil,
+       environment: "development",
+       first_data_timeout: 30,
+       idle_timeout: nil,
+       io_selector_backend: :auto,
+       log_requests: false,
+       logger: #<IO:log/puma.stdout.log>,
+       max_keep_alive: 999,
+       max_threads: 5,
+       min_threads: 0,
+       mode: :http,
+       mutate_stdout_and_stderr_to_sync_on_write: true,
+       out_of_band: [],
+       persistent_timeout: 65,
+       prune_bundler: false,
+       queue_requests: true,
+       rackup: "config.ru",
+       raise_exception_on_sigterm: true,
+       reaping_time: 1,
+       remote_address: :socket,
+       silence_single_worker_warning: false,
+       silence_fork_callback_warning: false,
+       tag: "repoRuby",
+       tcp_host: "0.0.0.0",
+       tcp_port: 9292,
+       wait_for_less_busy_worker: 0.005,
+       worker_boot_timeout: 60,
+       worker_check_interval: 5,
+       worker_culling_strategy: :youngest,
+       worker_shutdown_timeout: 30,
+       worker_timeout: 60,
+       workers: 0,
+       http_content_length_limit: nil,
+       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+       preload_app: true},
+     @file_options=
+      {config_files: ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+       max_threads: 5,
+       binds: ["tcp://0.0.0.0:4567"],
+       preload_app: true,
+       pidfile: "tmp/pids/puma.pid",
+       redirect_stdout: "log/puma.stdout.log",
+       redirect_stderr: "log/puma.stderr.log",
+       redirect_append: false,
+       before_worker_boot:
+        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only: true,
+          id: nil}]},
+     @user_options=
+      {log_writer:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       logger:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       environment: "development",
+       worker_write: #<IO:fd 9>}>,
+   @clamped=true,
+   @default_dsl=
+    #<Puma::DSL:0x0000000122711dd0
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {auto_trim_time: 30,
+       binds: ["tcp://0.0.0.0:9292"],
+       fiber_per_request: false,
+       debug: false,
+       enable_keep_alives: true,
+       early_hints: nil,
+       environment: "development",
+       first_data_timeout: 30,
+       idle_timeout: nil,
+       io_selector_backend: :auto,
+       log_requests: false,
+       logger: #<IO:log/puma.stdout.log>,
+       max_keep_alive: 999,
+       max_threads: 5,
+       min_threads: 0,
+       mode: :http,
+       mutate_stdout_and_stderr_to_sync_on_write: true,
+       out_of_band: [],
+       persistent_timeout: 65,
+       prune_bundler: false,
+       queue_requests: true,
+       rackup: "config.ru",
+       raise_exception_on_sigterm: true,
+       reaping_time: 1,
+       remote_address: :socket,
+       silence_single_worker_warning: false,
+       silence_fork_callback_warning: false,
+       tag: "repoRuby",
+       tcp_host: "0.0.0.0",
+       tcp_port: 9292,
+       wait_for_less_busy_worker: 0.005,
+       worker_boot_timeout: 60,
+       worker_check_interval: 5,
+       worker_culling_strategy: :youngest,
+       worker_shutdown_timeout: 30,
+       worker_timeout: 60,
+       workers: 0,
+       http_content_length_limit: nil,
+       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+       preload_app: true},
+     @plugins=[]>,
+   @events=#<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+   @file_dsl=
+    #<Puma::DSL:0x0000000122715228
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {config_files: ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+       max_threads: 5,
+       binds: ["tcp://0.0.0.0:4567"],
+       preload_app: true,
+       pidfile: "tmp/pids/puma.pid",
+       redirect_stdout: "log/puma.stdout.log",
+       redirect_stderr: "log/puma.stderr.log",
+       redirect_append: false,
+       before_worker_boot:
+        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only: true,
+          id: nil}]},
+     @path="puma.rb",
+     @plugins=[]>,
+   @hooks={before_worker_boot: true},
+   @loaded=true,
+   @plugins=#<Puma::PluginLoader:0x0000000122715980 @instances=[]>,
+   @puma_bundler_pruned=false,
+   @user_dsl=
+    #<Puma::DSL:0x0000000122715390
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {log_writer:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       logger:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       environment: "development",
+       worker_write: #<IO:fd 9>},
+     @plugins=[]>>,
+ "sinatra.commonlogger" => true,
+ "rack.logger" =>
+  #<Logger:0x0000000122e40fc0
+   @default_formatter=
+    #<Logger::Formatter:0x00000001226f9d20 @datetime_format=nil>,
+   @formatter=nil,
+   @level=1,
+   @level_override={},
+   @logdev=
+    #<Logger::LogDevice:0x0000000122b15dc8
+     @binmode=false,
+     @dev=#<IO:log/puma.stderr.log>,
+     @filename="log/puma.stderr.log",
+     @mon_data=#<Monitor:0x00000001226f9c58>,
+     @mon_data_owner_object_id=1568,
+     @reraise_write_errors=[],
+     @shift_age=0,
+     @shift_period_suffix="%Y%m%d",
+     @shift_size=1048576,
+     @skip_header=false>,
+   @progname=nil>,
+ "rack.request.query_hash" => {},
+ "rack.request.form_pairs" => [],
+ "rack.request.form_hash" => {},
+ "sinatra.route" => "POST /github_webhook"}
+>>>DBG>Github_Webhook => 
+>>>DBG>Payload/env => 
+{"rack.version" => [1, 6],
+ "rack.errors" => #<IO:log/puma.stderr.log>,
+ "rack.multithread" => true,
+ "rack.multiprocess" => true,
+ "rack.run_once" => false,
+ "rack.url_scheme" => "https",
+ "SCRIPT_NAME" => "",
+ "QUERY_STRING" => "",
+ "SERVER_SOFTWARE" => "puma 7.2.0 On The Corner",
+ "GATEWAY_INTERFACE" => "CGI/1.2",
+ "rack.after_reply" => [],
+ "rack.response_finished" => [],
+ "REQUEST_METHOD" => "POST",
+ "REQUEST_PATH" => "/github_webhook",
+ "REQUEST_URI" => "/github_webhook",
+ "SERVER_PROTOCOL" => "HTTP/1.1",
+ "HTTP_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
+ "HTTP_USER_AGENT" => "GitHub-Hookshot/a55126a",
+ "CONTENT_LENGTH" => "9600",
+ "HTTP_ACCEPT" => "*/*",
+ "CONTENT_TYPE" => "application/json",
+ "HTTP_X_FORWARDED_FOR" => "140.82.115.119",
+ "HTTP_X_FORWARDED_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
+ "HTTP_X_FORWARDED_PROTO" => "https",
+ "HTTP_X_GITHUB_DELIVERY" => "7f293460-55e3-11f1-8d8e-30a83690ce44",
+ "HTTP_X_GITHUB_EVENT" => "secret_scanning_alert_location",
+ "HTTP_X_GITHUB_HOOK_ID" => "603554883",
+ "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" => "1195298323",
+ "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE" => "repository",
+ "HTTP_X_HUB_SIGNATURE" => "sha1=1770bc1b9ef229fb46233cab09145a0ac062476d",
+ "HTTP_X_HUB_SIGNATURE_256" =>
+  "sha256=b0df4dbeaf20ea2a6b2fa2190dd80a9a5eae256dc360b69843dfd64971f77ca3",
+ "HTTP_ACCEPT_ENCODING" => "gzip",
+ "puma.request_body_wait" => 0.035999998450279236,
+ "SERVER_NAME" => "progenitorial-fredda-headlong.ngrok-free.dev",
+ "SERVER_PORT" => "443",
+ "PATH_INFO" => "/github_webhook",
+ "REMOTE_ADDR" => "127.0.0.1",
+ "puma.socket" => #<TCPSocket:fd 17, AF_INET, 127.0.0.1, 4567>,
+ "rack.hijack?" => true,
+ "rack.hijack" =>
+  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
+ "rack.input" => #<StringIO:0x0000000102cfc620>,
+ "puma.config" =>
+  #<Puma::Configuration:0x0000000122b1f8c8
+   @_options=
+    #<Puma::UserFileDefaultOptions:0x0000000122715a70
+     @default_options=
+      {auto_trim_time: 30,
+       binds: ["tcp://0.0.0.0:9292"],
+       fiber_per_request: false,
+       debug: false,
+       enable_keep_alives: true,
+       early_hints: nil,
+       environment: "development",
+       first_data_timeout: 30,
+       idle_timeout: nil,
+       io_selector_backend: :auto,
+       log_requests: false,
+       logger: #<IO:log/puma.stdout.log>,
+       max_keep_alive: 999,
+       max_threads: 5,
+       min_threads: 0,
+       mode: :http,
+       mutate_stdout_and_stderr_to_sync_on_write: true,
+       out_of_band: [],
+       persistent_timeout: 65,
+       prune_bundler: false,
+       queue_requests: true,
+       rackup: "config.ru",
+       raise_exception_on_sigterm: true,
+       reaping_time: 1,
+       remote_address: :socket,
+       silence_single_worker_warning: false,
+       silence_fork_callback_warning: false,
+       tag: "repoRuby",
+       tcp_host: "0.0.0.0",
+       tcp_port: 9292,
+       wait_for_less_busy_worker: 0.005,
+       worker_boot_timeout: 60,
+       worker_check_interval: 5,
+       worker_culling_strategy: :youngest,
+       worker_shutdown_timeout: 30,
+       worker_timeout: 60,
+       workers: 0,
+       http_content_length_limit: nil,
+       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+       preload_app: true},
+     @file_options=
+      {config_files: ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+       max_threads: 5,
+       binds: ["tcp://0.0.0.0:4567"],
+       preload_app: true,
+       pidfile: "tmp/pids/puma.pid",
+       redirect_stdout: "log/puma.stdout.log",
+       redirect_stderr: "log/puma.stderr.log",
+       redirect_append: false,
+       before_worker_boot:
+        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only: true,
+          id: nil}]},
+     @user_options=
+      {log_writer:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       logger:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       environment: "development",
+       worker_write: #<IO:fd 9>}>,
+   @clamped=true,
+   @default_dsl=
+    #<Puma::DSL:0x0000000122711dd0
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {auto_trim_time: 30,
+       binds: ["tcp://0.0.0.0:9292"],
+       fiber_per_request: false,
+       debug: false,
+       enable_keep_alives: true,
+       early_hints: nil,
+       environment: "development",
+       first_data_timeout: 30,
+       idle_timeout: nil,
+       io_selector_backend: :auto,
+       log_requests: false,
+       logger: #<IO:log/puma.stdout.log>,
+       max_keep_alive: 999,
+       max_threads: 5,
+       min_threads: 0,
+       mode: :http,
+       mutate_stdout_and_stderr_to_sync_on_write: true,
+       out_of_band: [],
+       persistent_timeout: 65,
+       prune_bundler: false,
+       queue_requests: true,
+       rackup: "config.ru",
+       raise_exception_on_sigterm: true,
+       reaping_time: 1,
+       remote_address: :socket,
+       silence_single_worker_warning: false,
+       silence_fork_callback_warning: false,
+       tag: "repoRuby",
+       tcp_host: "0.0.0.0",
+       tcp_port: 9292,
+       wait_for_less_busy_worker: 0.005,
+       worker_boot_timeout: 60,
+       worker_check_interval: 5,
+       worker_culling_strategy: :youngest,
+       worker_shutdown_timeout: 30,
+       worker_timeout: 60,
+       workers: 0,
+       http_content_length_limit: nil,
+       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+       preload_app: true},
+     @plugins=[]>,
+   @events=#<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+   @file_dsl=
+    #<Puma::DSL:0x0000000122715228
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {config_files: ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+       max_threads: 5,
+       binds: >>>DBG>Github_Webhook => 
+[>>>DBG>Github_Webhook => 
+"tcp://0.0.0.0:4567">>>DBG>Payload/env => 
+>>>DBG>Payload/env => 
+],
+       preload_app: true,
+       pidfile: "tmp/pids/puma.pid",
+       redirect_stdout: "log/puma.stdout.log",
+       redirect_stderr: "log/puma.stderr.log",
+       redirect_append: false,
+       before_worker_boot:
+        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only: true,
+          id: nil}]},
+     @path="puma.rb",
+     @plugins=[{{]"rack.version">,"rack.version" 
+ =>   @hooks=>={ before_worker_boot:[ 1,true }, 6
+],
+ "rack.errors"   [ @loaded=> #<IO:log/puma.stderr.log>,
+ "rack.multithread"= =>true true1,, ,
+
+   6@plugins ="rack.multiprocess" =>]#<Puma::PluginLoader:0x0000000122715980 @instances ,=true,[
+ 
+"rack.run_once" => ] false,>
+ ,"rack.url_scheme" =>
+    "https",
+ "rack.errors""SCRIPT_NAME"@puma_bundler_pruned =>= => false"",,
+  "QUERY_STRING"#<IO:log/puma.stderr.log> ,=>
+    "",
+ @user_dsl"SERVER_SOFTWARE"= =>
+ 
+     "puma 7.2.0 On The Corner"#<Puma::DSL:0x0000000122715390,
+
+ "rack.multithread"      =>"GATEWAY_INTERFACE" =>@config ="CGI/1.2",
+  #<Puma::Configuration:0x0000000122b1f8c8true "rack.after_reply"...,>, =>
+
+       @options"rack.multiprocess"[ =>]=,
+  "rack.response_finished"true
+ =>      ,{ []log_writer:,
+
+ 
+"REQUEST_METHOD"          =>"rack.run_once"#<Puma::LogWriter:0x0000000122affd20  =>"POST",
+ 
+          false"REQUEST_PATH" ,=>@custom_logger=
+  "/github_webhook"nil"rack.url_scheme",,
+  
+"REQUEST_URI"=>          => @debug "https""/github_webhook",,=
+
+false  ,"SCRIPT_NAME""SERVER_PROTOCOL"  =>
+ "HTTP/1.1"         =>, @error_logger
+ "HTTP_HOST"= "",=>
+ "progenitorial-fredda-headlong.ngrok-free.dev",
+ 
+"QUERY_STRING" "HTTP_USER_AGENT" =>  "GitHub-Hookshot/a55126a",
+ =>          "CONTENT_LENGTH"#<Puma::ErrorLogger:0x0000000122716e98  =>""
+,
+             @debug"9558",=
+false ,"HTTP_ACCEPT""SERVER_SOFTWARE"
+             =>@ioerr=> ="*/*"#<IO:log/puma.stderr.log> "puma 7.2.0 On The Corner",,>
+,
+
+          @formatter "GATEWAY_INTERFACE" "CONTENT_TYPE" =>=>= "application/json",
+ #<Puma::LogWriter::PidFormatter:0x00000001229de180 >,"CGI/1.2""HTTP_X_FORWARDED_FOR" ,=>
+ 
+"140.82.115.242"          @stderr,"rack.after_reply"=
+ #<IO:log/puma.stderr.log> ,
+"HTTP_X_FORWARDED_HOST" =>         =>@stdout= "progenitorial-fredda-headlong.ngrok-free.dev" ,#<IO:log/puma.stdout.log>
+[>],, 
+       "HTTP_X_FORWARDED_PROTO"
+ =>logger:  "https",
+ "rack.response_finished""HTTP_X_GITHUB_DELIVERY"
+          =>#<Puma::LogWriter:0x0000000122affd20 =>"7f24a080-55e3-11f1-878b-4fdac0340e3e",
+          
+ @custom_logger"HTTP_X_GITHUB_EVENT"= [=>nil], "secret_scanning_alert_location",
+,
+
+          @debug ="REQUEST_METHOD" =>"HTTP_X_GITHUB_HOOK_ID" false=>, 
+ "603554883",
+"POST"          ,@error_logger
+"HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" ="REQUEST_PATH"  =>=>  "1195298323"
+,
+           "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE"#<Puma::ErrorLogger:0x0000000122716e98"/github_webhook" =>
+,           
+ "repository"@debug ,=
+ "REQUEST_URI""HTTP_X_HUB_SIGNATURE"false , 
+=>=>            @ioerr"sha1=42a3abcff0ba77481a4a318d0200de98535e6f42"=,#<IO:log/puma.stderr.log> >
+"/github_webhook" "HTTP_X_HUB_SIGNATURE_256",, =>
+
+
+            "SERVER_PROTOCOL"@formatter"sha256=a905498013c079736286d61ca4b2edc1b73d6651ebbf1dd4414de526f78c0e47"=,
+  #<Puma::LogWriter::PidFormatter:0x00000001229de180=>"HTTP_ACCEPT_ENCODING">, 
+"HTTP/1.1" =>          @stderr"gzip",=,
+
+#<IO:log/puma.stderr.log>  ,"puma.request_body_wait"
+ =>"HTTP_HOST"  0.3270000070333481,
+ =>"SERVER_NAME"          @stdout= "progenitorial-fredda-headlong.ngrok-free.dev"=>#<IO:log/puma.stdout.log>,
+ "progenitorial-fredda-headlong.ngrok-free.dev" >,,
+"HTTP_USER_AGENT"       
+  environment:=>"SERVER_PORT"  =>  "443","GitHub-Hookshot/a55126a"
+,"development"
+  "PATH_INFO" =>,"CONTENT_LENGTH"
+        => "/github_webhook" "9574"worker_write:, 
+ ,"REMOTE_ADDR"
+#<IO:fd 9>  }=>,"HTTP_ACCEPT"
+       "127.0.0.1"@plugins,=>=
+  "*/*",[
+"puma.socket" =>] >"CONTENT_TYPE"> ,=> #<TCPSocket:fd 16, AF_INET, 127.0.0.1, 4567>,
+ 
+"application/json" , 
+"sinatra.commonlogger""rack.hijack?"   =>=>"HTTP_X_FORWARDED_FOR"   true,=>true
+ "140.82.115.93", 
+"rack.hijack" => ,"rack.logger" =>
+ 
+  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
+
+ "HTTP_X_FORWARDED_HOST" =>"rack.input"   =>#<Logger:0x00000001237ce240
+     @default_formatter="progenitorial-fredda-headlong.ngrok-free.dev"#<StringIO:0x000000012301adc8>,
+,
+  
+"puma.config"     #<Logger::Formatter:0x0000000102cfc418=>"HTTP_X_FORWARDED_PROTO"  
+  #<Puma::Configuration:0x0000000122b1f8c8@datetime_format
+   =@_optionsnil>==>,
+
+     "https",
+   #<Puma::UserFileDefaultOptions:0x0000000122715a70@formatter ="HTTP_X_GITHUB_DELIVERY"
+     @default_options=nil =>,
+ 
+         {auto_trim_time:@level =30,"7f1c6320-55e3-11f1-9f03-1fd40bcaace3"1,,
+
+ 
+       binds:    @level_override=["tcp://0.0.0.0:9292""HTTP_X_GITHUB_EVENT"],
+       { }fiber_per_request:, =>false,
+    "secret_scanning_alert_location"
+       ,debug:
+  false"HTTP_X_GITHUB_HOOK_ID",
+       @logdev =enable_keep_alives:=> true ,
+"603554883"
+       ,early_hints:
+     #<Logger::LogDevice:0x000000012396f298 
+     nil,
+       "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID"@binmode=environment: =>false  "development",,
+       "1195298323"first_data_timeout:,
+      30
+,
+        @devidle_timeout:"HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE"  =nil,
+       =>#<IO:log/puma.stderr.log>,io_selector_backend: 
+"repository"      :auto,@filename,=
+       "log/puma.stderr.log"
+log_requests:, 
+ false     ,"HTTP_X_HUB_SIGNATURE"
+       @mon_datalogger: ==>  #<IO:log/puma.stdout.log>,"sha1=c2e35f48b797537166df3ab784fa49177249e122",
+       max_keep_alive:#<Monitor:0x0000000102cfc3f0>
+, 999 ,"HTTP_X_HUB_SIGNATURE_256"
+
+            max_threads:@mon_data_owner_object_id= 5,
+        =>min_threads:1584,
+
+        "sha256=3858566333111fcba55bd572ae500b1e7b27c852b7b1448609c7aaba9f8ab18f"@reraise_write_errors0,,
+
+       =mode:[ ]"HTTP_ACCEPT_ENCODING" ,:http,
+ 
+=>            mutate_stdout_and_stderr_to_sync_on_write:@shift_age  true="gzip",
+       0,,out_of_band: [
+
+],
+            @shift_period_suffixpersistent_timeout: = 65,"puma.request_body_wait""%Y%m%d"
+       ,prune_bundler:
+ false,
+             queue_requests:@shift_size==> true,
+       rackup:  1048576"config.ru",,
+0.16300000250339508
+     @skip_header=       ,false>raise_exception_on_sigterm: true,
+       ,reaping_time:
+ 1,
+    @progname=
+"SERVER_NAME"        nil>=>,remote_address: 
+"progenitorial-fredda-headlong.ngrok-free.dev" ,"rack.request.query_hash"
+ :socket,  
+=>"SERVER_PORT"         {silence_single_worker_warning:} false,
+=>       silence_fork_callback_warning:, 
+  false,
+"rack.request.form_pairs"        "443"=>tag:  "repoRuby",
+       [tcp_host:,] 
+,"0.0.0.0" ,
+       "PATH_INFO"
+tcp_port:  "rack.request.form_hash"9292  ,
+=>=>        wait_for_less_busy_worker: "/github_webhook"{},, 
+0.005 ,
+
+ "REMOTE_ADDR"       worker_boot_timeout: "sinatra.route" 60 =>=>,
+  "POST /github_webhook"       "127.0.0.1"}worker_check_interval:,
+
+  5,
+       worker_culling_strategy:"puma.socket"  :youngest,
+       =>worker_shutdown_timeout: 30,
+       worker_timeout: 60>>>DBG>Github_Webhook => 
+>>>DBG>Github_Webhook => 
+>>>DBG>Payload/env => 
+>>>DBG>Payload/env => 
+,
+       workers: 0,
+       http_content_length_limit: nil,
+       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+{       {preload_app:"rack.version"  "rack.version"true},
+     @file_options==> 
+      {config_files:  ["puma.rb"[=>1,],
+       workers: 3,
+       min_threads: 5,
+       max_threads: 5,
+       binds:  ["tcp://0.0.0.0:4567"],
+6       ]preload_app: ,
+[  1true, ,6
+       ],"rack.errors"pidfile:  "tmp/pids/puma.pid"
+=>  ,"rack.errors"
+ =>#<IO:log/puma.stderr.log>        redirect_stdout:,
+#<IO:log/puma.stderr.log>, 
+ "rack.multithread""log/puma.stdout.log",
+  =>"rack.multithread"  =>true ,true,
+ 
+        redirect_stderr: "log/puma.stderr.log",
+       redirect_append:"rack.multiprocess""rack.multiprocess"  => false,
+        truebefore_worker_boot:,
+ "rack.run_once" =>
+=>         false,
+ "rack.url_scheme"[ =>{block: "https"  #<Proc:0x00000001229de5e0 puma.rb:23>true,,,
+
+          cluster_only: true
+ , 
+"rack.run_once"           =>"SCRIPT_NAME"  =>false ,"",
+ id:"QUERY_STRING"  =>nil}]} "",,
+
+
+      @user_options="SERVER_SOFTWARE" =>  "rack.url_scheme"
+      {log_writer:"puma 7.2.0 On The Corner" ,
+=> "GATEWAY_INTERFACE"
+  =>"https"        #<Puma::LogWriter:0x0000000122affd20 ,
+
+         @custom_logger"CGI/1.2",
+  ="SCRIPT_NAME"nil,
+         @debug= "rack.after_reply"=>  =>false"",
+, 
+         [],
+ "rack.response_finished" =>  [],"QUERY_STRING"@error_logger= =>
+          #<Puma::ErrorLogger:0x0000000122716e98
+  "REQUEST_METHOD" "",=>
+           @debug=false, 
+"POST",
+
+            @ioerr= "REQUEST_PATH" "SERVER_SOFTWARE"=>  "/github_webhook"#<IO:log/puma.stderr.log>=>,> ,
+"puma 7.2.0 On The Corner"         ,
+
+@formatter= "REQUEST_URI" =>#<Puma::LogWriter::PidFormatter:0x00000001229de180 "/github_webhook">,
+, "SERVER_PROTOCOL" => "HTTP/1.1"
+ ,
+         @stderr="GATEWAY_INTERFACE"  "HTTP_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
+ "HTTP_USER_AGENT" =>#<IO:log/puma.stderr.log>,
+ "GitHub-Hookshot/a55126a"         @stdout=,#<IO:log/puma.stdout.log>>,
+       
+ logger:=>"CONTENT_LENGTH"  "CGI/1.2"
+        ,=>#<Puma::LogWriter:0x0000000122affd20 "9558",
+
+
+           @custom_logger=nil,
+         @debug=false,
+         @error_logger="rack.after_reply"
+"HTTP_ACCEPT"           => =>#<Puma::ErrorLogger:0x0000000122716e98  "*/*",
+[           @debug=
+false ],"CONTENT_TYPE" =>
+  "application/json",
+ "rack.response_finished",
+"HTTP_X_FORWARDED_FOR"             @ioerr==> "140.82.115.93"#<IO:log/puma.stderr.log>>,,
+         =>
+  @formatter"HTTP_X_FORWARDED_HOST"[ ==> "progenitorial-fredda-headlong.ngrok-free.dev",#<Puma::LogWriter::PidFormatter:0x00000001229de180]
+ >"HTTP_X_FORWARDED_PROTO" => "https",
+, 
+ ,"HTTP_X_GITHUB_DELIVERY" => "7f216c30-55e3-11f1-86f1-e7dbaff4cc64",
+"REQUEST_METHOD"
+         @stderr= #<IO:log/puma.stderr.log>,
+          "HTTP_X_GITHUB_EVENT" @stdout=#<IO:log/puma.stdout.log>>,
+       =>environment: "development",
+       worker_write: #<IO:fd 9>}>,
+   @clamped==>true,
+   @default_dsl=  "secret_scanning_alert_location",
+"POST"
+    ,#<Puma::DSL:0x0000000122711dd0 
+
+"HTTP_X_GITHUB_HOOK_ID" => "603554883",
+ "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" => "1195298323",
+ "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE"  =>"REQUEST_PATH"       @config=>="repository"#<Puma::Configuration:0x0000000122b1f8c8 ... ,
+ "/github_webhook">,"HTTP_X_HUB_SIGNATURE" ,
+=> 
+ "sha1=7889480a2d96e95c2406282d1c3d8fe6276bf9fe",
+ "HTTP_X_HUB_SIGNATURE_256"     @options= =>
+      "REQUEST_URI"
+{   "sha256=0dca194a58d0b0f0b12209c71b3b8d066595dacf20660cca70ae91cb3842bd6d"=>, auto_trim_time:"/github_webhook",
+
+  30"HTTP_ACCEPT_ENCODING", =>
+       binds: [ "SERVER_PROTOCOL" "gzip",
+"tcp://0.0.0.0:9292"] ,
+       fiber_per_request:  "puma.request_body_wait"=>false => ,
+       "HTTP/1.1"debug: ,0.015000000596046448
+, 
+ false"HTTP_HOST" ,
+       enable_keep_alives: "SERVER_NAME"  =>true=>,  "progenitorial-fredda-headlong.ngrok-free.dev","progenitorial-fredda-headlong.ngrok-free.dev",
+ 
+
+       "SERVER_PORT"early_hints:   nil,
+"HTTP_USER_AGENT"        =>=> "443",
+ "PATH_INFO"  =>"GitHub-Hookshot/a55126a" "/github_webhook",,environment:
+
+  "REMOTE_ADDR" "development""CONTENT_LENGTH",  =>
+ "127.0.0.1",=>       first_data_timeout:  
+ 30"puma.socket","9574", 
+=> 
+       idle_timeout: nil"HTTP_ACCEPT", 
+       io_selector_backend:=> :auto,
+        "*/*"log_requests: #<TCPSocket:fd 18, AF_INET, 127.0.0.1, 4567> false,,
+, 
+ "rack.hijack?"
+       logger:"CONTENT_TYPE" =>   #<IO:log/puma.stdout.log>=>, 
+"application/json"true,,
+
+        "rack.hijack"  "HTTP_X_FORWARDED_FOR"=>max_keep_alive: 
+  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>=>, 
+ "140.82.115.123"999, ,
+"rack.input" =>
+         #<StringIO:0x0000000102d3a3d0>,max_threads:
+ "HTTP_X_FORWARDED_HOST""puma.config" 5,
+        min_threads:  0,
+       =>mode:=> :http, 
+
+  "progenitorial-fredda-headlong.ngrok-free.dev"#<Puma::Configuration:0x0000000122b1f8c8,
+
+           mutate_stdout_and_stderr_to_sync_on_write:@_options="HTTP_X_FORWARDED_PROTO" true, 
+=>       out_of_band:
+ [ ]    #<Puma::UserFileDefaultOptions:0x0000000122715a70"https",
+
+            ,@default_options=
+persistent_timeout:
+       {auto_trim_time: "HTTP_X_GITHUB_DELIVERY" 65,30 
+,
+=>       binds:         "7f2cb6d0-55e3-11f1-855c-23230a14b6bd"prune_bundler:,
+ ["tcp://0.0.0.0:9292"],"HTTP_X_GITHUB_EVENT" false,
+        =>
+fiber_per_request:         false,
+       "secret_scanning_alert_location"queue_requests:debug:, true,
+
+ false,
+        enable_keep_alives:"HTTP_X_GITHUB_HOOK_ID" true, =>
+               rackup:"603554883"early_hints:, "config.ru"
+ nil ,,
+
+"HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID"              environment:  raise_exception_on_sigterm:"development"=>,
+         true,
+"1195298323"       first_data_timeout:reaping_time:,  30
+1, 
+       ,
+       remote_address:"HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE"  idle_timeout::socket, nil,
+=>
+               io_selector_backend:"repository" :auto,silence_single_worker_warning:
+       , 
+false ,
+       "HTTP_X_HUB_SIGNATURE"log_requests:  =>falsesilence_fork_callback_warning: ,false 
+,       "sha1=8b7797085543069d1071eff47a3745dd4aa046db",
+logger:       tag:
+  "repoRuby",
+        #<IO:log/puma.stdout.log>,tcp_host:"HTTP_X_HUB_SIGNATURE_256"
+        "0.0.0.0", max_keep_alive:
+ 999,
+       =>       
+max_threads:tcp_port:   "sha256=c87cf626b91574da5962501dcd1020a81710c7bd8a90cd807e9bb258d4d44348"5 9292,,
+       ,
+       min_threads:wait_for_less_busy_worker:
+   "HTTP_ACCEPT_ENCODING"00.005 ,=>,
+        mode:
+"gzip", :http,       
+worker_boot_timeout:
+         60,
+       worker_check_interval:"puma.request_body_wait"mutate_stdout_and_stderr_to_sync_on_write: 5,
+        => worker_culling_strategy:true , :youngest,
+
+0.009000003337860107              ,worker_shutdown_timeout:out_of_band: 
+  30[],
+"SERVER_NAME"        =>,
+       worker_timeout: persistent_timeout: "progenitorial-fredda-headlong.ngrok-free.dev" ,
+60,
+65,
+               prune_bundler:workers: false,
+"SERVER_PORT"         0,
+       =>queue_requests:http_content_length_limit: true, "443" 
+       ,nil
+ ,"PATH_INFO"rackup:
+        "config.ru"events:,
+        =>raise_exception_on_sigterm: "/github_webhook" ,true,
+
+         reaping_time:"REMOTE_ADDR" 1,
+#<Puma::Events:0x0000000122716d80        remote_address:=>  @hooks= {"127.0.0.1",state::socket
+ ,
+       "puma.socket" [] silence_single_worker_warning:} false>,
+       ,
+=>       silence_fork_callback_warning:preload_app: false,>>>DBG>Github_Webhook => 
+ 
+       true>>>DBG>Payload/env => 
+},
+     @pluginstag:= "repoRuby",[
+       tcp_host:] "0.0.0.0",>,
+   @events=
+       tcp_port: 9292,
+{       #<Puma::Events:0x0000000122716d80wait_for_less_busy_worker: @hooks={ "rack.version"state: 0.005 ,=>[]
+}       worker_boot_timeout:>,  
+[60,
+   1       ,@file_dsl=worker_check_interval:  
+65,    ]
+       worker_culling_strategy:#<Puma::DSL:0x0000000122715228 :youngest,
+       
+     @config,=
+ #<Puma::Configuration:0x0000000122b1f8c8 "rack.errors"...worker_shutdown_timeout:> ,=>  
+     #<IO:log/puma.stderr.log>30,,
+       
+@options= worker_timeout:"rack.multithread" 60,
+        workers:=> 0,
+       http_content_length_limit:  
+nil,
+true       ,events:
+       {"rack.multiprocess"config_files:  ["puma.rb"]=>,
+       workers: 3 ,
+true        #<Puma::Events:0x0000000122716d80 min_threads:,@hooks =
+{state:  5[]}>,"rack.run_once",
+        
+       max_threads:=> 5preload_app:, false ,true},
+
+     @file_options=
+ "rack.url_scheme"
+             { binds:config_files:=> [ "tcp://0.0.0.0:4567"]["puma.rb"], 
+"https",
+       ,preload_app:
+         true"SCRIPT_NAME"workers:, 
+ 3,
+              min_threads:=>pidfile:  "tmp/pids/puma.pid""" ,,5,
+
+       max_threads: 5,
+       binds:
+ ["tcp://0.0.0.0:4567"],
+               redirect_stdout:"QUERY_STRING"preload_app:  "log/puma.stdout.log", =>
+true        ,""redirect_stderr:,
+
+       pidfile:  "tmp/pids/puma.pid""log/puma.stderr.log" ,
+       ,
+       redirect_append:"SERVER_SOFTWARE"  redirect_stdout:false,
+       before_worker_boot:=> "log/puma.stdout.log",
+ 
+        [       {redirect_stderr:block:"puma 7.2.0 On The Corner", "log/puma.stderr.log",
+       redirect_append:
+ false,
+  #<Proc:0x00000001229de5e0 puma.rb:23>,
+"GATEWAY_INTERFACE"                  before_worker_boot:=>cluster_only: true,
+          id: "CGI/1.2" nil}
+,]},        [{block:
+
+      @path= #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only: true,
+          id:"puma.rb", "rack.after_reply"nil}]} ,=>
+
+     @plugins     @user_options== [[]>,],
+
+
+          {log_writer:@hooks"rack.response_finished"
+ =>        =#<Puma::LogWriter:0x0000000122affd20 {before_worker_boot: true
+         @custom_logger[=}]nil,,,
+   @loaded=
+
+          true,@debug="REQUEST_METHOD"false,
+
+   @plugins=         @error_logger=#<Puma::PluginLoader:0x0000000122715980 @instances=
+           #<Puma::ErrorLogger:0x0000000122716e98=>[]
+           @debug>=false,,
+
+               "POST"@puma_bundler_pruned=@ioerr=,false,
+#<IO:log/puma.stderr.log> >"REQUEST_PATH"
+   @user_dsl= 
+=>,    #<Puma::DSL:0x0000000122715390
+     @config
+=#<Puma::Configuration:0x0000000122b1f8c8 ...>, "/github_webhook"         ,@formatter
+
+      =@options="REQUEST_URI"
+      {log_writer: 
+#<Puma::LogWriter::PidFormatter:0x00000001229de180>        ,
+         @stderr==>#<Puma::LogWriter:0x0000000122affd20#<IO:log/puma.stderr.log>,
+ 
+         @custom_logger=nil,
+         @stdout="/github_webhook"         ,
+@debug=false,
+         #<IO:log/puma.stdout.log> >@error_logger="SERVER_PROTOCOL",
+        
+          #<Puma::ErrorLogger:0x0000000122716e98logger:=>
+           @debug= false,
+
+"HTTP/1.1"                   @ioerr#<Puma::LogWriter:0x0000000122affd20=,
+         @custom_logger
+= nil"HTTP_HOST",
+         @debug=#<IO:log/puma.stderr.log>>false ,
+,
+=>          @error_logger         @formatter=="progenitorial-fredda-headlong.ngrok-free.dev"#<Puma::LogWriter::PidFormatter:0x00000001229de180>
+          ,
+         @stderr,=
+#<Puma::ErrorLogger:0x0000000122716e98 #<IO:log/puma.stderr.log>,
+
+"HTTP_USER_AGENT"                    @debug=false ,@stdout=
+=>           @ioerr=#<IO:log/puma.stdout.log>#<IO:log/puma.stderr.log>>,
+         @formatter= #<Puma::LogWriter::PidFormatter:0x00000001229de180>"GitHub-Hookshot/a55126a">,
+,         @stderr
+,=
+        #<IO:log/puma.stderr.log>,
+logger:         @stdout"CONTENT_LENGTH" 
+=>         #<Puma::LogWriter:0x0000000122affd20=
+"9044"         #<IO:log/puma.stdout.log>,@custom_logger=
+nil,
+         @debug= >false,"HTTP_ACCEPT"
+ =>          @error_logger="*/*",
+          #<Puma::ErrorLogger:0x0000000122716e98,
+           @debug
+=false,
+            "CONTENT_TYPE"@ioerr=#<IO:log/puma.stderr.log> =>
+       >,
+         @formatter= environment:#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr "development",
+"application/json"       worker_write:=,#<IO:log/puma.stderr.log> #<IO:fd 9>
+,
+}>,          
+   @stdout=@clamped=#<IO:log/puma.stdout.log>>,"HTTP_X_FORWARDED_FOR"
+        environment:true=> "development", ,
+"140.82.115.63"   @default_dsl=
+       worker_write:
+    #<Puma::DSL:0x0000000122711dd0,
+
+ #<IO:fd 9>      "HTTP_X_FORWARDED_HOST"} =>@config=#<Puma::Configuration:0x0000000122b1f8c8 ...,
+     @plugins= >,
+     @options"progenitorial-fredda-headlong.ngrok-free.dev"[=]>,
+>,
+ 
+ "sinatra.commonlogger"       =>"HTTP_X_FORWARDED_PROTO"  =>true,
+{auto_trim_time:   30,
+       binds:"https""rack.logger" => ,["tcp://0.0.0.0:9292"]
+  
+, #<Logger:0x0000000122e452f0
+       fiber_per_request:
+ false,
+       "HTTP_X_GITHUB_DELIVERY"    debug:=> false@default_formatter=,
+ 
+           #<Logger::Formatter:0x0000000123015210enable_keep_alives:  @datetime_format=true,"7f1cd850-55e3-11f1-92ce-8b3771ccdabb",
+       
+nilearly_hints:> nil, ,
+       "HTTP_X_GITHUB_EVENT"environment: => "development",
+       
+   first_data_timeout: @formatter= 30,
+       "secret_scanning_alert"idle_timeout:nil ,
+   ,nil
+ ,@level=
+       "HTTP_X_GITHUB_HOOK_ID"io_selector_backend:1 , :auto
+   ,=>
+        @level_override"603554883",=log_requests:{},
+   @logdev
+  false,
+       logger:="HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID"  
+    #<IO:log/puma.stdout.log>,=>
+#<Logger::LogDevice:0x0000000122c0cee8       max_keep_alive:  999,
+
+       max_threads:     @binmode=false,
+ "1195298323"     @dev,=
+#<IO:log/puma.stderr.log>5,
+        min_threads:,
+     @filename"HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE"  ==>0 "log/puma.stderr.log""repository",
+     ,,
+
+@mon_data "HTTP_X_HUB_SIGNATURE"       mode:= :http,#<Monitor:0x0000000123015170
+        =>>,
+mutate_stdout_and_stderr_to_sync_on_write:  true,
+            out_of_band:@mon_data_owner_object_id "sha1=b15571d5966c084eb873ac7506e0b6d353826105",=
+[],1512,
+      @reraise_write_errors"HTTP_X_HUB_SIGNATURE_256"= 
+       [],
+     @shift_age==>0,
+
+persistent_timeout:       @shift_period_suffix"sha256=9d1e1db8a6a5e6cf479c9e97631250772acd57ca958cf565d3306925e44b4073" 65,
+,       
+= prune_bundler:"HTTP_ACCEPT_ENCODING" false,
+"%Y%m%d"        queue_requests:=> true,
+        rackup:,"gzip" "config.ru"
+     @shift_size,=,1048576,
+
+            @skip_header
+raise_exception_on_sigterm: = true,
+false>,
+   @progname"puma.request_body_wait"       = =>nil>,
+ "rack.request.query_hash"reaping_time:   1,
+       =>0.01000000536441803remote_address:  :socket{,
+},
+ ,
+"rack.request.form_pairs"         =>"SERVER_NAME"  silence_single_worker_warning:=>[] ,"progenitorial-fredda-headlong.ngrok-free.dev" 
+ false,
+       "rack.request.form_hash"silence_fork_callback_warning:, 
+ =>"SERVER_PORT" {},  false,
+       tag:
+ =>  "sinatra.route" "repoRuby",
+"443",=>       tcp_host:  "0.0.0.0",
+       "POST /github_webhook"}
+tcp_port:
+ 9292,
+       wait_for_less_busy_worker:  0.005,
+       "PATH_INFO" worker_boot_timeout: 60,=>
+        worker_check_interval:"/github_webhook" 5,
+,       worker_culling_strategy:
+  :youngest,
+       worker_shutdown_timeout:"REMOTE_ADDR" 30,
+        =>worker_timeout: 60,
+       workers: "127.0.0.1" 0,
+       http_content_length_limit:,
+ nil,
+        events:"puma.socket"  #<Puma::Events:0x0000000122716d80 @hooks==>{state: []}>,
+       preload_app: true},
+     @plugins= []>#<TCPSocket:fd 16, AF_INET, 127.0.0.1, 4567>,
+   @events=,[1;34mINFO [0m 2026-05-22T13:38:21.055Z pid=46445 tid=yvp: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+#<Puma::Events:0x0000000122716d80 @hooks={state: []}
+>,
+   @file_dsl= "rack.hijack?"
+    #<Puma::DSL:0x0000000122715228
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ... >,
+     @options=>= true,
+      {config_files:
+ ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+        max_threads: 5,"rack.hijack"
+        =>binds: ["tcp://0.0.0.0:4567"],
+       preload_app:
+  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136> true,
+       pidfile: "tmp/pids/puma.pid",
+,
+        redirect_stdout: "log/puma.stdout.log",
+       redirect_stderr: "log/puma.stderr.log",
+"rack.input"       redirect_append:  =>false,
+       before_worker_boot: #<StringIO:0x000000012301a850
+        [{block:> ,#<Proc:0x00000001229de5e0 puma.rb:23>,
+          
+ cluster_only: true"puma.config",
+          id:  =>nil}]},
+     @path="puma.rb",
+     @plugins=
+  []>,
+   @hooks=#<Puma::Configuration:0x0000000122b1f8c8
+{before_worker_boot: true},
+   @loaded=   true,
+   @plugins=@_options=#<Puma::PluginLoader:0x0000000122715980 @instances=[]>,
+   
+@puma_bundler_pruned=    false,
+   @user_dsl=#<Puma::UserFileDefaultOptions:0x0000000122715a70
+    #<Puma::DSL:0x0000000122715390
+     @config=#<Puma::Configuration:0x0000000122b1f8c8
+      @default_options...>,
+     @options==
+      {log_writer:
+
+        #<Puma::LogWriter:0x0000000122affd20      {
+auto_trim_time:         @custom_logger=nil,
+ 30         @debug=false,
+         @error_logger=,
+
+       binds:           #<Puma::ErrorLogger:0x0000000122716e98["tcp://0.0.0.0:9292"],
+           
+@debug=false       ,
+           @ioerr=fiber_per_request:#<IO:log/puma.stderr.log>>,
+         @formatter= false#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=,#<IO:log/puma.stderr.log>,
+
+                @stdout=debug: #<IO:log/puma.stdout.log>>,
+       falselogger:,
+       
+        #<Puma::LogWriter:0x0000000122affd20enable_keep_alives:
+          true@custom_logger=nil,
+         @debug,=false
+,
+                @error_logger=early_hints: 
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=nil,#<IO:log/puma.stderr.log>>
+       ,
+         @formatter=environment:#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr "development"=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       environment:,
+        "development",
+       worker_write: #<IO:fd 9>},
+     @plugins=first_data_timeout:[]>>,
+  30"sinatra.commonlogger", => true,
+ 
+"rack.logger" =>
+  #<Logger:0x00000001237c3700
+          idle_timeout:@default_formatter= nil,
+
+    #<Logger::Formatter:0x0000000102d3a100        @datetime_format=nil>,
+   @formatter=nil,
+   @level=io_selector_backend:1, 
+   @level_override=:auto{},
+   @logdev=
+    #<Logger::LogDevice:0x000000012396ac98
+     @binmode=false,
+     @dev=#<IO:log/puma.stderr.log>,,
+     @filename=
+"log/puma.stderr.log",
+     @mon_data=#<Monitor:0x0000000102d3a0d8>,
+            @mon_data_owner_object_id=log_requests: 1600,false
+     @reraise_write_errors=,[],
+     @shift_age=
+0,
+     @shift_period_suffix=       "%Y%m%d",
+     @shift_size=logger:1048576,
+     @skip_header= false>,
+   @progname=nil>#<IO:log/puma.stdout.log>,,
+ "rack.request.query_hash" =>
+ {},
+        "rack.request.form_pairs" =>max_keep_alive: [],
+  "rack.request.form_hash"999 =>, {},
+ "sinatra.route"
+        =>max_threads: "POST /github_webhook" }5
+,
+       min_threads: 0,
+       mode: :http,
+       mutate_stdout_and_stderr_to_sync_on_write: true,
+       out_of_band: [],
+       persistent_timeout: 65,
+       prune_bundler: false,
+       queue_requests: true,
+       rackup: "config.ru",
+       raise_exception_on_sigterm: true,
+       reaping_time: 1,
+       remote_address: :socket,
+       silence_single_worker_warning: false,
+       silence_fork_callback_warning: false,
+       tag: "repoRuby",
+       tcp_host: "0.0.0.0",
+       tcp_port: 9292,
+       wait_for_less_busy_worker: 0.005,
+       worker_boot_timeout: 60,
+       worker_check_interval: 5,
+       worker_culling_strategy: :youngest,
+       worker_shutdown_timeout: 30,
+       worker_timeout: 60,
+       workers: 0,
+       http_content_length_limit: nil,
+       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+       preload_app: true},
+     @file_options=
+      {config_files: ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+       max_threads: 5,
+       binds: ["tcp://0.0.0.0:4567"],
+       preload_app: true,
+       pidfile: "tmp/pids/puma.pid",
+       redirect_stdout: "log/puma.stdout.log",
+       redirect_stderr: "log/puma.stderr.log",
+       redirect_append: false,
+       before_worker_boot:
+        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only: true,
+          id: nil}]},
+     @user_options=
+      {log_writer:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       logger:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>>>DBG>Github_Webhook => 
+>>>DBG>Payload/env => 
+>,
+       environment: "development",{
+"rack.version" =>       worker_write: [1, 6],
+  "rack.errors" #<IO:fd 9>}=> #<IO:log/puma.stderr.log>,
+ "rack.multithread" =>> true,
+ "rack.multiprocess" => true,
+ ,"rack.run_once" =>
+    false,
+@clamped ="rack.url_scheme" =>true "https",
+ "SCRIPT_NAME" =>, "",
+ 
+"QUERY_STRING"    =>@default_dsl ""=,
+ "SERVER_SOFTWARE" => "puma 7.2.0 On The Corner",
+ 
+"GATEWAY_INTERFACE"     => "CGI/1.2",
+ #<Puma::DSL:0x0000000122711dd0"rack.after_reply" => [],
+ "rack.response_finished" =>
+      @config=[],#<Puma::Configuration:0x0000000122b1f8c8 
+ ..."REQUEST_METHOD" =>> "POST",
+ ,"REQUEST_PATH" => "/github_webhook",
+
+ "REQUEST_URI" =>      @options="/github_webhook",
+ "SERVER_PROTOCOL" => "HTTP/1.1",
+ 
+"HTTP_HOST" =>       "progenitorial-fredda-headlong.ngrok-free.dev"{,auto_trim_time:
+  "HTTP_USER_AGENT"30 =>, "GitHub-Hookshot/a55126a",
+ "CONTENT_LENGTH" =>
+        binds:"9028",
+ "HTTP_ACCEPT" =>  ["*/*",
+"tcp://0.0.0.0:9292"] "CONTENT_TYPE" =>, "application/json",
+ "HTTP_X_FORWARDED_FOR" =>
+        "140.82.115.243",
+ fiber_per_request:"HTTP_X_FORWARDED_HOST" =>  "progenitorial-fredda-headlong.ngrok-free.dev",
+ "HTTP_X_FORWARDED_PROTO" =>false "https",
+ "HTTP_X_GITHUB_DELIVERY" =>, 
+       "7f2f9d00-55e3-11f1-8938-733035611c17",
+ "HTTP_X_GITHUB_EVENT" =>debug: "secret_scanning_alert",
+  "HTTP_X_GITHUB_HOOK_ID" =>false "603554883",
+ ,
+       "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" =>enable_keep_alives: "1195298323",
+  "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE" true,
+=> "repository",
+        "HTTP_X_HUB_SIGNATURE" => "sha1=8c4b379594b64539ea6228238d86a890b640b979",early_hints:
+  nil"HTTP_X_HUB_SIGNATURE_256", =>
+  "sha256=2ea1c697a5b946d71edbcd0309abc45b91a9e0865a01551cff63c63d6390c9cd"
+,       
+environment: "HTTP_ACCEPT_ENCODING" => "gzip",
+  "puma.request_body_wait" "development"=>,
+        0.00599999725818634,
+ "SERVER_NAME"first_data_timeout: =>  "progenitorial-fredda-headlong.ngrok-free.dev",
+ 30,"SERVER_PORT"
+       idle_timeout: =>  nil"443",
+ ,
+       io_selector_backend:"PATH_INFO"  :auto=>,
+        log_requests:"/github_webhook" ,false,
+
+ "REMOTE_ADDR" =>        "127.0.0.1",
+ "puma.socket" =>logger: #<TCPSocket:fd 18, AF_INET, 127.0.0.1, 4567>,
+ "rack.hijack?" => true,
+ "rack.hijack" =>
+  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136> #<IO:log/puma.stdout.log>,
+ ,"rack.input" =>
+ #<StringIO:0x0000000102cff7a8>,
+        "puma.config"max_keep_alive: 999 =>,
+  #<Puma::Configuration:0x0000000122b1f8c8
+   @_options
+=       
+    #<Puma::UserFileDefaultOptions:0x0000000122715a70max_threads:
+      @default_options=5,
+      {auto_trim_time: 30
+,
+       binds:        ["tcp://0.0.0.0:9292"],
+       fiber_per_request:min_threads: false, 
+       debug: 0false,,
+       
+       enable_keep_alives:mode: true,
+       early_hints:  nil,
+       environment::http, "development",
+       first_data_timeout: 30,
+       
+       idle_timeout: nil,
+       io_selector_backend: :auto,
+       mutate_stdout_and_stderr_to_sync_on_write:log_requests: true false,
+       logger:, #<IO:log/puma.stdout.log>,
+       max_keep_alive:
+ 999,
+              out_of_band:max_threads: [] ,5,
+       min_threads:
+        0,
+       persistent_timeout:mode: :http,
+       mutate_stdout_and_stderr_to_sync_on_write:  true,
+       out_of_band:65 [],
+       persistent_timeout: ,65,
+       prune_bundler:
+        false,
+       queue_requests:prune_bundler: true,
+       rackup:  false"config.ru",
+,       
+       raise_exception_on_sigterm: true,
+       reaping_time: 1,
+queue_requests:        true,remote_address:
+ :socket       ,
+       silence_single_worker_warning:rackup:  "config.ru"false,,
+       
+silence_fork_callback_warning:        false,
+       tag: "repoRuby",raise_exception_on_sigterm:
+       tcp_host:  "0.0.0.0",
+       tcp_port: 9292,
+       wait_for_less_busy_worker:true ,0.005,
+
+              reaping_time:worker_boot_timeout: 1,
+ 60,
+       worker_check_interval: 5,
+              worker_culling_strategy: :youngest,
+       remote_address:worker_shutdown_timeout: 30,
+        worker_timeout::socket 60,
+       workers:,
+        0silence_single_worker_warning:,
+        http_content_length_limit:false nil,
+,
+       events:       silence_fork_callback_warning: #<Puma::Events:0x0000000122716d80 @hooks={state:  false,[]}>,
+
+       preload_app:        tag:true},
+      "repoRuby"@file_options=,
+      {config_files:
+ ["puma.rb"],
+              tcp_host:workers: "0.0.0.0" 3,
+,
+       min_threads: 5,
+              tcp_port:max_threads:  5,9292
+       binds:,
+        ["tcp://0.0.0.0:4567"],
+       wait_for_less_busy_worker:preload_app:  true,
+       pidfile:0.005 ,
+"tmp/pids/puma.pid",       
+       redirect_stdout:worker_boot_timeout: "log/puma.stdout.log",
+       redirect_stderr:  "log/puma.stderr.log",
+60,       
+redirect_append: false,
+       before_worker_boot:       worker_check_interval: 5,
+
+               [{block:worker_culling_strategy: #<Proc:0x00000001229de5e0 puma.rb:23>,
+ :youngest          cluster_only: true,
+          id:,
+ nil}]},       
+     @user_options=worker_shutdown_timeout: 30
+      {log_writer:,
+       worker_timeout:
+        #<Puma::LogWriter:0x0000000122affd20 
+         @custom_logger=nil,60,
+         @debug=
+false,       workers:
+          @error_logger0,=
+       http_content_length_limit:
+           #<Puma::ErrorLogger:0x0000000122716e98nil,
+           @debug=false,
+       
+events:           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter= #<Puma::Events:0x0000000122716d80#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr= #<IO:log/puma.stderr.log>,
+         @stdout=@hooks=#<IO:log/puma.stdout.log>>,
+       logger:{state:
+        #<Puma::LogWriter:0x0000000122affd20 
+         @custom_logger=nil,
+         []@debug}=false,
+         >@error_logger=,
+          
+#<Puma::ErrorLogger:0x0000000122716e98       
+           preload_app:@debug =true}false,,
+
+                @plugins=@ioerr=#<IO:log/puma.stderr.log>>,
+         [@formatter]=>,#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>
+   ,
+         @stdout=@events=#<IO:log/puma.stdout.log>>,
+       environment:#<Puma::Events:0x0000000122716d80  @hooks"development",
+       worker_write: #<IO:fd 9>=}>,
+   @clamped={true,
+   @default_dsl=state: []
+}>    #<Puma::DSL:0x0000000122711dd0,
+
+        @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+@file_dsl     @options==
+      {auto_trim_time: 30,
+       
+binds:     [#<Puma::DSL:0x0000000122715228
+"tcp://0.0.0.0:9292"],
+       fiber_per_request:      false,
+@config       =debug: false,
+#<Puma::Configuration:0x0000000122b1f8c8       enable_keep_alives:  true,
+       ...>early_hints:,
+      nil,
+@options       =environment: "development",
+       first_data_timeout: 30,
+       idle_timeout:
+       nil,
+       io_selector_backend: :auto,
+{       config_files:log_requests:  false,[
+       logger: #<IO:log/puma.stdout.log>,
+       max_keep_alive: 999,
+"puma.rb"       ],max_threads:
+        5,
+workers:       min_threads:  0,
+       3mode:, :http,
+       
+mutate_stdout_and_stderr_to_sync_on_write:       min_threads: true,
+        5out_of_band: [],
+       ,
+persistent_timeout: 65,
+              prune_bundler:max_threads: false, 5
+       queue_requests: true,,
+       rackup:
+        "config.ru",binds:
+       raise_exception_on_sigterm: true,
+        ["tcp://0.0.0.0:4567"reaping_time:] 1,
+       remote_address:, :socket,
+       silence_single_worker_warning:
+ false,
+              preload_app:silence_fork_callback_warning:  false,
+       tag:true, 
+       "repoRuby"pidfile:,
+       tcp_host:  "0.0.0.0",
+       tcp_port:"tmp/pids/puma.pid" ,9292,
+
+       redirect_stdout:       wait_for_less_busy_worker:  0.005"log/puma.stdout.log",
+       worker_boot_timeout:, 60,
+
+       worker_check_interval:        5,
+       worker_culling_strategy:redirect_stderr: :youngest,
+        worker_shutdown_timeout:"log/puma.stderr.log" ,30,
+       
+       worker_timeout:redirect_append: false 60,
+,
+              before_worker_boot:workers: 0,
+       http_content_length_limit:
+         nil[{,
+       block:events: #<Proc:0x00000001229de5e0 puma.rb:23> #<Puma::Events:0x0000000122716d80 @hooks,
+          ={state: []}>,
+       cluster_only:preload_app: true true},
+,
+     @plugins=          []>,
+id:   @events=#<Puma::Events:0x0000000122716d80 @hooks= nil{}state: ]}[]}>,
+,   @file_dsl=
+
+    #<Puma::DSL:0x0000000122715228     
+     @config=@path#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+=     @options="puma.rb",
+      {config_files:
+      ["puma.rb"@plugins]=,
+       workers: 3[]>,
+       min_threads: 5,
+,
+          @hooksmax_threads: 5,
+       binds:= ["tcp://0.0.0.0:4567"],
+       {preload_app: true,before_worker_boot: 
+       pidfile: true"tmp/pids/puma.pid",
+       }redirect_stdout:, "log/puma.stdout.log",
+
+          redirect_stderr:@loaded "log/puma.stderr.log",=
+       redirect_append: false,
+       before_worker_boot:true
+        [{block:, #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only:
+    true@plugins,=
+          id: nil}]},
+     @path=#<Puma::PluginLoader:0x0000000122715980"puma.rb",
+     @plugins= @instances[]>,
+   @hooks=={before_worker_boot: true},[
+   @loaded=]true,
+   >@plugins=,#<Puma::PluginLoader:0x0000000122715980 @instances=[]
+   >,
+   @puma_bundler_pruned=@puma_bundler_prunedfalse,=
+   @user_dsl=false
+    #<Puma::DSL:0x0000000122715390
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,,
+     @options=
+   
+      {log_writer:@user_dsl
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,=
+         
+    @debug#<Puma::DSL:0x0000000122715390=
+false,
+         @error_logger=     
+          #<Puma::ErrorLogger:0x0000000122716e98@config
+           @debug==false#<Puma::Configuration:0x0000000122b1f8c8,
+            @ioerr=...#<IO:log/puma.stderr.log>>>,
+         ,@formatter=
+     @options#<Puma::LogWriter::PidFormatter:0x00000001229de180=>,
+         @stderr=
+#<IO:log/puma.stderr.log>,
+         @stdout=      #<IO:log/puma.stdout.log>>,{log_writer:
+       
+        logger:#<Puma::LogWriter:0x0000000122affd20
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger
+=nil,
+                  @custom_logger=@debug=false,
+         @error_logger=nil
+          ,#<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr
+         @debug==false,#<IO:log/puma.stderr.log>>,
+         @formatter=
+#<Puma::LogWriter::PidFormatter:0x00000001229de180         >,
+         @stderr=@error_logger=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+          
+       environment: "development",
+       worker_write: #<Puma::ErrorLogger:0x0000000122716e98#<IO:fd 9>},
+     @plugins=[]>>,
+ "sinatra.commonlogger" => true
+,
+ "rack.logger"            =>@debug=
+  false#<Logger:0x00000001237cf5a0
+   @default_formatter=,
+
+    #<Logger::Formatter:0x0000000102cff550 @datetime_format=nil>,
+           @ioerr=   @formatter#<IO:log/puma.stderr.log>=>nil,
+   @level,=
+1,
+   @level_override=         {@formatter},
+   @logdev==#<Puma::LogWriter::PidFormatter:0x00000001229de180>
+    #<Logger::LogDevice:0x0000000122777c70
+     @binmode=false,
+     ,@dev=
+         #<IO:log/puma.stderr.log>,
+     @filename="log/puma.stderr.log",
+     @mon_data=@stderr#<Monitor:0x0000000102cff528=>,
+     @mon_data_owner_object_id=1568,
+     @reraise_write_errors=#<IO:log/puma.stderr.log>[],
+,     @shift_age=
+0,
+     @shift_period_suffix="%Y%m%d",
+     @shift_size=         1048576,@stdout=
+     @skip_header=false>,
+   @progname=#<IO:log/puma.stdout.log>>nil>,,
+ "rack.request.query_hash" =>
+        {},logger:
+ "rack.request.form_pairs" => [],
+ "rack.request.form_hash" => {
+},
+ "sinatra.route" =>         "POST /github_webhook"}
+#<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       environment: "development",
+       worker_write: #<IO:fd 9>},
+     @plugins=[]>>,
+ "sinatra.commonlogger" => true,
+ "rack.logger" =>
+  #<Logger:0x0000000122e45250
+   @default_formatter=
+    #<Logger::Formatter:0x0000000123014c70 @datetime_format=nil>,
+   @formatter=nil,
+   @level=1,
+   @level_override={},
+   @logdev=
+    #<Logger::LogDevice:0x0000000122c0d028
+     @binmode=false,
+     @dev=#<IO:log/puma.stderr.log>,
+     @filename="log/puma.stderr.log",
+     @mon_data=#<Monitor:0x0000000123014bd0>,
+     @mon_data_owner_object_id=1520,
+     @reraise_write_errors=[],
+     @shift_age=0,
+     @shift_period_suffix="%Y%m%d",
+     @shift_size=1048576,
+     @skip_header=false>,
+   @progname=nil>,
+ "rack.request.query_hash" => {},
+ "rack.request.form_pairs" => [],
+ "rack.request.form_hash" => {},
+ "sinatra.route" => "POST /github_webhook"}
+ #<TCPSocket:fd 17, AF_INET, 127.0.0.1, 4567>,
+ "rack.hijack?" => true,
+ "rack.hijack" =>
+  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
+ "rack.input" => #<StringIO:0x00000001229f3e40>,
+ "puma.config" =>
+  #<Puma::Configuration:0x0000000122b1f8c8
+   @_options=
+    #<Puma::UserFileDefaultOptions:0x0000000122715a70
+     @default_options=
+      {auto_trim_time: 30,
+       binds: ["tcp://0.0.0.0:9292"],
+       fiber_per_request: false,
+       debug: false,
+       enable_keep_alives: true,
+       early_hints: nil,
+       environment: "development",
+       first_data_timeout: 30,
+       idle_timeout: nil,
+       io_selector_backend: :auto,
+       log_requests: false,
+       logger: #<IO:log/puma.stdout.log>,
+       max_keep_alive: 999,
+       max_threads: 5,
+       min_threads: 0,
+       mode: :http,
+       mutate_stdout_and_stderr_to_sync_on_write: true,
+       out_of_band: [],
+       persistent_timeout: 65,
+       prune_bundler: false,
+       queue_requests: true,
+       rackup: "config.ru",
+       raise_exception_on_sigterm: true,
+       reaping_time: 1,
+       remote_address: :socket,
+       silence_single_worker_warning: false,
+       silence_fork_callback_warning: false,
+       tag: "repoRuby",
+       tcp_host: "0.0.0.0",
+       tcp_port: 9292,
+       wait_for_less_busy_worker: 0.005,
+       worker_boot_timeout: 60,
+       worker_check_interval: 5,
+       worker_culling_strategy: :youngest,
+       worker_shutdown_timeout: 30,
+       worker_timeout: 60,
+       workers: 0,
+       http_content_length_limit: nil,
+       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+       preload_app: true},
+     @file_options=
+      {config_files: ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+       max_threads: 5,
+       binds: ["tcp://0.0.0.0:4567"],
+       preload_app: true,
+       pidfile: "tmp/pids/puma.pid",
+       redirect_stdout: "log/puma.stdout.log",
+       redirect_stderr: "log/puma.stderr.log",
+       redirect_append: false,
+       before_worker_boot:
+        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only: true,
+          id: nil}]},
+     @user_options=
+      {log_writer:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       logger:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       environment: "development",
+       worker_write: #<IO:fd 9>}>,
+   @clamped=true,
+   @default_dsl=
+    #<Puma::DSL:0x0000000122711dd0
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {auto_trim_time: 30,
+       binds: ["tcp://0.0.0.0:9292"],
+       fiber_per_request: false,
+       debug: false,
+       enable_keep_alives: true,
+       early_hints: nil,
+       environment: "development",
+       first_data_timeout: 30,
+       idle_timeout: nil,
+       io_selector_backend: :auto,
+       log_requests: false,
+       logger: #<IO:log/puma.stdout.log>,
+       max_keep_alive: 999,
+       max_threads: 5,
+       min_threads: 0,
+       mode: :http,
+       mutate_stdout_and_stderr_to_sync_on_write: true,
+       out_of_band: [],
+       persistent_timeout: 65,
+       prune_bundler: false,
+       queue_requests: true,
+       rackup: "config.ru",
+       raise_exception_on_sigterm: true,
+       reaping_time: 1,
+       remote_address: :socket,
+       silence_single_worker_warning: false,
+       silence_fork_callback_warning: false,
+       tag: "repoRuby",
+       tcp_host: "0.0.0.0",
+       tcp_port: 9292,
+       wait_for_less_busy_worker: 0.005,
+       worker_boot_timeout: 60,
+       worker_check_interval: 5,
+       worker_culling_strategy: :youngest,
+       worker_shutdown_timeout: 30,
+       worker_timeout: 60,
+       workers: 0,
+       http_content_length_limit: nil,
+       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+       preload_app: true},
+     @plugins=[]>,
+   @events=#<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+   @file_dsl=
+    #<Puma::DSL:0x0000000122715228
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {config_files: ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+       max_threads: 5,
+       binds: ["tcp://0.0.0.0:4567"],
+       preload_app: true,
+       pidfile: "tmp/pids/puma.pid",
+       redirect_stdout: "log/puma.stdout.log",
+       redirect_stderr: "log/puma.stderr.log",
+       redirect_append: false,
+       before_worker_boot:
+        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only: true,
+          id: nil}]},
+     @path="puma.rb",
+     @plugins=[]>,
+   @hooks={before_worker_boot: true},
+   @loaded=true,
+   @plugins=#<Puma::PluginLoader:0x0000000122715980 @instances=[]>,
+   @puma_bundler_pruned=false,
+   @user_dsl=
+    #<Puma::DSL:0x0000000122715390
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {log_writer:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       logger:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       environment: "development",
+       worker_write: #<IO:fd 9>},
+     @plugins=[]>>,
+ "sinatra.commonlogger" => true,
+ "rack.logger" =>
+  #<Logger:0x0000000122e42af0
+   @default_formatter=
+    #<Logger::Formatter:0x00000001229f1be0 @datetime_format=nil>,
+   @formatter=nil,
+   @level=1,
+   @level_override={},
+   @logdev=
+    #<Logger::LogDevice:0x0000000122c092e8
+     @binmode=false,
+     @dev=#<IO:log/puma.stderr.log>,
+     @filename="log/puma.stderr.log",
+     @mon_data=#<Monitor:0x00000001229f1b68>,
+     @mon_data_owner_object_id=1536,
+     @reraise_write_errors=[],
+     @shift_age=0,
+     @shift_period_suffix="%Y%m%d",
+     @shift_size=1048576,
+     @skip_header=false>,
+   @progname=nil>,
+ "rack.request.query_hash" => {},
+ "rack.request.form_pairs" => [],
+ "rack.request.form_hash" => {},
+ "sinatra.route" => "POST /github_webhook"}
+ #<TCPSocket:fd 18, AF_INET, 127.0.0.1, 4567>,
+ "rack.hijack?" => true,
+ "rack.hijack" =>
+  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
+ "rack.input" => #<StringIO:0x0000000122446d80>,
+ "puma.config" =>
+  #<Puma::Configuration:0x0000000122b1f8c8
+   @_options=
+    #<Puma::UserFileDefaultOptions:0x0000000122715a70
+     @default_options=
+      {auto_trim_time: 30,
+       binds: ["tcp://0.0.0.0:9292"],
+       fiber_per_request: false,
+       debug: false,
+       enable_keep_alives: true,
+       early_hints: nil,
+       environment: "development",
+       first_data_timeout: 30,
+       idle_timeout: nil,
+       io_selector_backend: :auto,
+       log_requests: false,
+       logger: #<IO:log/puma.stdout.log>,
+       max_keep_alive: 999,
+       max_threads: 5,
+       min_threads: 0,
+       mode: :http,
+       mutate_stdout_and_stderr_to_sync_on_write: true,
+       out_of_band: [],
+       persistent_timeout: 65,
+       prune_bundler: false,
+       queue_requests: true,
+       rackup: "config.ru",
+       raise_exception_on_sigterm: true,
+       reaping_time: 1,
+       >>>DBG>Github_Webhook => 
+>>>DBG>Payload/env => 
+remote_address: :socket,
+       silence_single_worker_warning:{ "rack.version"false =>, [1, 6],
+ "rack.errors"
+ =>        silence_fork_callback_warning:#<IO:log/puma.stderr.log>,
+ "rack.multithread" =>  true,
+ "rack.multiprocess"false, =>
+ true,
+        "rack.run_once" =>tag: false,
+ "rack.url_scheme" =>  "https""repoRuby",
+ ,"SCRIPT_NAME"
+ => "",
+ "QUERY_STRING"        =>tcp_host: "",
+  "SERVER_SOFTWARE""0.0.0.0" =>, "puma 7.2.0 On The Corner",
+ "GATEWAY_INTERFACE"
+        tcp_port:=> 9292,
+        wait_for_less_busy_worker:"CGI/1.2",
+  0.005"rack.after_reply", =>
+ [],
+ "rack.response_finished" =>        [],
+ "REQUEST_METHOD"worker_boot_timeout: =>  "POST"60,,
+ "REQUEST_PATH" =>
+        worker_check_interval:"/github_webhook",
+  5"REQUEST_URI", 
+       =>worker_culling_strategy: "/github_webhook", 
+ "SERVER_PROTOCOL":youngest, =>
+        "HTTP/1.1",
+ "HTTP_HOST" worker_shutdown_timeout:=> "progenitorial-fredda-headlong.ngrok-free.dev",
+  30,"HTTP_USER_AGENT" => "GitHub-Hookshot/a55126a",
+ 
+"CONTENT_LENGTH" => "9028",
+ "HTTP_ACCEPT"        => worker_timeout:"*/*",
+ "CONTENT_TYPE" =>  "application/json",60,
+ "HTTP_X_FORWARDED_FOR" =>
+ "140.82.115.242",       
+ workers: "HTTP_X_FORWARDED_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
+ "HTTP_X_FORWARDED_PROTO" =>0, 
+"https"       ,http_content_length_limit:
+  nil,
+       "HTTP_X_GITHUB_DELIVERY" =>events: "7f220870-55e3-11f1-987b-13c9fe95d886",
+ "HTTP_X_GITHUB_EVENT" => "secret_scanning_alert",
+ #<Puma::Events:0x0000000122716d80  @hooks="HTTP_X_GITHUB_HOOK_ID" => "603554883",
+ {"HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" =>state:  "1195298323",
+ ["HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE" ]}=> >,"repository"
+,       
+ "HTTP_X_HUB_SIGNATURE" =>preload_app: "sha1=e3646db733c1b5831e5abf4db08a90923d3ea6e2" true,}
+ "HTTP_X_HUB_SIGNATURE_256", =>
+  "sha256=f27fe1bd7adf4b6da4d2f86051d382df4344883dd147e144ab76e997b408bac0"
+,     @file_options
+= "HTTP_ACCEPT_ENCODING" => "gzip"
+      ,
+ "puma.request_body_wait" => 0.003999993205070496,
+ {config_files:"SERVER_NAME" =>  "progenitorial-fredda-headlong.ngrok-free.dev",
+[ "SERVER_PORT" =>"puma.rb"] ,
+"443",
+ "PATH_INFO" =>        "/github_webhook",
+ workers:"REMOTE_ADDR" =>  "127.0.0.1",
+ "puma.socket" =>3, 
+#<TCPSocket:fd 21, AF_INET, 127.0.0.1, 4567>       min_threads:,
+ "rack.hijack?" => true, 
+ 5"rack.hijack",
+ =>
+         max_threads:#<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
+  5"rack.input" => #<StringIO:0x0000000102df83d0>,
+ ,"puma.config" =>
+
+       binds:   [#<Puma::Configuration:0x0000000122b1f8c8
+"tcp://0.0.0.0:4567"   @_options=]
+    #<Puma::UserFileDefaultOptions:0x0000000122715a70,
+     @default_options
+=       
+      {auto_trim_time:preload_app: 30,
+       binds:  ["tcp://0.0.0.0:9292"]true,,
+
+              pidfile:fiber_per_request: false, 
+"tmp/pids/puma.pid",
+              debug: false,
+       enable_keep_alives: true,
+       early_hints:redirect_stdout: nil,
+       environment:  "development",
+       first_data_timeout:"log/puma.stdout.log", 30,
+       idle_timeout: 
+       nil,
+       io_selector_backend:redirect_stderr:  "log/puma.stderr.log":auto,
+       log_requests: false,
+       logger:, #<IO:log/puma.stdout.log>,
+       max_keep_alive:
+        999,
+       max_threads: 5,
+       min_threads:redirect_append:  0,
+       mode: false,:http
+,
+       mutate_stdout_and_stderr_to_sync_on_write:        truebefore_worker_boot:,
+       out_of_band: [],
+       persistent_timeout: 65,
+
+       prune_bundler: false,
+       queue_requests:         [true{block:,
+       rackup:  #<Proc:0x00000001229de5e0 puma.rb:23>"config.ru",
+       raise_exception_on_sigterm: true,,
+       reaping_time:
+ 1          cluster_only:,
+        true,
+remote_address:           :socket,
+       silence_single_worker_warning: falseid:, 
+       silence_fork_callback_warning: false,
+       niltag: "repoRuby",
+       }]tcp_host:}, 
+     "0.0.0.0",
+@user_options=       tcp_port:
+ 9292,
+       wait_for_less_busy_worker:       {0.005,log_writer:
+       worker_boot_timeout: 60,
+       
+worker_check_interval:        #<Puma::LogWriter:0x0000000122affd20 5,
+       
+         worker_culling_strategy:@custom_logger= :youngest,nil
+       ,
+worker_shutdown_timeout: 30,
+       worker_timeout:         @debug =60,false
+,       workers:
+          0,
+       http_content_length_limit:@error_logger= nil,
+       events:
+          #<Puma::ErrorLogger:0x0000000122716e98 #<Puma::Events:0x0000000122716d80 
+@hooks={           @debugstate: []=}>false,,
+
+           @ioerr       =preload_app:#<IO:log/puma.stderr.log>> true},
+     @file_options,
+         =@formatter=
+      {config_files: ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+       max_threads: #<Puma::LogWriter::PidFormatter:0x00000001229de1805,
+       binds:>, ["tcp://0.0.0.0:4567"],
+       
+         preload_app: true,
+       pidfile:@stderr "tmp/pids/puma.pid"=,#<IO:log/puma.stderr.log>
+,       
+redirect_stdout:          "log/puma.stdout.log",
+       @stdout=redirect_stderr: "log/puma.stderr.log",#<IO:log/puma.stdout.log>>,
+       
+redirect_append:        false,
+       before_worker_boot:logger:
+        [{block:
+ #<Proc:0x00000001229de5e0 puma.rb:23>,        
+          cluster_only: true,
+          id:#<Puma::LogWriter:0x0000000122affd20 nil}]},
+     @user_options=
+
+      {log_writer:         @custom_logger
+        #<Puma::LogWriter:0x0000000122affd20=
+         nil@custom_logger=nil,
+         @debug=false,
+,         @error_logger=
+         @debug
+          =#<Puma::ErrorLogger:0x0000000122716e98false
+           @debug=false,,
+           @ioerr=#<IO:log/puma.stderr.log>>
+,
+         @formatter=         @error_logger=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=
+#<IO:log/puma.stderr.log>,
+                   #<Puma::ErrorLogger:0x0000000122716e98@stdout=#<IO:log/puma.stdout.log>>,
+           
+@debug       =logger:false,
+           @ioerr=
+        #<Puma::LogWriter:0x0000000122affd20#<IO:log/puma.stderr.log>
+         @custom_logger=nil,
+         @debug=>false,,
+
+                  @error_logger=@formatter=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,#<IO:log/puma.stderr.log>
+         >,
+         @formatter=@stderr#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+=         @stderr=#<IO:log/puma.stderr.log>#<IO:log/puma.stderr.log>,
+,
+                  @stdout=@stdout=#<IO:log/puma.stdout.log>#<IO:log/puma.stdout.log>>>,
+,
+       environment: "development",
+              worker_write:environment: #<IO:fd 9>}>,
+   @clamped= "development",true,
+   @default_dsl=
+       
+    #<Puma::DSL:0x0000000122711dd0
+     @config=worker_write:#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options= #<IO:fd 9>}
+>,      
+{auto_trim_time: 30   ,
+       binds: ["tcp://0.0.0.0:9292"]@clamped,
+       fiber_per_request: false=,
+       debug: false,
+true       ,enable_keep_alives:
+    true,
+@default_dsl       =early_hints: nil,
+       environment:
+ "development",
+           #<Puma::DSL:0x0000000122711dd0first_data_timeout: 30
+,
+            idle_timeout:@config nil,=
+       io_selector_backend:#<Puma::Configuration:0x0000000122b1f8c8  :auto,
+       log_requests: false...,
+       logger:>, #<IO:log/puma.stdout.log>,
+     
+       max_keep_alive: 999@options,=
+       max_threads: 5,
+
+      {auto_trim_time:       min_threads:  300,,
+       mode: :http
+       binds:,
+       mutate_stdout_and_stderr_to_sync_on_write: true,
+        out_of_band: [],
+["tcp://0.0.0.0:9292"]       persistent_timeout:, 65
+       fiber_per_request:,
+       prune_bundler: false,
+        falsequeue_requests:, true,
+
+              rackup: "config.ru"debug:,
+        falseraise_exception_on_sigterm:, true
+       ,
+       reaping_time:enable_keep_alives:  1,true
+,
+       remote_address: :socket,
+              early_hints:silence_single_worker_warning:  false,
+       nilsilence_fork_callback_warning: false,
+       ,
+tag: "repoRuby",
+       tcp_host:        "0.0.0.0",
+       tcp_port:environment: 9292,
+       wait_for_less_busy_worker:  0.005,"development"
+,       worker_boot_timeout:
+ 60,
+              worker_check_interval: first_data_timeout:5,
+        worker_culling_strategy: :youngest30,
+       ,
+worker_shutdown_timeout: 30,
+              idle_timeout:worker_timeout: 60,
+        workers: 0,
+       http_content_length_limit: nil,nil
+       events:,
+ #<Puma::Events:0x0000000122716d80 @hooks={state: [       ]}>,
+       io_selector_backend:preload_app: :auto, 
+       true},
+log_requests:      false@plugins=[]>,
+   @events=,
+       logger:#<Puma::Events:0x0000000122716d80  @hooks=#<IO:log/puma.stdout.log>{state: []}>,
+,   @file_dsl=
+       
+    #<Puma::DSL:0x0000000122715228
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=max_keep_alive: 999
+      {config_files:, ["puma.rb"],
+       
+       max_threads:workers: 3,
+       min_threads:  55,
+       max_threads: 5,
+       ,binds:
+ ["tcp://0.0.0.0:4567"],
+       preload_app: true,
+       pidfile:        min_threads:"tmp/pids/puma.pid" 0,
+,
+       redirect_stdout:       mode: "log/puma.stdout.log" ,
+       redirect_stderr: "log/puma.stderr.log",
+       :httpredirect_append:, false,
+       before_worker_boot:
+
+        [{block:       mutate_stdout_and_stderr_to_sync_on_write: #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only: true ,true
+          id:, nil}
+]       }out_of_band:, 
+     []@path=,
+"puma.rb",
+     @plugins=       []>,persistent_timeout:
+   @hooks= 65{before_worker_boot: true},
+   @loaded=,true,
+   @plugins=
+       #<Puma::PluginLoader:0x0000000122715980 prune_bundler:@instances=[]>, false
+   @puma_bundler_pruned=,false,
+
+          @user_dsl=queue_requests:
+    #<Puma::DSL:0x0000000122715390
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options= true
+      {log_writer:,
+        
+#<Puma::LogWriter:0x0000000122affd20       rackup:
+         @custom_logger=nil,
+         @debug=false ,
+         @error_logger="config.ru",
+
+          #<Puma::ErrorLogger:0x0000000122716e98       
+           @debug=false,
+           @ioerr=raise_exception_on_sigterm:#<IO:log/puma.stderr.log>>,
+          true,@formatter
+=       #<Puma::LogWriter::PidFormatter:0x00000001229de180reaping_time:>,
+          1,@stderr=
+#<IO:log/puma.stderr.log>,
+       remote_address:         @stdout= #<IO:log/puma.stdout.log>>,
+       :socketlogger:,
+
+        #<Puma::LogWriter:0x0000000122affd20       
+         silence_single_worker_warning:@custom_logger=nil,
+          @debug=falsefalse,,
+
+                @error_logger=silence_fork_callback_warning:
+           #<Puma::ErrorLogger:0x0000000122716e98false
+           @debug=false,,
+
+           @ioerr=#<IO:log/puma.stderr.log>>,
+                tag:@formatter= "repoRuby",
+#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=       tcp_host:#<IO:log/puma.stderr.log>,
+         @stdout= "0.0.0.0",#<IO:log/puma.stdout.log>>,
+       environment:
+        "development",
+       worker_write: #<IO:fd 9>}tcp_port:,
+     @plugins= []>>,
+9292 ,"sinatra.commonlogger" =>
+       wait_for_less_busy_worker:  true,0.005
+ ,"rack.logger"
+        =>worker_boot_timeout:
+   #<Logger:0x0000000122a7ef68
+   @default_formatter60,=
+    #<Logger::Formatter:0x0000000102df81f0 @datetime_format=nil>,
+   @formatter
+       =worker_check_interval: 5nil,
+   @level=,1,
+
+   @level_override=       {},
+   @logdev=worker_culling_strategy: :youngest,
+    #<Logger::LogDevice:0x0000000123904d80
+
+            @binmode=worker_shutdown_timeout:false,
+      @dev=#<IO:log/puma.stderr.log>,
+     @filename30=,"log/puma.stderr.log",
+     
+@mon_data=       worker_timeout:#<Monitor:0x0000000102df81c8>,
+     @mon_data_owner_object_id =60,1616,
+     @reraise_write_errors=
+[       ],
+     @shift_age=workers:0, 0
+     ,@shift_period_suffix=
+       "%Y%m%d"http_content_length_limit:,
+     @shift_size= 1048576,
+     @skip_headernil=,false
+       >,
+   @progname=events:nil>,
+ "rack.request.query_hash" => {},
+  "rack.request.form_pairs" =>#<Puma::Events:0x0000000122716d80 [], @hooks
+ "rack.request.form_hash" => ={},{state:
+ "sinatra.route" => "POST /github_webhook"}
+ []}>,
+       preload_app: true},
+     @plugins=[]>,
+   @events=#<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+   @file_dsl=
+    #<Puma::DSL:0x0000000122715228
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {config_files: ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+       max_threads: 5,
+       binds: ["tcp://0.0.0.0:4567"],
+       preload_app: true,
+       pidfile: "tmp/pids/puma.pid",
+       redirect_stdout: "log/puma.stdout.log",
+       redirect_stderr: "log/puma.stderr.log",
+       redirect_append: false,
+       before_worker_boot:
+        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only: true,
+          id: nil}]},
+     @path="puma.rb",
+     @plugins=[]>,
+   @hooks={before_worker_boot: true},
+   @loaded=true,
+   @plugins=#<Puma::PluginLoader:0x0000000122715980 @instances=[]>,
+   @puma_bundler_pruned=false,
+   @user_dsl=
+    #<Puma::DSL:0x0000000122715390
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {log_writer:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=>>>DBG>Github_Webhook => 
+>>>DBG>Payload/env => 
+#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,{"rack.version" 
+         =>@stderr= [#<IO:log/puma.stderr.log>1, 6],
+, "rack.errors" => #<IO:log/puma.stderr.log>
+,
+ "rack.multithread"          => true,
+@stdout "rack.multiprocess"= => true#<IO:log/puma.stdout.log>>,,
+ "rack.run_once" =>
+ false,
+        "rack.url_scheme" =>logger: "https",
+ "SCRIPT_NAME" => "",
+ 
+"QUERY_STRING"         #<Puma::LogWriter:0x0000000122affd20=>
+ "",         
+ "SERVER_SOFTWARE" => "puma 7.2.0 On The Corner",
+ "GATEWAY_INTERFACE" =>@custom_logger "CGI/1.2",
+= nil"rack.after_reply" => [],,
+ 
+"rack.response_finished" =>         @debug [],=
+ false"REQUEST_METHOD",
+ => "POST",
+          @error_logger"REQUEST_PATH" =>= "/github_webhook",
+ "REQUEST_URI" =>
+ "/github_webhook",
+           #<Puma::ErrorLogger:0x0000000122716e98"SERVER_PROTOCOL" => "HTTP/1.1",
+ 
+"HTTP_HOST"            =>@debug "progenitorial-fredda-headlong.ngrok-free.dev",=
+ "HTTP_USER_AGENT" =>false, "GitHub-Hookshot/a55126a",
+ 
+           "CONTENT_LENGTH" @ioerr=>=#<IO:log/puma.stderr.log>> "9044",
+ "HTTP_ACCEPT" =>,
+          "*/*",
+@formatter ="CONTENT_TYPE" =>#<Puma::LogWriter::PidFormatter:0x00000001229de180 >"application/json",
+ "HTTP_X_FORWARDED_FOR",
+ =>          @stderr"140.82.115.173",
+ "HTTP_X_FORWARDED_HOST"=#<IO:log/puma.stderr.log>, 
+         => "progenitorial-fredda-headlong.ngrok-free.dev",
+@stdout= "HTTP_X_FORWARDED_PROTO"#<IO:log/puma.stdout.log> =>> "https",
+ "HTTP_X_GITHUB_DELIVERY" =>, "7f3394a0-55e3-11f1-9e08-239abbb2418f",
+
+        "HTTP_X_GITHUB_EVENT" =>environment: "secret_scanning_alert" ,"development",
+
+ "HTTP_X_GITHUB_HOOK_ID" =>        "603554883",worker_write:
+ "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" => "1195298323", #<IO:fd 9>
+ "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE" =>} "repository",,
+
+     @plugins "HTTP_X_HUB_SIGNATURE" => "sha1=8c5b62d75d32c3447928a0f4ae49bfc5fbd23a9a",
+ ="HTTP_X_HUB_SIGNATURE_256" =>[
+  "sha256=5b872c24543da16d64d18348eaaa613d7de4613547b3f7b63903147ffea355df"]>,>,
+ "HTTP_ACCEPT_ENCODING" => "gzip",
+ "puma.request_body_wait"
+ =>  0.003000006079673767,
+ "SERVER_NAME" =>"sinatra.commonlogger" "progenitorial-fredda-headlong.ngrok-free.dev" =>,
+  "SERVER_PORT"true =>, "443",
+ 
+"PATH_INFO"  =>"rack.logger"  "/github_webhook",
+ "REMOTE_ADDR" =>=> "127.0.0.1",
+ "puma.socket" =>
+  #<Logger:0x0000000122e234e8 #<TCPSocket:fd 22, AF_INET, 127.0.0.1, 4567>,
+ "rack.hijack?"
+ =>    true,
+ @default_formatter="rack.hijack" =>
+
+  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>    ,
+ #<Logger::Formatter:0x00000001223a70a0 "rack.input" =>@datetime_format= nil#<StringIO:0x0000000102e96648>>,
+ "puma.config" =>,
+
+     #<Puma::Configuration:0x0000000122b1f8c8
+   @_options=@formatter
+=    #<Puma::UserFileDefaultOptions:0x0000000122715a70nil
+,
+        @default_options@level==
+      {auto_trim_time: 130,
+       binds:, ["tcp://0.0.0.0:9292"],
+       fiber_per_request:
+ false   ,
+@level_override       debug:= false,
+       {enable_keep_alives:} true,
+       ,early_hints:
+ nil,
+       environment:   @logdev ="development",
+       first_data_timeout: 30,
+       idle_timeout:
+ nil    #<Logger::LogDevice:0x0000000122c055a8,
+       io_selector_backend:
+     @binmode :auto,
+       =falselog_requests: false,
+       logger:, #<IO:log/puma.stdout.log>,
+       max_keep_alive: 
+     999@dev=,
+       max_threads: 5,
+       min_threads:#<IO:log/puma.stderr.log>, 0,
+       mode:
+ :http,
+       mutate_stdout_and_stderr_to_sync_on_write:      true,
+       @filename=out_of_band:"log/puma.stderr.log" [],,
+       
+     persistent_timeout:@mon_data 65=,
+       prune_bundler:#<Monitor:0x00000001223a5750 false,
+       queue_requests: true,
+       >rackup:,
+ "config.ru",
+       raise_exception_on_sigterm:      true,@mon_data_owner_object_id
+       reaping_time:= 1,
+       remote_address:1552 ,:socket,
+       
+     silence_single_worker_warning:@reraise_write_errors false,
+       silence_fork_callback_warning:= false,[]
+       tag:, "repoRuby",
+       
+     tcp_host:@shift_age=0, "0.0.0.0"
+     ,@shift_period_suffix
+       =tcp_port: 9292,
+       wait_for_less_busy_worker:"%Y%m%d", 0.005,
+       worker_boot_timeout:
+      60,
+@shift_size=       1048576,worker_check_interval: 5,
+     @skip_header
+       worker_culling_strategy:= :youngest,false
+       worker_shutdown_timeout:> ,30
+   ,
+       worker_timeout:@progname 60,
+=       workers:nil 0,>,
+       
+http_content_length_limit:  nil"rack.request.query_hash" ,=>
+        events:{}, #<Puma::Events:0x0000000122716d80 @hooks={state: []}
+ >,
+       preload_app:"rack.request.form_pairs" true}, 
+     @file_options=>=
+      {config_files: ["puma.rb"], 
+       [workers:] ,3,
+       min_threads:
+  5,
+       "rack.request.form_hash"max_threads: =>  5,{
+       binds:}, ["tcp://0.0.0.0:4567"
+],
+       preload_app:  true,"sinatra.route"
+       pidfile: => "tmp/pids/puma.pid",
+       redirect_stdout: "log/puma.stdout.log",
+        redirect_stderr:"POST /github_webhook" "log/puma.stderr.log",
+       redirect_append:}
+ false,
+       before_worker_boot:
+        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only: true,
+          id: nil}]}[1;34mINFO [0m 2026-05-22T13:38:21.091Z pid=46444 tid=zf0: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+,
+     @user_options=
+      {log_writer:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       logger:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98[1;34mINFO [0m 2026-05-22T13:38:21.115Z pid=46444 tid=zes: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       environment: "development",
+       worker_write:[1;34mINFO [0m 2026-05-22T13:38:21.150Z pid=46444 tid=zfg: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+ #<IO:fd 9>}>,
+   @clamped=true,
+   @default_dsl=
+    #<Puma::DSL:0x0000000122711dd0
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {auto_trim_time: 30,
+       binds: ["tcp://0.0.0.0:9292"],
+       fiber_per_request: false,
+       debug: false,
+       enable_keep_alives: true,
+       early_hints: nil,
+       environment: "development",
+       first_data_timeout: 30,
+       idle_timeout: nil,
+       io_selector_backend: :auto,
+       log_requests: false,
+       logger: #<IO:log/puma.stdout.log>,
+       max_keep_alive: 999,
+       max_threads: 5,
+       min_threads: 0,
+       mode: :http,
+       mutate_stdout_and_stderr_to_sync_on_write: true,
+       out_of_band: [],
+       persistent_timeout: 65,
+       prune_bundler: false,
+       queue_requests: true,
+       rackup: "config.ru",
+       raise_exception_on_sigterm: true,
+       reaping_time: 1,
+       remote_address: :socket,
+       silence_single_worker_warning: false,
+       silence_fork_callback_warning: false,
+       tag: "repoRuby",
+       tcp_host: "0.0.0.0",
+       tcp_port: 9292,
+       wait_for_less_busy_worker: 0.005,
+       worker_boot_timeout: 60,
+       worker_check_interval: 5,
+       worker_culling_strategy: :youngest,
+       worker_shutdown_timeout: 30,
+       worker_timeout: 60,
+       workers: 0,
+       http_content_length_limit: nil,
+       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+       preload_app: true},
+     @plugins=[]>,
+   @events=#<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+   @file_dsl=
+    #<Puma::DSL:0x0000000122715228
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {config_files: ["puma.rb"],
+       workers: 3,
+       min_threads: 5,
+       max_threads: 5,
+       binds: ["tcp://0.0.0.0:4567"],
+       preload_app: true,
+       pidfile: "tmp/pids/puma.pid",
+       redirect_stdout: "log/puma.stdout.log",
+       redirect_stderr: "log/puma.stderr.log",
+       redirect_append: false,
+       before_worker_boot:
+        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
+          cluster_only: true,
+          id: nil}]},
+     @path="puma.rb",
+     @plugins=[]>,
+   @hooks={before_worker_boot: true},
+   @loaded=true,
+   @plugins=#<Puma::PluginLoader:0x0000000122715980 @instances=[]>,
+   @puma_bundler_pruned=false,
+   @user_dsl=
+    #<Puma::DSL:0x0000000122715390
+     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+     @options=
+      {log_writer:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       logger:
+        #<Puma::LogWriter:0x0000000122affd20
+         @custom_logger=nil,
+         @debug=false,
+         @error_logger=
+          #<Puma::ErrorLogger:0x0000000122716e98
+           @debug=false,
+           @ioerr=#<IO:log/puma.stderr.log>>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @stderr=#<IO:log/puma.stderr.log>,
+         @stdout=#<IO:log/puma.stdout.log>>,
+       environment: "development",
+       worker_write: #<IO:fd 9>},
+     @plugins=[]>>,
+ "sinatra.commonlogger" => true,
+ "rack.logger" =>
+  #<Logger:0x0000000102e7b190
+   @default_formatter=
+    #<Logger::Formatter:0x0000000102e96468 @datetime_format=nil>,
+   @formatter=nil,
+   @level=1,
+   @level_override={},
+   @logdev=
+    #<Logger::LogDevice:0x0000000123809cf0
+     @binmode=false,
+     @dev=#<IO:log/puma.stderr.log>,
+     @filename="log/puma.stderr.log",
+     @mon_data=#<Monitor:0x0000000102e96440>,
+     @mon_data_owner_object_id=1632,
+     @reraise_write_errors=[],
+     @shift_age=0,
+     @shift_period_suffix="%Y%m%d",
+     @shift_size=1048576,
+     @skip_header=false>,
+   @progname=nil>,
+ "rack.request.query_hash" => {},
+ "rack.request.form_pairs" => [],
+ "rack.request.form_hash" => {},
+ "sinatra.route" => "POST /github_webhook"}
