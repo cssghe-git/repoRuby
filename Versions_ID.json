@@ -1,8 +1,8 @@
 {
-    'fulltime': '2024-05-21 08:30:00',
-    'shortime': '260521',
-    'appfastmail3': {'v':2, 'r':3, 'p':4},
-    'webhook_processing': {'v':2, 'r':3, 'p':4},
-    'webhook_async': {'v':2, 'r':3, 'p':4},
-    'none': 'None'
+    "fulltime": "2024-05-21 08:30:00",
+    "shortime": "260521",
+    "appfastmail3": {"v":2, "r":3, "p":4},
+    "webhook_processing": {"v":2, "r":3, "p":4},
+    "webhook_async": {"v":2, "r":3, "p":4},
+    "none": "None"
 }

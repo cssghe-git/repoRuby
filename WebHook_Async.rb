@@ -161,6 +161,8 @@ class WebhookAsync
         return      'Unknown'       unless display_common(prms: prms)
         page_id     = prms['page_id'] || nil
         get_type    = prms['get_type'] || 'None'
+        data        = prms['data'] || {}
+        uuid        = prms['uuid'] || 'unknown'
 
         # Notion API request parameters
         not_url = ENV['NOT_HTTPBASE'] || 'https://api.notion.com/v1'
@@ -169,10 +171,30 @@ class WebhookAsync
             'Notion-Version'    => ENV['NOT_APINEW'] || '2026-03-11',
             'Content-Type'      => 'application/json'
         }
-        # http request according to get_type
+        # Process page according to get_type
         case get_type
         when 'page'
+            # Extract page data
             res = HTTParty.get("#{not_url}/pages/#{page_id}", headers: not_hdr)
+            res_page = res.success? ? res.parsed_response : nil
+            if res_page.nil?
+                logger.info "#{uuid}>Failed to retrieve data for page_id: #{page_id} - response: #{res.body}"
+                return 'Unknown'
+            end
+
+            # Extract parent data
+            parent = data['parent']
+            if parent['type'] == 'database'
+                db_id = parent['id']
+                res = HTTParty.get("#{not_url}/databases/#{db_id}", headers: not_hdr)
+                res_parent = res.success? ? res.parsed_response : nil
+                if res_parent.nil?
+                    logger.info "#{uuid}>Failed to retrieve data for db: #{db_id} - response: #{res.body}"
+                    return 'Unknown'
+                else
+                ###    logger.info "#{uuid}>Parent:#{res_parent}"
+                end
+            end
 
         when 'database'
             res = HTTParty.get("#{not_url}/databases/#{page_id}", headers: not_hdr)
@@ -185,26 +207,26 @@ class WebhookAsync
             return  'Unknown'
         end
 
-        response = res.success? ? res.parsed_response : nil
-        return  'Unknown' if response.nil?
 
         # Extract Author / User
         authors = extract_authors(prms: prms)
 
-        uuid    = prms['uuid'] || 'unknown'
         # Display
-        logger.info "<#{uuid}>📄 Page: #{response['id']}"
-        logger.info "<#{uuid}>>>>Created time: #{response['created_time']}"
-        logger.info "<#{uuid}>>>>Last edited time: #{response['last_edited_time']}"
+        logger.info "<#{uuid}>📄 DB: #{res_parent['title'][0]['text']['content']}"
+        logger.info "<#{uuid}>📄 Page: #{page_id}"
+        logger.info "<#{uuid}>>>>Created time: #{res_page['created_time']}"
+        logger.info "<#{uuid}>>>>Last edited time: #{res_page['last_edited_time']}"
         logger.info "<#{uuid}>>>>Authors: #{authors}"
         logger.info "<#{uuid}>>>>Properties ⇟"
-        props = response['properties'] || {}
+        props = res_page['properties'] || {}
         props_exlude = ['Couverture']
         props.each do |key, value|
             next if props_exlude.include?(key)
             logger.info "<#{uuid}>>>>>>#{key}: #{get_prop_value(field: value)}"
         end
-        response['authors'] = authors
+        res_page['authors'] = authors
+
+        response = res_page
         return response
     end
 
@@ -321,11 +343,9 @@ class WebhookAsync
         timestamp       = payload['timestamp'] || nil
         uuid_full       = payload['request_id'] || nil
         uuid            = uuid_full.split('-')[0]  #to have a shorter uuid for display
-        logger.info "<#{uuid}>raw_hdr Notion request"
-    #    pp raw_hdr      #unless raw_hdr.empty?
         return          if raw_hdr.empty?
         logger.info "<#{uuid}>Payload Notion request"
-    #    pp payload      #unless payload.empty?
+        pp payload      #unless payload.empty?
         return          if payload.empty?
 
         # Check signature
@@ -358,6 +378,7 @@ class WebhookAsync
         prms['authors_id']  = authors_id
         prms['authors_type']= authors_type
         prms['uuid']        = uuid
+        prms['data']        = data
         authors             = "Error"
 
         # Process according to type of entity & type of action
