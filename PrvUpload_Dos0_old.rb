@@ -1,9 +1,6 @@
 =begin
 #   Program:    PrvUploadToNotion Dossiers
-#   Parameters: P1 => debug => Y or N
-#               P2 => Loop => L or null
-#               P3 => nil
-#               P4 => file from finder or F to select
+#   Parameters: P1 => filename
 #
 #   Function:   upload 1 file to Notion.DB & attach to 'Dossier'
 #   Build:      0.0.2   <251026-0907>
@@ -87,97 +84,11 @@ class   UploadFileToNotion
     #++++++++++++++++
     #   get parameters
     #   INP:    ARGV
-    #   OUT:    @arr_parameters => {debug=> ?, P2=> ?, P3=> ?, file=> ?}
+    #   OUT:    @arr_parameters => {file=> ?}
     #
-        @arr_parameters['debug']    = ARGV[0]
-        @arr_parameters['P2']       = ARGV[1]
-        @arr_parameters['P3']       = ARGV[2]
-        @arr_parameters['file']     = ARGV[3]
+        @arr_parameters['file']     = ARGV[0]
 
         @arr_parameters
-    end #<def>
-
-    def getTypeTag()
-    #+++++++++++++
-    #   INP:    ?
-    #   OUT:    ?
-    #
-        # Settings
-        myheaders = {
-            'Authorization'     => "Bearer #{NOTION_TOKEN}",
-            'Notion-Version'    => NOTION_API_VERSION_OLD,
-            'Content-Type'      => 'application/json'
-        }
-        id_aidt_common  = '2cd72117082a8017a72bfb196354b23a'    #https://www.notion.so/cssghe/2cd72117082a8017a72bfb196354b23a?v=2cd72117082a8051b85a000c64b9bea8&source=copy_link
-        query = {
-        #    filter: {},
-            sorts: [{ property: 'Nom', direction: 'ascending' }]
-        }
-        all_pages       = []
-        has_more        = true
-        start_cursor    = nil
-
-        # Read all pages
-        while has_more  #<L1>
-            query[:start_cursor] = start_cursor if start_cursor
-
-            response = HTTParty.post(
-                "#{BASE_URL}/databases/#{id_aidt_common}/query",
-                headers: myheaders,
-                body: query.to_json
-            )
-
-            unless response.success?    #<IF2>
-                puts "=> #{__method__} : Erreur query: #{response['message']}"
-                pp  response
-                break
-            end #<IF2>
-
-            all_pages.concat(response['results'])
-            has_more        = response['has_more']
-            start_cursor    = response['next_cursor']
-        end #<L1>
-
-        # Dispatch about type
-        @arr_emetteurs  = {}
-        @arr_tags       = {}
-        @arr_types      = {}
-        all_pages.each do |page|    #<L1>
-            page_id = page['id']
-            page['properties'].each do |key, value| #<L2>
-                case value['type']  #<L3>
-                when    'title'
-                    nom         = value['title']&.first&.dig('text', 'content')
-                end #<L3>
-                @arr_tags[nom]  = page_id
-            end #<L2>
-        end #<L1>
-    end #<def>
-
-    def getTagType(id)
-    #+++++++++++++
-    #   INP:    ?
-    #   OUT:    ?
-    #
-        myheaders = {
-            'Authorization'     => "Bearer #{NOTION_TOKEN}",
-            'Notion-Version'    => NOTION_API_VERSION_OLD,
-            'Content-Type'      => 'application/json'
-        }
-        response = HTTParty.get(
-            "#{BASE_URL}/pages/#{id}",
-            headers: myheaders
-        )
-        unless response.success?    #<IF1>
-            puts "=> #{__method__} : Erreur query: #{response['message']}"
-            pp  response
-            exit 7
-        end #<IF1>
-
-        results = response['results']
-        props   = results['properties']
-        type    = props['Type'].dig('select', 'name')
-        return  type
     end #<def>
 
     def checkFileType(file_select)
@@ -206,7 +117,6 @@ class   UploadFileToNotion
         @arr_fileinfos['fullpath']  = "#{file_path}"
 
         # check type & Get content
-        type_include    = ['txt', 'pdf', 'json', 'csv']
         if @type_include.none?{ |ex| file_type.include?(ex) }
             @arr_fileinfos['content']   = file_data[0,100]
             @arr_fileinfos['code']      = true
@@ -230,189 +140,31 @@ class   UploadFileToNotion
     #   OUT:    @dossier_id
     #           @arr_fields_req
     #
-        # all choices
-        @obj_choices    = {
-            'BVL'=> {
-                'TEXT'=>    ['CCCA', 'ENBW', 'ENIV', 'LST', 'CYB', 'DOC'],
-                'CCCA'=>    {'ID'=> '2c172117-082a-806e-928b-000b0e5068f9',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            },
-                'ENBW'=>    {'ID'=> '2c172117-082a-80a1-a4ca-000baa9795f0',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            },
-                'ENIV'=>    {'ID'=> '2c172117-082a-80e0-b99a-000b6e36f6c2',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            },
-                'LST'=>     {'ID'=> '2c172117-082a-80e0-b99a-000b6e36f6c2',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            },
-                'CYB'=>     {'ID'=> '2c172117-082a-80f4-ab46-000b74090847',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)}},
-                'DOC'=>     {'ID'=>  '2c372117-082a-8033-b77a-000b4e5b6fb6',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'select'=> %w(Type Emetteur),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            }
-            },
-            'SAN'=> {
-                'TEXT'=>    ['COL','GIL','DOC'],
-                'COL'=>     {'ID'=> '2c172117-082a-80ee-af9d-000b81773e80',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'select'=> %w(Type Emetteur),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            },
-                'GIL'=>     {'ID'=> '2c172117-082a-80de-8861-000b0bf22f81',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'select'=> %w(Type Emetteur),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            },
-                'DOC'=>     {'ID'=> '2c372117-082a-8020-bd2a-000b4ec7a18b',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'select'=> %w(Type Emetteur),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            }
-            },
-            'INF'=> {
-                'TEXT'=>    ['SEC','DOC'],
-                'SEC'=>     {'ID'=> '2c172117-082a-807a-a442-000be661990c',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            },
-                'DOC'=>     {'ID'=> '2c172117-082a-808d-8936-000b3ad03c19',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'select'=> %w(Type Emetteur),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            }
-            },
-            'OFF'=> {
-                'TEXT'=>    ['ONP','SPF','DOC'],
-                'ONP'=>     {'ID'=> '2c172117-082a-800b-981b-000b687b592d',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            },
-                'SPF'=>     {'ID'=> '2c172117-082a-80b9-9f21-000bbcc8804d',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            },
-                'DOC'=>     {'ID'=>  '2c372117-082a-805a-9cca-000b6c71d553',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'select'=> %w(Type Emetteur),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            }
-            },
-            'FIN'=> {
-                'TEXT'=>    ['CBC','KEY','SAN','DOC'],
-                'CBC'=>     {'ID'=> '2c172117-082a-802b-b70e-000b7e80a023',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            },
-                'KEY'=>     {'ID'=> '2c172117-082a-80fe-a624-000bb41cfbe4',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            },
-                'SAN'=>     {'ID'=> '2c172117-082a-80a0-aca9-000bcee0ce32',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                    #    'multi_select'=> %w(Tags),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            },
-                'DOC'=>     {'ID'=> '2c272117-082a-80ea-a31a-000b9f58c855',
-                            'FLD'=> {'title'=> %w(Référence),
-                                        'text'=> %w(Description),
-                                        'relation'=> %w(Type Emetteur),
-                                        'fichier'=> %w(Fichier)
-                                    }
-                            }
-            }
-        }
-        # Get Area
-        print   "Enter the Area [#{@old_area}] => "
-        @obj_choices.each do |key, val|
-            print   key
-            print   '/'
+        arr_areas = ['BVL', 'DOC', 'FIN', 'INF', 'OFF', 'SAN']
+        while true
+            print   "=> Areas: #{arr_areas} ? "
+            area = $stdin.gets.chomp.strip.upcase
+            if arr_areas.include?(area)
+                @old_area   = area
+                break
+            else
+                puts "Invalid area. Please try again."
+            end
         end
-            print   "\n"
-        area        = ask("Your choice : ","#{@old_area}").upcase
-        @old_area   = area
 
-        # Get Object
-        print   "Enter the object for #{area} [#{@old_object}] => "
-        array   = @obj_choices[area]['TEXT']
-        array.each do |key, val|
-            print   key
-            print   '/'
-        end
-        print   "\n"
-
-        # set values
-        object          = ask("Your choice : ","#{@old_object}").upcase
+        print  "=> Object ? "
+        object = $stdin.gets.chomp.strip.upcase
         @old_object     = object
-        @dossier_id     = @obj_choices[area][object]['ID']
+
+        print "=> Dossier"
+        dossier = $stdin.gets.chomp.strip.upcase
+        @dossier_id     = dossier
+        
         @arr_fields_req = @obj_choices[area][object]['FLD']
         puts    "=> For Object: #{object}"
         puts    "=> DOSID: #{@dossier_id}"
         puts    "=> FIELDS: #{@arr_fields_req}"
     end #<def>
-
-
-    def ask(prompt, default = nil)
-        print default ? "#{prompt} [#{default}]: " : "#{prompt}: "
-        v = STDIN.gets&.strip
-        (v.nil? || v.empty?) ? default : v
-    end
 
     def getFileObject()
     #++++++++++++++++

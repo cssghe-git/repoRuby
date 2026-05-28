@@ -364,6 +364,7 @@ class   UploadFileToNotion
             return  false   unless level2 != 'Q'
             @old_level2 = level2
             break   if @arr_dossiers.key?(level2)
+            break
         end
 
         # Get Level3/Tags from Tags
@@ -374,6 +375,7 @@ class   UploadFileToNotion
             return  false   unless level3 != 'Q'
             @old_level3 = level3
             break   if @tagl3.include?(level3)
+            break
         end
 
         # Get Level4/Type from Types
@@ -384,6 +386,7 @@ class   UploadFileToNotion
             return  false   unless level4 != 'Q'
             @old_level4 = level4
             break   if @arr_types.key?(level4)
+            break
         end
 
         # Get Emetteur from Tags
@@ -394,7 +397,7 @@ class   UploadFileToNotion
             return  false   unless sender != 'Q'
             @old_sender = sender
             break   if @arr_tags.has_key?(sender)
-            @old_sender = "Unknown"
+        #    @old_sender = "Unknown"
             break
         end
 
@@ -537,7 +540,7 @@ class   UploadFileToNotion
 
     def attachFile()
     #+++++++++++++
-    #   attach the file to a new page in DB
+    #   attach the file to a new page in DB-Upload
     #   INP:    ?
     #   OUT:    ?
     #
@@ -589,7 +592,9 @@ class   UploadFileToNotion
         # build properties
         props = {}
         props['Nom']      = { 'title' => [{ 'text' => { 'content' => @arr_fileinfos['filename'] }} ] }
+        props['Dossier']   = { 'relation' => [{ 'id' => @arr_dossiers[@old_level1][0]} ] }
         props['Tags']           = { 'relation' => [{ 'id' => @arr_tags[@old_level3][0]} ] }
+        props['Type']           = { 'relation' => [{ 'id' => @arr_types[@old_level4][0]} ] }
         props['Emetteur']       = { 'relation' => [{ 'id' => @arr_tags[@old_sender][0]} ] }
         props['Description']    = { 'rich_text' => [{ 'text' => { 'content' => @note } }] }
         props['Fichier']        = { 'files' => [{ 'file_upload' => { 'id' => @arr_fileinfos['id'] }}] }
