@@ -7,6 +7,7 @@
 require 'sidekiq'
 require 'json'
 require 'httparty'
+require 'logger'
 require "active_support/security_utils"
 #
 begin
@@ -28,7 +29,7 @@ class WebhookAsync
     # Dispatch according to type of request (from who)
     def perform(type = 'None', payload = {}, raw_body = nil, raw_hdr = nil)
 
-        build = "260522_1533"  #to identify code version in logs
+        build = "260524_0839"  #to identify code version in logs
         logger.datetime_format = '%H:%M:%S'
 
         logger.info ">>>"
@@ -47,7 +48,7 @@ class WebhookAsync
             handle_fastmail(payload)
 
         when 'Notion-request'       #from Notion - request (POST) - webhook integration - new version
-            handle_notion_request(payload, raw_body, raw_hdr)
+            handle_notion_request(payload, raw_body)
 
         when 'Notion-busycal'       #from Notion - busycal (POST)
             handle_notion_busycal(payload)
@@ -123,35 +124,6 @@ class WebhookAsync
             f.puts "<<<End of data>>>"
             f.puts ">>>"
         end
-    end
-
-    #
-    # Check signature
-    #*****************
-    def check_signature(signature: nil, raw_hdr: nil)
-    #
-        return false if signature.nil?
-        return false if raw_hdr.nil?
-
-    #    pp raw_hdr
-
-        # Retrieve the verification_token from initial request
-        verification_token = ENV['NOT_WEBHOOK_VERIFY'] || 'unknown'
-
-        digest = OpenSSL::HMAC.hexdigest("SHA256", verification_token, raw_hdr)
-        calculated_signature = "sha256=#{digest}"
-
-        # Constant-time comparison
-        is_trusted_payload = ActiveSupport::SecurityUtils.secure_compare(
-            calculated_signature,
-            signature
-            )
-
-        unless is_trusted_payload
-            # Ignore the event
-            logger.warn "⚠️ Signature mismatch - check payload"
-        end
-        return is_trusted_payload
     end
 
     #
@@ -335,25 +307,19 @@ class WebhookAsync
     #                   From Notion - request (POST) - webhook integration
     #                   ****************************
     #
-    def handle_notion_request(payload = {}, raw_body = {}, raw_hdr = {})
-        #raw_hdr contains ENV fields (headers) - for logging and security checks
+    def handle_notion_request(payload = {}, raw_body = {})
         #
         # Extract values & display if needed
         #+++++++++++++++++++++++++++++++++++
         timestamp       = payload['timestamp'] || nil
         uuid_full       = payload['request_id'] || nil
         uuid            = uuid_full.split('-')[0]  #to have a shorter uuid for display
-        return          if raw_hdr.empty?
-        logger.info "<#{uuid}>Payload Notion request"
-        pp payload      #unless payload.empty?
         return          if payload.empty?
 
         # Check signature
         #++++++++++++++++
         signature   = payload['notion_signature']
         logger.info "<#{uuid}>Check signature: #{signature}"
-    #    rc          = check_signature(signature: signature, raw_hdr: raw_hdr)
-    #    logger.info "<#{uuid}>Signature check: #{rc ? 'OK' : 'FAILED'}"
 
         # Extract parts - level 1
         #++++++++++++++++++++++++
@@ -407,6 +373,8 @@ class WebhookAsync
             end
 
         when 'view'
+            logger.info "<#{uuid}>Payload Notion request"
+            pp payload      #unless payload.empty?
             response = 'Unknown'
             prms['get_type'] = 'view'
             case type
@@ -429,6 +397,8 @@ class WebhookAsync
         when 'person'
 
         when 'database'
+            logger.info "<#{uuid}>Payload Notion request"
+            pp payload      #unless payload.empty?
             prms['get_type'] = 'database'
             case type
             when 'database.created', 'database.content_updated', 'database.schema_updated',
@@ -438,6 +408,8 @@ class WebhookAsync
             end
 
         when 'data_source'
+            logger.info "<#{uuid}>Payload Notion request"
+            pp payload      #unless payload.empty?
             prms['get_type'] = 'data_source'
             case type
             when 'data_source.created', 'data_source.content_updated', 'data_source.schema_updated', 'data_source.deleted'
@@ -446,6 +418,8 @@ class WebhookAsync
             end
 
         when 'file_upload'
+            logger.info "<#{uuid}>Payload Notion request"
+            pp payload      #unless payload.empty?
             prms['get_type'] = 'file_upload'
             case type
             when 'file_upload.created'
@@ -458,6 +432,8 @@ class WebhookAsync
                 logger.info "<#{uuid}>Request for: #{entity_type} => type: #{type}"
             end
         else
+            logger.info "<#{uuid}>Payload Notion request"
+            pp payload      #unless payload.empty?
             logger.warn "<#{uuid}>Unknown entity type: #{entity_type}"
         end
 
