@@ -29,10 +29,11 @@ BASE_URL                = 'https://api.notion.com/v1'
 
         # make Container_ID
         if @container_url.size > 60
-            @container_db_id = @container_url[29..60]
+            @container_db_id = @container_url[32..63]
         else
             @container_db_id    = @container_url
         end
+        puts    ">>>Your Container ID is : #{@container_db_id}"
 
         # get all data-sources
         header = {

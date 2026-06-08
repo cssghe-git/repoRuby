@@ -139,6 +139,8 @@ class   Standards
         options.each do |key, value|
             @opts[key]  = value
         end
+
+        return @opts
     end #<dev>
 
     #====================

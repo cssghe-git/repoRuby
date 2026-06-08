@@ -83,6 +83,7 @@ class   CotMgt
             'Aquagym_1',
             'Aquagym_2',
             'Aquagym_3',
+            'Aquagym_4',
             'Art_Floral',
             'Danse',
             'Dessin',

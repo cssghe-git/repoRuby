@@ -31,5 +31,10 @@
     {"OFF": "2c372117-082a-805a-9cca-000b6c71d553", "name": "OFF"},
     {"SAN": "2c372117-082a-8020-bd2a-000b4ec7a18b", "name": "SAN"},
 
+    {"Dossiers": "35972117-082a-80e2-bc2c-000b528b61be", "name": "Dossiers"},
+    {"Types": "35972117-082a-80d1-b7b7-000b74157f86", "name": "Types"},
+    {"Tags": "35972117-082a-80a0-b8bd-000b8185135c", "name": "Tags"},
+    {"FilesUpload": "20172117082a809784efeb6f051f8e0c", "name": "FilesUpload"},
+    
     {"E-mails": "30672117082a800e849cc411e1a8d143", "name": "E-mails"}
 ]

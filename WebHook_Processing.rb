@@ -111,6 +111,7 @@ class WebhookProcessing < Sinatra::Base
         token   = payload['verification_token']
         x_array[:x_token] = token || 'unknown token'
 
+    begin
         # Log + sécurité basique
         ### pp payload  #to search fields
         logger.info "Webhook reçu: #{source['type'] || 'unknown'} from #{request.ip} "
@@ -120,7 +121,9 @@ class WebhookProcessing < Sinatra::Base
 
         # Enqueue async IMMÉDIATEMENT
         WebhookAsync.perform_async('Notion-automation', payload, x_array)
-
+    rescue => e
+        logger.warn "Erreur lors du traitement du notion_webhook: #{e.message}"
+    end
         # Réponse 200 rapide (fire & forget)
         [200, { 'Content-Type' => 'application/json' }, 
             [{ status: 'received', queued: true }.to_json]]
