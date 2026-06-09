@@ -26,6 +26,8 @@ end
 #
 require_relative    'ClStandards.rb'
 
+#   Options
+#**********
     opts    = {                                         #specific options
         debug: 'DEBUG',
         dryrun: false
@@ -36,10 +38,13 @@ require_relative    'ClStandards.rb'
         o.on("--dryrun=SIMUL", %w[true false], "Dry run mode") { |v| opts[:dryrun] = v }
     end.parse!(ARGV)
 
+#   Variables
+#************
     arr_domaines    = ['BVL', 'DOC', 'FIN', 'INF', 'OFF', 'SAN', 'RES']
     arr_dossiers    = []
     arr_types       = []
     arr_tags        = []
+    arr_senders     = []
     upl_fields      = {
         'Domaine': {'type': 'select', 'prompt': 'Domaine ', 'options': arr_domaines},
         'Dossier': {'type': 'choice', 'prompt': 'Dossier ', 'options': arr_dossiers},
@@ -53,7 +58,11 @@ require_relative    'ClStandards.rb'
     log.datetime_format = '%H:%M:%S'
 
 # Main code
+#**********
+    #Initialisations
+    #===============
     # New instances
+    #++++++++++++++
     log.info("🛂->Program #{$0} is starting...")
     log.debug("▶️->Initialisations")
     log.debug("⏩️->Create a new instance of class <Standards>")
@@ -63,6 +72,7 @@ require_relative    'ClStandards.rb'
     prompt = TTY::Prompt.new
 
     # Specific options
+    #+++++++++++++++++
     log.debug("⏩️->Set specfic options")
     opts = nold.loadOpts(opts)                                     #add spec values
     pp opts
@@ -70,9 +80,10 @@ require_relative    'ClStandards.rb'
     log.level   = opts[:debug] || :INFO
     log.info("🔧 Prog: #{$0} Level: #{opts[:debug]} Mode: #{DRY_RUN ? 'DRY-RUN (simulation)' : 'PRODUCTION'}")
 
-    # Processing
-    log.debug("▶️->Main code in progress...")
-
+    # Load data files
+    #++++++++++++++++
+    #   DOSSIERS
+    #-----------
     log.debug("⏩️->Load <DOSSIERS> ")
     dos_dbid = nnew.getDbId('Dossiers')
     log.debug("⏭️->DOS_DBID:#{dos_dbid}")
@@ -90,6 +101,8 @@ require_relative    'ClStandards.rb'
         arr_dossiers.push(properties['Référence']) unless arr_dossiers.include?(properties['Référence'])
     end
     
+    # TAGS
+    #-----
     log.debug("⏩️->Load <Tags> ")
     tag_dbid = nnew.getDbId('Tags')
     log.debug("⏭️->TAG_DBID:#{tag_dbid}")
@@ -107,6 +120,8 @@ require_relative    'ClStandards.rb'
         arr_tags.push(properties['Référence']) unless arr_tags.include?(properties['Référence'])
     end
 
+    # TYPES
+    #------
     log.debug("⏩️->Load <Types> ")
     typ_dbid = nnew.getDbId('Types')
     log.debug("⏭️->TYP_DBID:#{typ_dbid}")
@@ -124,6 +139,28 @@ require_relative    'ClStandards.rb'
         arr_types.push(properties['Référence']) unless arr_types.include?(properties['Référence'])
     end
 
+    # SENDERS
+    #--------
+    log.debug("⏩️->Load <Senders> ")
+    sen_dbid = nnew.getDbId('Senders')
+    log.debug("⏭️->SEN_DBID:#{sen_dbid}")
+    sen_sort = [
+        { "property": "Référence", "direction": "ascending"}
+    ]
+    start_fct   = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    sen_pages   = nnew.db_fetch(sen_dbid, sort: sen_sort)   #get all pages
+    stop_fct    = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    elapsed_fct = ((stop_fct - start_fct)*1000).round(2)
+    sen_pages_max = sen_pages.size
+    log.debug("⏭️->Fetch DB:: #{sen_pages_max} pages on elapsed time: #{elapsed_fct} ms or #{(elapsed_fct / 1000).round(2)} sec")
+    sen_pages.each do |page|
+        properties  = nold.get_properties(page)
+        arr_senders.push(properties['Référence']) unless arr_senders.include?(properties['Référence'])
+    end
+
+    # Processing uploaded files
+    #--------------------------
+    log.debug("▶️->Main code in progress...")
     log.debug("⏩️->Load DB <FilesUpload>")
     upl_dbid    = nold.getDbId('FilesUpload')
     log.debug("⏭️->UPL_DBID:#{upl_dbid}")

@@ -1,17 +1,39 @@
-=== puma startup: 2026-05-22 15:24:28 +0200 ===
-[46439] - Worker 0 (PID: 46443) booted in 0.0s, phase: 0
-[46439] - Worker 1 (PID: 46444) booted in 0.0s, phase: 0
-[46439] - Worker 2 (PID: 46445) booted in 0.0s, phase: 0
+=== puma startup: 2026-06-08 16:00:07 +0200 ===
+[30051] - Worker 0 (PID: 30055) booted in 0.0s, phase: 0
+[30051] - Worker 1 (PID: 30056) booted in 0.0s, phase: 0
+[30051] - Worker 2 (PID: 30057) booted in 0.0s, phase: 0
 >>>DBG>Notion_Request
-RAW:{"id":"8a94ae83-9e23-427c-a181-0086abb923b9","timestamp":"2026-05-22T13:27:32.345Z","workspace_id":"930df1e7-bd0e-46aa-8c3a-f2945fce17fd","workspace_name":"CssGhe's Notion","subscription_id":"368d872b-594c-812b-93d6-00993481f96b","integration_id":"368d872b-594c-816b-8dd8-0037f356034f","authors":[{"id":"5fedf47c-da8f-4d83-a227-806df3375254","type":"person"}],"attempt_number":1,"api_version":"2026-03-11","entity":{"id":"36872117-082a-809a-aecc-d97fe8722b49","type":"page"},"type":"page.properties_updated","data":{"parent":{"id":"13572117-082a-80e0-acc8-f5d50c791ed7","type":"database","data_source_id":"13572117-082a-8153-8340-000b5065dabd"},"updated_properties":["%60NTV"]}}
-SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:4f02623f3042b34846de760ffac154a8f957b4d7c9817a8d6e92baa882ba8d0d - Calculated:4f02623f3042b34846de760ffac154a8f957b4d7c9817a8d6e92baa882ba8d0d
-raw_body.bytesize: 678
-received_signature: 4f02623f3042b34846de760ffac154a8f957b4d7c9817a8d6e92baa882ba8d0d
-calculated_signature: 4f02623f3042b34846de760ffac154a8f957b4d7c9817a8d6e92baa882ba8d0d
-same length: true
-is_trusted: true
-[1;34mINFO [0m 2026-05-22T13:28:34.369Z pid=46443 tid=yvn: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
->>>DBG>Notion_Request done in 7.8ms
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:70fe68fed3287c6284c5eebeed2d838de1bec584029bcb3d1d852351a4d2588b - Calculated:70fe68fed3287c6284c5eebeed2d838de1bec584029bcb3d1d852351a4d2588b - Trusted: true
+[1;34mINFO [0m 2026-06-08T14:04:29.385Z pid=30055 tid=msn: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+>>>DBG>Notion_Request done in 5.0ms
+>>>DBG>Email_Webhook => 
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:93c9d77399e2d04d5c750e08445624a36dc9c0edae8afc2dd4a0248bfe0f7908 - Calculated:93c9d77399e2d04d5c750e08445624a36dc9c0edae8afc2dd4a0248bfe0f7908 - Trusted: true
+[1;34mINFO [0m 2026-06-08T14:20:50.295Z pid=30056 tid=mso: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+>>>DBG>Notion_Request done in 9.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f08f0d9f50d6053597c137d0cc3160abbc5b53a2d8997cda27a2b0ece4785277 - Calculated:f08f0d9f50d6053597c137d0cc3160abbc5b53a2d8997cda27a2b0ece4785277 - Trusted: true
+[1;34mINFO [0m 2026-06-08T14:20:50.652Z pid=30057 tid=m8h: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
+>>>DBG>Notion_Request done in 6.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:4c050b323e97de1ed34d99dc8c04b95aea2b605bfacdc3448efdb0606895176f - Calculated:4c050b323e97de1ed34d99dc8c04b95aea2b605bfacdc3448efdb0606895176f - Trusted: true
+>>>DBG>Notion_Request done in 4.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:a68b850e59b86b4cbd29b503b7a6b94b9d11a09e05b33189359ff61c06834c1c - Calculated:a68b850e59b86b4cbd29b503b7a6b94b9d11a09e05b33189359ff61c06834c1c - Trusted: true
+>>>DBG>Notion_Request done in 4.2ms
+>>>DBG>Email_Webhook => 
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b2ea5f42375e31227504a4aa0b3d3e060204bd001e7f84c028ea478aeff8599a - Calculated:b2ea5f42375e31227504a4aa0b3d3e060204bd001e7f84c028ea478aeff8599a - Trusted: true
+>>>DBG>Notion_Request done in 7.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:d1accd5b670ef9c8822c2bb3d14be60f712519cc51bb376473c3e57806ac5a3a - Calculated:d1accd5b670ef9c8822c2bb3d14be60f712519cc51bb376473c3e57806ac5a3a - Trusted: true
+>>>DBG>Notion_Request done in 4.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:e10fd690c388079b4a2f298d035af0e769356e14e488c2a27bbe3090f17e2136 - Calculated:e10fd690c388079b4a2f298d035af0e769356e14e488c2a27bbe3090f17e2136 - Trusted: true
+>>>DBG>Notion_Request done in 10.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b76def761d3e79e5eee5cff60881afb1c368f5ee3767e8459302472488462185 - Calculated:b76def761d3e79e5eee5cff60881afb1c368f5ee3767e8459302472488462185 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
 >>>DBG>Github_Webhook => 
 >>>DBG>Payload/env => 
 {"rack.version" => [1, 6],
@@ -31,23 +53,23 @@ is_trusted: true
  "REQUEST_URI" => "/github_webhook",
  "SERVER_PROTOCOL" => "HTTP/1.1",
  "HTTP_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
- "HTTP_USER_AGENT" => "GitHub-Hookshot/a55126a",
- "CONTENT_LENGTH" => "8631",
+ "HTTP_USER_AGENT" => "GitHub-Hookshot/5af8f1d",
+ "CONTENT_LENGTH" => "8001",
  "HTTP_ACCEPT" => "*/*",
  "CONTENT_TYPE" => "application/json",
- "HTTP_X_FORWARDED_FOR" => "140.82.115.159",
+ "HTTP_X_FORWARDED_FOR" => "140.82.115.120",
  "HTTP_X_FORWARDED_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
  "HTTP_X_FORWARDED_PROTO" => "https",
- "HTTP_X_GITHUB_DELIVERY" => "7d0be1f0-55e3-11f1-9f2c-00d1541eec2c",
+ "HTTP_X_GITHUB_DELIVERY" => "de9cbf6e-634b-11f1-935c-8f5c520e7275",
  "HTTP_X_GITHUB_EVENT" => "push",
  "HTTP_X_GITHUB_HOOK_ID" => "603554883",
  "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" => "1195298323",
  "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE" => "repository",
- "HTTP_X_HUB_SIGNATURE" => "sha1=a23379417095ff7a572af7f644006c6cbcc048fb",
+ "HTTP_X_HUB_SIGNATURE" => "sha1=73df23d249c7403aec8fdef63db4d0f24fb5ab65",
  "HTTP_X_HUB_SIGNATURE_256" =>
-  "sha256=801e0072601e51e201bbfaaad4c3f088a09dbdc1976d62139f2e39641f6762ae",
+  "sha256=b74938d2722aa2f05ae55db9c2b24a6e4fd0e9dbe48f1445672b3057ab6285df",
  "HTTP_ACCEPT_ENCODING" => "gzip",
- "puma.request_body_wait" => 0.09299999475479126,
+ "puma.request_body_wait" => 0.11800003051757812,
  "SERVER_NAME" => "progenitorial-fredda-headlong.ngrok-free.dev",
  "SERVER_PORT" => "443",
  "PATH_INFO" => "/github_webhook",
@@ -56,11 +78,11 @@ is_trusted: true
  "rack.hijack?" => true,
  "rack.hijack" =>
   #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
- "rack.input" => #<StringIO:0x00000001226fb5a8>,
+ "rack.input" => #<StringIO:0x0000000100a062d8>,
  "puma.config" =>
-  #<Puma::Configuration:0x0000000122b1f8c8
+  #<Puma::Configuration:0x00000001206ce2f8
    @_options=
-    #<Puma::UserFileDefaultOptions:0x0000000122715a70
+    #<Puma::UserFileDefaultOptions:0x00000001205ca3e8
      @default_options=
       {auto_trim_time: 30,
        binds: ["tcp://0.0.0.0:9292"],
@@ -100,7 +122,7 @@ is_trusted: true
        worker_timeout: 60,
        workers: 0,
        http_content_length_limit: nil,
-       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+       events: #<Puma::Events:0x00000001205ca7f8 @hooks={state: []}>,
        preload_app: true},
      @file_options=
       {config_files: ["puma.rb"],
@@ -114,38 +136,38 @@ is_trusted: true
        redirect_stderr: "log/puma.stderr.log",
        redirect_append: false,
        before_worker_boot:
-        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
+        [{block: #<Proc:0x00000001205a8950 puma.rb:23>,
           cluster_only: true,
           id: nil}]},
      @user_options=
       {log_writer:
-        #<Puma::LogWriter:0x0000000122affd20
+        #<Puma::LogWriter:0x00000001206ad580
          @custom_logger=nil,
          @debug=false,
          @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
+          #<Puma::ErrorLogger:0x00000001205ca870
            @debug=false,
            @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001205a84c8>,
          @stderr=#<IO:log/puma.stderr.log>,
          @stdout=#<IO:log/puma.stdout.log>>,
        logger:
-        #<Puma::LogWriter:0x0000000122affd20
+        #<Puma::LogWriter:0x00000001206ad580
          @custom_logger=nil,
          @debug=false,
          @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
+          #<Puma::ErrorLogger:0x00000001205ca870
            @debug=false,
            @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001205a84c8>,
          @stderr=#<IO:log/puma.stderr.log>,
          @stdout=#<IO:log/puma.stdout.log>>,
        environment: "development",
        worker_write: #<IO:fd 9>}>,
    @clamped=true,
    @default_dsl=
-    #<Puma::DSL:0x0000000122711dd0
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+    #<Puma::DSL:0x00000001205c9dd0
+     @config=#<Puma::Configuration:0x00000001206ce2f8 ...>,
      @options=
       {auto_trim_time: 30,
        binds: ["tcp://0.0.0.0:9292"],
@@ -185,13 +207,13 @@ is_trusted: true
        worker_timeout: 60,
        workers: 0,
        http_content_length_limit: nil,
-       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+       events: #<Puma::Events:0x00000001205ca7f8 @hooks={state: []}>,
        preload_app: true},
      @plugins=[]>,
-   @events=#<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
+   @events=#<Puma::Events:0x00000001205ca7f8 @hooks={state: []}>,
    @file_dsl=
-    #<Puma::DSL:0x0000000122715228
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+    #<Puma::DSL:0x00000001205c9fd8
+     @config=#<Puma::Configuration:0x00000001206ce2f8 ...>,
      @options=
       {config_files: ["puma.rb"],
        workers: 3,
@@ -204,39 +226,39 @@ is_trusted: true
        redirect_stderr: "log/puma.stderr.log",
        redirect_append: false,
        before_worker_boot:
-        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
+        [{block: #<Proc:0x00000001205a8950 puma.rb:23>,
           cluster_only: true,
           id: nil}]},
      @path="puma.rb",
      @plugins=[]>,
    @hooks={before_worker_boot: true},
    @loaded=true,
-   @plugins=#<Puma::PluginLoader:0x0000000122715980 @instances=[]>,
+   @plugins=#<Puma::PluginLoader:0x00000001205ca320 @instances=[]>,
    @puma_bundler_pruned=false,
    @user_dsl=
-    #<Puma::DSL:0x0000000122715390
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
+    #<Puma::DSL:0x00000001205ca0c8
+     @config=#<Puma::Configuration:0x00000001206ce2f8 ...>,
      @options=
       {log_writer:
-        #<Puma::LogWriter:0x0000000122affd20
+        #<Puma::LogWriter:0x00000001206ad580
          @custom_logger=nil,
          @debug=false,
          @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
+          #<Puma::ErrorLogger:0x00000001205ca870
            @debug=false,
            @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001205a84c8>,
          @stderr=#<IO:log/puma.stderr.log>,
          @stdout=#<IO:log/puma.stdout.log>>,
        logger:
-        #<Puma::LogWriter:0x0000000122affd20
+        #<Puma::LogWriter:0x00000001206ad580
          @custom_logger=nil,
          @debug=false,
          @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
+          #<Puma::ErrorLogger:0x00000001205ca870
            @debug=false,
            @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
+         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001205a84c8>,
          @stderr=#<IO:log/puma.stderr.log>,
          @stdout=#<IO:log/puma.stdout.log>>,
        environment: "development",
@@ -244,2317 +266,18 @@ is_trusted: true
      @plugins=[]>>,
  "sinatra.commonlogger" => true,
  "rack.logger" =>
-  #<Logger:0x0000000122e40fc0
+  #<Logger:0x0000000100a25070
    @default_formatter=
-    #<Logger::Formatter:0x00000001226f9d20 @datetime_format=nil>,
+    #<Logger::Formatter:0x0000000100a060f8 @datetime_format=nil>,
    @formatter=nil,
    @level=1,
    @level_override={},
    @logdev=
-    #<Logger::LogDevice:0x0000000122b15dc8
+    #<Logger::LogDevice:0x00000001213a5d28
      @binmode=false,
      @dev=#<IO:log/puma.stderr.log>,
      @filename="log/puma.stderr.log",
-     @mon_data=#<Monitor:0x00000001226f9c58>,
-     @mon_data_owner_object_id=1568,
-     @reraise_write_errors=[],
-     @shift_age=0,
-     @shift_period_suffix="%Y%m%d",
-     @shift_size=1048576,
-     @skip_header=false>,
-   @progname=nil>,
- "rack.request.query_hash" => {},
- "rack.request.form_pairs" => [],
- "rack.request.form_hash" => {},
- "sinatra.route" => "POST /github_webhook"}
->>>DBG>Github_Webhook => 
->>>DBG>Payload/env => 
-{"rack.version" => [1, 6],
- "rack.errors" => #<IO:log/puma.stderr.log>,
- "rack.multithread" => true,
- "rack.multiprocess" => true,
- "rack.run_once" => false,
- "rack.url_scheme" => "https",
- "SCRIPT_NAME" => "",
- "QUERY_STRING" => "",
- "SERVER_SOFTWARE" => "puma 7.2.0 On The Corner",
- "GATEWAY_INTERFACE" => "CGI/1.2",
- "rack.after_reply" => [],
- "rack.response_finished" => [],
- "REQUEST_METHOD" => "POST",
- "REQUEST_PATH" => "/github_webhook",
- "REQUEST_URI" => "/github_webhook",
- "SERVER_PROTOCOL" => "HTTP/1.1",
- "HTTP_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
- "HTTP_USER_AGENT" => "GitHub-Hookshot/a55126a",
- "CONTENT_LENGTH" => "9600",
- "HTTP_ACCEPT" => "*/*",
- "CONTENT_TYPE" => "application/json",
- "HTTP_X_FORWARDED_FOR" => "140.82.115.119",
- "HTTP_X_FORWARDED_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
- "HTTP_X_FORWARDED_PROTO" => "https",
- "HTTP_X_GITHUB_DELIVERY" => "7f293460-55e3-11f1-8d8e-30a83690ce44",
- "HTTP_X_GITHUB_EVENT" => "secret_scanning_alert_location",
- "HTTP_X_GITHUB_HOOK_ID" => "603554883",
- "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" => "1195298323",
- "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE" => "repository",
- "HTTP_X_HUB_SIGNATURE" => "sha1=1770bc1b9ef229fb46233cab09145a0ac062476d",
- "HTTP_X_HUB_SIGNATURE_256" =>
-  "sha256=b0df4dbeaf20ea2a6b2fa2190dd80a9a5eae256dc360b69843dfd64971f77ca3",
- "HTTP_ACCEPT_ENCODING" => "gzip",
- "puma.request_body_wait" => 0.035999998450279236,
- "SERVER_NAME" => "progenitorial-fredda-headlong.ngrok-free.dev",
- "SERVER_PORT" => "443",
- "PATH_INFO" => "/github_webhook",
- "REMOTE_ADDR" => "127.0.0.1",
- "puma.socket" => #<TCPSocket:fd 17, AF_INET, 127.0.0.1, 4567>,
- "rack.hijack?" => true,
- "rack.hijack" =>
-  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
- "rack.input" => #<StringIO:0x0000000102cfc620>,
- "puma.config" =>
-  #<Puma::Configuration:0x0000000122b1f8c8
-   @_options=
-    #<Puma::UserFileDefaultOptions:0x0000000122715a70
-     @default_options=
-      {auto_trim_time: 30,
-       binds: ["tcp://0.0.0.0:9292"],
-       fiber_per_request: false,
-       debug: false,
-       enable_keep_alives: true,
-       early_hints: nil,
-       environment: "development",
-       first_data_timeout: 30,
-       idle_timeout: nil,
-       io_selector_backend: :auto,
-       log_requests: false,
-       logger: #<IO:log/puma.stdout.log>,
-       max_keep_alive: 999,
-       max_threads: 5,
-       min_threads: 0,
-       mode: :http,
-       mutate_stdout_and_stderr_to_sync_on_write: true,
-       out_of_band: [],
-       persistent_timeout: 65,
-       prune_bundler: false,
-       queue_requests: true,
-       rackup: "config.ru",
-       raise_exception_on_sigterm: true,
-       reaping_time: 1,
-       remote_address: :socket,
-       silence_single_worker_warning: false,
-       silence_fork_callback_warning: false,
-       tag: "repoRuby",
-       tcp_host: "0.0.0.0",
-       tcp_port: 9292,
-       wait_for_less_busy_worker: 0.005,
-       worker_boot_timeout: 60,
-       worker_check_interval: 5,
-       worker_culling_strategy: :youngest,
-       worker_shutdown_timeout: 30,
-       worker_timeout: 60,
-       workers: 0,
-       http_content_length_limit: nil,
-       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
-       preload_app: true},
-     @file_options=
-      {config_files: ["puma.rb"],
-       workers: 3,
-       min_threads: 5,
-       max_threads: 5,
-       binds: ["tcp://0.0.0.0:4567"],
-       preload_app: true,
-       pidfile: "tmp/pids/puma.pid",
-       redirect_stdout: "log/puma.stdout.log",
-       redirect_stderr: "log/puma.stderr.log",
-       redirect_append: false,
-       before_worker_boot:
-        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
-          cluster_only: true,
-          id: nil}]},
-     @user_options=
-      {log_writer:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       logger:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       environment: "development",
-       worker_write: #<IO:fd 9>}>,
-   @clamped=true,
-   @default_dsl=
-    #<Puma::DSL:0x0000000122711dd0
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options=
-      {auto_trim_time: 30,
-       binds: ["tcp://0.0.0.0:9292"],
-       fiber_per_request: false,
-       debug: false,
-       enable_keep_alives: true,
-       early_hints: nil,
-       environment: "development",
-       first_data_timeout: 30,
-       idle_timeout: nil,
-       io_selector_backend: :auto,
-       log_requests: false,
-       logger: #<IO:log/puma.stdout.log>,
-       max_keep_alive: 999,
-       max_threads: 5,
-       min_threads: 0,
-       mode: :http,
-       mutate_stdout_and_stderr_to_sync_on_write: true,
-       out_of_band: [],
-       persistent_timeout: 65,
-       prune_bundler: false,
-       queue_requests: true,
-       rackup: "config.ru",
-       raise_exception_on_sigterm: true,
-       reaping_time: 1,
-       remote_address: :socket,
-       silence_single_worker_warning: false,
-       silence_fork_callback_warning: false,
-       tag: "repoRuby",
-       tcp_host: "0.0.0.0",
-       tcp_port: 9292,
-       wait_for_less_busy_worker: 0.005,
-       worker_boot_timeout: 60,
-       worker_check_interval: 5,
-       worker_culling_strategy: :youngest,
-       worker_shutdown_timeout: 30,
-       worker_timeout: 60,
-       workers: 0,
-       http_content_length_limit: nil,
-       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
-       preload_app: true},
-     @plugins=[]>,
-   @events=#<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
-   @file_dsl=
-    #<Puma::DSL:0x0000000122715228
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options=
-      {config_files: ["puma.rb"],
-       workers: 3,
-       min_threads: 5,
-       max_threads: 5,
-       binds: >>>DBG>Github_Webhook => 
-[>>>DBG>Github_Webhook => 
-"tcp://0.0.0.0:4567">>>DBG>Payload/env => 
->>>DBG>Payload/env => 
-],
-       preload_app: true,
-       pidfile: "tmp/pids/puma.pid",
-       redirect_stdout: "log/puma.stdout.log",
-       redirect_stderr: "log/puma.stderr.log",
-       redirect_append: false,
-       before_worker_boot:
-        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
-          cluster_only: true,
-          id: nil}]},
-     @path="puma.rb",
-     @plugins=[{{]"rack.version">,"rack.version" 
- =>   @hooks=>={ before_worker_boot:[ 1,true }, 6
-],
- "rack.errors"   [ @loaded=> #<IO:log/puma.stderr.log>,
- "rack.multithread"= =>true true1,, ,
-
-   6@plugins ="rack.multiprocess" =>]#<Puma::PluginLoader:0x0000000122715980 @instances ,=true,[
- 
-"rack.run_once" => ] false,>
- ,"rack.url_scheme" =>
-    "https",
- "rack.errors""SCRIPT_NAME"@puma_bundler_pruned =>= => false"",,
-  "QUERY_STRING"#<IO:log/puma.stderr.log> ,=>
-    "",
- @user_dsl"SERVER_SOFTWARE"= =>
- 
-     "puma 7.2.0 On The Corner"#<Puma::DSL:0x0000000122715390,
-
- "rack.multithread"      =>"GATEWAY_INTERFACE" =>@config ="CGI/1.2",
-  #<Puma::Configuration:0x0000000122b1f8c8true "rack.after_reply"...,>, =>
-
-       @options"rack.multiprocess"[ =>]=,
-  "rack.response_finished"true
- =>      ,{ []log_writer:,
-
- 
-"REQUEST_METHOD"          =>"rack.run_once"#<Puma::LogWriter:0x0000000122affd20  =>"POST",
- 
-          false"REQUEST_PATH" ,=>@custom_logger=
-  "/github_webhook"nil"rack.url_scheme",,
-  
-"REQUEST_URI"=>          => @debug "https""/github_webhook",,=
-
-false  ,"SCRIPT_NAME""SERVER_PROTOCOL"  =>
- "HTTP/1.1"         =>, @error_logger
- "HTTP_HOST"= "",=>
- "progenitorial-fredda-headlong.ngrok-free.dev",
- 
-"QUERY_STRING" "HTTP_USER_AGENT" =>  "GitHub-Hookshot/a55126a",
- =>          "CONTENT_LENGTH"#<Puma::ErrorLogger:0x0000000122716e98  =>""
-,
-             @debug"9558",=
-false ,"HTTP_ACCEPT""SERVER_SOFTWARE"
-             =>@ioerr=> ="*/*"#<IO:log/puma.stderr.log> "puma 7.2.0 On The Corner",,>
-,
-
-          @formatter "GATEWAY_INTERFACE" "CONTENT_TYPE" =>=>= "application/json",
- #<Puma::LogWriter::PidFormatter:0x00000001229de180 >,"CGI/1.2""HTTP_X_FORWARDED_FOR" ,=>
- 
-"140.82.115.242"          @stderr,"rack.after_reply"=
- #<IO:log/puma.stderr.log> ,
-"HTTP_X_FORWARDED_HOST" =>         =>@stdout= "progenitorial-fredda-headlong.ngrok-free.dev" ,#<IO:log/puma.stdout.log>
-[>],, 
-       "HTTP_X_FORWARDED_PROTO"
- =>logger:  "https",
- "rack.response_finished""HTTP_X_GITHUB_DELIVERY"
-          =>#<Puma::LogWriter:0x0000000122affd20 =>"7f24a080-55e3-11f1-878b-4fdac0340e3e",
-          
- @custom_logger"HTTP_X_GITHUB_EVENT"= [=>nil], "secret_scanning_alert_location",
-,
-
-          @debug ="REQUEST_METHOD" =>"HTTP_X_GITHUB_HOOK_ID" false=>, 
- "603554883",
-"POST"          ,@error_logger
-"HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" ="REQUEST_PATH"  =>=>  "1195298323"
-,
-           "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE"#<Puma::ErrorLogger:0x0000000122716e98"/github_webhook" =>
-,           
- "repository"@debug ,=
- "REQUEST_URI""HTTP_X_HUB_SIGNATURE"false , 
-=>=>            @ioerr"sha1=42a3abcff0ba77481a4a318d0200de98535e6f42"=,#<IO:log/puma.stderr.log> >
-"/github_webhook" "HTTP_X_HUB_SIGNATURE_256",, =>
-
-
-            "SERVER_PROTOCOL"@formatter"sha256=a905498013c079736286d61ca4b2edc1b73d6651ebbf1dd4414de526f78c0e47"=,
-  #<Puma::LogWriter::PidFormatter:0x00000001229de180=>"HTTP_ACCEPT_ENCODING">, 
-"HTTP/1.1" =>          @stderr"gzip",=,
-
-#<IO:log/puma.stderr.log>  ,"puma.request_body_wait"
- =>"HTTP_HOST"  0.3270000070333481,
- =>"SERVER_NAME"          @stdout= "progenitorial-fredda-headlong.ngrok-free.dev"=>#<IO:log/puma.stdout.log>,
- "progenitorial-fredda-headlong.ngrok-free.dev" >,,
-"HTTP_USER_AGENT"       
-  environment:=>"SERVER_PORT"  =>  "443","GitHub-Hookshot/a55126a"
-,"development"
-  "PATH_INFO" =>,"CONTENT_LENGTH"
-        => "/github_webhook" "9574"worker_write:, 
- ,"REMOTE_ADDR"
-#<IO:fd 9>  }=>,"HTTP_ACCEPT"
-       "127.0.0.1"@plugins,=>=
-  "*/*",[
-"puma.socket" =>] >"CONTENT_TYPE"> ,=> #<TCPSocket:fd 16, AF_INET, 127.0.0.1, 4567>,
- 
-"application/json" , 
-"sinatra.commonlogger""rack.hijack?"   =>=>"HTTP_X_FORWARDED_FOR"   true,=>true
- "140.82.115.93", 
-"rack.hijack" => ,"rack.logger" =>
- 
-  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
-
- "HTTP_X_FORWARDED_HOST" =>"rack.input"   =>#<Logger:0x00000001237ce240
-     @default_formatter="progenitorial-fredda-headlong.ngrok-free.dev"#<StringIO:0x000000012301adc8>,
-,
-  
-"puma.config"     #<Logger::Formatter:0x0000000102cfc418=>"HTTP_X_FORWARDED_PROTO"  
-  #<Puma::Configuration:0x0000000122b1f8c8@datetime_format
-   =@_optionsnil>==>,
-
-     "https",
-   #<Puma::UserFileDefaultOptions:0x0000000122715a70@formatter ="HTTP_X_GITHUB_DELIVERY"
-     @default_options=nil =>,
- 
-         {auto_trim_time:@level =30,"7f1c6320-55e3-11f1-9f03-1fd40bcaace3"1,,
-
- 
-       binds:    @level_override=["tcp://0.0.0.0:9292""HTTP_X_GITHUB_EVENT"],
-       { }fiber_per_request:, =>false,
-    "secret_scanning_alert_location"
-       ,debug:
-  false"HTTP_X_GITHUB_HOOK_ID",
-       @logdev =enable_keep_alives:=> true ,
-"603554883"
-       ,early_hints:
-     #<Logger::LogDevice:0x000000012396f298 
-     nil,
-       "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID"@binmode=environment: =>false  "development",,
-       "1195298323"first_data_timeout:,
-      30
-,
-        @devidle_timeout:"HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE"  =nil,
-       =>#<IO:log/puma.stderr.log>,io_selector_backend: 
-"repository"      :auto,@filename,=
-       "log/puma.stderr.log"
-log_requests:, 
- false     ,"HTTP_X_HUB_SIGNATURE"
-       @mon_datalogger: ==>  #<IO:log/puma.stdout.log>,"sha1=c2e35f48b797537166df3ab784fa49177249e122",
-       max_keep_alive:#<Monitor:0x0000000102cfc3f0>
-, 999 ,"HTTP_X_HUB_SIGNATURE_256"
-
-            max_threads:@mon_data_owner_object_id= 5,
-        =>min_threads:1584,
-
-        "sha256=3858566333111fcba55bd572ae500b1e7b27c852b7b1448609c7aaba9f8ab18f"@reraise_write_errors0,,
-
-       =mode:[ ]"HTTP_ACCEPT_ENCODING" ,:http,
- 
-=>            mutate_stdout_and_stderr_to_sync_on_write:@shift_age  true="gzip",
-       0,,out_of_band: [
-
-],
-            @shift_period_suffixpersistent_timeout: = 65,"puma.request_body_wait""%Y%m%d"
-       ,prune_bundler:
- false,
-             queue_requests:@shift_size==> true,
-       rackup:  1048576"config.ru",,
-0.16300000250339508
-     @skip_header=       ,false>raise_exception_on_sigterm: true,
-       ,reaping_time:
- 1,
-    @progname=
-"SERVER_NAME"        nil>=>,remote_address: 
-"progenitorial-fredda-headlong.ngrok-free.dev" ,"rack.request.query_hash"
- :socket,  
-=>"SERVER_PORT"         {silence_single_worker_warning:} false,
-=>       silence_fork_callback_warning:, 
-  false,
-"rack.request.form_pairs"        "443"=>tag:  "repoRuby",
-       [tcp_host:,] 
-,"0.0.0.0" ,
-       "PATH_INFO"
-tcp_port:  "rack.request.form_hash"9292  ,
-=>=>        wait_for_less_busy_worker: "/github_webhook"{},, 
-0.005 ,
-
- "REMOTE_ADDR"       worker_boot_timeout: "sinatra.route" 60 =>=>,
-  "POST /github_webhook"       "127.0.0.1"}worker_check_interval:,
-
-  5,
-       worker_culling_strategy:"puma.socket"  :youngest,
-       =>worker_shutdown_timeout: 30,
-       worker_timeout: 60>>>DBG>Github_Webhook => 
->>>DBG>Github_Webhook => 
->>>DBG>Payload/env => 
->>>DBG>Payload/env => 
-,
-       workers: 0,
-       http_content_length_limit: nil,
-       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
-{       {preload_app:"rack.version"  "rack.version"true},
-     @file_options==> 
-      {config_files:  ["puma.rb"[=>1,],
-       workers: 3,
-       min_threads: 5,
-       max_threads: 5,
-       binds:  ["tcp://0.0.0.0:4567"],
-6       ]preload_app: ,
-[  1true, ,6
-       ],"rack.errors"pidfile:  "tmp/pids/puma.pid"
-=>  ,"rack.errors"
- =>#<IO:log/puma.stderr.log>        redirect_stdout:,
-#<IO:log/puma.stderr.log>, 
- "rack.multithread""log/puma.stdout.log",
-  =>"rack.multithread"  =>true ,true,
- 
-        redirect_stderr: "log/puma.stderr.log",
-       redirect_append:"rack.multiprocess""rack.multiprocess"  => false,
-        truebefore_worker_boot:,
- "rack.run_once" =>
-=>         false,
- "rack.url_scheme"[ =>{block: "https"  #<Proc:0x00000001229de5e0 puma.rb:23>true,,,
-
-          cluster_only: true
- , 
-"rack.run_once"           =>"SCRIPT_NAME"  =>false ,"",
- id:"QUERY_STRING"  =>nil}]} "",,
-
-
-      @user_options="SERVER_SOFTWARE" =>  "rack.url_scheme"
-      {log_writer:"puma 7.2.0 On The Corner" ,
-=> "GATEWAY_INTERFACE"
-  =>"https"        #<Puma::LogWriter:0x0000000122affd20 ,
-
-         @custom_logger"CGI/1.2",
-  ="SCRIPT_NAME"nil,
-         @debug= "rack.after_reply"=>  =>false"",
-, 
-         [],
- "rack.response_finished" =>  [],"QUERY_STRING"@error_logger= =>
-          #<Puma::ErrorLogger:0x0000000122716e98
-  "REQUEST_METHOD" "",=>
-           @debug=false, 
-"POST",
-
-            @ioerr= "REQUEST_PATH" "SERVER_SOFTWARE"=>  "/github_webhook"#<IO:log/puma.stderr.log>=>,> ,
-"puma 7.2.0 On The Corner"         ,
-
-@formatter= "REQUEST_URI" =>#<Puma::LogWriter::PidFormatter:0x00000001229de180 "/github_webhook">,
-, "SERVER_PROTOCOL" => "HTTP/1.1"
- ,
-         @stderr="GATEWAY_INTERFACE"  "HTTP_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
- "HTTP_USER_AGENT" =>#<IO:log/puma.stderr.log>,
- "GitHub-Hookshot/a55126a"         @stdout=,#<IO:log/puma.stdout.log>>,
-       
- logger:=>"CONTENT_LENGTH"  "CGI/1.2"
-        ,=>#<Puma::LogWriter:0x0000000122affd20 "9558",
-
-
-           @custom_logger=nil,
-         @debug=false,
-         @error_logger="rack.after_reply"
-"HTTP_ACCEPT"           => =>#<Puma::ErrorLogger:0x0000000122716e98  "*/*",
-[           @debug=
-false ],"CONTENT_TYPE" =>
-  "application/json",
- "rack.response_finished",
-"HTTP_X_FORWARDED_FOR"             @ioerr==> "140.82.115.93"#<IO:log/puma.stderr.log>>,,
-         =>
-  @formatter"HTTP_X_FORWARDED_HOST"[ ==> "progenitorial-fredda-headlong.ngrok-free.dev",#<Puma::LogWriter::PidFormatter:0x00000001229de180]
- >"HTTP_X_FORWARDED_PROTO" => "https",
-, 
- ,"HTTP_X_GITHUB_DELIVERY" => "7f216c30-55e3-11f1-86f1-e7dbaff4cc64",
-"REQUEST_METHOD"
-         @stderr= #<IO:log/puma.stderr.log>,
-          "HTTP_X_GITHUB_EVENT" @stdout=#<IO:log/puma.stdout.log>>,
-       =>environment: "development",
-       worker_write: #<IO:fd 9>}>,
-   @clamped==>true,
-   @default_dsl=  "secret_scanning_alert_location",
-"POST"
-    ,#<Puma::DSL:0x0000000122711dd0 
-
-"HTTP_X_GITHUB_HOOK_ID" => "603554883",
- "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" => "1195298323",
- "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE"  =>"REQUEST_PATH"       @config=>="repository"#<Puma::Configuration:0x0000000122b1f8c8 ... ,
- "/github_webhook">,"HTTP_X_HUB_SIGNATURE" ,
-=> 
- "sha1=7889480a2d96e95c2406282d1c3d8fe6276bf9fe",
- "HTTP_X_HUB_SIGNATURE_256"     @options= =>
-      "REQUEST_URI"
-{   "sha256=0dca194a58d0b0f0b12209c71b3b8d066595dacf20660cca70ae91cb3842bd6d"=>, auto_trim_time:"/github_webhook",
-
-  30"HTTP_ACCEPT_ENCODING", =>
-       binds: [ "SERVER_PROTOCOL" "gzip",
-"tcp://0.0.0.0:9292"] ,
-       fiber_per_request:  "puma.request_body_wait"=>false => ,
-       "HTTP/1.1"debug: ,0.015000000596046448
-, 
- false"HTTP_HOST" ,
-       enable_keep_alives: "SERVER_NAME"  =>true=>,  "progenitorial-fredda-headlong.ngrok-free.dev","progenitorial-fredda-headlong.ngrok-free.dev",
- 
-
-       "SERVER_PORT"early_hints:   nil,
-"HTTP_USER_AGENT"        =>=> "443",
- "PATH_INFO"  =>"GitHub-Hookshot/a55126a" "/github_webhook",,environment:
-
-  "REMOTE_ADDR" "development""CONTENT_LENGTH",  =>
- "127.0.0.1",=>       first_data_timeout:  
- 30"puma.socket","9574", 
-=> 
-       idle_timeout: nil"HTTP_ACCEPT", 
-       io_selector_backend:=> :auto,
-        "*/*"log_requests: #<TCPSocket:fd 18, AF_INET, 127.0.0.1, 4567> false,,
-, 
- "rack.hijack?"
-       logger:"CONTENT_TYPE" =>   #<IO:log/puma.stdout.log>=>, 
-"application/json"true,,
-
-        "rack.hijack"  "HTTP_X_FORWARDED_FOR"=>max_keep_alive: 
-  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>=>, 
- "140.82.115.123"999, ,
-"rack.input" =>
-         #<StringIO:0x0000000102d3a3d0>,max_threads:
- "HTTP_X_FORWARDED_HOST""puma.config" 5,
-        min_threads:  0,
-       =>mode:=> :http, 
-
-  "progenitorial-fredda-headlong.ngrok-free.dev"#<Puma::Configuration:0x0000000122b1f8c8,
-
-           mutate_stdout_and_stderr_to_sync_on_write:@_options="HTTP_X_FORWARDED_PROTO" true, 
-=>       out_of_band:
- [ ]    #<Puma::UserFileDefaultOptions:0x0000000122715a70"https",
-
-            ,@default_options=
-persistent_timeout:
-       {auto_trim_time: "HTTP_X_GITHUB_DELIVERY" 65,30 
-,
-=>       binds:         "7f2cb6d0-55e3-11f1-855c-23230a14b6bd"prune_bundler:,
- ["tcp://0.0.0.0:9292"],"HTTP_X_GITHUB_EVENT" false,
-        =>
-fiber_per_request:         false,
-       "secret_scanning_alert_location"queue_requests:debug:, true,
-
- false,
-        enable_keep_alives:"HTTP_X_GITHUB_HOOK_ID" true, =>
-               rackup:"603554883"early_hints:, "config.ru"
- nil ,,
-
-"HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID"              environment:  raise_exception_on_sigterm:"development"=>,
-         true,
-"1195298323"       first_data_timeout:reaping_time:,  30
-1, 
-       ,
-       remote_address:"HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE"  idle_timeout::socket, nil,
-=>
-               io_selector_backend:"repository" :auto,silence_single_worker_warning:
-       , 
-false ,
-       "HTTP_X_HUB_SIGNATURE"log_requests:  =>falsesilence_fork_callback_warning: ,false 
-,       "sha1=8b7797085543069d1071eff47a3745dd4aa046db",
-logger:       tag:
-  "repoRuby",
-        #<IO:log/puma.stdout.log>,tcp_host:"HTTP_X_HUB_SIGNATURE_256"
-        "0.0.0.0", max_keep_alive:
- 999,
-       =>       
-max_threads:tcp_port:   "sha256=c87cf626b91574da5962501dcd1020a81710c7bd8a90cd807e9bb258d4d44348"5 9292,,
-       ,
-       min_threads:wait_for_less_busy_worker:
-   "HTTP_ACCEPT_ENCODING"00.005 ,=>,
-        mode:
-"gzip", :http,       
-worker_boot_timeout:
-         60,
-       worker_check_interval:"puma.request_body_wait"mutate_stdout_and_stderr_to_sync_on_write: 5,
-        => worker_culling_strategy:true , :youngest,
-
-0.009000003337860107              ,worker_shutdown_timeout:out_of_band: 
-  30[],
-"SERVER_NAME"        =>,
-       worker_timeout: persistent_timeout: "progenitorial-fredda-headlong.ngrok-free.dev" ,
-60,
-65,
-               prune_bundler:workers: false,
-"SERVER_PORT"         0,
-       =>queue_requests:http_content_length_limit: true, "443" 
-       ,nil
- ,"PATH_INFO"rackup:
-        "config.ru"events:,
-        =>raise_exception_on_sigterm: "/github_webhook" ,true,
-
-         reaping_time:"REMOTE_ADDR" 1,
-#<Puma::Events:0x0000000122716d80        remote_address:=>  @hooks= {"127.0.0.1",state::socket
- ,
-       "puma.socket" [] silence_single_worker_warning:} false>,
-       ,
-=>       silence_fork_callback_warning:preload_app: false,>>>DBG>Github_Webhook => 
- 
-       true>>>DBG>Payload/env => 
-},
-     @pluginstag:= "repoRuby",[
-       tcp_host:] "0.0.0.0",>,
-   @events=
-       tcp_port: 9292,
-{       #<Puma::Events:0x0000000122716d80wait_for_less_busy_worker: @hooks={ "rack.version"state: 0.005 ,=>[]
-}       worker_boot_timeout:>,  
-[60,
-   1       ,@file_dsl=worker_check_interval:  
-65,    ]
-       worker_culling_strategy:#<Puma::DSL:0x0000000122715228 :youngest,
-       
-     @config,=
- #<Puma::Configuration:0x0000000122b1f8c8 "rack.errors"...worker_shutdown_timeout:> ,=>  
-     #<IO:log/puma.stderr.log>30,,
-       
-@options= worker_timeout:"rack.multithread" 60,
-        workers:=> 0,
-       http_content_length_limit:  
-nil,
-true       ,events:
-       {"rack.multiprocess"config_files:  ["puma.rb"]=>,
-       workers: 3 ,
-true        #<Puma::Events:0x0000000122716d80 min_threads:,@hooks =
-{state:  5[]}>,"rack.run_once",
-        
-       max_threads:=> 5preload_app:, false ,true},
-
-     @file_options=
- "rack.url_scheme"
-             { binds:config_files:=> [ "tcp://0.0.0.0:4567"]["puma.rb"], 
-"https",
-       ,preload_app:
-         true"SCRIPT_NAME"workers:, 
- 3,
-              min_threads:=>pidfile:  "tmp/pids/puma.pid""" ,,5,
-
-       max_threads: 5,
-       binds:
- ["tcp://0.0.0.0:4567"],
-               redirect_stdout:"QUERY_STRING"preload_app:  "log/puma.stdout.log", =>
-true        ,""redirect_stderr:,
-
-       pidfile:  "tmp/pids/puma.pid""log/puma.stderr.log" ,
-       ,
-       redirect_append:"SERVER_SOFTWARE"  redirect_stdout:false,
-       before_worker_boot:=> "log/puma.stdout.log",
- 
-        [       {redirect_stderr:block:"puma 7.2.0 On The Corner", "log/puma.stderr.log",
-       redirect_append:
- false,
-  #<Proc:0x00000001229de5e0 puma.rb:23>,
-"GATEWAY_INTERFACE"                  before_worker_boot:=>cluster_only: true,
-          id: "CGI/1.2" nil}
-,]},        [{block:
-
-      @path= #<Proc:0x00000001229de5e0 puma.rb:23>,
-          cluster_only: true,
-          id:"puma.rb", "rack.after_reply"nil}]} ,=>
-
-     @plugins     @user_options== [[]>,],
-
-
-          {log_writer:@hooks"rack.response_finished"
- =>        =#<Puma::LogWriter:0x0000000122affd20 {before_worker_boot: true
-         @custom_logger[=}]nil,,,
-   @loaded=
-
-          true,@debug="REQUEST_METHOD"false,
-
-   @plugins=         @error_logger=#<Puma::PluginLoader:0x0000000122715980 @instances=
-           #<Puma::ErrorLogger:0x0000000122716e98=>[]
-           @debug>=false,,
-
-               "POST"@puma_bundler_pruned=@ioerr=,false,
-#<IO:log/puma.stderr.log> >"REQUEST_PATH"
-   @user_dsl= 
-=>,    #<Puma::DSL:0x0000000122715390
-     @config
-=#<Puma::Configuration:0x0000000122b1f8c8 ...>, "/github_webhook"         ,@formatter
-
-      =@options="REQUEST_URI"
-      {log_writer: 
-#<Puma::LogWriter::PidFormatter:0x00000001229de180>        ,
-         @stderr==>#<Puma::LogWriter:0x0000000122affd20#<IO:log/puma.stderr.log>,
- 
-         @custom_logger=nil,
-         @stdout="/github_webhook"         ,
-@debug=false,
-         #<IO:log/puma.stdout.log> >@error_logger="SERVER_PROTOCOL",
-        
-          #<Puma::ErrorLogger:0x0000000122716e98logger:=>
-           @debug= false,
-
-"HTTP/1.1"                   @ioerr#<Puma::LogWriter:0x0000000122affd20=,
-         @custom_logger
-= nil"HTTP_HOST",
-         @debug=#<IO:log/puma.stderr.log>>false ,
-,
-=>          @error_logger         @formatter=="progenitorial-fredda-headlong.ngrok-free.dev"#<Puma::LogWriter::PidFormatter:0x00000001229de180>
-          ,
-         @stderr,=
-#<Puma::ErrorLogger:0x0000000122716e98 #<IO:log/puma.stderr.log>,
-
-"HTTP_USER_AGENT"                    @debug=false ,@stdout=
-=>           @ioerr=#<IO:log/puma.stdout.log>#<IO:log/puma.stderr.log>>,
-         @formatter= #<Puma::LogWriter::PidFormatter:0x00000001229de180>"GitHub-Hookshot/a55126a">,
-,         @stderr
-,=
-        #<IO:log/puma.stderr.log>,
-logger:         @stdout"CONTENT_LENGTH" 
-=>         #<Puma::LogWriter:0x0000000122affd20=
-"9044"         #<IO:log/puma.stdout.log>,@custom_logger=
-nil,
-         @debug= >false,"HTTP_ACCEPT"
- =>          @error_logger="*/*",
-          #<Puma::ErrorLogger:0x0000000122716e98,
-           @debug
-=false,
-            "CONTENT_TYPE"@ioerr=#<IO:log/puma.stderr.log> =>
-       >,
-         @formatter= environment:#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr "development",
-"application/json"       worker_write:=,#<IO:log/puma.stderr.log> #<IO:fd 9>
-,
-}>,          
-   @stdout=@clamped=#<IO:log/puma.stdout.log>>,"HTTP_X_FORWARDED_FOR"
-        environment:true=> "development", ,
-"140.82.115.63"   @default_dsl=
-       worker_write:
-    #<Puma::DSL:0x0000000122711dd0,
-
- #<IO:fd 9>      "HTTP_X_FORWARDED_HOST"} =>@config=#<Puma::Configuration:0x0000000122b1f8c8 ...,
-     @plugins= >,
-     @options"progenitorial-fredda-headlong.ngrok-free.dev"[=]>,
->,
- 
- "sinatra.commonlogger"       =>"HTTP_X_FORWARDED_PROTO"  =>true,
-{auto_trim_time:   30,
-       binds:"https""rack.logger" => ,["tcp://0.0.0.0:9292"]
-  
-, #<Logger:0x0000000122e452f0
-       fiber_per_request:
- false,
-       "HTTP_X_GITHUB_DELIVERY"    debug:=> false@default_formatter=,
- 
-           #<Logger::Formatter:0x0000000123015210enable_keep_alives:  @datetime_format=true,"7f1cd850-55e3-11f1-92ce-8b3771ccdabb",
-       
-nilearly_hints:> nil, ,
-       "HTTP_X_GITHUB_EVENT"environment: => "development",
-       
-   first_data_timeout: @formatter= 30,
-       "secret_scanning_alert"idle_timeout:nil ,
-   ,nil
- ,@level=
-       "HTTP_X_GITHUB_HOOK_ID"io_selector_backend:1 , :auto
-   ,=>
-        @level_override"603554883",=log_requests:{},
-   @logdev
-  false,
-       logger:="HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID"  
-    #<IO:log/puma.stdout.log>,=>
-#<Logger::LogDevice:0x0000000122c0cee8       max_keep_alive:  999,
-
-       max_threads:     @binmode=false,
- "1195298323"     @dev,=
-#<IO:log/puma.stderr.log>5,
-        min_threads:,
-     @filename"HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE"  ==>0 "log/puma.stderr.log""repository",
-     ,,
-
-@mon_data "HTTP_X_HUB_SIGNATURE"       mode:= :http,#<Monitor:0x0000000123015170
-        =>>,
-mutate_stdout_and_stderr_to_sync_on_write:  true,
-            out_of_band:@mon_data_owner_object_id "sha1=b15571d5966c084eb873ac7506e0b6d353826105",=
-[],1512,
-      @reraise_write_errors"HTTP_X_HUB_SIGNATURE_256"= 
-       [],
-     @shift_age==>0,
-
-persistent_timeout:       @shift_period_suffix"sha256=9d1e1db8a6a5e6cf479c9e97631250772acd57ca958cf565d3306925e44b4073" 65,
-,       
-= prune_bundler:"HTTP_ACCEPT_ENCODING" false,
-"%Y%m%d"        queue_requests:=> true,
-        rackup:,"gzip" "config.ru"
-     @shift_size,=,1048576,
-
-            @skip_header
-raise_exception_on_sigterm: = true,
-false>,
-   @progname"puma.request_body_wait"       = =>nil>,
- "rack.request.query_hash"reaping_time:   1,
-       =>0.01000000536441803remote_address:  :socket{,
-},
- ,
-"rack.request.form_pairs"         =>"SERVER_NAME"  silence_single_worker_warning:=>[] ,"progenitorial-fredda-headlong.ngrok-free.dev" 
- false,
-       "rack.request.form_hash"silence_fork_callback_warning:, 
- =>"SERVER_PORT" {},  false,
-       tag:
- =>  "sinatra.route" "repoRuby",
-"443",=>       tcp_host:  "0.0.0.0",
-       "POST /github_webhook"}
-tcp_port:
- 9292,
-       wait_for_less_busy_worker:  0.005,
-       "PATH_INFO" worker_boot_timeout: 60,=>
-        worker_check_interval:"/github_webhook" 5,
-,       worker_culling_strategy:
-  :youngest,
-       worker_shutdown_timeout:"REMOTE_ADDR" 30,
-        =>worker_timeout: 60,
-       workers: "127.0.0.1" 0,
-       http_content_length_limit:,
- nil,
-        events:"puma.socket"  #<Puma::Events:0x0000000122716d80 @hooks==>{state: []}>,
-       preload_app: true},
-     @plugins= []>#<TCPSocket:fd 16, AF_INET, 127.0.0.1, 4567>,
-   @events=,[1;34mINFO [0m 2026-05-22T13:38:21.055Z pid=46445 tid=yvp: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
-#<Puma::Events:0x0000000122716d80 @hooks={state: []}
->,
-   @file_dsl= "rack.hijack?"
-    #<Puma::DSL:0x0000000122715228
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ... >,
-     @options=>= true,
-      {config_files:
- ["puma.rb"],
-       workers: 3,
-       min_threads: 5,
-        max_threads: 5,"rack.hijack"
-        =>binds: ["tcp://0.0.0.0:4567"],
-       preload_app:
-  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136> true,
-       pidfile: "tmp/pids/puma.pid",
-,
-        redirect_stdout: "log/puma.stdout.log",
-       redirect_stderr: "log/puma.stderr.log",
-"rack.input"       redirect_append:  =>false,
-       before_worker_boot: #<StringIO:0x000000012301a850
-        [{block:> ,#<Proc:0x00000001229de5e0 puma.rb:23>,
-          
- cluster_only: true"puma.config",
-          id:  =>nil}]},
-     @path="puma.rb",
-     @plugins=
-  []>,
-   @hooks=#<Puma::Configuration:0x0000000122b1f8c8
-{before_worker_boot: true},
-   @loaded=   true,
-   @plugins=@_options=#<Puma::PluginLoader:0x0000000122715980 @instances=[]>,
-   
-@puma_bundler_pruned=    false,
-   @user_dsl=#<Puma::UserFileDefaultOptions:0x0000000122715a70
-    #<Puma::DSL:0x0000000122715390
-     @config=#<Puma::Configuration:0x0000000122b1f8c8
-      @default_options...>,
-     @options==
-      {log_writer:
-
-        #<Puma::LogWriter:0x0000000122affd20      {
-auto_trim_time:         @custom_logger=nil,
- 30         @debug=false,
-         @error_logger=,
-
-       binds:           #<Puma::ErrorLogger:0x0000000122716e98["tcp://0.0.0.0:9292"],
-           
-@debug=false       ,
-           @ioerr=fiber_per_request:#<IO:log/puma.stderr.log>>,
-         @formatter= false#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=,#<IO:log/puma.stderr.log>,
-
-                @stdout=debug: #<IO:log/puma.stdout.log>>,
-       falselogger:,
-       
-        #<Puma::LogWriter:0x0000000122affd20enable_keep_alives:
-          true@custom_logger=nil,
-         @debug,=false
-,
-                @error_logger=early_hints: 
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=nil,#<IO:log/puma.stderr.log>>
-       ,
-         @formatter=environment:#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr "development"=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       environment:,
-        "development",
-       worker_write: #<IO:fd 9>},
-     @plugins=first_data_timeout:[]>>,
-  30"sinatra.commonlogger", => true,
- 
-"rack.logger" =>
-  #<Logger:0x00000001237c3700
-          idle_timeout:@default_formatter= nil,
-
-    #<Logger::Formatter:0x0000000102d3a100        @datetime_format=nil>,
-   @formatter=nil,
-   @level=io_selector_backend:1, 
-   @level_override=:auto{},
-   @logdev=
-    #<Logger::LogDevice:0x000000012396ac98
-     @binmode=false,
-     @dev=#<IO:log/puma.stderr.log>,,
-     @filename=
-"log/puma.stderr.log",
-     @mon_data=#<Monitor:0x0000000102d3a0d8>,
-            @mon_data_owner_object_id=log_requests: 1600,false
-     @reraise_write_errors=,[],
-     @shift_age=
-0,
-     @shift_period_suffix=       "%Y%m%d",
-     @shift_size=logger:1048576,
-     @skip_header= false>,
-   @progname=nil>#<IO:log/puma.stdout.log>,,
- "rack.request.query_hash" =>
- {},
-        "rack.request.form_pairs" =>max_keep_alive: [],
-  "rack.request.form_hash"999 =>, {},
- "sinatra.route"
-        =>max_threads: "POST /github_webhook" }5
-,
-       min_threads: 0,
-       mode: :http,
-       mutate_stdout_and_stderr_to_sync_on_write: true,
-       out_of_band: [],
-       persistent_timeout: 65,
-       prune_bundler: false,
-       queue_requests: true,
-       rackup: "config.ru",
-       raise_exception_on_sigterm: true,
-       reaping_time: 1,
-       remote_address: :socket,
-       silence_single_worker_warning: false,
-       silence_fork_callback_warning: false,
-       tag: "repoRuby",
-       tcp_host: "0.0.0.0",
-       tcp_port: 9292,
-       wait_for_less_busy_worker: 0.005,
-       worker_boot_timeout: 60,
-       worker_check_interval: 5,
-       worker_culling_strategy: :youngest,
-       worker_shutdown_timeout: 30,
-       worker_timeout: 60,
-       workers: 0,
-       http_content_length_limit: nil,
-       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
-       preload_app: true},
-     @file_options=
-      {config_files: ["puma.rb"],
-       workers: 3,
-       min_threads: 5,
-       max_threads: 5,
-       binds: ["tcp://0.0.0.0:4567"],
-       preload_app: true,
-       pidfile: "tmp/pids/puma.pid",
-       redirect_stdout: "log/puma.stdout.log",
-       redirect_stderr: "log/puma.stderr.log",
-       redirect_append: false,
-       before_worker_boot:
-        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
-          cluster_only: true,
-          id: nil}]},
-     @user_options=
-      {log_writer:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       logger:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>>>DBG>Github_Webhook => 
->>>DBG>Payload/env => 
->,
-       environment: "development",{
-"rack.version" =>       worker_write: [1, 6],
-  "rack.errors" #<IO:fd 9>}=> #<IO:log/puma.stderr.log>,
- "rack.multithread" =>> true,
- "rack.multiprocess" => true,
- ,"rack.run_once" =>
-    false,
-@clamped ="rack.url_scheme" =>true "https",
- "SCRIPT_NAME" =>, "",
- 
-"QUERY_STRING"    =>@default_dsl ""=,
- "SERVER_SOFTWARE" => "puma 7.2.0 On The Corner",
- 
-"GATEWAY_INTERFACE"     => "CGI/1.2",
- #<Puma::DSL:0x0000000122711dd0"rack.after_reply" => [],
- "rack.response_finished" =>
-      @config=[],#<Puma::Configuration:0x0000000122b1f8c8 
- ..."REQUEST_METHOD" =>> "POST",
- ,"REQUEST_PATH" => "/github_webhook",
-
- "REQUEST_URI" =>      @options="/github_webhook",
- "SERVER_PROTOCOL" => "HTTP/1.1",
- 
-"HTTP_HOST" =>       "progenitorial-fredda-headlong.ngrok-free.dev"{,auto_trim_time:
-  "HTTP_USER_AGENT"30 =>, "GitHub-Hookshot/a55126a",
- "CONTENT_LENGTH" =>
-        binds:"9028",
- "HTTP_ACCEPT" =>  ["*/*",
-"tcp://0.0.0.0:9292"] "CONTENT_TYPE" =>, "application/json",
- "HTTP_X_FORWARDED_FOR" =>
-        "140.82.115.243",
- fiber_per_request:"HTTP_X_FORWARDED_HOST" =>  "progenitorial-fredda-headlong.ngrok-free.dev",
- "HTTP_X_FORWARDED_PROTO" =>false "https",
- "HTTP_X_GITHUB_DELIVERY" =>, 
-       "7f2f9d00-55e3-11f1-8938-733035611c17",
- "HTTP_X_GITHUB_EVENT" =>debug: "secret_scanning_alert",
-  "HTTP_X_GITHUB_HOOK_ID" =>false "603554883",
- ,
-       "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" =>enable_keep_alives: "1195298323",
-  "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE" true,
-=> "repository",
-        "HTTP_X_HUB_SIGNATURE" => "sha1=8c4b379594b64539ea6228238d86a890b640b979",early_hints:
-  nil"HTTP_X_HUB_SIGNATURE_256", =>
-  "sha256=2ea1c697a5b946d71edbcd0309abc45b91a9e0865a01551cff63c63d6390c9cd"
-,       
-environment: "HTTP_ACCEPT_ENCODING" => "gzip",
-  "puma.request_body_wait" "development"=>,
-        0.00599999725818634,
- "SERVER_NAME"first_data_timeout: =>  "progenitorial-fredda-headlong.ngrok-free.dev",
- 30,"SERVER_PORT"
-       idle_timeout: =>  nil"443",
- ,
-       io_selector_backend:"PATH_INFO"  :auto=>,
-        log_requests:"/github_webhook" ,false,
-
- "REMOTE_ADDR" =>        "127.0.0.1",
- "puma.socket" =>logger: #<TCPSocket:fd 18, AF_INET, 127.0.0.1, 4567>,
- "rack.hijack?" => true,
- "rack.hijack" =>
-  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136> #<IO:log/puma.stdout.log>,
- ,"rack.input" =>
- #<StringIO:0x0000000102cff7a8>,
-        "puma.config"max_keep_alive: 999 =>,
-  #<Puma::Configuration:0x0000000122b1f8c8
-   @_options
-=       
-    #<Puma::UserFileDefaultOptions:0x0000000122715a70max_threads:
-      @default_options=5,
-      {auto_trim_time: 30
-,
-       binds:        ["tcp://0.0.0.0:9292"],
-       fiber_per_request:min_threads: false, 
-       debug: 0false,,
-       
-       enable_keep_alives:mode: true,
-       early_hints:  nil,
-       environment::http, "development",
-       first_data_timeout: 30,
-       
-       idle_timeout: nil,
-       io_selector_backend: :auto,
-       mutate_stdout_and_stderr_to_sync_on_write:log_requests: true false,
-       logger:, #<IO:log/puma.stdout.log>,
-       max_keep_alive:
- 999,
-              out_of_band:max_threads: [] ,5,
-       min_threads:
-        0,
-       persistent_timeout:mode: :http,
-       mutate_stdout_and_stderr_to_sync_on_write:  true,
-       out_of_band:65 [],
-       persistent_timeout: ,65,
-       prune_bundler:
-        false,
-       queue_requests:prune_bundler: true,
-       rackup:  false"config.ru",
-,       
-       raise_exception_on_sigterm: true,
-       reaping_time: 1,
-queue_requests:        true,remote_address:
- :socket       ,
-       silence_single_worker_warning:rackup:  "config.ru"false,,
-       
-silence_fork_callback_warning:        false,
-       tag: "repoRuby",raise_exception_on_sigterm:
-       tcp_host:  "0.0.0.0",
-       tcp_port: 9292,
-       wait_for_less_busy_worker:true ,0.005,
-
-              reaping_time:worker_boot_timeout: 1,
- 60,
-       worker_check_interval: 5,
-              worker_culling_strategy: :youngest,
-       remote_address:worker_shutdown_timeout: 30,
-        worker_timeout::socket 60,
-       workers:,
-        0silence_single_worker_warning:,
-        http_content_length_limit:false nil,
-,
-       events:       silence_fork_callback_warning: #<Puma::Events:0x0000000122716d80 @hooks={state:  false,[]}>,
-
-       preload_app:        tag:true},
-      "repoRuby"@file_options=,
-      {config_files:
- ["puma.rb"],
-              tcp_host:workers: "0.0.0.0" 3,
-,
-       min_threads: 5,
-              tcp_port:max_threads:  5,9292
-       binds:,
-        ["tcp://0.0.0.0:4567"],
-       wait_for_less_busy_worker:preload_app:  true,
-       pidfile:0.005 ,
-"tmp/pids/puma.pid",       
-       redirect_stdout:worker_boot_timeout: "log/puma.stdout.log",
-       redirect_stderr:  "log/puma.stderr.log",
-60,       
-redirect_append: false,
-       before_worker_boot:       worker_check_interval: 5,
-
-               [{block:worker_culling_strategy: #<Proc:0x00000001229de5e0 puma.rb:23>,
- :youngest          cluster_only: true,
-          id:,
- nil}]},       
-     @user_options=worker_shutdown_timeout: 30
-      {log_writer:,
-       worker_timeout:
-        #<Puma::LogWriter:0x0000000122affd20 
-         @custom_logger=nil,60,
-         @debug=
-false,       workers:
-          @error_logger0,=
-       http_content_length_limit:
-           #<Puma::ErrorLogger:0x0000000122716e98nil,
-           @debug=false,
-       
-events:           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter= #<Puma::Events:0x0000000122716d80#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr= #<IO:log/puma.stderr.log>,
-         @stdout=@hooks=#<IO:log/puma.stdout.log>>,
-       logger:{state:
-        #<Puma::LogWriter:0x0000000122affd20 
-         @custom_logger=nil,
-         []@debug}=false,
-         >@error_logger=,
-          
-#<Puma::ErrorLogger:0x0000000122716e98       
-           preload_app:@debug =true}false,,
-
-                @plugins=@ioerr=#<IO:log/puma.stderr.log>>,
-         [@formatter]=>,#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>
-   ,
-         @stdout=@events=#<IO:log/puma.stdout.log>>,
-       environment:#<Puma::Events:0x0000000122716d80  @hooks"development",
-       worker_write: #<IO:fd 9>=}>,
-   @clamped={true,
-   @default_dsl=state: []
-}>    #<Puma::DSL:0x0000000122711dd0,
-
-        @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-@file_dsl     @options==
-      {auto_trim_time: 30,
-       
-binds:     [#<Puma::DSL:0x0000000122715228
-"tcp://0.0.0.0:9292"],
-       fiber_per_request:      false,
-@config       =debug: false,
-#<Puma::Configuration:0x0000000122b1f8c8       enable_keep_alives:  true,
-       ...>early_hints:,
-      nil,
-@options       =environment: "development",
-       first_data_timeout: 30,
-       idle_timeout:
-       nil,
-       io_selector_backend: :auto,
-{       config_files:log_requests:  false,[
-       logger: #<IO:log/puma.stdout.log>,
-       max_keep_alive: 999,
-"puma.rb"       ],max_threads:
-        5,
-workers:       min_threads:  0,
-       3mode:, :http,
-       
-mutate_stdout_and_stderr_to_sync_on_write:       min_threads: true,
-        5out_of_band: [],
-       ,
-persistent_timeout: 65,
-              prune_bundler:max_threads: false, 5
-       queue_requests: true,,
-       rackup:
-        "config.ru",binds:
-       raise_exception_on_sigterm: true,
-        ["tcp://0.0.0.0:4567"reaping_time:] 1,
-       remote_address:, :socket,
-       silence_single_worker_warning:
- false,
-              preload_app:silence_fork_callback_warning:  false,
-       tag:true, 
-       "repoRuby"pidfile:,
-       tcp_host:  "0.0.0.0",
-       tcp_port:"tmp/pids/puma.pid" ,9292,
-
-       redirect_stdout:       wait_for_less_busy_worker:  0.005"log/puma.stdout.log",
-       worker_boot_timeout:, 60,
-
-       worker_check_interval:        5,
-       worker_culling_strategy:redirect_stderr: :youngest,
-        worker_shutdown_timeout:"log/puma.stderr.log" ,30,
-       
-       worker_timeout:redirect_append: false 60,
-,
-              before_worker_boot:workers: 0,
-       http_content_length_limit:
-         nil[{,
-       block:events: #<Proc:0x00000001229de5e0 puma.rb:23> #<Puma::Events:0x0000000122716d80 @hooks,
-          ={state: []}>,
-       cluster_only:preload_app: true true},
-,
-     @plugins=          []>,
-id:   @events=#<Puma::Events:0x0000000122716d80 @hooks= nil{}state: ]}[]}>,
-,   @file_dsl=
-
-    #<Puma::DSL:0x0000000122715228     
-     @config=@path#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-=     @options="puma.rb",
-      {config_files:
-      ["puma.rb"@plugins]=,
-       workers: 3[]>,
-       min_threads: 5,
-,
-          @hooksmax_threads: 5,
-       binds:= ["tcp://0.0.0.0:4567"],
-       {preload_app: true,before_worker_boot: 
-       pidfile: true"tmp/pids/puma.pid",
-       }redirect_stdout:, "log/puma.stdout.log",
-
-          redirect_stderr:@loaded "log/puma.stderr.log",=
-       redirect_append: false,
-       before_worker_boot:true
-        [{block:, #<Proc:0x00000001229de5e0 puma.rb:23>,
-          cluster_only:
-    true@plugins,=
-          id: nil}]},
-     @path=#<Puma::PluginLoader:0x0000000122715980"puma.rb",
-     @plugins= @instances[]>,
-   @hooks=={before_worker_boot: true},[
-   @loaded=]true,
-   >@plugins=,#<Puma::PluginLoader:0x0000000122715980 @instances=[]
-   >,
-   @puma_bundler_pruned=@puma_bundler_prunedfalse,=
-   @user_dsl=false
-    #<Puma::DSL:0x0000000122715390
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,,
-     @options=
-   
-      {log_writer:@user_dsl
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,=
-         
-    @debug#<Puma::DSL:0x0000000122715390=
-false,
-         @error_logger=     
-          #<Puma::ErrorLogger:0x0000000122716e98@config
-           @debug==false#<Puma::Configuration:0x0000000122b1f8c8,
-            @ioerr=...#<IO:log/puma.stderr.log>>>,
-         ,@formatter=
-     @options#<Puma::LogWriter::PidFormatter:0x00000001229de180=>,
-         @stderr=
-#<IO:log/puma.stderr.log>,
-         @stdout=      #<IO:log/puma.stdout.log>>,{log_writer:
-       
-        logger:#<Puma::LogWriter:0x0000000122affd20
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger
-=nil,
-                  @custom_logger=@debug=false,
-         @error_logger=nil
-          ,#<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr
-         @debug==false,#<IO:log/puma.stderr.log>>,
-         @formatter=
-#<Puma::LogWriter::PidFormatter:0x00000001229de180         >,
-         @stderr=@error_logger=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-          
-       environment: "development",
-       worker_write: #<Puma::ErrorLogger:0x0000000122716e98#<IO:fd 9>},
-     @plugins=[]>>,
- "sinatra.commonlogger" => true
-,
- "rack.logger"            =>@debug=
-  false#<Logger:0x00000001237cf5a0
-   @default_formatter=,
-
-    #<Logger::Formatter:0x0000000102cff550 @datetime_format=nil>,
-           @ioerr=   @formatter#<IO:log/puma.stderr.log>=>nil,
-   @level,=
-1,
-   @level_override=         {@formatter},
-   @logdev==#<Puma::LogWriter::PidFormatter:0x00000001229de180>
-    #<Logger::LogDevice:0x0000000122777c70
-     @binmode=false,
-     ,@dev=
-         #<IO:log/puma.stderr.log>,
-     @filename="log/puma.stderr.log",
-     @mon_data=@stderr#<Monitor:0x0000000102cff528=>,
-     @mon_data_owner_object_id=1568,
-     @reraise_write_errors=#<IO:log/puma.stderr.log>[],
-,     @shift_age=
-0,
-     @shift_period_suffix="%Y%m%d",
-     @shift_size=         1048576,@stdout=
-     @skip_header=false>,
-   @progname=#<IO:log/puma.stdout.log>>nil>,,
- "rack.request.query_hash" =>
-        {},logger:
- "rack.request.form_pairs" => [],
- "rack.request.form_hash" => {
-},
- "sinatra.route" =>         "POST /github_webhook"}
-#<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       environment: "development",
-       worker_write: #<IO:fd 9>},
-     @plugins=[]>>,
- "sinatra.commonlogger" => true,
- "rack.logger" =>
-  #<Logger:0x0000000122e45250
-   @default_formatter=
-    #<Logger::Formatter:0x0000000123014c70 @datetime_format=nil>,
-   @formatter=nil,
-   @level=1,
-   @level_override={},
-   @logdev=
-    #<Logger::LogDevice:0x0000000122c0d028
-     @binmode=false,
-     @dev=#<IO:log/puma.stderr.log>,
-     @filename="log/puma.stderr.log",
-     @mon_data=#<Monitor:0x0000000123014bd0>,
-     @mon_data_owner_object_id=1520,
-     @reraise_write_errors=[],
-     @shift_age=0,
-     @shift_period_suffix="%Y%m%d",
-     @shift_size=1048576,
-     @skip_header=false>,
-   @progname=nil>,
- "rack.request.query_hash" => {},
- "rack.request.form_pairs" => [],
- "rack.request.form_hash" => {},
- "sinatra.route" => "POST /github_webhook"}
- #<TCPSocket:fd 17, AF_INET, 127.0.0.1, 4567>,
- "rack.hijack?" => true,
- "rack.hijack" =>
-  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
- "rack.input" => #<StringIO:0x00000001229f3e40>,
- "puma.config" =>
-  #<Puma::Configuration:0x0000000122b1f8c8
-   @_options=
-    #<Puma::UserFileDefaultOptions:0x0000000122715a70
-     @default_options=
-      {auto_trim_time: 30,
-       binds: ["tcp://0.0.0.0:9292"],
-       fiber_per_request: false,
-       debug: false,
-       enable_keep_alives: true,
-       early_hints: nil,
-       environment: "development",
-       first_data_timeout: 30,
-       idle_timeout: nil,
-       io_selector_backend: :auto,
-       log_requests: false,
-       logger: #<IO:log/puma.stdout.log>,
-       max_keep_alive: 999,
-       max_threads: 5,
-       min_threads: 0,
-       mode: :http,
-       mutate_stdout_and_stderr_to_sync_on_write: true,
-       out_of_band: [],
-       persistent_timeout: 65,
-       prune_bundler: false,
-       queue_requests: true,
-       rackup: "config.ru",
-       raise_exception_on_sigterm: true,
-       reaping_time: 1,
-       remote_address: :socket,
-       silence_single_worker_warning: false,
-       silence_fork_callback_warning: false,
-       tag: "repoRuby",
-       tcp_host: "0.0.0.0",
-       tcp_port: 9292,
-       wait_for_less_busy_worker: 0.005,
-       worker_boot_timeout: 60,
-       worker_check_interval: 5,
-       worker_culling_strategy: :youngest,
-       worker_shutdown_timeout: 30,
-       worker_timeout: 60,
-       workers: 0,
-       http_content_length_limit: nil,
-       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
-       preload_app: true},
-     @file_options=
-      {config_files: ["puma.rb"],
-       workers: 3,
-       min_threads: 5,
-       max_threads: 5,
-       binds: ["tcp://0.0.0.0:4567"],
-       preload_app: true,
-       pidfile: "tmp/pids/puma.pid",
-       redirect_stdout: "log/puma.stdout.log",
-       redirect_stderr: "log/puma.stderr.log",
-       redirect_append: false,
-       before_worker_boot:
-        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
-          cluster_only: true,
-          id: nil}]},
-     @user_options=
-      {log_writer:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       logger:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       environment: "development",
-       worker_write: #<IO:fd 9>}>,
-   @clamped=true,
-   @default_dsl=
-    #<Puma::DSL:0x0000000122711dd0
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options=
-      {auto_trim_time: 30,
-       binds: ["tcp://0.0.0.0:9292"],
-       fiber_per_request: false,
-       debug: false,
-       enable_keep_alives: true,
-       early_hints: nil,
-       environment: "development",
-       first_data_timeout: 30,
-       idle_timeout: nil,
-       io_selector_backend: :auto,
-       log_requests: false,
-       logger: #<IO:log/puma.stdout.log>,
-       max_keep_alive: 999,
-       max_threads: 5,
-       min_threads: 0,
-       mode: :http,
-       mutate_stdout_and_stderr_to_sync_on_write: true,
-       out_of_band: [],
-       persistent_timeout: 65,
-       prune_bundler: false,
-       queue_requests: true,
-       rackup: "config.ru",
-       raise_exception_on_sigterm: true,
-       reaping_time: 1,
-       remote_address: :socket,
-       silence_single_worker_warning: false,
-       silence_fork_callback_warning: false,
-       tag: "repoRuby",
-       tcp_host: "0.0.0.0",
-       tcp_port: 9292,
-       wait_for_less_busy_worker: 0.005,
-       worker_boot_timeout: 60,
-       worker_check_interval: 5,
-       worker_culling_strategy: :youngest,
-       worker_shutdown_timeout: 30,
-       worker_timeout: 60,
-       workers: 0,
-       http_content_length_limit: nil,
-       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
-       preload_app: true},
-     @plugins=[]>,
-   @events=#<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
-   @file_dsl=
-    #<Puma::DSL:0x0000000122715228
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options=
-      {config_files: ["puma.rb"],
-       workers: 3,
-       min_threads: 5,
-       max_threads: 5,
-       binds: ["tcp://0.0.0.0:4567"],
-       preload_app: true,
-       pidfile: "tmp/pids/puma.pid",
-       redirect_stdout: "log/puma.stdout.log",
-       redirect_stderr: "log/puma.stderr.log",
-       redirect_append: false,
-       before_worker_boot:
-        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
-          cluster_only: true,
-          id: nil}]},
-     @path="puma.rb",
-     @plugins=[]>,
-   @hooks={before_worker_boot: true},
-   @loaded=true,
-   @plugins=#<Puma::PluginLoader:0x0000000122715980 @instances=[]>,
-   @puma_bundler_pruned=false,
-   @user_dsl=
-    #<Puma::DSL:0x0000000122715390
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options=
-      {log_writer:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       logger:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       environment: "development",
-       worker_write: #<IO:fd 9>},
-     @plugins=[]>>,
- "sinatra.commonlogger" => true,
- "rack.logger" =>
-  #<Logger:0x0000000122e42af0
-   @default_formatter=
-    #<Logger::Formatter:0x00000001229f1be0 @datetime_format=nil>,
-   @formatter=nil,
-   @level=1,
-   @level_override={},
-   @logdev=
-    #<Logger::LogDevice:0x0000000122c092e8
-     @binmode=false,
-     @dev=#<IO:log/puma.stderr.log>,
-     @filename="log/puma.stderr.log",
-     @mon_data=#<Monitor:0x00000001229f1b68>,
-     @mon_data_owner_object_id=1536,
-     @reraise_write_errors=[],
-     @shift_age=0,
-     @shift_period_suffix="%Y%m%d",
-     @shift_size=1048576,
-     @skip_header=false>,
-   @progname=nil>,
- "rack.request.query_hash" => {},
- "rack.request.form_pairs" => [],
- "rack.request.form_hash" => {},
- "sinatra.route" => "POST /github_webhook"}
- #<TCPSocket:fd 18, AF_INET, 127.0.0.1, 4567>,
- "rack.hijack?" => true,
- "rack.hijack" =>
-  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
- "rack.input" => #<StringIO:0x0000000122446d80>,
- "puma.config" =>
-  #<Puma::Configuration:0x0000000122b1f8c8
-   @_options=
-    #<Puma::UserFileDefaultOptions:0x0000000122715a70
-     @default_options=
-      {auto_trim_time: 30,
-       binds: ["tcp://0.0.0.0:9292"],
-       fiber_per_request: false,
-       debug: false,
-       enable_keep_alives: true,
-       early_hints: nil,
-       environment: "development",
-       first_data_timeout: 30,
-       idle_timeout: nil,
-       io_selector_backend: :auto,
-       log_requests: false,
-       logger: #<IO:log/puma.stdout.log>,
-       max_keep_alive: 999,
-       max_threads: 5,
-       min_threads: 0,
-       mode: :http,
-       mutate_stdout_and_stderr_to_sync_on_write: true,
-       out_of_band: [],
-       persistent_timeout: 65,
-       prune_bundler: false,
-       queue_requests: true,
-       rackup: "config.ru",
-       raise_exception_on_sigterm: true,
-       reaping_time: 1,
-       >>>DBG>Github_Webhook => 
->>>DBG>Payload/env => 
-remote_address: :socket,
-       silence_single_worker_warning:{ "rack.version"false =>, [1, 6],
- "rack.errors"
- =>        silence_fork_callback_warning:#<IO:log/puma.stderr.log>,
- "rack.multithread" =>  true,
- "rack.multiprocess"false, =>
- true,
-        "rack.run_once" =>tag: false,
- "rack.url_scheme" =>  "https""repoRuby",
- ,"SCRIPT_NAME"
- => "",
- "QUERY_STRING"        =>tcp_host: "",
-  "SERVER_SOFTWARE""0.0.0.0" =>, "puma 7.2.0 On The Corner",
- "GATEWAY_INTERFACE"
-        tcp_port:=> 9292,
-        wait_for_less_busy_worker:"CGI/1.2",
-  0.005"rack.after_reply", =>
- [],
- "rack.response_finished" =>        [],
- "REQUEST_METHOD"worker_boot_timeout: =>  "POST"60,,
- "REQUEST_PATH" =>
-        worker_check_interval:"/github_webhook",
-  5"REQUEST_URI", 
-       =>worker_culling_strategy: "/github_webhook", 
- "SERVER_PROTOCOL":youngest, =>
-        "HTTP/1.1",
- "HTTP_HOST" worker_shutdown_timeout:=> "progenitorial-fredda-headlong.ngrok-free.dev",
-  30,"HTTP_USER_AGENT" => "GitHub-Hookshot/a55126a",
- 
-"CONTENT_LENGTH" => "9028",
- "HTTP_ACCEPT"        => worker_timeout:"*/*",
- "CONTENT_TYPE" =>  "application/json",60,
- "HTTP_X_FORWARDED_FOR" =>
- "140.82.115.242",       
- workers: "HTTP_X_FORWARDED_HOST" => "progenitorial-fredda-headlong.ngrok-free.dev",
- "HTTP_X_FORWARDED_PROTO" =>0, 
-"https"       ,http_content_length_limit:
-  nil,
-       "HTTP_X_GITHUB_DELIVERY" =>events: "7f220870-55e3-11f1-987b-13c9fe95d886",
- "HTTP_X_GITHUB_EVENT" => "secret_scanning_alert",
- #<Puma::Events:0x0000000122716d80  @hooks="HTTP_X_GITHUB_HOOK_ID" => "603554883",
- {"HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" =>state:  "1195298323",
- ["HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE" ]}=> >,"repository"
-,       
- "HTTP_X_HUB_SIGNATURE" =>preload_app: "sha1=e3646db733c1b5831e5abf4db08a90923d3ea6e2" true,}
- "HTTP_X_HUB_SIGNATURE_256", =>
-  "sha256=f27fe1bd7adf4b6da4d2f86051d382df4344883dd147e144ab76e997b408bac0"
-,     @file_options
-= "HTTP_ACCEPT_ENCODING" => "gzip"
-      ,
- "puma.request_body_wait" => 0.003999993205070496,
- {config_files:"SERVER_NAME" =>  "progenitorial-fredda-headlong.ngrok-free.dev",
-[ "SERVER_PORT" =>"puma.rb"] ,
-"443",
- "PATH_INFO" =>        "/github_webhook",
- workers:"REMOTE_ADDR" =>  "127.0.0.1",
- "puma.socket" =>3, 
-#<TCPSocket:fd 21, AF_INET, 127.0.0.1, 4567>       min_threads:,
- "rack.hijack?" => true, 
- 5"rack.hijack",
- =>
-         max_threads:#<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>,
-  5"rack.input" => #<StringIO:0x0000000102df83d0>,
- ,"puma.config" =>
-
-       binds:   [#<Puma::Configuration:0x0000000122b1f8c8
-"tcp://0.0.0.0:4567"   @_options=]
-    #<Puma::UserFileDefaultOptions:0x0000000122715a70,
-     @default_options
-=       
-      {auto_trim_time:preload_app: 30,
-       binds:  ["tcp://0.0.0.0:9292"]true,,
-
-              pidfile:fiber_per_request: false, 
-"tmp/pids/puma.pid",
-              debug: false,
-       enable_keep_alives: true,
-       early_hints:redirect_stdout: nil,
-       environment:  "development",
-       first_data_timeout:"log/puma.stdout.log", 30,
-       idle_timeout: 
-       nil,
-       io_selector_backend:redirect_stderr:  "log/puma.stderr.log":auto,
-       log_requests: false,
-       logger:, #<IO:log/puma.stdout.log>,
-       max_keep_alive:
-        999,
-       max_threads: 5,
-       min_threads:redirect_append:  0,
-       mode: false,:http
-,
-       mutate_stdout_and_stderr_to_sync_on_write:        truebefore_worker_boot:,
-       out_of_band: [],
-       persistent_timeout: 65,
-
-       prune_bundler: false,
-       queue_requests:         [true{block:,
-       rackup:  #<Proc:0x00000001229de5e0 puma.rb:23>"config.ru",
-       raise_exception_on_sigterm: true,,
-       reaping_time:
- 1          cluster_only:,
-        true,
-remote_address:           :socket,
-       silence_single_worker_warning: falseid:, 
-       silence_fork_callback_warning: false,
-       niltag: "repoRuby",
-       }]tcp_host:}, 
-     "0.0.0.0",
-@user_options=       tcp_port:
- 9292,
-       wait_for_less_busy_worker:       {0.005,log_writer:
-       worker_boot_timeout: 60,
-       
-worker_check_interval:        #<Puma::LogWriter:0x0000000122affd20 5,
-       
-         worker_culling_strategy:@custom_logger= :youngest,nil
-       ,
-worker_shutdown_timeout: 30,
-       worker_timeout:         @debug =60,false
-,       workers:
-          0,
-       http_content_length_limit:@error_logger= nil,
-       events:
-          #<Puma::ErrorLogger:0x0000000122716e98 #<Puma::Events:0x0000000122716d80 
-@hooks={           @debugstate: []=}>false,,
-
-           @ioerr       =preload_app:#<IO:log/puma.stderr.log>> true},
-     @file_options,
-         =@formatter=
-      {config_files: ["puma.rb"],
-       workers: 3,
-       min_threads: 5,
-       max_threads: #<Puma::LogWriter::PidFormatter:0x00000001229de1805,
-       binds:>, ["tcp://0.0.0.0:4567"],
-       
-         preload_app: true,
-       pidfile:@stderr "tmp/pids/puma.pid"=,#<IO:log/puma.stderr.log>
-,       
-redirect_stdout:          "log/puma.stdout.log",
-       @stdout=redirect_stderr: "log/puma.stderr.log",#<IO:log/puma.stdout.log>>,
-       
-redirect_append:        false,
-       before_worker_boot:logger:
-        [{block:
- #<Proc:0x00000001229de5e0 puma.rb:23>,        
-          cluster_only: true,
-          id:#<Puma::LogWriter:0x0000000122affd20 nil}]},
-     @user_options=
-
-      {log_writer:         @custom_logger
-        #<Puma::LogWriter:0x0000000122affd20=
-         nil@custom_logger=nil,
-         @debug=false,
-,         @error_logger=
-         @debug
-          =#<Puma::ErrorLogger:0x0000000122716e98false
-           @debug=false,,
-           @ioerr=#<IO:log/puma.stderr.log>>
-,
-         @formatter=         @error_logger=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=
-#<IO:log/puma.stderr.log>,
-                   #<Puma::ErrorLogger:0x0000000122716e98@stdout=#<IO:log/puma.stdout.log>>,
-           
-@debug       =logger:false,
-           @ioerr=
-        #<Puma::LogWriter:0x0000000122affd20#<IO:log/puma.stderr.log>
-         @custom_logger=nil,
-         @debug=>false,,
-
-                  @error_logger=@formatter=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,#<IO:log/puma.stderr.log>
-         >,
-         @formatter=@stderr#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-=         @stderr=#<IO:log/puma.stderr.log>#<IO:log/puma.stderr.log>,
-,
-                  @stdout=@stdout=#<IO:log/puma.stdout.log>#<IO:log/puma.stdout.log>>>,
-,
-       environment: "development",
-              worker_write:environment: #<IO:fd 9>}>,
-   @clamped= "development",true,
-   @default_dsl=
-       
-    #<Puma::DSL:0x0000000122711dd0
-     @config=worker_write:#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options= #<IO:fd 9>}
->,      
-{auto_trim_time: 30   ,
-       binds: ["tcp://0.0.0.0:9292"]@clamped,
-       fiber_per_request: false=,
-       debug: false,
-true       ,enable_keep_alives:
-    true,
-@default_dsl       =early_hints: nil,
-       environment:
- "development",
-           #<Puma::DSL:0x0000000122711dd0first_data_timeout: 30
-,
-            idle_timeout:@config nil,=
-       io_selector_backend:#<Puma::Configuration:0x0000000122b1f8c8  :auto,
-       log_requests: false...,
-       logger:>, #<IO:log/puma.stdout.log>,
-     
-       max_keep_alive: 999@options,=
-       max_threads: 5,
-
-      {auto_trim_time:       min_threads:  300,,
-       mode: :http
-       binds:,
-       mutate_stdout_and_stderr_to_sync_on_write: true,
-        out_of_band: [],
-["tcp://0.0.0.0:9292"]       persistent_timeout:, 65
-       fiber_per_request:,
-       prune_bundler: false,
-        falsequeue_requests:, true,
-
-              rackup: "config.ru"debug:,
-        falseraise_exception_on_sigterm:, true
-       ,
-       reaping_time:enable_keep_alives:  1,true
-,
-       remote_address: :socket,
-              early_hints:silence_single_worker_warning:  false,
-       nilsilence_fork_callback_warning: false,
-       ,
-tag: "repoRuby",
-       tcp_host:        "0.0.0.0",
-       tcp_port:environment: 9292,
-       wait_for_less_busy_worker:  0.005,"development"
-,       worker_boot_timeout:
- 60,
-              worker_check_interval: first_data_timeout:5,
-        worker_culling_strategy: :youngest30,
-       ,
-worker_shutdown_timeout: 30,
-              idle_timeout:worker_timeout: 60,
-        workers: 0,
-       http_content_length_limit: nil,nil
-       events:,
- #<Puma::Events:0x0000000122716d80 @hooks={state: [       ]}>,
-       io_selector_backend:preload_app: :auto, 
-       true},
-log_requests:      false@plugins=[]>,
-   @events=,
-       logger:#<Puma::Events:0x0000000122716d80  @hooks=#<IO:log/puma.stdout.log>{state: []}>,
-,   @file_dsl=
-       
-    #<Puma::DSL:0x0000000122715228
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options=max_keep_alive: 999
-      {config_files:, ["puma.rb"],
-       
-       max_threads:workers: 3,
-       min_threads:  55,
-       max_threads: 5,
-       ,binds:
- ["tcp://0.0.0.0:4567"],
-       preload_app: true,
-       pidfile:        min_threads:"tmp/pids/puma.pid" 0,
-,
-       redirect_stdout:       mode: "log/puma.stdout.log" ,
-       redirect_stderr: "log/puma.stderr.log",
-       :httpredirect_append:, false,
-       before_worker_boot:
-
-        [{block:       mutate_stdout_and_stderr_to_sync_on_write: #<Proc:0x00000001229de5e0 puma.rb:23>,
-          cluster_only: true ,true
-          id:, nil}
-]       }out_of_band:, 
-     []@path=,
-"puma.rb",
-     @plugins=       []>,persistent_timeout:
-   @hooks= 65{before_worker_boot: true},
-   @loaded=,true,
-   @plugins=
-       #<Puma::PluginLoader:0x0000000122715980 prune_bundler:@instances=[]>, false
-   @puma_bundler_pruned=,false,
-
-          @user_dsl=queue_requests:
-    #<Puma::DSL:0x0000000122715390
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options= true
-      {log_writer:,
-        
-#<Puma::LogWriter:0x0000000122affd20       rackup:
-         @custom_logger=nil,
-         @debug=false ,
-         @error_logger="config.ru",
-
-          #<Puma::ErrorLogger:0x0000000122716e98       
-           @debug=false,
-           @ioerr=raise_exception_on_sigterm:#<IO:log/puma.stderr.log>>,
-          true,@formatter
-=       #<Puma::LogWriter::PidFormatter:0x00000001229de180reaping_time:>,
-          1,@stderr=
-#<IO:log/puma.stderr.log>,
-       remote_address:         @stdout= #<IO:log/puma.stdout.log>>,
-       :socketlogger:,
-
-        #<Puma::LogWriter:0x0000000122affd20       
-         silence_single_worker_warning:@custom_logger=nil,
-          @debug=falsefalse,,
-
-                @error_logger=silence_fork_callback_warning:
-           #<Puma::ErrorLogger:0x0000000122716e98false
-           @debug=false,,
-
-           @ioerr=#<IO:log/puma.stderr.log>>,
-                tag:@formatter= "repoRuby",
-#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=       tcp_host:#<IO:log/puma.stderr.log>,
-         @stdout= "0.0.0.0",#<IO:log/puma.stdout.log>>,
-       environment:
-        "development",
-       worker_write: #<IO:fd 9>}tcp_port:,
-     @plugins= []>>,
-9292 ,"sinatra.commonlogger" =>
-       wait_for_less_busy_worker:  true,0.005
- ,"rack.logger"
-        =>worker_boot_timeout:
-   #<Logger:0x0000000122a7ef68
-   @default_formatter60,=
-    #<Logger::Formatter:0x0000000102df81f0 @datetime_format=nil>,
-   @formatter
-       =worker_check_interval: 5nil,
-   @level=,1,
-
-   @level_override=       {},
-   @logdev=worker_culling_strategy: :youngest,
-    #<Logger::LogDevice:0x0000000123904d80
-
-            @binmode=worker_shutdown_timeout:false,
-      @dev=#<IO:log/puma.stderr.log>,
-     @filename30=,"log/puma.stderr.log",
-     
-@mon_data=       worker_timeout:#<Monitor:0x0000000102df81c8>,
-     @mon_data_owner_object_id =60,1616,
-     @reraise_write_errors=
-[       ],
-     @shift_age=workers:0, 0
-     ,@shift_period_suffix=
-       "%Y%m%d"http_content_length_limit:,
-     @shift_size= 1048576,
-     @skip_headernil=,false
-       >,
-   @progname=events:nil>,
- "rack.request.query_hash" => {},
-  "rack.request.form_pairs" =>#<Puma::Events:0x0000000122716d80 [], @hooks
- "rack.request.form_hash" => ={},{state:
- "sinatra.route" => "POST /github_webhook"}
- []}>,
-       preload_app: true},
-     @plugins=[]>,
-   @events=#<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
-   @file_dsl=
-    #<Puma::DSL:0x0000000122715228
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options=
-      {config_files: ["puma.rb"],
-       workers: 3,
-       min_threads: 5,
-       max_threads: 5,
-       binds: ["tcp://0.0.0.0:4567"],
-       preload_app: true,
-       pidfile: "tmp/pids/puma.pid",
-       redirect_stdout: "log/puma.stdout.log",
-       redirect_stderr: "log/puma.stderr.log",
-       redirect_append: false,
-       before_worker_boot:
-        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
-          cluster_only: true,
-          id: nil}]},
-     @path="puma.rb",
-     @plugins=[]>,
-   @hooks={before_worker_boot: true},
-   @loaded=true,
-   @plugins=#<Puma::PluginLoader:0x0000000122715980 @instances=[]>,
-   @puma_bundler_pruned=false,
-   @user_dsl=
-    #<Puma::DSL:0x0000000122715390
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options=
-      {log_writer:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=>>>DBG>Github_Webhook => 
->>>DBG>Payload/env => 
-#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,{"rack.version" 
-         =>@stderr= [#<IO:log/puma.stderr.log>1, 6],
-, "rack.errors" => #<IO:log/puma.stderr.log>
-,
- "rack.multithread"          => true,
-@stdout "rack.multiprocess"= => true#<IO:log/puma.stdout.log>>,,
- "rack.run_once" =>
- false,
-        "rack.url_scheme" =>logger: "https",
- "SCRIPT_NAME" => "",
- 
-"QUERY_STRING"         #<Puma::LogWriter:0x0000000122affd20=>
- "",         
- "SERVER_SOFTWARE" => "puma 7.2.0 On The Corner",
- "GATEWAY_INTERFACE" =>@custom_logger "CGI/1.2",
-= nil"rack.after_reply" => [],,
- 
-"rack.response_finished" =>         @debug [],=
- false"REQUEST_METHOD",
- => "POST",
-          @error_logger"REQUEST_PATH" =>= "/github_webhook",
- "REQUEST_URI" =>
- "/github_webhook",
-           #<Puma::ErrorLogger:0x0000000122716e98"SERVER_PROTOCOL" => "HTTP/1.1",
- 
-"HTTP_HOST"            =>@debug "progenitorial-fredda-headlong.ngrok-free.dev",=
- "HTTP_USER_AGENT" =>false, "GitHub-Hookshot/a55126a",
- 
-           "CONTENT_LENGTH" @ioerr=>=#<IO:log/puma.stderr.log>> "9044",
- "HTTP_ACCEPT" =>,
-          "*/*",
-@formatter ="CONTENT_TYPE" =>#<Puma::LogWriter::PidFormatter:0x00000001229de180 >"application/json",
- "HTTP_X_FORWARDED_FOR",
- =>          @stderr"140.82.115.173",
- "HTTP_X_FORWARDED_HOST"=#<IO:log/puma.stderr.log>, 
-         => "progenitorial-fredda-headlong.ngrok-free.dev",
-@stdout= "HTTP_X_FORWARDED_PROTO"#<IO:log/puma.stdout.log> =>> "https",
- "HTTP_X_GITHUB_DELIVERY" =>, "7f3394a0-55e3-11f1-9e08-239abbb2418f",
-
-        "HTTP_X_GITHUB_EVENT" =>environment: "secret_scanning_alert" ,"development",
-
- "HTTP_X_GITHUB_HOOK_ID" =>        "603554883",worker_write:
- "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_ID" => "1195298323", #<IO:fd 9>
- "HTTP_X_GITHUB_HOOK_INSTALLATION_TARGET_TYPE" =>} "repository",,
-
-     @plugins "HTTP_X_HUB_SIGNATURE" => "sha1=8c5b62d75d32c3447928a0f4ae49bfc5fbd23a9a",
- ="HTTP_X_HUB_SIGNATURE_256" =>[
-  "sha256=5b872c24543da16d64d18348eaaa613d7de4613547b3f7b63903147ffea355df"]>,>,
- "HTTP_ACCEPT_ENCODING" => "gzip",
- "puma.request_body_wait"
- =>  0.003000006079673767,
- "SERVER_NAME" =>"sinatra.commonlogger" "progenitorial-fredda-headlong.ngrok-free.dev" =>,
-  "SERVER_PORT"true =>, "443",
- 
-"PATH_INFO"  =>"rack.logger"  "/github_webhook",
- "REMOTE_ADDR" =>=> "127.0.0.1",
- "puma.socket" =>
-  #<Logger:0x0000000122e234e8 #<TCPSocket:fd 22, AF_INET, 127.0.0.1, 4567>,
- "rack.hijack?"
- =>    true,
- @default_formatter="rack.hijack" =>
-
-  #<Method: Puma::Client#full_hijack() /opt/homebrew/lib/ruby/gems/3.4.0/gems/puma-7.2.0/lib/puma/client.rb:136>    ,
- #<Logger::Formatter:0x00000001223a70a0 "rack.input" =>@datetime_format= nil#<StringIO:0x0000000102e96648>>,
- "puma.config" =>,
-
-     #<Puma::Configuration:0x0000000122b1f8c8
-   @_options=@formatter
-=    #<Puma::UserFileDefaultOptions:0x0000000122715a70nil
-,
-        @default_options@level==
-      {auto_trim_time: 130,
-       binds:, ["tcp://0.0.0.0:9292"],
-       fiber_per_request:
- false   ,
-@level_override       debug:= false,
-       {enable_keep_alives:} true,
-       ,early_hints:
- nil,
-       environment:   @logdev ="development",
-       first_data_timeout: 30,
-       idle_timeout:
- nil    #<Logger::LogDevice:0x0000000122c055a8,
-       io_selector_backend:
-     @binmode :auto,
-       =falselog_requests: false,
-       logger:, #<IO:log/puma.stdout.log>,
-       max_keep_alive: 
-     999@dev=,
-       max_threads: 5,
-       min_threads:#<IO:log/puma.stderr.log>, 0,
-       mode:
- :http,
-       mutate_stdout_and_stderr_to_sync_on_write:      true,
-       @filename=out_of_band:"log/puma.stderr.log" [],,
-       
-     persistent_timeout:@mon_data 65=,
-       prune_bundler:#<Monitor:0x00000001223a5750 false,
-       queue_requests: true,
-       >rackup:,
- "config.ru",
-       raise_exception_on_sigterm:      true,@mon_data_owner_object_id
-       reaping_time:= 1,
-       remote_address:1552 ,:socket,
-       
-     silence_single_worker_warning:@reraise_write_errors false,
-       silence_fork_callback_warning:= false,[]
-       tag:, "repoRuby",
-       
-     tcp_host:@shift_age=0, "0.0.0.0"
-     ,@shift_period_suffix
-       =tcp_port: 9292,
-       wait_for_less_busy_worker:"%Y%m%d", 0.005,
-       worker_boot_timeout:
-      60,
-@shift_size=       1048576,worker_check_interval: 5,
-     @skip_header
-       worker_culling_strategy:= :youngest,false
-       worker_shutdown_timeout:> ,30
-   ,
-       worker_timeout:@progname 60,
-=       workers:nil 0,>,
-       
-http_content_length_limit:  nil"rack.request.query_hash" ,=>
-        events:{}, #<Puma::Events:0x0000000122716d80 @hooks={state: []}
- >,
-       preload_app:"rack.request.form_pairs" true}, 
-     @file_options=>=
-      {config_files: ["puma.rb"], 
-       [workers:] ,3,
-       min_threads:
-  5,
-       "rack.request.form_hash"max_threads: =>  5,{
-       binds:}, ["tcp://0.0.0.0:4567"
-],
-       preload_app:  true,"sinatra.route"
-       pidfile: => "tmp/pids/puma.pid",
-       redirect_stdout: "log/puma.stdout.log",
-        redirect_stderr:"POST /github_webhook" "log/puma.stderr.log",
-       redirect_append:}
- false,
-       before_worker_boot:
-        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
-          cluster_only: true,
-          id: nil}]}[1;34mINFO [0m 2026-05-22T13:38:21.091Z pid=46444 tid=zf0: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
-,
-     @user_options=
-      {log_writer:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       logger:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98[1;34mINFO [0m 2026-05-22T13:38:21.115Z pid=46444 tid=zes: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
-
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       environment: "development",
-       worker_write:[1;34mINFO [0m 2026-05-22T13:38:21.150Z pid=46444 tid=zfg: Sidekiq 8.1.2 connecting to Redis with options {size: 10, pool_name: "internal", url: "redis://localhost:6379/0"}
- #<IO:fd 9>}>,
-   @clamped=true,
-   @default_dsl=
-    #<Puma::DSL:0x0000000122711dd0
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options=
-      {auto_trim_time: 30,
-       binds: ["tcp://0.0.0.0:9292"],
-       fiber_per_request: false,
-       debug: false,
-       enable_keep_alives: true,
-       early_hints: nil,
-       environment: "development",
-       first_data_timeout: 30,
-       idle_timeout: nil,
-       io_selector_backend: :auto,
-       log_requests: false,
-       logger: #<IO:log/puma.stdout.log>,
-       max_keep_alive: 999,
-       max_threads: 5,
-       min_threads: 0,
-       mode: :http,
-       mutate_stdout_and_stderr_to_sync_on_write: true,
-       out_of_band: [],
-       persistent_timeout: 65,
-       prune_bundler: false,
-       queue_requests: true,
-       rackup: "config.ru",
-       raise_exception_on_sigterm: true,
-       reaping_time: 1,
-       remote_address: :socket,
-       silence_single_worker_warning: false,
-       silence_fork_callback_warning: false,
-       tag: "repoRuby",
-       tcp_host: "0.0.0.0",
-       tcp_port: 9292,
-       wait_for_less_busy_worker: 0.005,
-       worker_boot_timeout: 60,
-       worker_check_interval: 5,
-       worker_culling_strategy: :youngest,
-       worker_shutdown_timeout: 30,
-       worker_timeout: 60,
-       workers: 0,
-       http_content_length_limit: nil,
-       events: #<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
-       preload_app: true},
-     @plugins=[]>,
-   @events=#<Puma::Events:0x0000000122716d80 @hooks={state: []}>,
-   @file_dsl=
-    #<Puma::DSL:0x0000000122715228
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options=
-      {config_files: ["puma.rb"],
-       workers: 3,
-       min_threads: 5,
-       max_threads: 5,
-       binds: ["tcp://0.0.0.0:4567"],
-       preload_app: true,
-       pidfile: "tmp/pids/puma.pid",
-       redirect_stdout: "log/puma.stdout.log",
-       redirect_stderr: "log/puma.stderr.log",
-       redirect_append: false,
-       before_worker_boot:
-        [{block: #<Proc:0x00000001229de5e0 puma.rb:23>,
-          cluster_only: true,
-          id: nil}]},
-     @path="puma.rb",
-     @plugins=[]>,
-   @hooks={before_worker_boot: true},
-   @loaded=true,
-   @plugins=#<Puma::PluginLoader:0x0000000122715980 @instances=[]>,
-   @puma_bundler_pruned=false,
-   @user_dsl=
-    #<Puma::DSL:0x0000000122715390
-     @config=#<Puma::Configuration:0x0000000122b1f8c8 ...>,
-     @options=
-      {log_writer:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       logger:
-        #<Puma::LogWriter:0x0000000122affd20
-         @custom_logger=nil,
-         @debug=false,
-         @error_logger=
-          #<Puma::ErrorLogger:0x0000000122716e98
-           @debug=false,
-           @ioerr=#<IO:log/puma.stderr.log>>,
-         @formatter=#<Puma::LogWriter::PidFormatter:0x00000001229de180>,
-         @stderr=#<IO:log/puma.stderr.log>,
-         @stdout=#<IO:log/puma.stdout.log>>,
-       environment: "development",
-       worker_write: #<IO:fd 9>},
-     @plugins=[]>>,
- "sinatra.commonlogger" => true,
- "rack.logger" =>
-  #<Logger:0x0000000102e7b190
-   @default_formatter=
-    #<Logger::Formatter:0x0000000102e96468 @datetime_format=nil>,
-   @formatter=nil,
-   @level=1,
-   @level_override={},
-   @logdev=
-    #<Logger::LogDevice:0x0000000123809cf0
-     @binmode=false,
-     @dev=#<IO:log/puma.stderr.log>,
-     @filename="log/puma.stderr.log",
-     @mon_data=#<Monitor:0x0000000102e96440>,
+     @mon_data=#<Monitor:0x0000000100a060d0>,
      @mon_data_owner_object_id=1632,
      @reraise_write_errors=[],
      @shift_age=0,
@@ -2566,3 +289,816 @@ http_content_length_limit:  nil"rack.request.query_hash" ,=>
  "rack.request.form_pairs" => [],
  "rack.request.form_hash" => {},
  "sinatra.route" => "POST /github_webhook"}
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c578fbc844d8753766915db158521809548eb3e5432af789763c423ae549df3c - Calculated:c578fbc844d8753766915db158521809548eb3e5432af789763c423ae549df3c - Trusted: true
+>>>DBG>Notion_Request done in 8.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:ca3b4bd14bc409a0988944c68a2e266153b86593d16312ce8d9ed3a687281115 - Calculated:ca3b4bd14bc409a0988944c68a2e266153b86593d16312ce8d9ed3a687281115 - Trusted: true
+>>>DBG>Notion_Request done in 4.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:dd817274ec521140379899b27ceb008bef72627c744093b5fac9fc4ae589625c - Calculated:dd817274ec521140379899b27ceb008bef72627c744093b5fac9fc4ae589625c - Trusted: true
+>>>DBG>Notion_Request done in 3.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:66d00351ec59e590ede337eaffd61021b8804471f5276c53eb40d5b7d21b0a20 - Calculated:66d00351ec59e590ede337eaffd61021b8804471f5276c53eb40d5b7d21b0a20 - Trusted: true
+>>>DBG>Notion_Request done in 2.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:5d87d028ec468b1356158cc83a0a5fc9655ff46e12a251fd2c4490365ecba2c9 - Calculated:5d87d028ec468b1356158cc83a0a5fc9655ff46e12a251fd2c4490365ecba2c9 - Trusted: true
+>>>DBG>Notion_Request done in 4.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:79eaa7c76d5b26262d068d31671cdb54d4380fff421e0b3e2ba05d1597a5654a - Calculated:79eaa7c76d5b26262d068d31671cdb54d4380fff421e0b3e2ba05d1597a5654a - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c6104b5947e9b957364e4fab9e054e6e11d29438c026d24302c9da0272bf4f1f - Calculated:c6104b5947e9b957364e4fab9e054e6e11d29438c026d24302c9da0272bf4f1f - Trusted: true
+>>>DBG>Notion_Request done in 1.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:1479e134da762a806b6cb5f5e550885b85ec4a408c4da117dae8e09223846fc8 - Calculated:1479e134da762a806b6cb5f5e550885b85ec4a408c4da117dae8e09223846fc8 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:809a2c70dffe6c08cd1921058cb92e5310d8afd57f5bd19ef46da0a3fcb181e4 - Calculated:809a2c70dffe6c08cd1921058cb92e5310d8afd57f5bd19ef46da0a3fcb181e4 - Trusted: true
+>>>DBG>Notion_Request done in 2.7ms
+>>>DBG>Notion_Request
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:5c266de1e36f4fb6f6d0022e5363ebccc5e18f5bc08c2bbd30c5ad3f589a14f2 - Calculated:5c266de1e36f4fb6f6d0022e5363ebccc5e18f5bc08c2bbd30c5ad3f589a14f2 - Trusted: true
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:6d03366df14dd2be326d3b92df24ad706c89e435fa4e2e1231e6d41a26441252 - Calculated:6d03366df14dd2be326d3b92df24ad706c89e435fa4e2e1231e6d41a26441252 - Trusted: true
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:0b58ab6ab691ac8dd9d58db23d3ce62baa971d48efae43de659ae3604f33e5e6 - Calculated:0b58ab6ab691ac8dd9d58db23d3ce62baa971d48efae43de659ae3604f33e5e6 - Trusted: true
+>>>DBG>Notion_Request done in 1.9ms
+>>>DBG>Notion_Request done in 1.9ms
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c51c3ceb65b123262746b2fcfc2248f43cd288e79e8e3c5f9a54e9f7b5e3182d - Calculated:c51c3ceb65b123262746b2fcfc2248f43cd288e79e8e3c5f9a54e9f7b5e3182d - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:9660a912a2b8ad53124364b9c66fff9b58ba7642ceed9ac84aa9059a7c3cba58 - Calculated:9660a912a2b8ad53124364b9c66fff9b58ba7642ceed9ac84aa9059a7c3cba58 - Trusted: true
+>>>DBG>Notion_Request done in 1.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c96f784d5ad13964ed0541643702274ff588db0fb5bc55f998b6cba8813d9208 - Calculated:c96f784d5ad13964ed0541643702274ff588db0fb5bc55f998b6cba8813d9208 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:4c4260543acbbeb01c56350aef3dd4569432fa0732bd366376eff124b09230f3 - Calculated:4c4260543acbbeb01c56350aef3dd4569432fa0732bd366376eff124b09230f3 - Trusted: true
+>>>DBG>Notion_Request done in 3.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:21a7ac3a8ac2d36249208cfcb511b389b1855637d23ae91416e2b9ba96dd16a1 - Calculated:21a7ac3a8ac2d36249208cfcb511b389b1855637d23ae91416e2b9ba96dd16a1 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:866e660efaca90139faa6d09f4a86dd792793107f037fb8889e3312a23bfb8b1 - Calculated:866e660efaca90139faa6d09f4a86dd792793107f037fb8889e3312a23bfb8b1 - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:469eddeed063a27e5bdae31c3f97e2db3266c18b8a2e97f2368a7d533c4b9008 - Calculated:469eddeed063a27e5bdae31c3f97e2db3266c18b8a2e97f2368a7d533c4b9008 - Trusted: true
+>>>DBG>Notion_Request done in 0.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:a5812a5e86c01200ad4cdd89d2507ac40cb4163df483e2a0a7bb42dc3e30df20 - Calculated:a5812a5e86c01200ad4cdd89d2507ac40cb4163df483e2a0a7bb42dc3e30df20 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:0198b14c7df705c4da91b8f0cfde02f3966fbae53cbb5fae6ac704a1063fcb48 - Calculated:0198b14c7df705c4da91b8f0cfde02f3966fbae53cbb5fae6ac704a1063fcb48 - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:4eff6a3d930a5be5ad99c3422b126a2937e87844f0b1bb3fd2dc33d6db6a9760 - Calculated:4eff6a3d930a5be5ad99c3422b126a2937e87844f0b1bb3fd2dc33d6db6a9760 - Trusted: true
+>>>DBG>Notion_Request done in 1.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:8f5c72a4b8aedfd52f1773737c76b33540bc989ca23be8a9267e1cdaf934f0a7 - Calculated:8f5c72a4b8aedfd52f1773737c76b33540bc989ca23be8a9267e1cdaf934f0a7 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:1afe0add70fe27fc9375bf7c597ce9a161ad2d2b9861d4879266427ad2c194a0 - Calculated:1afe0add70fe27fc9375bf7c597ce9a161ad2d2b9861d4879266427ad2c194a0 - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:69f108b2cecdd1cc6aecdcf2e1cba2d20c7a659c6d61671b7b1ea8b46fc100b9 - Calculated:69f108b2cecdd1cc6aecdcf2e1cba2d20c7a659c6d61671b7b1ea8b46fc100b9 - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c390b875e68478ae2e68df6000a914cd5bbbf74a4bcebbd72c26f98c50f2a98f - Calculated:c390b875e68478ae2e68df6000a914cd5bbbf74a4bcebbd72c26f98c50f2a98f - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b14afa639e8cc79a336e2434441f0d0e1654ec884e56d4f8db3da9b6c79d306e - Calculated:b14afa639e8cc79a336e2434441f0d0e1654ec884e56d4f8db3da9b6c79d306e - Trusted: true
+>>>DBG>Notion_Request done in 1.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c2799591a0e9142db376133d1849255a37fbff29dcf977c4533d81dc3e499a5b - Calculated:c2799591a0e9142db376133d1849255a37fbff29dcf977c4533d81dc3e499a5b - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:43598ae6d4e681db31c0cea2482ceb32a5f9c3301caf8d8aeb8e773ea150b9cb - Calculated:43598ae6d4e681db31c0cea2482ceb32a5f9c3301caf8d8aeb8e773ea150b9cb - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f1757f486e45f066be38390f24e29d52b8930e7a0bba68c86ff39f24824979e3 - Calculated:f1757f486e45f066be38390f24e29d52b8930e7a0bba68c86ff39f24824979e3 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:95eae944048b48a26cd9dc5b9b25fc296c33be2c358dda1cbc7d3c14d9ed08d8 - Calculated:95eae944048b48a26cd9dc5b9b25fc296c33be2c358dda1cbc7d3c14d9ed08d8 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:deb7129dd522a995b511db0ab16d9d866c05753d9531eb6076acf5c1ffed8794 - Calculated:deb7129dd522a995b511db0ab16d9d866c05753d9531eb6076acf5c1ffed8794 - Trusted: true
+>>>DBG>Notion_Request done in 0.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:aa8afe5eb1189d9b3de5a0e4800cb35e5c5de42ffdb99085218b9adfb3cff2f3 - Calculated:aa8afe5eb1189d9b3de5a0e4800cb35e5c5de42ffdb99085218b9adfb3cff2f3 - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:bc6629d9685b92ad0e954378d0f838d6cb5fb6e5b13df6249f46aafe6128357f - Calculated:bc6629d9685b92ad0e954378d0f838d6cb5fb6e5b13df6249f46aafe6128357f - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:983f3e99153ab1f4228ef9fcf5e38701a9edc39fbca08573fa184d3ace1145c6 - Calculated:983f3e99153ab1f4228ef9fcf5e38701a9edc39fbca08573fa184d3ace1145c6 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:2e9ecf2621ab8403b131633869d4ecbd7cc46cc7958f0d35883ffdc609b47321 - Calculated:2e9ecf2621ab8403b131633869d4ecbd7cc46cc7958f0d35883ffdc609b47321 - Trusted: true
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:1f49e9613504d9036440dd4961f0514a618797703e580ae5f05f7276b90e5464 - Calculated:1f49e9613504d9036440dd4961f0514a618797703e580ae5f05f7276b90e5464 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:1e01cff68b4652ddca162269d96d772f5da0d860bd85d6e5e810099e9715f733 - Calculated:1e01cff68b4652ddca162269d96d772f5da0d860bd85d6e5e810099e9715f733 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:e29f6e82ee9910085bba110074463ae8b87bf9f02a47ac9e9c7faee468628be3 - Calculated:e29f6e82ee9910085bba110074463ae8b87bf9f02a47ac9e9c7faee468628be3 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:6671cd6ffb707bcbf34e13581a4eeef3dbc78c44a0b023a2d3d2e527324cce07 - Calculated:6671cd6ffb707bcbf34e13581a4eeef3dbc78c44a0b023a2d3d2e527324cce07 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b7fb514ea0bd40a112d36f3b4f20bfcc111c695aaa087165519641f58f5f806c - Calculated:b7fb514ea0bd40a112d36f3b4f20bfcc111c695aaa087165519641f58f5f806c - Trusted: true
+>>>DBG>Notion_Request done in 0.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:307c420fb870ec48b48a8421d1778d2d746c78b5ce4197aa89de7c56b889bece - Calculated:307c420fb870ec48b48a8421d1778d2d746c78b5ce4197aa89de7c56b889bece - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f898b33a5fe7aafed9de2f5bf8d113bde3aa0943158ddbbcf2bcc7cced9d8c8e - Calculated:f898b33a5fe7aafed9de2f5bf8d113bde3aa0943158ddbbcf2bcc7cced9d8c8e - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:1048bfe4938c170104b851790e8a0d0ec2b944867a520ff9157e3a5195c676e5 - Calculated:1048bfe4938c170104b851790e8a0d0ec2b944867a520ff9157e3a5195c676e5 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:40d4aaa33c7bed683ab15a7396216be1094694fa56ff9db1cfe2bc991e4bc44e - Calculated:40d4aaa33c7bed683ab15a7396216be1094694fa56ff9db1cfe2bc991e4bc44e - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:7ca541c88e3e470da1d5dca1ea23b3f880d4920c76bb703b6264c0f5da6ca9d6 - Calculated:7ca541c88e3e470da1d5dca1ea23b3f880d4920c76bb703b6264c0f5da6ca9d6 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:3caa1463cca91d8c90be23b129034fdc7be3d483534ba368158c6e70a55ef810 - Calculated:3caa1463cca91d8c90be23b129034fdc7be3d483534ba368158c6e70a55ef810 - Trusted: true
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:41e974b32563fcb640c08be03ca82da9f5ea5dd306c51d445e057d8c5dbd9575 - Calculated:41e974b32563fcb640c08be03ca82da9f5ea5dd306c51d445e057d8c5dbd9575 - Trusted: true
+>>>DBG>Notion_Request done in 2.0ms
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:45f37c369a39378a6149142377c3f7c6106fa62b4b0c4b6b5be6864f1c55340c - Calculated:45f37c369a39378a6149142377c3f7c6106fa62b4b0c4b6b5be6864f1c55340c - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:7de23fa43f749c8b4bdfd5db0eb5465a500b2439dbc31828e5200c953a5cfffa - Calculated:7de23fa43f749c8b4bdfd5db0eb5465a500b2439dbc31828e5200c953a5cfffa - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:cacf182c4c28399b9105b83ff95c1b7700d1583defb5e3266de0acf8ec627eb5 - Calculated:cacf182c4c28399b9105b83ff95c1b7700d1583defb5e3266de0acf8ec627eb5 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b7708d4e5ef3abc52d04f254607fa02cdd885cfb3a4d17a610bbd54a7ac529f1 - Calculated:b7708d4e5ef3abc52d04f254607fa02cdd885cfb3a4d17a610bbd54a7ac529f1 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:63485fb031e3a55f7775b17945e98009e87a1c3d6017a1f2cf422b6148244158 - Calculated:63485fb031e3a55f7775b17945e98009e87a1c3d6017a1f2cf422b6148244158 - Trusted: true
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:77a502f9c7b654b782b8d36562fb5aa22bedd14ff9d461d8ddd24dcd2d97b62e - Calculated:77a502f9c7b654b782b8d36562fb5aa22bedd14ff9d461d8ddd24dcd2d97b62e - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:6f751af12dd1096756f45aef4570568a0d01a120bf442ba9e152b83ad950879d - Calculated:6f751af12dd1096756f45aef4570568a0d01a120bf442ba9e152b83ad950879d - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:8e12fc9d91d0be141a080b8f92812d61f40522d97a82ce01ed2f6512afea7aa0 - Calculated:8e12fc9d91d0be141a080b8f92812d61f40522d97a82ce01ed2f6512afea7aa0 - Trusted: true
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:1834bdcc75105cc8cb90834e3764d33b3adb298831bfb83ed2b3eed42e1c9435 - Calculated:1834bdcc75105cc8cb90834e3764d33b3adb298831bfb83ed2b3eed42e1c9435 - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:460fbf33af83f6f59d953463e9f8810926ecbc33c84627306e8de3d57a27df4d - Calculated:460fbf33af83f6f59d953463e9f8810926ecbc33c84627306e8de3d57a27df4d - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:082888fa6f8c31c91f5fcac2f3cfa9601bf1c3ec50d5350ccb28209ed6ecd8a7 - Calculated:082888fa6f8c31c91f5fcac2f3cfa9601bf1c3ec50d5350ccb28209ed6ecd8a7 - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:6e38682f5de576c65c5c26ffbb3bc1e3f71bf41f20c571dee9e67ff17cb04239 - Calculated:6e38682f5de576c65c5c26ffbb3bc1e3f71bf41f20c571dee9e67ff17cb04239 - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:ac542efde037215fd8641fac8e859dfe343add9aafc141c587851de90949da67 - Calculated:ac542efde037215fd8641fac8e859dfe343add9aafc141c587851de90949da67 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:4710440cf03eb0faf35b7190b3fe8ab9a38797818b972636f24a5509d151f8a3 - Calculated:4710440cf03eb0faf35b7190b3fe8ab9a38797818b972636f24a5509d151f8a3 - Trusted: true
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:7605dd21afbca95fa785bc6f656f13dc663da7b7b340db0dcd338af0c87b960e - Calculated:7605dd21afbca95fa785bc6f656f13dc663da7b7b340db0dcd338af0c87b960e - Trusted: true
+>>>DBG>Notion_Request done in 1.9ms
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c1592a31f5f4aae092c9148e2e59923a6b722112c16910436a1e899b1824ee41 - Calculated:c1592a31f5f4aae092c9148e2e59923a6b722112c16910436a1e899b1824ee41 - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:a4eb0d3ddb2f4a31340bb61ad5275ab6846b7a741a240eab2a43b1a17df7a982 - Calculated:a4eb0d3ddb2f4a31340bb61ad5275ab6846b7a741a240eab2a43b1a17df7a982 - Trusted: true
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b0b4e7797e7f50142203e6f8b23d2973d9b65e6c785df93197b19acfc1ac5b0b - Calculated:b0b4e7797e7f50142203e6f8b23d2973d9b65e6c785df93197b19acfc1ac5b0b - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:622a55c7c6616ba2eca8b1a54bdba3ec4db5e4adf9253e70fac6422570079390 - Calculated:622a55c7c6616ba2eca8b1a54bdba3ec4db5e4adf9253e70fac6422570079390 - Trusted: true
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f20e0fffebe4260bcf5fee232be0e7273305b5a642dcc7984f0bd9d34eb30004 - Calculated:f20e0fffebe4260bcf5fee232be0e7273305b5a642dcc7984f0bd9d34eb30004 - Trusted: true
+>>>DBG>Notion_Request done in 0.5ms
+>>>DBG>Notion_Request done in 21.4ms
+>>>DBG>Notion_Request done in 25.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:0cb095eb087c3e3a033c7fcba9ec71b64879c69dc0f02a66cd6a59fb3e2a7023 - Calculated:0cb095eb087c3e3a033c7fcba9ec71b64879c69dc0f02a66cd6a59fb3e2a7023 - Trusted: true
+>>>DBG>Notion_Request done in 0.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:fcd17a462875c9669773ba317f84ab574eb0b24c207878d982aa2b550e5fa45c - Calculated:fcd17a462875c9669773ba317f84ab574eb0b24c207878d982aa2b550e5fa45c - Trusted: true
+>>>DBG>Notion_Request done in 0.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:943e7983052e0a81cd7b1aada3c5f6ef2e9943a29a86aa972c986f010d6c18e8 - Calculated:943e7983052e0a81cd7b1aada3c5f6ef2e9943a29a86aa972c986f010d6c18e8 - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:a19069d6855c0ce3244e7f4c2b0605ffc922e91af68c68d4d337a27dbbceaf98 - Calculated:a19069d6855c0ce3244e7f4c2b0605ffc922e91af68c68d4d337a27dbbceaf98 - Trusted: true
+>>>DBG>Notion_Request done in 0.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:44deff4dcb14b7925513cbf4b9650a7748fe653280308bb4eebd1ac655052d0b - Calculated:44deff4dcb14b7925513cbf4b9650a7748fe653280308bb4eebd1ac655052d0b - Trusted: true
+>>>DBG>Notion_Request done in 0.6ms
+>>>DBG>Notion_Request
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:a27fa103db35ba735984b0e1143c729e1a745590afcd78b2dc2664ff6fc1a960 - Calculated:a27fa103db35ba735984b0e1143c729e1a745590afcd78b2dc2664ff6fc1a960 - Trusted: true
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:e95bec9b2d68c7517f6acfed0493d53c9ff76d2f5af4e73acbd1fb7e9496e0e6 - Calculated:e95bec9b2d68c7517f6acfed0493d53c9ff76d2f5af4e73acbd1fb7e9496e0e6 - Trusted: true
+>>>DBG>Notion_Request done in 0.8ms
+>>>DBG>Notion_Request done in 0.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:091cff33c5cf7390260304c9d980dbd6e39a054a150f6455f4824aaa4aa0b05c - Calculated:091cff33c5cf7390260304c9d980dbd6e39a054a150f6455f4824aaa4aa0b05c - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:8f19331fec50301695170343ffda80a9a79e13ffd667100cd66eed2f2281d789 - Calculated:8f19331fec50301695170343ffda80a9a79e13ffd667100cd66eed2f2281d789 - Trusted: true
+>>>DBG>Notion_Request done in 1.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c8bd5c010ddcf8d4244e8cea26d5720aa13f8cd75e6be2d06543581279be18e5 - Calculated:c8bd5c010ddcf8d4244e8cea26d5720aa13f8cd75e6be2d06543581279be18e5 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b8657c83c589dadafa9b815cc4e05e69f7a0b95cd9d1833592a935c01bed2738 - Calculated:b8657c83c589dadafa9b815cc4e05e69f7a0b95cd9d1833592a935c01bed2738 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c0edb5baf9d459bc82408b8889b581463b809da515fafc8f591783a1b5e4e722 - Calculated:c0edb5baf9d459bc82408b8889b581463b809da515fafc8f591783a1b5e4e722 - Trusted: true
+>>>DBG>Notion_Request done in 2.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:83bd3727e66ce86263f168f76cd5f1b51b37d7c7fdf92ebcc22358811ee1d9cb - Calculated:83bd3727e66ce86263f168f76cd5f1b51b37d7c7fdf92ebcc22358811ee1d9cb - Trusted: true
+>>>DBG>Notion_Request done in 2.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:d85fd31960d48aa899a2d00714be52b3d2ac843dd1a4eec48e6520373c8ebaa1 - Calculated:d85fd31960d48aa899a2d00714be52b3d2ac843dd1a4eec48e6520373c8ebaa1 - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:bebddcadd5b7f165bae30f5182b77f571e5721a0d3c9e29f4cbfac7c4d18eab5 - Calculated:bebddcadd5b7f165bae30f5182b77f571e5721a0d3c9e29f4cbfac7c4d18eab5 - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:fc97eaa710c63db453b1c1b6f84cf1e09c5feb8c6578d882ad7db4df44eb1b1e - Calculated:fc97eaa710c63db453b1c1b6f84cf1e09c5feb8c6578d882ad7db4df44eb1b1e - Trusted: true
+>>>DBG>Notion_Request done in 1.6ms
+>>>DBG>Notion_Request
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:921863ef2e9b5fee587e728bffbfe34ac66c0c385a3188da763fa8247f44d38f - Calculated:921863ef2e9b5fee587e728bffbfe34ac66c0c385a3188da763fa8247f44d38f - Trusted: true
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:94ccc77bc03ee122f0995aec8537e5c29ebdca92350a7e7647c561961ae7a3f2 - Calculated:94ccc77bc03ee122f0995aec8537e5c29ebdca92350a7e7647c561961ae7a3f2 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request done in 2.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:ddd5f46fb34492be4888b1c48e1c896eda052e265bce63d6cd08c8b9657c4339 - Calculated:ddd5f46fb34492be4888b1c48e1c896eda052e265bce63d6cd08c8b9657c4339 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:741c8ec0611285f02b1969063d5bf5376c4ff2366b38d2494f41614661ad3e8c - Calculated:741c8ec0611285f02b1969063d5bf5376c4ff2366b38d2494f41614661ad3e8c - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:3c44c1daec09f3bd3aeccfb6fd3715ae99a7c03cd8852a27a311fe96c605628b - Calculated:3c44c1daec09f3bd3aeccfb6fd3715ae99a7c03cd8852a27a311fe96c605628b - Trusted: true
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:9cf9ed407e6514bfc80d4cbabf76c3ed273f9d5217fa3369eae2e3d9e281b041 - Calculated:9cf9ed407e6514bfc80d4cbabf76c3ed273f9d5217fa3369eae2e3d9e281b041 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:df7b3c314d33c4bac9d44951415065e698cd002ed0fa23bf4ef56732b6e3325d - Calculated:df7b3c314d33c4bac9d44951415065e698cd002ed0fa23bf4ef56732b6e3325d - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:25f11ed502bc77ff30a2840c713cd2dd8a11bddb9d356dd5b8a36aa6f7c4bf95 - Calculated:25f11ed502bc77ff30a2840c713cd2dd8a11bddb9d356dd5b8a36aa6f7c4bf95 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f75b53d34122a1bbf566596820ee6183d885781959a50d5dc91967b3a6b09b70 - Calculated:f75b53d34122a1bbf566596820ee6183d885781959a50d5dc91967b3a6b09b70 - Trusted: true
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:582a12dddb5626f3d27fba719b94b0890fcd4ca71bd14b8d314abee0a044e256 - Calculated:582a12dddb5626f3d27fba719b94b0890fcd4ca71bd14b8d314abee0a044e256 - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request done in 1.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f97176538aed782a0588ae751249dc602297186e9d13744b50f630ad80d3a236 - Calculated:f97176538aed782a0588ae751249dc602297186e9d13744b50f630ad80d3a236 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:43608a11efdab854156e705922c3022b750d174423c79d5c420672159e81413c - Calculated:43608a11efdab854156e705922c3022b750d174423c79d5c420672159e81413c - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:56b3252b729696ec1c43eca15364d3ad8758dd5ad7ab01c96d6a4c9ca3c8e85e - Calculated:56b3252b729696ec1c43eca15364d3ad8758dd5ad7ab01c96d6a4c9ca3c8e85e - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:7543e974fcf518fae2aa2fe3951005c8a3f6e8d8a0a7db92eff42d8ddfa7d483 - Calculated:7543e974fcf518fae2aa2fe3951005c8a3f6e8d8a0a7db92eff42d8ddfa7d483 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:9d5c0cf62bc9d4cf062c154fa2f195c60b634812f5aff4245ddb0b8ab57a9b0f - Calculated:9d5c0cf62bc9d4cf062c154fa2f195c60b634812f5aff4245ddb0b8ab57a9b0f - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:37955b485860d0308cffe17a4bf0f11ed04e477097716e091126985235b50e05 - Calculated:37955b485860d0308cffe17a4bf0f11ed04e477097716e091126985235b50e05 - Trusted: true
+>>>DBG>Notion_Request done in 4.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:e8c1617806bc9699ff3fb94f023901874a2ec0efc80779006ab6d24304d695bf - Calculated:e8c1617806bc9699ff3fb94f023901874a2ec0efc80779006ab6d24304d695bf - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:9d798d883ec64ebeafd4edc0c3821c73c0ab5ddd13965c7eadfa08218ac4edea - Calculated:9d798d883ec64ebeafd4edc0c3821c73c0ab5ddd13965c7eadfa08218ac4edea - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:0a550936bc6ac7476306cbb08743c4bd3d76920f7180da2db4748b1362cfd414 - Calculated:0a550936bc6ac7476306cbb08743c4bd3d76920f7180da2db4748b1362cfd414 - Trusted: true
+>>>DBG>Notion_Request done in 1.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c88e76629639a9c264f5c38026aa98c2ad55bd94c1219a6650ab86dd9aafd9a7 - Calculated:c88e76629639a9c264f5c38026aa98c2ad55bd94c1219a6650ab86dd9aafd9a7 - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:9d34f37c5b4386ffbc2e1fd81ea10119ef938a3797763aa9415affd8b1600a98 - Calculated:9d34f37c5b4386ffbc2e1fd81ea10119ef938a3797763aa9415affd8b1600a98 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:253aa97f4745319ad2f8fa23438a61d16d5b1d96ac3c16b779017b052a66d64d - Calculated:253aa97f4745319ad2f8fa23438a61d16d5b1d96ac3c16b779017b052a66d64d - Trusted: true
+>>>DBG>Notion_Request done in 1.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:6d9bc29cb4c22018577591b97b500e5475a97ca0d75541aa4eb5926c0e189b10 - Calculated:6d9bc29cb4c22018577591b97b500e5475a97ca0d75541aa4eb5926c0e189b10 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:dbd8d8280ec0a7a6b9b2f2308a3bf7d447d50ea0d032056e1de0a210cc5a662f - Calculated:dbd8d8280ec0a7a6b9b2f2308a3bf7d447d50ea0d032056e1de0a210cc5a662f - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:24bc74d6453cb8cd4d75dbb5ec6a592af704f486e8018bd497a68dde10a57433 - Calculated:24bc74d6453cb8cd4d75dbb5ec6a592af704f486e8018bd497a68dde10a57433 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:8286137da97f9151af0e111d9fe4e00b6b502c373f33d629b9aa994083733774 - Calculated:8286137da97f9151af0e111d9fe4e00b6b502c373f33d629b9aa994083733774 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:9a92b125792dbb8188eb0e66540ccc460a24fc47c1e4f92b60be47e14c2d62db - Calculated:9a92b125792dbb8188eb0e66540ccc460a24fc47c1e4f92b60be47e14c2d62db - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c0f96c689437be9379cec8921d4508804a6bc38b7ab3a07cc5d50b670dae0605 - Calculated:c0f96c689437be9379cec8921d4508804a6bc38b7ab3a07cc5d50b670dae0605 - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c419ecfeed58089a1d760d388913c6355c6b336935e84b617e4f13a77139f7fb - Calculated:c419ecfeed58089a1d760d388913c6355c6b336935e84b617e4f13a77139f7fb - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:600adde0beebd8f97e06ea9f90a2884f7051074806fa072be28a9a901e65a088 - Calculated:600adde0beebd8f97e06ea9f90a2884f7051074806fa072be28a9a901e65a088 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:93daa11958c4b13b28d548d7c06f6c44923abdcfd9537761b9ef7d312e7b56f6 - Calculated:93daa11958c4b13b28d548d7c06f6c44923abdcfd9537761b9ef7d312e7b56f6 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:8c5305e3b7238a3f777faeb06cea3f0c845bcfcc50c242f16b8e34230388a6f7 - Calculated:8c5305e3b7238a3f777faeb06cea3f0c845bcfcc50c242f16b8e34230388a6f7 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f9769f5c5d22365db48c436662888789517cbffc29c8a9ff9b9af19015371615 - Calculated:f9769f5c5d22365db48c436662888789517cbffc29c8a9ff9b9af19015371615 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:fab27050c713fc4d6b67c429ae17c193624505b2d8dd51f97833414d46b51e1a - Calculated:fab27050c713fc4d6b67c429ae17c193624505b2d8dd51f97833414d46b51e1a - Trusted: true
+>>>DBG>Notion_Request done in 1.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f8ab62e22173c771bed4f4a2a59676f9d051db4dc59cb8a6d702a9e5c63671ad - Calculated:f8ab62e22173c771bed4f4a2a59676f9d051db4dc59cb8a6d702a9e5c63671ad - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:68d74c9e1cb3c0675c65a344e11e8171f4df19b347d84b6b9c0e613d06e8364c - Calculated:68d74c9e1cb3c0675c65a344e11e8171f4df19b347d84b6b9c0e613d06e8364c - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:d3db67fd9f535a3ce64dd03b615f1a9df11848b25ca15478ae4b92e360af485e - Calculated:d3db67fd9f535a3ce64dd03b615f1a9df11848b25ca15478ae4b92e360af485e - Trusted: true
+>>>DBG>Notion_Request done in 0.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:8acf1c924067087ca46462af63b08488421b1df88426dad65001123f92bcdbe9 - Calculated:8acf1c924067087ca46462af63b08488421b1df88426dad65001123f92bcdbe9 - Trusted: true
+>>>DBG>Notion_Request done in 0.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:d7af6f960ff47cd25c40fbffe7a052ddc8ea666d19abcae7fe5238fa782c3673 - Calculated:d7af6f960ff47cd25c40fbffe7a052ddc8ea666d19abcae7fe5238fa782c3673 - Trusted: true
+>>>DBG>Notion_Request done in 0.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:ce49a8b3e0f7a2eab3dd0c9efc40964553ee27f556504a104ba8f497644c5468 - Calculated:ce49a8b3e0f7a2eab3dd0c9efc40964553ee27f556504a104ba8f497644c5468 - Trusted: true
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:9770f3aff7ceadd9fd5e4cd155188adca21cac64645c5dc22d780064c532d2c1 - Calculated:9770f3aff7ceadd9fd5e4cd155188adca21cac64645c5dc22d780064c532d2c1 - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request done in 0.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:e34279bd4425878a676adec4ca9613fa8858d4a32b3e6c3fb8b126fceb7e655e - Calculated:e34279bd4425878a676adec4ca9613fa8858d4a32b3e6c3fb8b126fceb7e655e - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c2d6d737d2aa6195e0190e0a9730a35ee9c4f5dd657dfb88fcef523d06bcc7f5 - Calculated:c2d6d737d2aa6195e0190e0a9730a35ee9c4f5dd657dfb88fcef523d06bcc7f5 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:a257cd5ac05a4f3cc0032ea873a6e49e0d5a2e08ce81a0041ed9229eda1cbb31 - Calculated:a257cd5ac05a4f3cc0032ea873a6e49e0d5a2e08ce81a0041ed9229eda1cbb31 - Trusted: true
+>>>DBG>Notion_Request done in 0.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f31b47cf7d44a831d2dd67a712a76aad93dcdd45ce98f4b976e1b34d419556c1 - Calculated:f31b47cf7d44a831d2dd67a712a76aad93dcdd45ce98f4b976e1b34d419556c1 - Trusted: true
+>>>DBG>Notion_Request done in 0.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:ced23d524bbed2ebbd1c5ac465d015292f7f8ccc65bb870590b9c862c85c4ac6 - Calculated:ced23d524bbed2ebbd1c5ac465d015292f7f8ccc65bb870590b9c862c85c4ac6 - Trusted: true
+>>>DBG>Notion_Request done in 1.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c18d7d2015dc21d10e8fa591a53f3b23773052ba705dc405aef686f1e0f1b110 - Calculated:c18d7d2015dc21d10e8fa591a53f3b23773052ba705dc405aef686f1e0f1b110 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:7a112f39ed1ff28097926b9cc850a902e9a3b8fdf28d34fc5e37635a5f495fe2 - Calculated:7a112f39ed1ff28097926b9cc850a902e9a3b8fdf28d34fc5e37635a5f495fe2 - Trusted: true
+>>>DBG>Notion_Request done in 5.5ms
+>>>DBG>Notion_Request
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:88a358c1f0dfe88f8ab3b2a565afe246552dfebdad3654b8b00268bab8d1e731 - Calculated:88a358c1f0dfe88f8ab3b2a565afe246552dfebdad3654b8b00268bab8d1e731 - Trusted: true
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:82f7de38c7851bb835a24694421aff3d2117ce240ba6f395aa986de200414c38 - Calculated:82f7de38c7851bb835a24694421aff3d2117ce240ba6f395aa986de200414c38 - Trusted: true
+>>>DBG>Notion_Request done in 0.8ms
+>>>DBG>Notion_Request done in 0.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:3345c9a81d8c5e95775e76fff29cd0f987e9c58600a59de42f571afa0b578ef3 - Calculated:3345c9a81d8c5e95775e76fff29cd0f987e9c58600a59de42f571afa0b578ef3 - Trusted: true
+>>>DBG>Notion_Request done in 0.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:11fa8d663765d8bc5c588c904f6d4b67dc8fce99b171e088d296d2529a8315ef - Calculated:11fa8d663765d8bc5c588c904f6d4b67dc8fce99b171e088d296d2529a8315ef - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:e2777f65b972b4b050643e0d8e1330bf6453917afe611ddefb76cc26b5e14d62 - Calculated:e2777f65b972b4b050643e0d8e1330bf6453917afe611ddefb76cc26b5e14d62 - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:55927833c64a35cf7d12ec250915d2b00b45991c6b805ee301d9d440f3ba1ee9 - Calculated:55927833c64a35cf7d12ec250915d2b00b45991c6b805ee301d9d440f3ba1ee9 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:9cb179f688ec58d3016fa0967c9842663201d71019baad2fcfbf3407eafa84af - Calculated:9cb179f688ec58d3016fa0967c9842663201d71019baad2fcfbf3407eafa84af - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:6bad8cdfd744560053c17855847435e8a2f65eb22a30e27d6026d4c66d7b700e - Calculated:6bad8cdfd744560053c17855847435e8a2f65eb22a30e27d6026d4c66d7b700e - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:ce15fb4b459448defb8b42cb08f8b6c1ffd6cabd0fcf9cc8936db2ca03173c5b - Calculated:ce15fb4b459448defb8b42cb08f8b6c1ffd6cabd0fcf9cc8936db2ca03173c5b - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:27307273226f640ba6e9b6f75e925ae185f2bbdddf1acafeaf786c5bdb09b2af - Calculated:27307273226f640ba6e9b6f75e925ae185f2bbdddf1acafeaf786c5bdb09b2af - Trusted: true
+>>>DBG>Notion_Request done in 2.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:41d07147eda4a9f63777c8787da8dac51f8481874ac1e59a526a8aba972e1945 - Calculated:41d07147eda4a9f63777c8787da8dac51f8481874ac1e59a526a8aba972e1945 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:7ee6008c7c817a8d7e2f98f84b72190d9e0967dec7e5b7e34714662dc986d6f7 - Calculated:7ee6008c7c817a8d7e2f98f84b72190d9e0967dec7e5b7e34714662dc986d6f7 - Trusted: true
+>>>DBG>Notion_Request done in 1.8ms
+>>>DBG>Notion_Request
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:d5dd74ed4b088d3a9b6887062024e083e142779376c6b87e7e46d9fac53352d7 - Calculated:d5dd74ed4b088d3a9b6887062024e083e142779376c6b87e7e46d9fac53352d7 - Trusted: true
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:9b0e0d6c455b76f91c73647bb8c28294d98d2cfb9fb821441b98ea8ee99eed51 - Calculated:9b0e0d6c455b76f91c73647bb8c28294d98d2cfb9fb821441b98ea8ee99eed51 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:8c9d239dfd7639df5be19132c340bde2e594af56c0fa2269f26007fa77c4a819 - Calculated:8c9d239dfd7639df5be19132c340bde2e594af56c0fa2269f26007fa77c4a819 - Trusted: true
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:96433066be04b2d5aaace9eac08ee48b8e33aa5b5ab2f37ff830cc146351f1e8 - Calculated:96433066be04b2d5aaace9eac08ee48b8e33aa5b5ab2f37ff830cc146351f1e8 - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:cd99a646c9e95a161922c3138055d63592d6e7955a70a3cfaf9d4d248c103731 - Calculated:cd99a646c9e95a161922c3138055d63592d6e7955a70a3cfaf9d4d248c103731 - Trusted: true
+>>>DBG>Notion_Request done in 1.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:cc01d30b8790aa671dfd2b766a192dc11599df92975f1a50b84ee54c4915cf89 - Calculated:cc01d30b8790aa671dfd2b766a192dc11599df92975f1a50b84ee54c4915cf89 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:ccc9f9aa060e72174b7003b64f9a4336131fd396bb4794f546c52795cee4f94c - Calculated:ccc9f9aa060e72174b7003b64f9a4336131fd396bb4794f546c52795cee4f94c - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:162f7b3e2dd9f052a096cdeadc4e3b059cd0d2f00fb77f1e8467a7ac95348e5c - Calculated:162f7b3e2dd9f052a096cdeadc4e3b059cd0d2f00fb77f1e8467a7ac95348e5c - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:ec508603a640dc2d9abe95dfeec3ffbc7ba11b9e673824cd0a333deb3ccd3a11 - Calculated:ec508603a640dc2d9abe95dfeec3ffbc7ba11b9e673824cd0a333deb3ccd3a11 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b4c3461d49482f29bde75f425b7973b840445054b7445ccdab0fa76721c0dcf9 - Calculated:b4c3461d49482f29bde75f425b7973b840445054b7445ccdab0fa76721c0dcf9 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:1796db4004ab39609ab8204cd85eb78eaf85cdb6b3abff375ef917c7a7e47081 - Calculated:1796db4004ab39609ab8204cd85eb78eaf85cdb6b3abff375ef917c7a7e47081 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:ecc091608f510964c5b2e2f7d7b54185e88167c9f9b9d9e24d1782b99dc1f551 - Calculated:ecc091608f510964c5b2e2f7d7b54185e88167c9f9b9d9e24d1782b99dc1f551 - Trusted: true
+>>>DBG>Notion_Request done in 1.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:780911f3cba090fe23607b7182111614e7718236782f9df36de47eda8bfa50a7 - Calculated:780911f3cba090fe23607b7182111614e7718236782f9df36de47eda8bfa50a7 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:a9c1bf03368e0c51b2e645bbe707061f046f35a68bbccb04bc340ede9865f5a8 - Calculated:a9c1bf03368e0c51b2e645bbe707061f046f35a68bbccb04bc340ede9865f5a8 - Trusted: true
+>>>DBG>Notion_Request done in 1.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:44084464f7cc14c09b97ae02b99aea71ff529ca0ab71fa6917db6d831ccb00e2 - Calculated:44084464f7cc14c09b97ae02b99aea71ff529ca0ab71fa6917db6d831ccb00e2 - Trusted: true
+>>>DBG>Notion_Request done in 1.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:93db194b56b87603e63fe3c6c5c6aed080d54960872e1626ffb6958225e63e17 - Calculated:93db194b56b87603e63fe3c6c5c6aed080d54960872e1626ffb6958225e63e17 - Trusted: true
+>>>DBG>Notion_Request done in 2.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:64aff661e50f499c36d8a7e66ebffd7a0836f5c024a11490674011d388a79517 - Calculated:64aff661e50f499c36d8a7e66ebffd7a0836f5c024a11490674011d388a79517 - Trusted: true
+>>>DBG>Notion_Request done in 1.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:cd448ac071150a9a17d70c6e12fe4649097dca4b2f29390ef316afde9e85b1ed - Calculated:cd448ac071150a9a17d70c6e12fe4649097dca4b2f29390ef316afde9e85b1ed - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:e8989d07bb1cf0e9f1430ddc46e019412a104b477c442d64fadcf04ce7d61f02 - Calculated:e8989d07bb1cf0e9f1430ddc46e019412a104b477c442d64fadcf04ce7d61f02 - Trusted: true
+>>>DBG>Notion_Request done in 1.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:a13405afb7dbe9fa94dccaa6432142db9c5fe4e0e0ae0045e0e5454141a941b5 - Calculated:a13405afb7dbe9fa94dccaa6432142db9c5fe4e0e0ae0045e0e5454141a941b5 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:8e80578e31460e55bfeec16b414e9db6653531b62d1a9d9f69dc05bf07ac0b24 - Calculated:8e80578e31460e55bfeec16b414e9db6653531b62d1a9d9f69dc05bf07ac0b24 - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f971caa3cc8419576d438af33aeb9e3308aa46b3a1ae0bf159c3c74b32e24337 - Calculated:f971caa3cc8419576d438af33aeb9e3308aa46b3a1ae0bf159c3c74b32e24337 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:fa9c645f4f961002c80b49f0fbdd8f8a8e35884aa31fa27cf41ef26904aeef59 - Calculated:fa9c645f4f961002c80b49f0fbdd8f8a8e35884aa31fa27cf41ef26904aeef59 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:fb21c9b6df1a1a2b5e9afe4625560df1b64dbde48e556cc9080dc7847a2720a5 - Calculated:fb21c9b6df1a1a2b5e9afe4625560df1b64dbde48e556cc9080dc7847a2720a5 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:cfd623db63d8132d9e968e0c4eede00ac3dfbb61ae47867ab4d3b61c45cf1f52 - Calculated:cfd623db63d8132d9e968e0c4eede00ac3dfbb61ae47867ab4d3b61c45cf1f52 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:74dd04a1497cf6979361e21d7fb924340709f9a5895567d11361be1b53c55fb8 - Calculated:74dd04a1497cf6979361e21d7fb924340709f9a5895567d11361be1b53c55fb8 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:4a3b53eebc56a1c6a40e71475ab062b4282c6d33d81f50421b156ac870f61386 - Calculated:4a3b53eebc56a1c6a40e71475ab062b4282c6d33d81f50421b156ac870f61386 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:96b7a759a487bcf7eac205b55a8121f7e02994b3f2eafc9a3ffbeaff06b01547 - Calculated:96b7a759a487bcf7eac205b55a8121f7e02994b3f2eafc9a3ffbeaff06b01547 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b6d2fc0bf4f7cf02524f42f367aad156870cf6de39c1de83d9be1aeacac825b1 - Calculated:b6d2fc0bf4f7cf02524f42f367aad156870cf6de39c1de83d9be1aeacac825b1 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:5953232bdcabdcf514248a91a689fcdc40ac2f891eec19e520b1c9f397836063 - Calculated:5953232bdcabdcf514248a91a689fcdc40ac2f891eec19e520b1c9f397836063 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:2f95eeec5d60c61ec7160fb9de7cb7daf72f8f98c23be5c762075d9a5928cdc4 - Calculated:2f95eeec5d60c61ec7160fb9de7cb7daf72f8f98c23be5c762075d9a5928cdc4 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:d20b0c633a46b3941512c95a8918d92cce25a7b49cac71b5e0a6704f13e4cbd3 - Calculated:d20b0c633a46b3941512c95a8918d92cce25a7b49cac71b5e0a6704f13e4cbd3 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:49a5e39c8f8aca4aeb0e9515bf1ff4eb0504b1675f3927828e7b57671e81a1b0 - Calculated:49a5e39c8f8aca4aeb0e9515bf1ff4eb0504b1675f3927828e7b57671e81a1b0 - Trusted: true
+>>>DBG>Notion_Request done in 3.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:27fc451aee651347df032df3b495d8739bcab9fa3d17e5b12bf8734144337755 - Calculated:27fc451aee651347df032df3b495d8739bcab9fa3d17e5b12bf8734144337755 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:e0879a875bd5670ea5eec17b5d8d55e39ea377191a6d058300d5d76fc694820f - Calculated:e0879a875bd5670ea5eec17b5d8d55e39ea377191a6d058300d5d76fc694820f - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:8e86ec215108b3500538f1bbe2c47ae9d791b475979d5c9fb18e24b9892202e9 - Calculated:8e86ec215108b3500538f1bbe2c47ae9d791b475979d5c9fb18e24b9892202e9 - Trusted: true
+>>>DBG>Notion_Request done in 1.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:4a2eda13809d2c94b8ed07fde275d769ac15d1e5a0379803763bb22e7f87e90b - Calculated:4a2eda13809d2c94b8ed07fde275d769ac15d1e5a0379803763bb22e7f87e90b - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:3313b406b8bd7d5f403e538f7019456e52848b102a2963c89be891ec56c5d91c - Calculated:3313b406b8bd7d5f403e538f7019456e52848b102a2963c89be891ec56c5d91c - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:37d78434525a51e416d7a9addefc306093715b6a068dd9bf5b9bae5f91ed4680 - Calculated:37d78434525a51e416d7a9addefc306093715b6a068dd9bf5b9bae5f91ed4680 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:3afb1257f8c08d3c9f5e874717f347b3525b61d5aceb734a1b116f06f8013316 - Calculated:3afb1257f8c08d3c9f5e874717f347b3525b61d5aceb734a1b116f06f8013316 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:5bdd7b374967cfebe80b11ddd1d81f971624a9719cee743710d27d8f4b2ba3b6 - Calculated:5bdd7b374967cfebe80b11ddd1d81f971624a9719cee743710d27d8f4b2ba3b6 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:3ba62f8c34c92fb50fc352a7ebe25c0b8929971a49fd7646b212d81b9e027f23 - Calculated:3ba62f8c34c92fb50fc352a7ebe25c0b8929971a49fd7646b212d81b9e027f23 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:ab6bfc69f4f4a462fc13488f1c82effb617dcfe90fb3da5a33c100519d205f33 - Calculated:ab6bfc69f4f4a462fc13488f1c82effb617dcfe90fb3da5a33c100519d205f33 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:1a868fef7c04b869f7dcd344b643e15985e151bbb2b8067eeb5aff7d0bd60392 - Calculated:1a868fef7c04b869f7dcd344b643e15985e151bbb2b8067eeb5aff7d0bd60392 - Trusted: true
+>>>DBG>Notion_Request done in 3.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b67234761bde393043e2fbab1e925322b5273bd9971cd46a1402398a58e26215 - Calculated:b67234761bde393043e2fbab1e925322b5273bd9971cd46a1402398a58e26215 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c3092c7cde4623d5325aed8a109ac7c47965ace775de7a30abccbbbe53b5cd0c - Calculated:c3092c7cde4623d5325aed8a109ac7c47965ace775de7a30abccbbbe53b5cd0c - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:a1cb80d04d840cbadbc7b2c492f62c4ec06b90afaef0f4f25ba383c9f761767e - Calculated:a1cb80d04d840cbadbc7b2c492f62c4ec06b90afaef0f4f25ba383c9f761767e - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:bfcfcc3b4565badb6186a3ed1be95242d049b4af4f92c09b6e628e6a08217640 - Calculated:bfcfcc3b4565badb6186a3ed1be95242d049b4af4f92c09b6e628e6a08217640 - Trusted: true
+>>>DBG>Notion_Request done in 1.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:3133820c444c35082a56ce2848116ff96920eadada441ef570283ef0b4a20220 - Calculated:3133820c444c35082a56ce2848116ff96920eadada441ef570283ef0b4a20220 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:3dad78df57179c3ba849eff873c7b19d9b0f2e159908b04f2b1d62186009bd3f - Calculated:3dad78df57179c3ba849eff873c7b19d9b0f2e159908b04f2b1d62186009bd3f - Trusted: true
+>>>DBG>Notion_Request done in 2.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b55917c5c0da32ee929d5c784263cafb500ceb558ac95aae2b35ab339007a0d3 - Calculated:b55917c5c0da32ee929d5c784263cafb500ceb558ac95aae2b35ab339007a0d3 - Trusted: true
+>>>DBG>Notion_Request done in 4.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f8891bede2734165da011d85c38a3d070b3069a4394f952abc1d803a47e0cd66 - Calculated:f8891bede2734165da011d85c38a3d070b3069a4394f952abc1d803a47e0cd66 - Trusted: true
+>>>DBG>Notion_Request done in 1.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:acaf7a7201dcefde9a3204191b4452fca2739bebd4915c4578f786826612a958 - Calculated:acaf7a7201dcefde9a3204191b4452fca2739bebd4915c4578f786826612a958 - Trusted: true
+>>>DBG>Notion_Request done in 13.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b0a10511fdafc31db4a663ca95439d4da9c6dd68a49981f13d57d9bd20af5c6e - Calculated:b0a10511fdafc31db4a663ca95439d4da9c6dd68a49981f13d57d9bd20af5c6e - Trusted: true
+>>>DBG>Notion_Request done in 2.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:bd9a1df3bce7e03cee8c4cac453d95a7d74bb09a3badf8e8d22f8c25e4ee2638 - Calculated:bd9a1df3bce7e03cee8c4cac453d95a7d74bb09a3badf8e8d22f8c25e4ee2638 - Trusted: true
+>>>DBG>Notion_Request done in 7.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:14c81402125865b7443214868ac89ab026fa6661113ef844ddfa4f4295d292b5 - Calculated:14c81402125865b7443214868ac89ab026fa6661113ef844ddfa4f4295d292b5 - Trusted: true
+>>>DBG>Notion_Request done in 3.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f905023c190484fed81ddf03e099eeb0d4273a7d67ca9792b5779c3de0de5127 - Calculated:f905023c190484fed81ddf03e099eeb0d4273a7d67ca9792b5779c3de0de5127 - Trusted: true
+>>>DBG>Notion_Request done in 0.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:1fc473443bcf0fbda7a5ecbbc6ad9dd875a06f4f277cfcbf0a66d826e842bffb - Calculated:1fc473443bcf0fbda7a5ecbbc6ad9dd875a06f4f277cfcbf0a66d826e842bffb - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:8333dded4f3d8e3010675bdc511c7425bb52dc3772147272826cabcde614c472 - Calculated:8333dded4f3d8e3010675bdc511c7425bb52dc3772147272826cabcde614c472 - Trusted: true
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:04d67a4faae7937fd1fff9a0266919c8a44d8cbd5a28e9aee6b4191e7a2fdaaf - Calculated:04d67a4faae7937fd1fff9a0266919c8a44d8cbd5a28e9aee6b4191e7a2fdaaf - Trusted: true
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:37a97a5decaa94fea23f87bb1576a0ab532a837dc85de40aa039c2e1902e4dd4 - Calculated:37a97a5decaa94fea23f87bb1576a0ab532a837dc85de40aa039c2e1902e4dd4 - Trusted: true
+>>>DBG>Notion_Request done in 20.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:5bd516de0fb1be43c6e50e8c4f5f670e3c2fc72de665a8efce5e23e0416e0ac7 - Calculated:5bd516de0fb1be43c6e50e8c4f5f670e3c2fc72de665a8efce5e23e0416e0ac7 - Trusted: true
+>>>DBG>Notion_Request done in 37.4ms
+>>>DBG>Notion_Request done in 29.7ms
+>>>DBG>Notion_Request done in 16.2ms
+>>>DBG>Notion_Request
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b88d0fd31bc8c8e58b1f4488ab427795a88952e05c361233e0ebcd5489afdb32 - Calculated:b88d0fd31bc8c8e58b1f4488ab427795a88952e05c361233e0ebcd5489afdb32 - Trusted: true
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:0bdccda09ee3d4e869c510697fc310479ea55c6d99bfb5402b678091015d5a6e - Calculated:0bdccda09ee3d4e869c510697fc310479ea55c6d99bfb5402b678091015d5a6e - Trusted: true
+>>>DBG>Notion_Request done in 0.7ms
+>>>DBG>Notion_Request done in 0.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:cd3e6c7fb78cacea0eb7ad36cfebb4067e91a47592e513910243c9df2bb0df6b - Calculated:cd3e6c7fb78cacea0eb7ad36cfebb4067e91a47592e513910243c9df2bb0df6b - Trusted: true
+>>>DBG>Notion_Request done in 0.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:7642810aabc1d6f234a6eb13571f216569233459e7d168c90d7f3488317aee62 - Calculated:7642810aabc1d6f234a6eb13571f216569233459e7d168c90d7f3488317aee62 - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:a85ad66c47660efc604002cd1a8c9d067221da42c474e718bf03d7854cd34915 - Calculated:a85ad66c47660efc604002cd1a8c9d067221da42c474e718bf03d7854cd34915 - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:ad10e4b455c3761d6f0888b41bf7fd7e730b07a25cf1e457743cea13d7f87198 - Calculated:ad10e4b455c3761d6f0888b41bf7fd7e730b07a25cf1e457743cea13d7f87198 - Trusted: true
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:836aa36667a8e1d2384cec211d7ca7d061ad05cf5451018ba42cb63a4be03726 - Calculated:836aa36667a8e1d2384cec211d7ca7d061ad05cf5451018ba42cb63a4be03726 - Trusted: true
+>>>DBG>Notion_Request done in 2.1ms
+>>>DBG>Notion_Request done in 4.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:fa5eebd5f94b02fb4ef2ac4f4f55e6bc0b295418ec0a3ba7f84b29678df7a5be - Calculated:fa5eebd5f94b02fb4ef2ac4f4f55e6bc0b295418ec0a3ba7f84b29678df7a5be - Trusted: true
+>>>DBG>Notion_Request done in 4.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:5e9535cf9fd79e05975054a40f124336bcd4a21a5ae18a4b635fb7d9694c5470 - Calculated:5e9535cf9fd79e05975054a40f124336bcd4a21a5ae18a4b635fb7d9694c5470 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c8afeecb10be6756080963e54adcd215ccf6e4d355cdb185a4fcca242b6c0812 - Calculated:c8afeecb10be6756080963e54adcd215ccf6e4d355cdb185a4fcca242b6c0812 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:ef4aabb8c6670625708cba57d1378f4515b128c3b5b50e9308af0c746a40edce - Calculated:ef4aabb8c6670625708cba57d1378f4515b128c3b5b50e9308af0c746a40edce - Trusted: true
+>>>DBG>Notion_Request done in 0.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:a8f8556634c2679b0c21ddfb3b9c34158eee9bc0d995356a77c9aca15a04b3af - Calculated:a8f8556634c2679b0c21ddfb3b9c34158eee9bc0d995356a77c9aca15a04b3af - Trusted: true
+>>>DBG>Notion_Request done in 0.8ms
+>>>DBG>Notion_Request
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:3043a8ecafd1d491f726a23dd17e63cca0e63b8233d9d553baf1f216db0a16c6 - Calculated:3043a8ecafd1d491f726a23dd17e63cca0e63b8233d9d553baf1f216db0a16c6 - Trusted: true
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:01f8f78d062241010509b557de7356cd448da49990d1116904cf304dfe4410a5 - Calculated:01f8f78d062241010509b557de7356cd448da49990d1116904cf304dfe4410a5 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request done in 7.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:db764d73effcc3bb1cc1cc8889cfa72e365846fd78159e1b3662222b33f21881 - Calculated:db764d73effcc3bb1cc1cc8889cfa72e365846fd78159e1b3662222b33f21881 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:86ab7bc88296ab61b1f55c99e36744552276de9b735d717d299a2bbc77586286 - Calculated:86ab7bc88296ab61b1f55c99e36744552276de9b735d717d299a2bbc77586286 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:82c919f4a5c4eb51dba7a17f39b561976ac3270ad6d4db1dee5149336ba916fe - Calculated:82c919f4a5c4eb51dba7a17f39b561976ac3270ad6d4db1dee5149336ba916fe - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:9c17109b6071cbd0ce9bb296fd6a43932d328106b077984e6d7f172662283ba0 - Calculated:9c17109b6071cbd0ce9bb296fd6a43932d328106b077984e6d7f172662283ba0 - Trusted: true
+>>>DBG>Notion_Request done in 3.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:65050484726b932ffd76008809e5a0dd0fe763fad63df28e927c599a34c7b933 - Calculated:65050484726b932ffd76008809e5a0dd0fe763fad63df28e927c599a34c7b933 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:dbf81bbe8c04cee55653105a8989d79a28784f2c27c8976f9465b131547fd302 - Calculated:dbf81bbe8c04cee55653105a8989d79a28784f2c27c8976f9465b131547fd302 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:7acb386daaac43206e7cf3db4bb4ec6141d390a6a13730c5b08629811c683aa1 - Calculated:7acb386daaac43206e7cf3db4bb4ec6141d390a6a13730c5b08629811c683aa1 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:c205433d0a593ae1605c3c38333253064d9235d9818eac4df1f8eded68535f40 - Calculated:c205433d0a593ae1605c3c38333253064d9235d9818eac4df1f8eded68535f40 - Trusted: true
+>>>DBG>Notion_Request done in 9.5ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:7db3abda26fea98b1cfb80d4a206aa6b3fbb086687a5c406d88b2f13c3692ef1 - Calculated:7db3abda26fea98b1cfb80d4a206aa6b3fbb086687a5c406d88b2f13c3692ef1 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:d8bdf02ade1137330a36119790b73f3ec34bb5ccb7ba6a036ef01226254f46a6 - Calculated:d8bdf02ade1137330a36119790b73f3ec34bb5ccb7ba6a036ef01226254f46a6 - Trusted: true
+>>>DBG>Notion_Request done in 0.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:2b28a146be949685dc736690e51abdb1c246ec7a3b8dcd48b8359e1ef6ee287c - Calculated:2b28a146be949685dc736690e51abdb1c246ec7a3b8dcd48b8359e1ef6ee287c - Trusted: true
+>>>DBG>Notion_Request done in 0.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:fd63a1b35665b8ad4eb2f8e020140764a83a5eddb0e40d9086174fa519c2573c - Calculated:fd63a1b35665b8ad4eb2f8e020140764a83a5eddb0e40d9086174fa519c2573c - Trusted: true
+>>>DBG>Notion_Request done in 0.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:5f9934fbbb3237b37e87955479f6fbb24aef41d09097246760a5146d1efed1e0 - Calculated:5f9934fbbb3237b37e87955479f6fbb24aef41d09097246760a5146d1efed1e0 - Trusted: true
+>>>DBG>Notion_Request done in 0.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:9c2da54e40cecee16a44a39f3a219e2fe1bb9162c8efef546dff2913533f376c - Calculated:9c2da54e40cecee16a44a39f3a219e2fe1bb9162c8efef546dff2913533f376c - Trusted: true
+>>>DBG>Notion_Request done in 1.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b6607a0edb5d42b57d9218752b639f8d2e394c797429215ef9078be2368d213b - Calculated:b6607a0edb5d42b57d9218752b639f8d2e394c797429215ef9078be2368d213b - Trusted: true
+>>>DBG>Notion_Request done in 1.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:2281c0ee0f78941c1275d150d06d623314e5bfcec989f687b35cdce461eb3f2e - Calculated:2281c0ee0f78941c1275d150d06d623314e5bfcec989f687b35cdce461eb3f2e - Trusted: true
+>>>DBG>Notion_Request done in 0.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:92a4bd93a46968a3326f855d6b9a5d933e90b954ea2a786af2bbaa366d08b038 - Calculated:92a4bd93a46968a3326f855d6b9a5d933e90b954ea2a786af2bbaa366d08b038 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:75b3494c7d861bd767cdf89564286a16805b566618ca3f465f588c29c2301254 - Calculated:75b3494c7d861bd767cdf89564286a16805b566618ca3f465f588c29c2301254 - Trusted: true
+>>>DBG>Notion_Request done in 2.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:e0b00fa994de05cff6343e57dda6885c36295bdde9fabe9ea6fea7aad709deb5 - Calculated:e0b00fa994de05cff6343e57dda6885c36295bdde9fabe9ea6fea7aad709deb5 - Trusted: true
+>>>DBG>Notion_Request done in 1.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:977e273be2b4a7d79e3979a44dfe5134a1aad5cef99cd3fe32c2e415c87196e0 - Calculated:977e273be2b4a7d79e3979a44dfe5134a1aad5cef99cd3fe32c2e415c87196e0 - Trusted: true
+>>>DBG>Notion_Request done in 0.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:b79a2f7c0266549282803a2eb52c5740acf5d72bf95b6f74eca5116ceb6df9af - Calculated:b79a2f7c0266549282803a2eb52c5740acf5d72bf95b6f74eca5116ceb6df9af - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:67f3f2f96badbbbb9d4743ab7fafbf3f0e60525eca59df6310921a6937a197e2 - Calculated:67f3f2f96badbbbb9d4743ab7fafbf3f0e60525eca59df6310921a6937a197e2 - Trusted: true
+>>>DBG>Notion_Request done in 1.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:90772c96443982595cbff08d867f1a1a29244114062417465efdedea5b8c8c04 - Calculated:90772c96443982595cbff08d867f1a1a29244114062417465efdedea5b8c8c04 - Trusted: true
+>>>DBG>Notion_Request done in 1.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:2c56c8001f66ccbfe4bc9243159d3a00181560e21dcae7012941ac006d1b9133 - Calculated:2c56c8001f66ccbfe4bc9243159d3a00181560e21dcae7012941ac006d1b9133 - Trusted: true
+>>>DBG>Notion_Request done in 2.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f06e72dc9a4eee16b2fbda8101aebaa7174e1234a5bf23cd0c3ad683e7224d4f - Calculated:f06e72dc9a4eee16b2fbda8101aebaa7174e1234a5bf23cd0c3ad683e7224d4f - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:8a1f7b711d87f2649878cfc33328792bff18894db3d31830ac29e83bd05896a6 - Calculated:8a1f7b711d87f2649878cfc33328792bff18894db3d31830ac29e83bd05896a6 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:dc22919e5ff1d9557bfa6924b984c9149d118ab9c9b618b53fd86dda5cb4e973 - Calculated:dc22919e5ff1d9557bfa6924b984c9149d118ab9c9b618b53fd86dda5cb4e973 - Trusted: true
+>>>DBG>Notion_Request done in 7.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:f3f0234ac90573674c3db30bb657ef707ae982211e6f7b7fda878b01de076f89 - Calculated:f3f0234ac90573674c3db30bb657ef707ae982211e6f7b7fda878b01de076f89 - Trusted: true
+>>>DBG>Notion_Request done in 1.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:e9aa4d79d109c137fe1eb3b1f8ec794354be9d9afae7cb621ee6d94fb6fdf602 - Calculated:e9aa4d79d109c137fe1eb3b1f8ec794354be9d9afae7cb621ee6d94fb6fdf602 - Trusted: true
+>>>DBG>Notion_Request done in 6.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:86fb5035916844574b616d58786ed2df4797304384207724bbdb90721aad1778 - Calculated:86fb5035916844574b616d58786ed2df4797304384207724bbdb90721aad1778 - Trusted: true
+>>>DBG>Notion_Request done in 9.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:006f271921b297b2d88113c673fe53096bfc7e77fedc10de3a6d14a6e9486c41 - Calculated:006f271921b297b2d88113c673fe53096bfc7e77fedc10de3a6d14a6e9486c41 - Trusted: true
+>>>DBG>Notion_Request done in 1.2ms
+>>>DBG>Email_Webhook => 
+>>>DBG>Email_Webhook => 
+>>>DBG>Email_Webhook => 
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:cf1265499122cb900231fc329c18d0a580ce18b6cd3ea2f4dd121185a6b9a140 - Calculated:cf1265499122cb900231fc329c18d0a580ce18b6cd3ea2f4dd121185a6b9a140 - Trusted: true
+>>>DBG>Notion_Request done in 4.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:1e9a450291a21907e107db80a1f7f45f4175c5d3ba9ab8ffa3df872d72bbceb9 - Calculated:1e9a450291a21907e107db80a1f7f45f4175c5d3ba9ab8ffa3df872d72bbceb9 - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:388b9840476d71f9ce67d9fe48abc48c2ff342a66cc1bf82d7b59f54dc4c31c0 - Calculated:388b9840476d71f9ce67d9fe48abc48c2ff342a66cc1bf82d7b59f54dc4c31c0 - Trusted: true
+>>>DBG>Notion_Request done in 1.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:9a1c388ffe127e20c0fbd8c3bf0c7b41beb7ae3376847a084dfb01f948989a75 - Calculated:9a1c388ffe127e20c0fbd8c3bf0c7b41beb7ae3376847a084dfb01f948989a75 - Trusted: true
+>>>DBG>Notion_Request done in 3.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:4e0879f63ebfa45113466b623f8bdebea9819f90b80b949da3631ce1c880c374 - Calculated:4e0879f63ebfa45113466b623f8bdebea9819f90b80b949da3631ce1c880c374 - Trusted: true
+>>>DBG>Notion_Request done in 7.7ms
+>>>DBG>Email_Webhook => 
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:1c8ace98f3a3aaf8af434973f93316cf2cfd03f2825ab13a821c57fc5082fb89 - Calculated:1c8ace98f3a3aaf8af434973f93316cf2cfd03f2825ab13a821c57fc5082fb89 - Trusted: true
+>>>DBG>Notion_Request done in 6.0ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:2ba48e59d2f0c24c6fc06ed0c315af5298a8374e8eeb978be5d0fd6e7d7a7204 - Calculated:2ba48e59d2f0c24c6fc06ed0c315af5298a8374e8eeb978be5d0fd6e7d7a7204 - Trusted: true
+>>>DBG>Notion_Request done in 1.6ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:8e46d5420fc800700e3723931f1d430d481165c2a908d59c7762ee71ad63bef1 - Calculated:8e46d5420fc800700e3723931f1d430d481165c2a908d59c7762ee71ad63bef1 - Trusted: true
+>>>DBG>Notion_Request done in 7.2ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:5eb3d16e53d4349027f6ff38854c3f61c3391a6204ebc01531be6db5e1b14017 - Calculated:5eb3d16e53d4349027f6ff38854c3f61c3391a6204ebc01531be6db5e1b14017 - Trusted: true
+>>>DBG>Notion_Request done in 3.8ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:4d5c126cfefc8671ffa0582600a75eab22621475530d4a5366de1a12feb38d80 - Calculated:4d5c126cfefc8671ffa0582600a75eab22621475530d4a5366de1a12feb38d80 - Trusted: true
+>>>DBG>Notion_Request done in 6.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:dbfde06e1996e62a9c46bc03207a359f070b1d5b5721a75004f46f1b4872a85b - Calculated:dbfde06e1996e62a9c46bc03207a359f070b1d5b5721a75004f46f1b4872a85b - Trusted: true
+>>>DBG>Notion_Request done in 4.3ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:6c646a1db2a293670bd487837f54714df70e735d1cff56fea732e8f6449bba9c - Calculated:6c646a1db2a293670bd487837f54714df70e735d1cff56fea732e8f6449bba9c - Trusted: true
+>>>DBG>Notion_Request done in 1.1ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:71533c3c07b05ac59b19ed9880a5fea580bda83f3404d81377cf67764ecea0cd - Calculated:71533c3c07b05ac59b19ed9880a5fea580bda83f3404d81377cf67764ecea0cd - Trusted: true
+>>>DBG>Notion_Request done in 2.4ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:fdfcdfdb2001c9b278d7e082d5388a8ea12389e5c27265fae3522e10b40c482b - Calculated:fdfcdfdb2001c9b278d7e082d5388a8ea12389e5c27265fae3522e10b40c482b - Trusted: true
+>>>DBG>Notion_Request done in 2.9ms
+>>>DBG>Email_Webhook => 
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:167ae30be2faf84aba3346383718e55cf2ff36a0a326bd819714578a47c4d19c - Calculated:167ae30be2faf84aba3346383718e55cf2ff36a0a326bd819714578a47c4d19c - Trusted: true
+>>>DBG>Notion_Request done in 8.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:bdada264c8d2a483ef74b6c847052bf8f63af99285f2ebe09a9e4994187cbd0e - Calculated:bdada264c8d2a483ef74b6c847052bf8f63af99285f2ebe09a9e4994187cbd0e - Trusted: true
+>>>DBG>Notion_Request done in 1.9ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:6cfbcbe83cc270c07556bbbe17fca1ac2d7085f3b129ee4def4fa25e6fc32ca6 - Calculated:6cfbcbe83cc270c07556bbbe17fca1ac2d7085f3b129ee4def4fa25e6fc32ca6 - Trusted: true
+>>>DBG>Notion_Request done in 14.7ms
+>>>DBG>Notion_Request
+SIGN::Token:secret_WpJkdkbI11JDiHWrzF0GBGvPsvemR4q0iyC3ILzxmLQ - Received:636d2fda7efcec421aeee018077e23e9905bbd204fdb88a137223a97a9386e20 - Calculated:636d2fda7efcec421aeee018077e23e9905bbd204fdb88a137223a97a9386e20 - Trusted: true
+>>>DBG>Notion_Request done in 2.2ms
+>>>DBG>Email_Webhook => 
