@@ -50,6 +50,7 @@ class   Standards
 
         @opts   = {
         debug:          ENV.fetch('DEBUG', 'INFO'),
+        debug_bool:     ENV.fetch('DEBUG_BOOL', false),
         exec:           ENV.fetch('EXEC', 'S'),
         dryrun:         ENV.fetch('DRY_RUN', true),
         not_apitoken:   ENV.fetch('NOT_APITOKEN', 'None'),
@@ -87,6 +88,7 @@ class   Standards
         # Common Options from ENV
         @opts   = {
             debug:          ENV.fetch('DEBUG', 'INFO'),
+            debug_bool:     ENV.fetch('DEBUG_BOOL', false),
             exec:           ENV.fetch('EXEC', 'S'),
             dryrun:         ENV.fetch('DRY_RUN', false),
             not_apitoken:   ENV.fetch('NOT_APITOKEN', 'None'),
@@ -330,15 +332,16 @@ class   Standards
     #   new_props["Title"] = title("My page title")
     #   new_props["Status"] = select("In Progress") ... etc
     #
-    def title(str)      = { "type"=>"title","title"=>[{"type"=>"text","text"=>{"content"=>str.to_s}}] }
-    def select(v)       = { "type"=>"select","select"=> v ? {"name"=>v} : nil }
+#    def title(str)      = { "type"=>"title","title"=>[{"type"=>"text","text"=>{"content"=>str.to_s}}] }
+    def title(str)      = { 'title' => [{ 'text' => { 'content' => str.to_s } } ] }   
+    def select(v)       = { "select"=> v ? {"name"=>v} : nil }
     def mulsel(arr)     = { "type"=>"multi_select","multi_select"=> Array(arr).compact.map{|n| {"name"=>n} } }
     def chkb(b)         = { "type"=>"checkbox","checkbox"=> !!b }
-    def relation(ids)   = { "type"=>"relation","relation"=> Array(ids).compact.uniq.map{|id| {"id"=>id} } }
-    def status(val)     = { "type"=>"status","status"=>{"name"=>val.to_s}}
-    def num(val)        = { "type"=>"number","number"=>val.to_i}
-    def file_int(arr)   = {
-                            "type" => "files",
+    def relation(ids)   = { "relation"=> Array(ids).compact.uniq.map{|id| {"id"=>id} } }
+    def relation1(id)   = { "relation"=> [{"id"=>id}]}
+    def status(val)     = { "status"=>{"name"=>val.to_s}}
+    def num(val)        = { "number"=>val.to_i}
+    def file_ext(arr)   = {
                             "files" => Array(arr).compact.map do |url|
                                 {
                                     "name" => url.split('/').last.split('?').first,
@@ -347,22 +350,22 @@ class   Standards
                                 }
                             end
                         }
+    def file_int(url,name='None')   = {"files" => [ {"name" => name, "type" => "file", "file" => {"url" => url}}]}
     def date_iso(d)
         s   = convert_date(d) 
-        { "type"=>"date","date"=> s ? {"start"=>s} : nil }
+        { "date"=> s ? {"start"=>s} : nil }
     end
     def text(str)
         return nil if str.empty?
-        { "type"=>"rich_text",
-        "rich_text"=>[{ "type"=>"text","text"=>{ "content"=>str.to_s } }] }
+        { "rich_text"=>[{ "type"=>"text","text"=>{ "content"=>str.to_s } }] }
     end    
     def mail(v)
         return nil if blank?(v)
-        { "type"=>"email","email"=> v.to_s }
+        { "email"=> v.to_s }
     end
     def phone(v)
         return nil if blank?(v)
-        { "type"=>"phone_number","phone_number"=> v.to_s }
+        { "phone_number"=> v.to_s }
     end
 
     def convert_date(date_str)  

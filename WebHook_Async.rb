@@ -53,6 +53,8 @@ class WebhookAsync
         when 'Notion-busycal'       #from Notion - busycal (POST)
             handle_notion_busycal(payload)
             
+        when 'Infomaniak_webhook'   #from Infomaniak
+            handle_infomaniak_webhook(payload)
         else                        #tests
             handle_test(payload)
         end
@@ -184,17 +186,19 @@ class WebhookAsync
         authors = extract_authors(prms: prms)
 
         # Display
-        logger.info "<#{uuid}>📄 DB: #{res_parent['title'][0]['text']['content']}"
-        logger.info "<#{uuid}>📄 Page: #{page_id}"
-        logger.info "<#{uuid}>>>>Created time: #{res_page['created_time']}"
-        logger.info "<#{uuid}>>>>Last edited time: #{res_page['last_edited_time']}"
-        logger.info "<#{uuid}>>>>Authors: #{authors}"
-        logger.info "<#{uuid}>>>>Properties ⇟"
-        props = res_page['properties'] || {}
-        props_exlude = ['Couverture']
-        props.each do |key, value|
-            next if props_exlude.include?(key)
-            logger.info "<#{uuid}>>>>>>#{key}: #{get_prop_value(field: value)}"
+        begin
+            logger.info "<#{uuid}>📄 DB: #{res_parent['title'][0]['text']['content']}"
+            logger.info "<#{uuid}>📄 Page: #{page_id}"
+            logger.info "<#{uuid}>>>>Created time: #{res_page['created_time']}"
+            logger.info "<#{uuid}>>>>Last edited time: #{res_page['last_edited_time']}"
+            logger.info "<#{uuid}>>>>Authors: #{authors}"
+            logger.info "<#{uuid}>>>>Properties ⇟"
+            props = res_page['properties'] || {}
+            props_exlude = ['Couverture']
+            props.each do |key, value|
+                next if props_exlude.include?(key)
+                logger.info "<#{uuid}>>>>>>#{key}: #{get_prop_value(field: value)}"
+            end
         end
         res_page['authors'] = authors
 
@@ -612,6 +616,39 @@ class WebhookAsync
         prms['to']          = to
         prms['subject']     = subject
         prms['text']        = text
+        append_to_file(fields: prms)
+
+    end #<def>
+
+
+    #                           ***********
+    #                           From Infomaniak
+    #                           *************
+    def handle_infomaniak(payload = {})
+        logger.info "Payload Infomaniak"
+        pp payload
+
+        return          #to tests
+        
+        return          if payload.empty?
+
+        # Extract parts
+        timestamp   = payload['timestamp'] || nil
+        uuid        = payload['request_id'] || nil
+        head_commit = payload['head_commit'] || {}
+        if !head_commit.empty?
+            head_commit.each do |key, value|
+                logger.info "<#{uuid}>>>>#{key}: #{value}"
+            end
+        end
+        logger.info ">>>"
+
+        # Append to file
+        prms = {}
+        prms['file_switch'] = 'None'
+        prms['file_path']   = 'github_request'
+        prms['URI']         = "github_request"
+        prms['commits']     = head_commit
         append_to_file(fields: prms)
 
     end #<def>

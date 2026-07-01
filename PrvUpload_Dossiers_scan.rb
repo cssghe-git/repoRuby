@@ -25,21 +25,30 @@ require 'pp'
 
 require_relative    'Mod_SelectFile.rb'
 
-NOTION_TOKEN            = 'secret_FIhPnoyaCFBlTWzD1Y4BBRbzEx7chTck1HkAm14uBd3'
-NOTION_API_VERSION      = '2025-09-03'
-NOTION_API_VERSION_OLD  = '2022-06-28'
-BASE_URL                = 'https://api.notion.com/v1'
+begin
+  require "dotenv"; Dotenv.load
+rescue LoadError
+end
 
-ID_FILE_DB              = '20172117082a809784efeb6f051f8e0c'    #upload
-ID_ACTION_DB            = '32972117082a80308f29fdce26746200'    #Action utilisateurs 
-ID_TAGS_DB              = '32a72117082a80ea8dabf4523ddbe769'    #https://www.notion.so/cssghe/32a72117082a80ea8dabf4523ddbe769?v=32a72117082a815c9da8000cad0dadff&source=copy_link
-ID_DOCS_DB              = '0'    #Documents
-ID_DOCS_BVL             = '2c372117-082a-8033-b77a-000b4e5b6fb6'
-ID_DOCS_FIN             = '2c272117-082a-80ea-a31a-000b9f58c855'
-ID_DOCS_INF             = '2c172117-082a-808d-8936-000b3ad03c19'
-ID_DOCS_OFF             = '2c372117-082a-805a-9cca-000b6c71d553'
-ID_DOCS_SAN             = '2c372117-082a-8020-bd2a-000b4ec7a18b'
-ID_DOCS_DOC             = '33172117-082a-802c-b4aa-000b97e72313'
+begin
+  require "cli/ui"
+  CLI::UI::StdoutRouter.enable
+  CLI::UI::Frame.divider('═')
+rescue LoadError
+end
+
+NOTION_TOKEN            = ENV.fetch("NOT_APITOKEN")
+NOTION_API_VERSION      = ENV.fetch("NOT_APIVER")
+NOTION_API_VERSION_OLD  = ENV.fetch("NOT_APIVER_OLD")
+NOTION_BASE_URL         = ENV.fetch("NOT_HTTPBASE")
+
+CONFIG                  = JSON.parse(File.read(File.join(__dir__, "Data_Sources_ID2.json")))
+
+ID_FILE_DB              = CONFIG.find{ |k| k.key?("FilesUpload")}&.fetch("FilesUpload") #FilesUpload
+ID_DOSS_DB              = CONFIG.find{ |k| k.key?("Dossiers")}&.fetch("Dossiers") #
+ID_TAGS_DB              = CONFIG.find{ |k| k.key?("Tags")}&.fetch("Tags") #
+ID_TYPE_DB              = CONFIG.find{ |k| k.key?("Types")}&.fetch("Types") #
+ID_EMETTEUR_DB          = CONFIG.find{ |k| k.key?("Senders")}&.fetch("Senders") #
 
 #
 # Variables globales
@@ -89,7 +98,7 @@ class   UploadFileToNotion
                             'gif', 'heic', 'jpeg', 'jpg', 'png', 'svg', 'ico',
                             'mp3', 'mp4', 'm4a', 'wav',
                             'xxx']
-        @old_level1, @old_level2, @old_level3, @old_level4  = 'None'
+        @domain, @dossier, @tag, @type, @emetteur  = 'None'
     end #<def>
 
     def getParameters()
@@ -106,31 +115,93 @@ class   UploadFileToNotion
         @arr_parameters
     end #<def>
 
-    def loadTags()
-    #+++++++++++
+    def ui_step(title)
+      if defined?(CLI::UI)
+        CLI::UI::Frame.open(title) { yield }
+      else
+        puts "==== #{title} ===="
+        yield
+      end
+    end
+
+    def ui_info(message)
+      if defined?(CLI::UI)
+        CLI::UI::fmt("{{info}}#{message}{{/info}}")
+      else
+        message
+      end
+    end
+
+    def ui_ok(message)
+      if defined?(CLI::UI)
+        CLI::UI::fmt("{{green:✓}} #{message}")
+      else
+        message
+      end
+    end
+
+    def ui_spin(title)
+      started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+      result = nil
+      if defined?(CLI::UI)
+        CLI::UI::Spinner.spin(title) do
+          result = yield
+        end
+      else
+        puts "#{title}..."
+        result = yield
+      end
+      elapsed_sec = (Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at).round(2)
+      puts ui_ok("#{title} terminé en #{elapsed_sec}s")
+      result
+    end
+
+    def loadDomaines()
+    #+++++++++++++++
+    ui_step("Load <Domaines> values") do
+        puts ui_info("Load start")
+        @arr_domaines = {
+            'BVL'   => 'BVL',
+            'FIN'   => 'FIN',
+            'INF'   => 'INF',
+            'OFF'   => 'OFF',
+            'SAN'   => 'SAN',
+            'DOC'   => 'DOC',
+            'RES'   => 'RES',
+            'TBD'   => 'TBD'
+        }
+        rc = ui_ok("Load done"){puts "Domaines=>#{@arr_domaines.size}"}
+    end
+    end #<def>
+
+    def loadDossiers()
+    #+++++++++++++++
     #   INP:    ?
     #   OUT:    ?
     #
+    ui_step("Load <Dossiers> values") do
+        puts ui_info("Settings")
         # Settings
         myheaders = {
             'Authorization'     => "Bearer #{NOTION_TOKEN}",
-            'Notion-Version'    => NOTION_API_VERSION_OLD,
+            'Notion-Version'    => NOTION_API_VERSION,
             'Content-Type'      => 'application/json'
         }
         query = {
         #    filter: {},
-            sorts: [{ property: 'Nom', direction: 'ascending' }]
+            sorts: [{ property: 'Référence', direction: 'ascending' }]
         }
         all_pages       = []
         has_more        = true
         start_cursor    = nil
 
+        puts ui_info("Load start")
         # Read all pages
         while has_more  #<L1>
             query[:start_cursor] = start_cursor if start_cursor
 
             response = HTTParty.post(
-                "#{BASE_URL}/databases/#{ID_TAGS_DB}/query",
+                "#{NOTION_BASE_URL}/data_sources/#{ID_DOSS_DB}/query",
                 headers: myheaders,
                 body: query.to_json
             )
@@ -147,31 +218,185 @@ class   UploadFileToNotion
         end #<L1>
 
         # Dispatch about type
-        @arr_tags       = {}
+        @arr_dossiers = {}
+        all_pages.each do |page|    #<L1>
+            page_id             = page['id']
+            properties          = page['properties']
+            value               = properties['Référence']
+            nom                 = value["title"].map { _1["plain_text"] }.join
+           @arr_dossiers[nom]   = page_id
+        end #<L1>
+        rc = ui_ok("Load done"){puts "Dossiers=>#{@arr_dossiers.size}"}
+   end
+    end #<def>
+
+    def loadTags()
+    #+++++++++++
+    #   INP:    ?
+    #   OUT:    ?
+    #
+    ui_step("Load <Tags> values") do
+        puts ui_info("Settings")
+        # Settings
+        myheaders = {
+            'Authorization'     => "Bearer #{NOTION_TOKEN}",
+            'Notion-Version'    => NOTION_API_VERSION,
+            'Content-Type'      => 'application/json'
+        }
+        query = {
+        #    filter: {},
+            sorts: [{ property: 'Référence', direction: 'ascending' }]
+        }
+        all_pages       = []
+        has_more        = true
+        start_cursor    = nil
+
+        puts ui_info("Load start")
+        # Read all pages
+        while has_more  #<L1>
+            query[:start_cursor] = start_cursor if start_cursor
+
+            response = HTTParty.post(
+                "#{NOTION_BASE_URL}/data_sources/#{ID_TAGS_DB}/query",
+                headers: myheaders,
+                body: query.to_json
+            )
+
+            unless response.success?    #<IF2>
+                puts "=> #{__method__} : Erreur query: #{response['message']}"
+                pp  response
+                break
+            end #<IF2>
+
+            all_pages.concat(response['results'])
+            has_more        = response['has_more']
+            start_cursor    = response['next_cursor']
+        end #<L1>
+
+        # Dispatch about type
+        @arr_tags = {}
         all_pages.each do |page|    #<L1>
             page_id     = page['id']
             properties  = page['properties']
-            ### pp page['properties']
-            value   = properties['Nom']
-            nom     = value["title"].map { _1["plain_text"] }.join
-            value   = properties['Area']
-            l1      = value['checkbox']
-            value   = properties['Dossier']
-            l2      = value['checkbox']
-            value   = properties['Tag']
-            l3      = value['checkbox']
-            value   = properties['Emetteur']
-            l4      = value['checkbox']
-            @arr_tags[nom]  = [page_id,l1,l2,l3,l4]
+            value       = properties['Référence']
+            nom         = value["title"].map { _1["plain_text"] }.join
+            @arr_tags[nom]  = page_id
         end #<L1>
-        ### pp  @arr_tags
+        rc = ui_ok("Load done"){puts "Tags=>#{@arr_tags.size}"}
+    end
+    end #<def>
 
-        # explode into 4 levels
-        @tagl1   = @arr_tags.select{|_, v| v[1]}.keys
-        @tagl2   = @arr_tags.select{|_, v| v[2]}.keys
-        @tagl3   = @arr_tags.select{|_, v| v[3]}.keys
-        @tagl4   = @arr_tags.select{|_, v| v[4]}.keys
-        #   exit 9
+    def loadTypes()
+    #++++++++++++
+    #   INP:    ?
+    #   OUT:    ?
+    #
+    ui_step("Load <Types> values") do
+        puts ui_info("Settings")
+        # Settings
+        myheaders = {
+            'Authorization'     => "Bearer #{NOTION_TOKEN}",
+            'Notion-Version'    => NOTION_API_VERSION,
+            'Content-Type'      => 'application/json'
+        }
+        query = {
+        #    filter: {},
+            sorts: [{ property: 'Référence', direction: 'ascending' }]
+        }
+        all_pages       = []
+        has_more        = true
+        start_cursor    = nil
+
+        puts ui_info("Load start")
+        # Read all pages
+        while has_more  #<L1>
+            query[:start_cursor] = start_cursor if start_cursor
+
+            response = HTTParty.post(
+                "#{NOTION_BASE_URL}/data_sources/#{ID_TYPE_DB}/query",
+                headers: myheaders,
+                body: query.to_json
+            )
+
+            unless response.success?    #<IF2>
+                puts "=> #{__method__} : Erreur query: #{response['message']}"
+                pp  response
+                break
+            end #<IF2>
+
+            all_pages.concat(response['results'])
+            has_more        = response['has_more']
+            start_cursor    = response['next_cursor']
+        end #<L1>
+
+        # Dispatch about type
+        @arr_types = {}
+        all_pages.each do |page|    #<L1>
+            page_id         = page['id']
+            properties      = page['properties']
+            ### pp page['properties']
+            value           = properties['Référence']
+            nom             = value["title"].map { _1["plain_text"] }.join
+           @arr_types[nom]  = page_id
+        end #<L1>
+        rc = ui_ok("Load done"){puts "Types=>#{@arr_types.size}"}
+    end
+    end #<def>
+
+    def loadEmetteurs()
+    #++++++++++++++++
+    #   INP:    ?
+    #   OUT:    ?
+    #
+    ui_step("Load <Emetteurs> values") do
+        puts ui_info("Settings")
+        # Settings
+        myheaders = {
+            'Authorization'     => "Bearer #{NOTION_TOKEN}",
+            'Notion-Version'    => NOTION_API_VERSION,
+            'Content-Type'      => 'application/json'
+        }
+        query = {
+        #    filter: {},
+            sorts: [{ property: 'Référence', direction: 'ascending' }]
+        }
+        all_pages       = []
+        has_more        = true
+        start_cursor    = nil
+
+        puts ui_info("Load start")
+        # Read all pages
+        while has_more  #<L1>
+            query[:start_cursor] = start_cursor if start_cursor
+
+            response = HTTParty.post(
+                "#{NOTION_BASE_URL}/data_sources/#{ID_EMETTEUR_DB}/query",
+                headers: myheaders,
+                body: query.to_json
+            )
+
+            unless response.success?    #<IF2>
+                puts "=> #{__method__} : Erreur query: #{response['message']}"
+                pp  response
+                break
+            end #<IF2>
+
+            all_pages.concat(response['results'])
+            has_more        = response['has_more']
+            start_cursor    = response['next_cursor']
+        end #<L1>
+
+        # Dispatch about type
+        @arr_emetteurs = {}
+        all_pages.each do |page|    #<L1>
+            page_id             = page['id']
+            properties          = page['properties']
+            value               = properties['Référence']
+            nom                 = value["title"].map { _1["plain_text"] }.join
+            @arr_emetteurs[nom] = page_id
+        end #<L1>
+        rc = ui_ok("Load done"){puts "Emetteurs=>#{@arr_emetteurs.size}"}
+    end
     end #<def>
 
     def checkTag()
@@ -188,12 +413,15 @@ class   UploadFileToNotion
     #   INP:    file_select
     #   OUT:    arr_fileinfos   => {code=> ?, filename=> ?, size=> ?, type=> ?, data=> ?, content=> ?}
     #
+    ui_step("Check File") do
+        puts ui_info("Settings")
         # extract file infos
         #-1- set directory
         @arr_fileinfos['directory'] = File.dirname(file_select)
         @arr_fileinfos['directory'] = Dir.pwd() if @arr_parameters['file'] == 'F'
         Dir.chdir(@arr_fileinfos['directory'])
 
+        puts ui_info("Define")
         #-2- set infos
         file_path   = file_select
         @arr_fileinfos['path']      = file_path
@@ -207,6 +435,7 @@ class   UploadFileToNotion
     #    @arr_fileinfos['fullpath']  = "#{@arr_fileinfos['directory']}/#{@arr_fileinfos['filename']}"
         @arr_fileinfos['fullpath']  = "#{file_path}"
 
+        puts ui_info("Checks")
         # check type & Get content
         type_include    = ['txt', 'pdf', 'json', 'csv']
         if @type_include.none?{ |ex| file_type.include?(ex) }
@@ -218,11 +447,13 @@ class   UploadFileToNotion
         end
 
         # Get tags
-        file_tags               = "upload,#{file_type}"             #default tags
+        file_tags               = "upload, #{file_type}"             #default tags
         @arr_fileinfos['tags']  = file_tags.split(',').map(&:strip) #split tags by comma and remove spaces
 
         # return
         return  true
+        puts ui_ok("Check done")
+    end
     end #<def>
 
     def ask_db()
@@ -232,77 +463,83 @@ class   UploadFileToNotion
     #   OUT:    @dossier_id
     #           @arr_fields_req
     #
+    ui_step("Load <Get D D T T E") do
+        puts ui_info("Settings")
         # all choices
         # Display Tags
         b   = "\e[1m"
         r   = "\e[0m"
 
-        # Get Level1/DB
+        puts ui_info("Domaine")
+        # Get Level1/Domaine
         while   true
-            puts    "\n#{b}TAGS 1::#{r} #{@tagl1}"
-            print   "For the DB.Doc [#{@old_level1}] => "
-            level1  = ask(default: "#{@old_level1}", form: 'up')
-            return  false   unless level1 != 'Q'
-            ### next    unless level1.size != 3
-            @old_level1 = level1
-            break   if @arr_tags.has_key?(level1)
+            puts    "\n#{b}DOMAINE::#{r} #{@arr_domaines.keys}"
+            print   "For the DB.Doc - #{b}Capitalize#{r} [#{@domaine}]=> "
+            domaine  = ask(default: "#{@domaine}", form: 'up')
+            return  false   unless domaine != 'Q'
+            @domaine = domaine
+            @arr_domaines.include?(domaine) ? break : @domaine = "TBD"
         end 
 
-        # Get Level2/Object
-        @old_level2 = "Tbd"
+        puts ui_info("Dossier")
+        # Get Level2/Dossier from Dossiers
         while   true
-            break
-            puts    "\n#{b}TAGS 2::#{r} #{@tagl2}"
-            print   "Enter the Object [#{@old_level2}] => "
-            level2  = ask(default: "#{@old_level2}", form: 'cap')
-            return  false   unless level2 != 'Q'
-            @old_level2 = level2
-            break   if @arr_tags.has_key?(level2)
+            puts    "\n#{b}DOSSIER::#{r} #{@arr_dossiers.keys}"
+            print   "Enter the Object -#{b}Capitaize#{r} [#{@dossier}] => "
+            dossier = ask(default: "#{@dossier}", form: 'cap')
+            return  false   unless dossier != 'Q'
+            @dossier = dossier
+            @arr_dossiers.key?(dossier) ? break : @dossier = "Tbd"
         end
 
-        # Get Level3/Tags
+        puts ui_info("Tag")
+        # Get Level3/Tags from Tags
         while   true
-            puts    "\n#{b}TAGS 3::#{r} #{@tagl3}"
-            print   "Enter the Tags [#{@old_level3}] => "
-            level3  = ask(default: "#{@old_level3}", form: 'cap')
-            return  false   unless level3 != 'Q'
-            @old_level3 = level3
-            break   if @arr_tags.has_key?(level3)
+            puts    "\n#{b}TAG::#{r} #{@arr_tags.keys}"
+            print   "Enter the Tag -#{b}Capitalize#{r} [#{@tag}] => "
+            tag  = ask(default: "#{@tag}", form: 'nil')
+            return  false   unless tag != 'Q'
+            @tag = tag
+            @arr_tags.include?(tag) ? break : @tag = "Tbd"
         end
 
-        # Get Level4/Type``
-        @old_level4 = "Tbd"
+        puts ui_info("Type")
+        # Get Level4/Type from Types
         while   true
-            break
-            puts    "\n#{b}TAGS 4::#{r} #{@tagl4}"
-            print   "Enter the Type [#{@old_level4}] => "
-            level4  = ask(default: "#{@old_level4}", form: 'cap')
-            return  false   unless level4 != 'Q'
-            @old_level4 = level4
-            break   if @arr_tags.has_key?(level4)
+            puts    "\n#{b}TYPE::#{r} #{@arr_types.keys}"
+            print   "Enter the Type -#{b}Capitalize#{r} [#{@Types}] => "
+            type    = ask(default: "#{@types}", form: 'cap')
+            return  false   unless type != 'Q'
+            @types = type
+            @arr_types.key?(type) ? break : @types = "Tbd"
         end
 
-        # Get Emetteur
+        puts ui_info("Emetteur")
+        # Get Emetteurs
         while   true
-            print   "Enter the #{b}Sender#{r} [#{@old_sender}] => "
-            sender  = ask(default: "#{@old_sender}")
+            puts    "\n#{b}EMETTEUR::#{r} #{@arr_emetteurs.keys}"
+            print   "Enter the #{b}Sender#{r}-#{b}NoForm#{r} [#{@emetteur}] => "
+            sender  = ask(default: "#{@emetteur}", form: 'nil')
             return  false   unless sender != 'Q'
-            @old_sender = sender
-            break   if @arr_tags.has_key?(sender)
+            @emetteur = sender
+            @arr_emetteurs.has_key?(sender) ? break : @emetteur = "Tbd"
         end
 
+        puts ui_info("Note")
         # Get Note
         print   "Enter the Note (if any) => "
         @note   = $stdin.gets.chomp.to_s
 
+        puts ui_ok("Load done")
         return  true
+    end
     end #<def>
 
 
     def ask(default: nil, form: nil)
         print   "Your choice [#{default}]: "
-        v = STDIN.gets.chomp.strip
-        (v.nil? || v.empty?) ? default : v
+        v = STDIN.gets&.strip
+        v = default if v.nil? || v.empty?
         case form
         when 'low'
             v = v.downcase
@@ -321,6 +558,8 @@ class   UploadFileToNotion
     #   INP:    @arr_fileinfos
     #   OUT:    status
     
+    ui_step("Load File-Step 1") do
+        puts ui_info("Settings")
         url = URI("https://api.notion.com/v1/file_uploads")
 
         http            = Net::HTTP.new(url.host, url.port)
@@ -333,6 +572,7 @@ class   UploadFileToNotion
         request["content-type"]     = 'application/json'
         request.body                = "{\"mode\":\"single_part\"}"
 
+        puts ui_info("Send request")
         response    = http.request(request)
         body        = response.read_body
         body        = JSON.parse(body)
@@ -342,7 +582,9 @@ class   UploadFileToNotion
         @arr_fileinfos['id']    = body['id']
 
         # Return
+        rc = ui_ok("Step done") {puts "#{body['status']}"}
         body['status']
+    end
     end #<def>
 
     def uploadFile()
@@ -351,12 +593,21 @@ class   UploadFileToNotion
     #   INP:    @arr_fileinfos
     #   OUT:    status
     #
+    ui_step("Load File-Step 2") do
+        puts ui_info("Settings")
         @arr_fileinfos['part']  = (@arr_fileinfos['size']/@max_size).ceil
         
+        puts ui_info("Send request")
         rc  = sendFileUpload()
+        exit 7      if rc != 'uploaded'
 
-        # return
-        rc
+        puts ui_info("Send request")
+        puts    "\n=== Complete upload ==="
+        rc  = completeUpload()
+
+        puts ui_ok("Load done")
+        return
+    end
     end #<def>
 
     def sendFileUpload()
@@ -430,30 +681,49 @@ class   UploadFileToNotion
 
     def attachFile()
     #+++++++++++++
-    #   attach the file to a new page in DB
+    #   attach the file to a new page in DB-Upload
     #   INP:    ?
     #   OUT:    ?
     #
+    ui_step("Attach file to new page") do
+        puts ui_info("Settings")
+        # get dossier & properties
+        while   true
+            break   ask_db                              #get properties values
+        end
+
         # build properties
         props = {}
-        props['Reference'] = { 'title' => [{ 'text' => { 'content' => @arr_fileinfos['filename'] }} ] }
-        props['Type'] = { 'select' => { 'name' => @arr_fileinfos['type'] } }
-        props['Statut'] = { 'status' => { 'name' => "Enregistré" } }
-        props['Tags'] = { 'multi_select' => [{ 'name' => "Upload" }] }
-        props['FileName'] = { 'rich_text' => [{ 'text' => { 'content' => @arr_fileinfos['fullpath'] } }] }
-        props['FileID'] = { 'rich_text' => [{ 'text' => { 'content' => @arr_fileinfos['id'] } }] }
-        props['FileContent'] = { 'files' => [{ 'file_upload' => { 'id' => @arr_fileinfos['id'] }}] }
-        props['FileSize'] = { 'number' => @arr_fileinfos['size']}
+        props['Référence']      = { 'title' => [{ 'text' => { 'content' => @arr_fileinfos['filename'] }} ] }
+        props['Type1']          = { 'select' => { 'name' => @arr_fileinfos['type'] } }
+        props['Statut']         = { 'status' => { 'name' => "Enregistré" } }
+        props['Tags1']          = { 'multi_select' => [{ 'name' => "Upload" }] }
+        props['FileName']       = { 'rich_text' => [{ 'text' => { 'content' => @arr_fileinfos['fullpath'] } }] }
+        props['FileID']         = { 'rich_text' => [{ 'text' => { 'content' => @arr_fileinfos['id'] } }] }
+        props['FileContent']    = { 'files' => [{ 'file_upload' => { 'id' => @arr_fileinfos['id'] }}] }
+        props['FileSize']       = { 'number' => @arr_fileinfos['size']}
+        props['Domaine']        = { 'select' => { 'name' => @arr_domaines[@domaine] } }
+        props['Dossier']        = { 'relation' => [{ 'id' => @arr_dossiers[@dossier] } ] }
+        props['Tags']           = { 'relation' => [{ 'id' => @arr_tags[@tag] } ] }
+        props['Type']           = { 'relation' => [{ 'id' => @arr_types[@types] } ] }
+        props['Emetteur']       = { 'relation' => [{ 'id' => @arr_emetteurs[@emetteur] } ] }
+
+        myheaders = {
+            'Authorization'     => "Bearer #{NOTION_TOKEN}",
+            'Notion-Version'    => NOTION_API_VERSION_OLD,
+            'Content-Type'      => 'application/json'
+        }
 
         payload = {
             'parent'      => { 'database_id' => ID_FILE_DB },
             'properties'  => props
         }
 
+        puts ui_info("Request")
         # request
         response = HTTParty.post(
-            "#{BASE_URL}/pages",
-            headers: @headers,
+            "#{NOTION_BASE_URL}/pages",
+            headers: myheaders,
             body: payload.to_json
         )
 
@@ -465,66 +735,27 @@ class   UploadFileToNotion
             puts "=> #{__method__}  ✗ Error new page: #{response['message']}"
             return  false
         end
+        puts ui_ok("Attach done")
+    end
     end #<def>
 
     def addnewPage()
     #+++++++++++++
-    #   create new page on <Dossier> with file
+    #   create new page on <FilesUpload> with file
     #   INP:    @arr_fileinfos
     #           @arr_fields_req
     #   OUT:    ?
     #
-        # get dossier & properties
-        while   true
-            break   ask_db                              #get properties values
-        end
-
-        # build properties
-        props = {}
-        props['Nom']      = { 'title' => [{ 'text' => { 'content' => @arr_fileinfos['filename'] }} ] }
-    #    props['Niveau 1']       = { 'relation' => [{ 'id' => @arr_tags[@old_level1][0]} ] }
-    #    props['Dossier']        = { 'relation' => [{ 'id' => @arr_tags[@old_level2][0]} ] }
-        props['Tags']           = { 'relation' => [{ 'id' => @arr_tags[@old_level3][0]} ] }
-    #    props['Type']           = { 'relation' => [{ 'id' => @arr_tags[@old_level4][0]} ] }
-        props['Emetteur']       = { 'relation' => [{ 'id' => @arr_tags[@old_sender][0]} ] }
-        props['Description']    = { 'rich_text' => [{ 'text' => { 'content' => @note } }] }
-        props['Fichier']        = { 'files' => [{ 'file_upload' => { 'id' => @arr_fileinfos['id'] }}] }
-
-        ### pp  props
-    
-        # make payload
-        id_docs_db  = ID_DOCS_BVL   if @old_level1.include?('BVL')
-        id_docs_db  = ID_DOCS_FIN   if @old_level1.include?('FIN')
-        id_docs_db  = ID_DOCS_INF   if @old_level1.include?('INF')
-        id_docs_db  = ID_DOCS_OFF   if @old_level1.include?('OFF')
-        id_docs_db  = ID_DOCS_SAN   if @old_level1.include?('SAN')
-        id_docs_db  = ID_DOCS_DOC   if @old_level1.include?('DOC')
-
-        payload = {
-            'parent'      => { 'data_source_id' => id_docs_db },
-            'properties'  => props
-        }
-
-        # request
-        response = HTTParty.post(
-            "#{BASE_URL}/pages",
-            headers: @headers,
-            body: payload.to_json
-        )
-
-        # response
-        if response.success?
-            puts "=> #{__method__}  ✓ File attached & page added into <Dossier>"
-            return  true
-        else
-            puts "=> #{__method__}  ✗ Error new page: #{response['message']}"
-            return  false
-        end
+    #
+        return
+    #
     end #<def>
 
     def add_new_action()
     #+++++++++++++++++
     #
+        return
+
         # build properties
         props = {}
         props['Titre'] = { 'title' => [{ 'text' => { 'content' => "New doc added to #{@old_area}-#{@old_object}" } } ] }
@@ -569,49 +800,46 @@ class   UploadFileToNotion
     #   INP:    ?
     #   OUT:    ?
     #
-        puts    "\n=== Get Parameters ==="
-        getParameters()
+    ui_step("Run script") do
+        puts ui_info("Settings")
+        ui_spin("=== Get Parameters ==="){getParameters()}
 
-        puts    "\n=== Get Common values ==="
-        rc  = loadTags()
+        puts ui_info("=== Get Fields ===")
+        ui_spin("=Get Domaines="){loadDomaines()}
+        ui_spin("=Get Dossiers="){loadDossiers()}
+        ui_spin("=Get Tags="){loadTags()}
+        ui_spin("=Get Types="){loadTypes()}
+        ui_spin("=Get Emetteurs="){loadEmetteurs()}
 
         puts    "\n=== Loop all files ==="
-        loop    = 0
+        loop        = 0
+        initial_dir = '.'
         while   @arr_parameters['P2'] == 'L'
-            puts    "\n=== Select file to upload ==="
+            loop    += 1
+            puts ui_info("=Loop:#{loop}=Select file to upload==")
             file_select = SelectFile.select_scan(initial_dir: @tk_init_dir, loop: loop)
+
             puts    "\n=== File selected ==="
             break   unless file_select
-            puts    "#{file_select}"
 
             puts    "\n=== Check file type ==="
             exit    3   if checkFileType(file_select) == false
-            @tk_initdir = @arr_fileinfos['directory']
+        #    @tk_initdir = @arr_fileinfos['directory']
 
             puts    "\n=== Get File-Object ==="
             rc  = getFileObject()
             exit 5      if rc != 'pending'
 
             puts    "\n=== Send file upload ==="
-            rc  = uploadFile()
-            exit 7      if rc != 'uploaded'
-
-            puts    "\n=== Complete upload ==="
-            rc  = completeUpload()
+            ui_spin("Send file upload"){uploadFile()}
 
             puts    "\n=== Attach to my DB-upload ==="
-            rc  = attachFile()
-
-            puts    "\n=== Create page on <Dossiers> with fileID ==="
-            rc  = addnewPage()
-
-            puts    "\n=== Create page on <Actions> ==="
-        ###    rc  = add_new_action()
+            ui_spin("Attach file to table"){attachFile()}
 
             print   "=> Sequence done with status: #{rc}\n"
-            loop    += 1
         end
-        puts    "=> Loop done"
+        puts ui_ok("Run done")
+    end
     end #<def>
 #
 end #<class>

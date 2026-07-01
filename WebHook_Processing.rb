@@ -198,6 +198,27 @@ class WebhookProcessing < Sinatra::Base
     end #<post>
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++
+    # Process <Post> request for <Infomaniak_webhook>
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
+    #
+    post "/infomaniak_webhook" do
+        $stdout.puts ">>>DBG>Infomaniak_Webhook => "
+        payload = request.body && JSON.parse(request.body.read || '{}')
+        ### pp payload
+
+        request_id              = SecureRandom.uuid
+        payload['request_id']   = request_id
+
+        # Enqueue async IMMÉDIATEMENT
+        WebhookAsync.perform_async('Infomaniak', payload)
+
+        # Réponse 200 rapide (fire & forget)
+        [200, { 'Content-Type' => 'application/json' }, 
+            [{ status: 'received', queued: true }.to_json]]
+        
+    end #<post>
+
+    # ++++++++++++++++++++++++++++++++++++++++++++++++
     # Process <Post> request for <notion_request>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #   from webhook integration: CssGhe_Webhooks

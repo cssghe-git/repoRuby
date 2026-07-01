@@ -36,7 +36,8 @@ require_relative    'ClStandards.rb'
 #**********
     opts    = {                                         #specific options
         debug_bool: "OFF",
-        dryrun: "OFF"
+        dryrun: "OFF",
+        pp_bool: true
     }
 
 #   Variables
@@ -47,11 +48,12 @@ require_relative    'ClStandards.rb'
     arr_tags        = {}
     arr_senders     = {}
     upl_fields      = {
-        'Domaine': {'type': 'select', 'prompt': 'Domaine ', 'options': arr_domaines},
-        'Dossier': {'type': 'choice', 'prompt': 'Dossier ', 'options': arr_dossiers},
-        'Types': {'type': 'choice', 'prompt': 'Types ', 'options': arr_types},
-        'Tags': {'type': 'choice', 'prompt': 'Tags ', 'options': arr_tags}
+        "Domaine"=> {'type': 'select', 'prompt': 'Domaine ', 'options': arr_domaines, 'relation': ''},
+        'Dossier'=> {'type': 'choice', 'prompt': 'Dossier ', 'options': arr_dossiers, 'relation': arr_dossiers},
+        'Types'=> {'type': 'choice', 'prompt': 'Types ', 'options': arr_types, 'relation': arr_types},
+        'Tags'=> {'type': 'choice', 'prompt': 'Tags ', 'options': arr_tags, 'relation': arr_tags}
     }
+    responses = {}
 
 # Logger
     log                 = Logger.new(STDOUT)
@@ -103,6 +105,7 @@ require_relative    'ClStandards.rb'
       puts ui_ok("#{title} terminé en #{elapsed_sec}s")
       result
     end
+
     #Initialisations
     #===============
     # New instances
@@ -113,8 +116,8 @@ require_relative    'ClStandards.rb'
         log.debug("▶️->Initialisations")
         log.debug("⏩️->Create a new instance of class <Standards>")
 
-        nnew    = Standards.new([], 'New', true)                         #new instance
-        nold    = Standards.new([], 'Old', true)                         #new instance
+        nnew    = Standards.new([], 'New', true)                         #new instance data_source
+        nold    = Standards.new([], 'Old', true)                         #new instance database
         prompt = TTY::Prompt.new
 
         # Specific options
@@ -159,7 +162,6 @@ require_relative    'ClStandards.rb'
             arr_dossiers[properties['Référence']] = page['id'] unless arr_dossiers.include?(properties['Référence'])
         end
         puts ui_ok("Dossiers chargés: #{arr_dossiers.size}")
-        ###pp arr_dossiers
     
         # TAGS
         #-----
@@ -221,7 +223,7 @@ require_relative    'ClStandards.rb'
         elapsed_fct = ((stop_fct - start_fct)*1000).round(2)
         sen_pages_max = sen_pages.size
         log.debug("⏭️->Fetch DB:: #{sen_pages_max} pages on elapsed time: #{elapsed_fct} ms or #{(elapsed_fct / 1000).round(2)} sec")
-        count = 0
+        count = 9
         sen_pages.each do |page|
             pp page if count < 1
             count += 1
@@ -272,11 +274,11 @@ require_relative    'ClStandards.rb'
             log.debug("⏭️->Process page: #{page['id']} - #{properties['Reference']}")
             log.info("=====Current fields=====")
             properties.each do |key, value|
-                log.debug("⏩️->#{key}: #{value}")    unless key === 'FileContent'
+                log.debug("⏩️-Prop->#{key}=> #{value}")    unless key === 'FileContent'
             end
 
             log.info("=====Update fields=====")
-            responses = {}
+            # Loop all fields to update
             upl_fields.each do |key, value|
                 case value[:type]
                 when 'select'
@@ -288,17 +290,22 @@ require_relative    'ClStandards.rb'
                     next
                 end
             end
-
-            log.debug("⏩️->User responses: #{responses}")
+            log.debug("⏩️->User responses: ")
+            ### pp responses
 
             log.info("=====Rewrite fields=====")
+            # Set fields to update
             props = {
                 "Domaine": nold.select(responses["Domaine"]),
-                "Dossier": nold.relation(responses["Dossier"]),
-                "Type": nold.relation(responses["Types"]),
-                "Tags": nold.relation(responses["Tags"])
+                "Dossier": nold.relation1(responses["Dossier"]),
+                "Type": nold.relation1(responses["Types"]),
+                "Tags": nold.relation1(responses["Tags"]),
+                "Emetteur": nold.relation1(responses["Emetteur"]),
+                "Statut": nold.status("Traité")
             }
+            pp props
             res = nold.page_update(page_id, props)
+            pp res
         end
     end
-    log.fatal("🛂->End of test #{$0}")
+    log.warn("🛂->End of test #{$0}")

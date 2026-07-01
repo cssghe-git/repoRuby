@@ -30,6 +30,7 @@
     {"INF": "2c172117-082a-808d-8936-000b3ad03c19", "name": "INF"},
     {"OFF": "2c372117-082a-805a-9cca-000b6c71d553", "name": "OFF"},
     {"SAN": "2c372117-082a-8020-bd2a-000b4ec7a18b", "name": "SAN"},
+    {"RES": "2c372117-082a-80f5-8d1a-000b4e5b6fb6", "name": "RES"},
 
     {"Dossiers": "35972117-082a-80e2-bc2c-000b528b61be", "name": "Dossiers"},
     {"Types": "35972117-082a-80d1-b7b7-000b74157f86", "name": "Types"},
