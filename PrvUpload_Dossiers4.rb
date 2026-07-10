@@ -33,7 +33,7 @@ end
 begin
   require "cli/ui"
   CLI::UI::StdoutRouter.enable
-  CLI::UI::Frame.divider('═')
+#  CLI::UI::Frame.divider('═')
 rescue LoadError
 end
 
@@ -115,51 +115,9 @@ class   UploadFileToNotion
         @arr_parameters
     end #<def>
 
-    def ui_step(title)
-      if defined?(CLI::UI)
-        CLI::UI::Frame.open(title) { yield }
-      else
-        puts "==== #{title} ===="
-        yield
-      end
-    end
-
-    def ui_info(message)
-      if defined?(CLI::UI)
-        CLI::UI::fmt("{{info}}#{message}{{/info}}")
-      else
-        message
-      end
-    end
-
-    def ui_ok(message)
-      if defined?(CLI::UI)
-        CLI::UI::fmt("{{green:✓}} #{message}")
-      else
-        message
-      end
-    end
-
-    def ui_spin(title)
-      started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-      result = nil
-      if defined?(CLI::UI)
-        CLI::UI::Spinner.spin(title) do
-          result = yield
-        end
-      else
-        puts "#{title}..."
-        result = yield
-      end
-      elapsed_sec = (Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at).round(2)
-      puts ui_ok("#{title} terminé en #{elapsed_sec}s")
-      result
-    end
 
     def loadDomaines()
     #+++++++++++++++
-    ui_step("Load <Domaines> values") do
-        puts ui_info("Load start")
         @arr_domaines = {
             'BVL'   => 'BVL',
             'FIN'   => 'FIN',
@@ -170,8 +128,6 @@ class   UploadFileToNotion
             'RES'   => 'RES',
             'TBD'   => 'TBD'
         }
-        rc = ui_ok("Load done"){puts "Domaines=>#{@arr_domaines.size}"}
-    end
     end #<def>
 
     def loadDossiers()
@@ -179,8 +135,6 @@ class   UploadFileToNotion
     #   INP:    ?
     #   OUT:    ?
     #
-    ui_step("Load <Dossiers> values") do
-        puts ui_info("Settings")
         # Settings
         myheaders = {
             'Authorization'     => "Bearer #{NOTION_TOKEN}",
@@ -195,7 +149,6 @@ class   UploadFileToNotion
         has_more        = true
         start_cursor    = nil
 
-        puts ui_info("Load start")
         # Read all pages
         while has_more  #<L1>
             query[:start_cursor] = start_cursor if start_cursor
@@ -226,8 +179,6 @@ class   UploadFileToNotion
             nom                 = value["title"].map { _1["plain_text"] }.join
            @arr_dossiers[nom]   = page_id
         end #<L1>
-        rc = ui_ok("Load done"){puts "Dossiers=>#{@arr_dossiers.size}"}
-    end
     end #<def>
 
     def loadTags()
@@ -235,8 +186,6 @@ class   UploadFileToNotion
     #   INP:    ?
     #   OUT:    ?
     #
-    ui_step("Load <Tags> values") do
-        puts ui_info("Settings")
         # Settings
         myheaders = {
             'Authorization'     => "Bearer #{NOTION_TOKEN}",
@@ -251,7 +200,6 @@ class   UploadFileToNotion
         has_more        = true
         start_cursor    = nil
 
-        puts ui_info("Load start")
         # Read all pages
         while has_more  #<L1>
             query[:start_cursor] = start_cursor if start_cursor
@@ -282,8 +230,6 @@ class   UploadFileToNotion
             nom         = value["title"].map { _1["plain_text"] }.join
             @arr_tags[nom]  = page_id
         end #<L1>
-        rc = ui_ok("Load done"){puts "Tags=>#{@arr_tags.size}"}
-    end
     end #<def>
 
     def loadTypes()
@@ -291,8 +237,6 @@ class   UploadFileToNotion
     #   INP:    ?
     #   OUT:    ?
     #
-    ui_step("Load <Types> values") do
-        puts ui_info("Settings")
         # Settings
         myheaders = {
             'Authorization'     => "Bearer #{NOTION_TOKEN}",
@@ -307,7 +251,6 @@ class   UploadFileToNotion
         has_more        = true
         start_cursor    = nil
 
-        puts ui_info("Load start")
         # Read all pages
         while has_more  #<L1>
             query[:start_cursor] = start_cursor if start_cursor
@@ -339,8 +282,6 @@ class   UploadFileToNotion
             nom             = value["title"].map { _1["plain_text"] }.join
            @arr_types[nom]  = page_id
         end #<L1>
-        rc = ui_ok("Load done"){puts "Types=>#{@arr_types.size}"}
-    end
     end #<def>
 
     def loadEmetteurs()
@@ -348,8 +289,6 @@ class   UploadFileToNotion
     #   INP:    ?
     #   OUT:    ?
     #
-    ui_step("Load <Emetteurs> values") do
-        puts ui_info("Settings")
         # Settings
         myheaders = {
             'Authorization'     => "Bearer #{NOTION_TOKEN}",
@@ -364,7 +303,6 @@ class   UploadFileToNotion
         has_more        = true
         start_cursor    = nil
 
-        puts ui_info("Load start")
         # Read all pages
         while has_more  #<L1>
             query[:start_cursor] = start_cursor if start_cursor
@@ -395,8 +333,6 @@ class   UploadFileToNotion
             nom                 = value["title"].map { _1["plain_text"] }.join
             @arr_emetteurs[nom] = page_id
         end #<L1>
-        rc = ui_ok("Load done"){puts "Emetteurs=>#{@arr_emetteurs.size}"}
-    end
     end #<def>
 
     def checkTag()
@@ -413,15 +349,12 @@ class   UploadFileToNotion
     #   INP:    file_select
     #   OUT:    arr_fileinfos   => {code=> ?, filename=> ?, size=> ?, type=> ?, data=> ?, content=> ?}
     #
-    ui_step("Check File") do
-        puts ui_info("Settings")
         # extract file infos
         #-1- set directory
         @arr_fileinfos['directory'] = File.dirname(file_select)
         @arr_fileinfos['directory'] = Dir.pwd() if @arr_parameters['file'] == 'F'
         Dir.chdir(@arr_fileinfos['directory'])
 
-        puts ui_info("Define")
         #-2- set infos
         file_path   = file_select
         @arr_fileinfos['path']      = file_path
@@ -435,7 +368,6 @@ class   UploadFileToNotion
     #    @arr_fileinfos['fullpath']  = "#{@arr_fileinfos['directory']}/#{@arr_fileinfos['filename']}"
         @arr_fileinfos['fullpath']  = "#{file_path}"
 
-        puts ui_info("Checks")
         # check type & Get content
         type_include    = ['txt', 'pdf', 'json', 'csv']
         if @type_include.none?{ |ex| file_type.include?(ex) }
@@ -452,8 +384,6 @@ class   UploadFileToNotion
 
         # return
         return  true
-        puts ui_ok("Check done")
-    end
     end #<def>
 
     def ask_db()
@@ -463,14 +393,11 @@ class   UploadFileToNotion
     #   OUT:    @dossier_id
     #           @arr_fields_req
     #
-    ui_step("Load <Get D D T T E") do
-        puts ui_info("Settings")
         # all choices
         # Display Tags
         b   = "\e[1m"
         r   = "\e[0m"
 
-        puts ui_info("Domaine")
         # Get Level1/Domaine
         while   true
             puts    "\n#{b}DOMAINE::#{r} #{@arr_domaines.keys}"
@@ -481,7 +408,6 @@ class   UploadFileToNotion
             @arr_domaines.include?(domaine) ? break : @domaine = "TBD"
         end 
 
-        puts ui_info("Dossier")
         # Get Level2/Dossier from Dossiers
         while   true
             puts    "\n#{b}DOSSIER::#{r} #{@arr_dossiers.keys}"
@@ -492,7 +418,6 @@ class   UploadFileToNotion
             @arr_dossiers.key?(dossier) ? break : @dossier = "Tbd"
         end
 
-        puts ui_info("Tag")
         # Get Level3/Tags from Tags
         while   true
             puts    "\n#{b}TAG::#{r} #{@arr_tags.keys}"
@@ -503,7 +428,6 @@ class   UploadFileToNotion
             @arr_tags.include?(tag) ? break : @tag = "Tbd"
         end
 
-        puts ui_info("Type")
         # Get Level4/Type from Types
         while   true
             puts    "\n#{b}TYPE::#{r} #{@arr_types.keys}"
@@ -514,7 +438,6 @@ class   UploadFileToNotion
             @arr_types.key?(type) ? break : @types = "Tbd"
         end
 
-        puts ui_info("Emetteur")
         # Get Emetteurs
         while   true
             puts    "\n#{b}EMETTEUR::#{r} #{@arr_emetteurs.keys}"
@@ -525,14 +448,11 @@ class   UploadFileToNotion
             @arr_emetteurs.has_key?(sender) ? break : @emetteur = "Tbd"
         end
 
-        puts ui_info("Note")
         # Get Note
         print   "Enter the Note (if any) => "
         @note   = $stdin.gets.chomp.to_s
 
-        puts ui_ok("Load done")
         return  true
-    end
     end #<def>
 
 
@@ -558,8 +478,6 @@ class   UploadFileToNotion
     #   INP:    @arr_fileinfos
     #   OUT:    status
     
-    ui_step("Load File-Step 1") do
-        puts ui_info("Settings")
         url = URI("https://api.notion.com/v1/file_uploads")
 
         http            = Net::HTTP.new(url.host, url.port)
@@ -572,7 +490,6 @@ class   UploadFileToNotion
         request["content-type"]     = 'application/json'
         request.body                = "{\"mode\":\"single_part\"}"
 
-        puts ui_info("Send request")
         response    = http.request(request)
         body        = response.read_body
         body        = JSON.parse(body)
@@ -582,9 +499,7 @@ class   UploadFileToNotion
         @arr_fileinfos['id']    = body['id']
 
         # Return
-        rc = ui_ok("Step done") {puts "#{body['status']}"}
         body['status']
-    end
     end #<def>
 
     def uploadFile()
@@ -593,20 +508,14 @@ class   UploadFileToNotion
     #   INP:    @arr_fileinfos
     #   OUT:    status
     #
-    ui_step("Load File-Step 2") do
-        puts ui_info("Settings")
         @arr_fileinfos['part']  = (@arr_fileinfos['size']/@max_size).ceil
         
-        puts ui_info("Send request")
         rc  = sendFileUpload()
         exit 7      if rc != 'uploaded'
 
-        puts ui_info("Send request")
         rc  = completeUpload()
 
-        puts ui_ok("Load done")
         return
-    end
     end #<def>
 
     def sendFileUpload()
@@ -684,8 +593,6 @@ class   UploadFileToNotion
     #   INP:    ?
     #   OUT:    ?
     #
-    ui_step("Attach file to new page") do
-        puts ui_info("Settings")
         # get dossier & properties
         while   true
             break   ask_db                              #get properties values
@@ -719,7 +626,6 @@ class   UploadFileToNotion
             'properties'  => props
         }
 
-        puts ui_info("Request")
         # request
         response = HTTParty.post(
             "#{NOTION_BASE_URL}/pages",
@@ -735,8 +641,6 @@ class   UploadFileToNotion
             puts "=> #{__method__}  ✗ Error new page: #{response['message']}"
             return  false
         end
-        puts ui_ok("Attach done")
-    end
     end #<def>
 
     def addnewPage()
@@ -800,23 +704,19 @@ class   UploadFileToNotion
     #   INP:    ?
     #   OUT:    ?
     #
-    ui_step("=== Run script ===") do
-        puts ui_info("Settings")
-        ui_spin("=== Get Parameters ==="){getParameters()}
+        getParameters()
 
-        puts ui_info("=== Get Fields ===")
-        ui_spin("=Get Domaines="){loadDomaines()}
-        ui_spin("=Get Dossiers="){loadDossiers()}
-        ui_spin("=Get Tags="){loadTags()}
-        ui_spin("=Get Types="){loadTypes()}
-        ui_spin("=Get Emetteurs="){loadEmetteurs()}
+        loadDomaines()
+        loadDossiers()
+        loadTags()
+        loadTypes()
+        loadEmetteurs()
 
         puts    "\n=== Loop all files ==="
         loop        = 0
         initial_dir = '.'
         while   @arr_parameters['P2'] == 'L'
             loop    += 1
-            puts ui_info("=Loop:#{loop}=Select file to upload==")
             if loop == 1
                 # create instance
                 tkroot = TkRoot.new { title "Sélection d'un répertoire et ensuite le fichier" }
@@ -868,15 +768,13 @@ class   UploadFileToNotion
             exit 5      if rc != 'pending'
 
             puts    "\n=== Send file upload ==="
-            ui_spin("Send file upload"){uploadFile()}
+            rc  = sendFileUpload()
 
             puts    "\n=== Attach to my DB-upload ==="
-            ui_spin("Attach file to table"){attachFile()}
+            rc  = attachFile()
 
             print   "=> Sequence done with status: #{rc}\n"
         end
-        puts ui_ok("Run done")
-    end
     end #<def>
 #
 end #<class>

@@ -33,7 +33,7 @@ end
 begin
   require "cli/ui"
   CLI::UI::StdoutRouter.enable
-  CLI::UI::Frame.divider('═')
+#  CLI::UI::Frame.divider('═')
 rescue LoadError
 end
 
@@ -552,7 +552,7 @@ class   UploadFileToNotion
         end
     end
 
-    def getFileObject()
+    def getFileObject(file_select)
     #++++++++++++++++
     #   1st part => get 'File-Object' from API
     #   INP:    @arr_fileinfos
@@ -587,7 +587,7 @@ class   UploadFileToNotion
     end
     end #<def>
 
-    def uploadFile()
+    def uploadFile(file_select)
     #+++++++++++++
     #   upload multi-part file
     #   INP:    @arr_fileinfos
@@ -597,89 +597,94 @@ class   UploadFileToNotion
         puts ui_info("Settings")
         @arr_fileinfos['part']  = (@arr_fileinfos['size']/@max_size).ceil
         
-        puts ui_info("Send request")
-        rc  = sendFileUpload()
+        puts ui_info("Send request 1")
+        rc  = sendFileUpload(file_select)
         exit 7      if rc != 'uploaded'
 
-        puts ui_info("Send request")
-        puts    "\n=== Complete upload ==="
-        rc  = completeUpload()
+        puts ui_info("Send request 2")
+        rc  = completeUpload(file_select)
 
         puts ui_ok("Load done")
         return
     end
     end #<def>
 
-    def sendFileUpload()
+    def sendFileUpload(file_select)
     #+++++++++++++++++++
     #   2nd part => send file
     #   INP:    ?
     #   OUT:    status
     #
-        file_name       = @arr_fileinfos['filename']
-        file_path       = @arr_fileinfos['fullpath']
-        file_upload_id  = @arr_fileinfos['id']
+        ui_spin("Send file upload") do
 
-        url = "https://api.notion.com/v1/file_uploads/#{file_upload_id}/send"
+            puts ui_info("Settings")
+            # Prepare headers
+            headers = {
+                'Authorization'   => "Bearer #{NOTION_TOKEN}",
+                'Notion-Version'  => NOTION_API_VERSION_OLD
+            }
+            # Prepare the file
+            file_name       = @arr_fileinfos['filename']
+            file_path       = @arr_fileinfos['fullpath']
+            file_upload_id  = @arr_fileinfos['id']
+            file = File.new(file_path, 'rb')
+            file_content_type = MIME::Types.type_for(file_name).first.content_type
+ 
+            # Prepare multipart data
+            payload = {
+            #    file: RestClient::Payload::File.new(file, filename: file_name, content_type: file_content_type),
+                file: File.new(file, filename: file_name, content_type: file_content_type),
+                part_number: '1'
+            }
 
-        # Prepare the file
-        file = File.new(file_path, 'rb')
-        file_content_type = MIME::Types.type_for(file_name).first.content_type
+            puts ui_info("Request")
+            url = "https://api.notion.com/v1/file_uploads/#{file_upload_id}/send"
 
-        # Prepare headers
-        headers = {
-            'Authorization'   => "Bearer #{NOTION_TOKEN}",
-            'Notion-Version'  => NOTION_API_VERSION_OLD
-        }
+           # Send the request
+            response = RestClient.post(url, payload, headers)
 
-        # Prepare multipart data
-        payload = {
-        #    file: RestClient::Payload::File.new(file, filename: file_name, content_type: file_content_type),
-            file: File.new(file, filename: file_name, content_type: file_content_type),
-            part_number: '1'
-        }
+            # Print the response
+            body    = response.body
+            body    = JSON.parse(body)
+            puts    "=> #{__method__} : Status: #{body['status']}"
 
-        # Send the request
-        response = RestClient.post(url, payload, headers)
-
-        # Print the response
-        body    = response.body
-        body    = JSON.parse(body)
-        puts    "=> #{__method__} : Status: #{body['status']}"
-
-        # return
-        body['status']
+            # return
+            body['status']
+        end
     end #<def>
 
-    def completeUpload()
+    def completeUpload(file_select)
     #+++++++++++++++++
     #   3thd part => finalize upload
     #   INP:    ?
     #   OUT:    status
+        ui_spin("Complete file upload") do
+            puts ui_info("Settings")
+            file_upload_id  = @arr_fileinfos['id']
+            url = URI("https://api.notion.com/v1/file_uploads/#{file_upload_id}/complete")
 
-        file_upload_id  = @arr_fileinfos['id']
-        url = URI("https://api.notion.com/v1/file_uploads/#{file_upload_id}/complete")
+            http = Net::HTTP.new(url.host, url.port)
+            http.use_ssl = true
 
-        http = Net::HTTP.new(url.host, url.port)
-        http.use_ssl = true
+            puts ui_info("Request")
+            request = Net::HTTP::Post.new(url)
+            request['Authorization']    = "Bearer #{NOTION_TOKEN}"
+            request['Notion-Version']   = NOTION_API_VERSION
+            request["accept"]           = 'application/json'
 
-        request = Net::HTTP::Post.new(url)
-        request['Authorization']    = "Bearer #{NOTION_TOKEN}"
-        request['Notion-Version']   = NOTION_API_VERSION
-        request["accept"]           = 'application/json'
+            response = http.request(request)
 
-        response = http.request(request)
+            # print the response
+            body    = response.body
+            body    = JSON.parse(body)
+            puts    "Message: #{body['message']}"
 
-        # print the response
-        body    = response.body
-        body    = JSON.parse(body)
-        puts    "Message: #{body['message']}"
-
-        # return
-        body['status']
+            # return
+            body['status']
+        end
     end #<def>
 
-    def attachFile()
+    def attachFile(file_select)
     #+++++++++++++
     #   attach the file to a new page in DB-Upload
     #   INP:    ?
@@ -688,9 +693,9 @@ class   UploadFileToNotion
     ui_step("Attach file to new page") do
         puts ui_info("Settings")
         # get dossier & properties
-        while   true
-            break   ask_db                              #get properties values
-        end
+    #    while   true
+        ask_db                              #get properties values
+    #    end
 
         # build properties
         props = {}
@@ -827,14 +832,14 @@ class   UploadFileToNotion
         #    @tk_initdir = @arr_fileinfos['directory']
 
             puts    "\n=== Get File-Object ==="
-            rc  = getFileObject()
+            rc  = getFileObject(file_select)
             exit 5      if rc != 'pending'
 
             puts    "\n=== Send file upload ==="
-            ui_spin("Send file upload"){uploadFile()}
+            rc  = uploadFile(file_select)
 
             puts    "\n=== Attach to my DB-upload ==="
-            ui_spin("Attach file to table"){attachFile()}
+            rc  = attachFile(file_select)
 
             print   "=> Sequence done with status: #{rc}\n"
         end

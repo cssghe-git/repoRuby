@@ -89,6 +89,10 @@ CONFIG              = JSON.parse(File.read(File.join(__dir__, "Data_Sources_ID2.
         notion_san:     "2c372117-082a-8020-bd2a-000b4ec7a18b",
         notion_version: "",
         notion_docid:   "20172117082a809784efeb6f051f8e0c",
+        relation_dossier:   "35972117-082a-80e2-bc2c-000b528b61be",
+        relation_tags:      "35972117-082a-80a0-b8bd-000b8185135c",
+        relation_types:     "35972117-082a-80d1-b7b7-000b74157f86",
+        relation_emetteurs: "37472117-082a-8001-be4d-000ba509339e",
         lecture_pages:  0,
         ecriture_pages: 0,
         eop:            "EOP"
@@ -108,9 +112,69 @@ CONFIG              = JSON.parse(File.read(File.join(__dir__, "Data_Sources_ID2.
         stdold          = PRMS[:clstdold]
         pages_initiales = stdold.db_fetch(PRMS[:notion_docid])
 
-        return  pages_initiales
+        return  pages_initiales     #{page, ...}
     end #<def>
 
+    def lesDossiers()
+    #**************
+        stdnew          = PRMS[:clstdnew]
+        pages_dossiers  = {}
+        rel_dossiers    = {}
+        LOG.info("----Dossiers")
+        pages_dossiers  = stdnew.db_fetch(PRMS[:relation_dossier])
+        pages_dossiers.each do |page|
+            props   = stdnew.get_properties(page)
+            key     = props['Référence']
+            rel_dossiers[key] = page["id"]
+        end
+        return  rel_dossiers     #{key => relation, ...}
+    end
+
+    def lesTags()
+    #**************
+        stdnew          = PRMS[:clstdnew]
+        pages_tags      = {}
+        rel_tags        = {}
+        LOG.info("----Tags")
+        pages_tags      = stdnew.db_fetch(PRMS[:relation_tags])
+        pages_tags.each do |page|
+            props       = stdnew.get_properties(page)
+            key         = props['Référence']
+            rel_tags[key]   = page["id"]
+        end
+        return  rel_tags     #{key => relation, ...}
+    end
+    
+    def lesEmetteurs()
+    #***************
+        stdnew          = PRMS[:clstdnew]
+        pages_emetteurs = {}
+        rel_emetteurs   = {}
+        LOG.info("----Emetteurs")
+        pages_emetteurs = stdnew.db_fetch(PRMS[:relation_emetteurs])
+        pages_emetteurs.each do |page|
+            props       = stdnew.get_properties(page)
+            key         = props['Référence']
+            rel_emetteurs[key] = page["id"]
+        end
+        return  rel_emetteurs     #{key => relation, ...}
+    end
+    
+    def lesTypes()
+    #***************
+        stdnew          = PRMS[:clstdnew]
+        pages_types     = {}
+        rel_types       = {}
+        LOG.info("----Types")
+        pages_types     = stdnew.db_fetch(PRMS[:relation_types])
+        pages_types.each do |page|
+            props       = stdnew.get_properties(page)
+            key         = props['Référence']
+            rel_types[key] = page["id"]
+        end
+        return  rel_types     #{key => relation, ...}
+    end
+    
     def lesDocuments()
     #***************
         stdnew  = PRMS[:clstdnew]
@@ -124,7 +188,7 @@ CONFIG              = JSON.parse(File.read(File.join(__dir__, "Data_Sources_ID2.
             props   = stdnew.get_properties(page)
             pages_ref[props['Référence']] = PRMS[:notion_fichier]
         end
-        LOG.info("#{pages_documents.size} pages -> #{pages_ref.size} index")
+        LOG.info("----#{pages_documents.size} pages -> #{pages_ref.size} index")
         #
         LOG.info("----DOC")
         PRMS[:notion_fichier]   = 'DOC'
@@ -134,8 +198,7 @@ CONFIG              = JSON.parse(File.read(File.join(__dir__, "Data_Sources_ID2.
             props   = stdnew.get_properties(page)
             pages_ref[props['Référence']] = PRMS[:notion_fichier]
         end
-        pages_index = pages_index.merge(pages_ref)
-        LOG.info("#{pages_documents.size} pages -> #{pages_ref.size} index")
+        LOG.info("----#{pages_documents.size} pages -> #{pages_ref.size} index")
         #
         LOG.info("----FIN")
         PRMS[:notion_fichier]   = 'FIN'
@@ -146,7 +209,7 @@ CONFIG              = JSON.parse(File.read(File.join(__dir__, "Data_Sources_ID2.
             pages_ref[props['Référence']] = PRMS[:notion_fichier]
         end
         pages_index = pages_index.merge(pages_ref)
-        LOG.info("#{pages_documents.size} pages -> #{pages_ref.size} index")
+        LOG.info("----#{pages_documents.size} pages -> #{pages_ref.size} index")
         #
         LOG.info("----INF")
         PRMS[:notion_fichier]   = 'INF'
@@ -157,7 +220,7 @@ CONFIG              = JSON.parse(File.read(File.join(__dir__, "Data_Sources_ID2.
             pages_ref[props['Référence']] = PRMS[:notion_fichier]
         end
         pages_index = pages_index.merge(pages_ref)
-        LOG.info("#{pages_documents.size} pages -> #{pages_ref.size} index")
+        LOG.info("----#{pages_documents.size} pages -> #{pages_ref.size} index")
         #
         LOG.info("----OFF")
         PRMS[:notion_fichier]   = 'OFF'
@@ -168,7 +231,7 @@ CONFIG              = JSON.parse(File.read(File.join(__dir__, "Data_Sources_ID2.
             pages_ref[props['Référence']] = PRMS[:notion_fichier]
         end
         pages_index = pages_index.merge(pages_ref)
-        LOG.info("#{pages_documents.size} pages -> #{pages_ref.size} index")
+        LOG.info("----#{pages_documents.size} pages -> #{pages_ref.size} index")
         #
         LOG.info("----SAN")
         PRMS[:notion_fichier]   = 'SAN'
@@ -179,34 +242,100 @@ CONFIG              = JSON.parse(File.read(File.join(__dir__, "Data_Sources_ID2.
             pages_ref[props['Référence']] = PRMS[:notion_fichier]
         end
         pages_index = pages_index.merge(pages_ref)
-        LOG.info("#{pages_documents.size} pages -> #{pages_ref.size} index")
+        LOG.info("----#{pages_documents.size} pages -> #{pages_ref.size} index")
         #
 
-        return  pages_index     #{reference => domaine}
+        return  pages_index.sort     #{reference => domaine}
     end #<def>
 
-    def domaine(arr_properties={}, pages_index={})
-    #**********
+    def trt_domaine(arr_properties={}, pages_index={})
+    #**************
         reference   = arr_properties['Référence']
-        domaine = pages_index.fetch(reference, 'TBD')
+        domaine     = pages_index.fetch(reference, 'TBD')
 
         return  domaine
     end #<def>
 
-    def dossier(arr_properties={})
-    #**********
+    def trt_dossier(arr_properties={}, rel_dossiers={})
+    #**************
         reference   = arr_properties['Référence']
         dossier     = ''
-        dossier_cnv = arr_properties['Dossier_cnv']
+       dossier_cnv = arr_properties['Dossier_cnv'][0]  unless arr_properties['Dossier_cnv'].nil?
         unless dossier_cnv.nil?
-            page    = stdold.page_get(dossier_cnv)
+            stdold      = PRMS[:clstdold]
+            page        = stdold.page_get(dossier_cnv)
+            props       = stdold.get_properties(page)
+            dossier     = props['Nom']
+            relation    = rel_dossiers.fetch(dossier, nil)
+            puts "DBG>trtDossier>Relation:#{relation}"
         end
+
+        return  relation
+    end #<def>
+
+    def trt_tag(arr_properties={}, rel_tags={})
+    #**************
+        reference   = arr_properties['Référence']
+        tag         = ''
+        tag_cnv     = arr_properties['Tags_cnv'][0]  unless arr_properties['Tags_cnv'].nil?
+        unless tag_cnv.nil?
+            stdold      = PRMS[:clstdold]
+            page        = stdold.page_get(tag_cnv)
+            props       = stdold.get_properties(page)
+            tag         = props['Nom']
+            relation    = rel_tags.fetch(tag, nil)
+            puts "DBG>trtTag>Relation:#{relation}"
+        end
+
+        return  relation
+    end #<def>
+
+    def trt_type(arr_properties={}, rel_types={})
+    #**************
+        reference   = arr_properties['Référence']
+        type         = ''
+
+        type_cnv     = arr_properties['Type_cnv'][0]  unless arr_properties['Type_cnv'].nil?
+        unless type_cnv.nil?
+            stdold      = PRMS[:clstdold]
+            page        = stdold.page_get(type_cnv)
+            props       = stdold.get_properties(page)
+            type         = props['Nom']
+            relation    = rel_types.fetch(type, nil)
+            puts "DBG>trtType>Relation:#{relation}"
+        end
+
+        return  relation
+    end #<def>
+
+    def trt_emetteur(arr_properties={}, rel_emetteurs={})
+    #**************
+        reference   = arr_properties['Référence']
+        emetteur         = ''
+    #    puts    "DBG>trtEmetteur>#{arr_properties['Emetteur_cnv']}"
+        emetteur_cnv     = arr_properties['Emetteur_cnv'][0]  unless arr_properties['Emetteur_cnv'].nil?
+        unless emetteur_cnv.nil?
+            stdold      = PRMS[:clstdold]
+            page        = stdold.page_get(emetteur_cnv)
+    #        puts "DBG>trtEmetteur>Page:#{page}"
+            props       = stdold.get_properties(page)
+    #        puts "DBG>trtEmetteur>Props:#{props}"
+            emetteur         = props['Nom']
+            relation    = rel_emetteurs.fetch(emetteur, nil)
+            puts "DBG>trtEmetteur>Relation:#{relation}"
+        end
+
+        return  relation
     end #<def>
 
     def run()
     #******
         LOG.info("Module : #{__method__}")
         pages_initiales = {}
+        rel_dossiers    = {}
+        rel_tags        = {}
+        rel_emetteurs   = {}
+        rel_types       = {}
         pages_index     = {}
         arr_pages       = {}
         arr_properties  = {}
@@ -216,36 +345,94 @@ CONFIG              = JSON.parse(File.read(File.join(__dir__, "Data_Sources_ID2.
         pages_initiales = lesIndex()
         LOG.info("----#{pages_initiales.size} index")
         #
+        LOG.info("--Les Relations")
+        rel_dossiers    = lesDossiers()
+        LOG.info("----#{rel_dossiers.size} relations")
+        rel_tags        = lesTags()
+        LOG.info("----#{rel_tags.size} relations")
+        rel_emetteurs   = lesEmetteurs()
+        LOG.info("----#{rel_emetteurs.size} relations")
+        rel_types       = lesTypes()
+        LOG.info("----#{rel_types.size} relations")
+        
+        #
         LOG.info("--Les Documents")
-        pages_index = lesDocuments().sort
+        pages_index = lesDocuments()
         LOG.info("----#{pages_index.size} index")
+
         #
         LOG.info("--Traitement")
         stdold  = PRMS[:clstdold]
         count   = 0
+        nbr_ecrits = 0
         pages_initiales.each do |page|
             puts    "Nombre: #{count}"  if count%100 == 0
             flag_maj        = false
+            arr_properties  = {}
             ecr_properties  = {}
             page_id         = page["id"]
             arr_properties  = stdold.get_properties(page)
-        #    puts    "Référence: #{arr_properties['Référence']} -Domaine: #{arr_properties['Domaine']}"
-
-            if arr_properties['Domaine'].nil? or arr_properties['Domaine'] == 'TBD'
-                ecr_properties['Domaine']   = stdold.select(domaine(arr_properties, pages_index))
-                flag_maj                    = true
-            end
-
-        #    if arr_properties['Dossier'].nil?
-        #        ecr_properties['Dossier']   = dossier(arr_properties)
+            puts    "Référence: #{arr_properties['Référence']} -Dossier: #{arr_properties['Dossier']} : #{arr_properties['Dossier_cnv']}"
+            # Domaine
+        #    if arr_properties['Domaine'].nil? or arr_properties['Domaine'] == 'TBD'
+        #        ecr_properties['Domaine']   = stdold.select(trt_domaine(arr_properties, pages_index))
         #        flag_maj                    = true
         #    end
-
-            if flag_maj
-                puts    "Référence: #{arr_properties['Référence']} -Domaine: #{ecr_properties['Domaine']}"
-                response    = stdold.page_update(page_id, ecr_properties)
+            # Dossier
+            puts    "DBG>Dossier>#{arr_properties['Dossier'].size} - #{arr_properties['Dossier_cnv'].size}"
+            if arr_properties['Dossier'].size==0 and arr_properties['Dossier_cnv'].size>0
+                relation   = trt_dossier(arr_properties, rel_dossiers)
+                puts    "Dossier: #{arr_properties['Référence']} -Dossier: #{arr_properties['Dossier']} -ID: #{relation}"
+                unless relation.nil?
+                    ecr_properties['Dossier']   = stdold.relation1(relation)
+                    flag_maj                    = true
+                end
             end
+
+            # Tags
+            puts    "DBG>Tags>#{arr_properties['Tags'].size} - #{arr_properties['Tags_cnv'].size}"
+            if arr_properties['Tags'].size==0 and arr_properties['Tags_cnv'].size>0
+                relation   = trt_tag(arr_properties, rel_tags)
+                puts    "Tags: #{arr_properties['Référence']} -Tags: #{arr_properties['Tags']} -ID: #{relation}"
+                unless relation.nil?
+                    ecr_properties['Tags']      = stdold.relation1(relation)
+                    flag_maj                    = true
+                end
+            end
+
+            # Emmetteurs
+            puts    "DBG>Emetteurs>#{arr_properties['Emetteur'].size} - #{arr_properties['Emetteur_cnv'].size}"
+            if arr_properties['Emetteur'].size==0 and arr_properties['Emetteur_cnv'].size>0
+                relation   = trt_emetteur(arr_properties, rel_emetteurs)
+                puts    "Emetteur: #{arr_properties['Référence']} -Emetteur: #{arr_properties['Emetteurs']} : #{relation}"
+                unless relation.nil?
+                    ecr_properties['Emetteur'] = stdold.relation1(relation)
+                    flag_maj                    = true
+                end
+            end
+
+            # Types
+            puts    "DBG>Types>#{arr_properties['Type'].size} - #{arr_properties['Type_cnv'].size}"
+            if arr_properties['Type'].size==0 and arr_properties['Type_cnv'].size>0
+                relation   = trt_type(arr_properties, rel_types)
+                puts    "Type: #{arr_properties['Référence']} -Types: #{arr_properties['Type']} -ID: #{relation}"
+                unless relation.nil?
+                    ecr_properties['Type'] = stdold.relation1(relation)
+                    flag_maj                    = true
+                end
+            end
+
+            #
+            if flag_maj
+                puts    "Référence: #{arr_properties['Référence']} -valeurs: #{ecr_properties}"
+                response    = stdold.page_update(page_id, ecr_properties)
+                nbr_ecrits += 1
+            #    exit 9
+            end
+            count += 1
         end
+        LOG.info("Nombre de pages traitées : #{count}")
+        LOG.info("Nombre de pages écrites : #{nbr_ecrits}")
     end #<def>
 
     # Utilisation

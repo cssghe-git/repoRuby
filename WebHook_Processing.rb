@@ -93,7 +93,8 @@ class WebhookProcessing < Sinatra::Base
     # Process <Post> request for <notion_webhook>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
-    # Webhook (Notion)
+    # Webhook (Notion) ===> Notion-automation
+    #
     post '/notion_webhook' do
         env_part = env
         $stdout.puts ">>>DBG>Notion_Webhook>Env_Part => "
@@ -134,6 +135,8 @@ class WebhookProcessing < Sinatra::Base
     # Process <Post> request for <Notion_busycal>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
+    # Webhook (Notion) ===> Notion-busycal
+    #
     post "/notion_busycal" do
         $stdout.puts ">>>DBG>Notion_BusyCal => "
         payload = request.body && JSON.parse(request.body.read || '{}')
@@ -154,6 +157,8 @@ class WebhookProcessing < Sinatra::Base
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     # Process <Post> request for <github_webhook>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
+    #
+    # Webhook (Github) ===> GitHub
     #
     post "/github_webhook" do
         $stdout.puts ">>>DBG>Github_Webhook => "
@@ -180,6 +185,8 @@ class WebhookProcessing < Sinatra::Base
     # Process <Post> request for <fastmail_webhook>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
+    # Webhook (Fastmail) ===> Fastmail
+    #
     post "/email_webhook" do
         $stdout.puts ">>>DBG>Email_Webhook => "
         payload = request.body && JSON.parse(request.body.read || '{}')
@@ -201,6 +208,8 @@ class WebhookProcessing < Sinatra::Base
     # Process <Post> request for <Infomaniak_webhook>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     #
+    # Webhook (Infomaniak) ===> Infomaniak
+    #
     post "/infomaniak_webhook" do
         $stdout.puts ">>>DBG>Infomaniak_Webhook => "
         payload = request.body && JSON.parse(request.body.read || '{}')
@@ -221,7 +230,9 @@ class WebhookProcessing < Sinatra::Base
     # ++++++++++++++++++++++++++++++++++++++++++++++++
     # Process <Post> request for <notion_request>
     # ++++++++++++++++++++++++++++++++++++++++++++++++
-    #   from webhook integration: CssGhe_Webhooks
+    #   from Notion webhook integration: CssGhe_Webhooks
+    #
+    # Webhook (Notion) ===> Notion-request
     #
     post "/notion_request" do
     start = Process.clock_gettime(Process::CLOCK_MONOTONIC)

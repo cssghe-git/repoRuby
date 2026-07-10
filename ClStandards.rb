@@ -355,6 +355,11 @@ class   Standards
         s   = convert_date(d) 
         { "date"=> s ? {"start"=>s} : nil }
     end
+    def date_stop_iso(d1, d2)
+        s1   = convert_date(d1)
+        s2   = convert_date(d2) 
+        { "date"=> {"start"=>s1, "end"=>s2} }
+    end
     def text(str)
         return nil if str.empty?
         { "rich_text"=>[{ "type"=>"text","text"=>{ "content"=>str.to_s } }] }

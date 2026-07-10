@@ -303,9 +303,9 @@ class WebhookAsync
         return response['name'] || 'None'
     end
 
-    #************************
+    #*******************************
     #   Webhooks processing *
-    #************************
+    #*******************************
     #
     #                   ****************************
     #                   From Notion - request (POST) - webhook integration
